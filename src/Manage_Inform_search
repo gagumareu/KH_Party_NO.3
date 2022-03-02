@@ -51,6 +51,7 @@ public class Manage_Inform_search extends JFrame {
 		JButton jb2 = new JButton("회원 추가");
 		JButton jb3 = new JButton("회원 수정");
 		JButton jb4 = new JButton("회원 삭제");
+		JButton jb5 = new JButton("돌아 가기");
 		
 		container1.add(jl1);container1.add(jtf1);
 		container1.add(jl2);container1.add(jtf2);
@@ -64,6 +65,7 @@ public class Manage_Inform_search extends JFrame {
 		container3.add(jb2);
 		container3.add(jb3);
 		container3.add(jb4);
+		container3.add(jb5);
 		
 		JPanel group = new JPanel(new BorderLayout());
 		
@@ -183,6 +185,16 @@ public class Manage_Inform_search extends JFrame {
 					jtf5.setText(model.getValueAt(row, 4).toString());
 					jtf6.setText(model.getValueAt(row, 5).toString());
 					
+					
+				}
+			});
+			
+			jb5.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					new Manage();
+					dispose();
 					
 				}
 			});
