@@ -8,6 +8,10 @@ create table member(
     mem_mileage number(10)
 );
 
+create sequence mem_seq
+start with 1
+increment by 1;
+
 create view mem_info
 as
 select mem_num, mem_name, mem_contact, mem_addr, mem_mileage
