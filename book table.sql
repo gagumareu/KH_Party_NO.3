@@ -36,9 +36,7 @@ foreign key (bgenreno) references genre (bgenreno),
 foreign key (bnumber) references books (bnumber)
 );
 
--- 각 장르별 테이블
--- 장르별로 나눈 이유는 책번호 "장르별번호" - "입력된 순서"
--- 에서 입력된 순서를 장르별로 나누기 위함.
+-- 도서 테이블
 
 create table books (
 bgenreno number(10),       --장르번호
