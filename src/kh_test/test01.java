@@ -5,9 +5,9 @@ public class test01 {
 	public static void main(String[] args) {
 
 
-		System.out.println("¾È³çÇÏ¼¼¿ä");
-		System.out.println("±êÇãºê Å×½ºÆ®");
-		System.out.println("ÀÔ´Ï´Ù");
+		System.out.println("ì•ˆë…•í•˜ì„¸ìš”");
+		System.out.println("ê¹ƒí—ˆë¸Œ ìž…ë‹ˆë‹¤.");
+		System.out.println("UFT-8 ë³€ê²½í–ˆìŠµë‹ˆë‹¤.");
 	}
 
 }
