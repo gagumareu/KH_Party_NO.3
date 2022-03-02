@@ -10,5 +10,5 @@ create table member(
 
 create view mem_info
 as
-select mem_id, mem_name, mem_contact, mem_addr, mem_mileage
+select mem_num, mem_name, mem_contact, mem_addr, mem_mileage
 from member;
