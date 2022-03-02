@@ -1,5 +1,4 @@
-drop table books purge;
-delete from books;
+
 
 --장르 테이블
 
