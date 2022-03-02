@@ -3,6 +3,8 @@ package kh_test;
 import java.sql.*;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -23,6 +25,7 @@ public class Init extends JFrame {
 		JPanel container2 = new JPanel();
 		JPanel container3 = new JPanel();
 		
+		
 		//1. 컴포넌트 생성
 		JLabel jl1 = new JLabel("아이디: ");
 		jtf1 = new JTextField(10);
@@ -36,6 +39,7 @@ public class Init extends JFrame {
 		JButton jb1 = new JButton("회원가입");
 		JButton jb2 = new JButton("아이디/비밀번호 찾기");
 		
+		
 		//2. 컴포넌트를 컨테이너에 올리기
 		container1.add(jl1); container1.add(jtf1);
 		container1.add(jl2); container1.add(jtf2);
@@ -43,6 +47,7 @@ public class Init extends JFrame {
 		container2.add(jb0);
 		
 		container3.add(jb1); container3.add(jb2);
+		
 		
 		//3. 컨테이너를 프레임에 올리기
 		add(container1, BorderLayout.NORTH);
@@ -52,5 +57,54 @@ public class Init extends JFrame {
 		setBounds(200, 200, 500, 250);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+		
+		
+		//4. 이벤트 처리
+		jb0.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				connect();
+				String id = jtf1.getText();
+				String pw = jtf2.getText();
+				checkLoginValid(id, pw);
+				model.setRowCount(0);
+			}
+		});	//로그인 버튼 이벤트 처리
+		
+		jb1.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new SignUp();
+			}
+		});	//회원가입 버튼 이벤트 처리
+		
+		jb2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});	//아이디/비밀번호 찾기 버튼 이벤트 처리
+	}
+	
+	void connect() {
+		try {
+			con = DBConnection.getConnection();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	void checkLoginValid(String id, String pw) {
+		try {
+			sql = "select mem_password where mem_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 }
