@@ -8,6 +8,8 @@ public class test01 {
 		System.out.println("안녕하세요");
 		System.out.println("깃허브 입니다.");
 		System.out.println("UFT-8 변경했습니다.");
+		
+		System.out.println("commit test");
 	}
 
 }
