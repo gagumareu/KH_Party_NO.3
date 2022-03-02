@@ -1,6 +1,7 @@
 create table member(
-    mem_id number(10) primary key,
+    mem_id varchar(32) unique not null,
     mem_password varchar(100) not null,
+    mem_num number(10) primary key,
     mem_name varchar(20) not null,
     mem_contact varchar(20),
     mem_addr varchar(100),
