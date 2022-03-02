@@ -1,4 +1,4 @@
-
+drop table review purge;
 
 --장르 테이블
 
@@ -29,6 +29,7 @@ bnumber number (20),
 rname varchar(20),
 review varchar (4000),
 starsum number (20),          --별점
+regdate date not null,
 foreign key (bnumber) references books (bnumber)
 );
 
@@ -66,4 +67,4 @@ insert into books
 values ('E',booknum_seq.nextval,'더 파이팅','모리카와 조지');
 
 insert into review 
-values (1,'오경종','액션신이 너무 좋았다',5);
+values (1,'오경종','액션신이 너무 좋았다',5,sysdate);
