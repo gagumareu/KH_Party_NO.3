@@ -1,4 +1,4 @@
-package khie;
+package khie_dohyung;
 
 import javax.swing.JFrame;
 
@@ -14,7 +14,7 @@ public class Manage extends JFrame {
 	
 	public Manage() {
 		
-		setTitle("°ü¸®ÀÚ Å×ÀÌºí");
+		setTitle("ê´€ë¦¬ì í…Œì´ë¸”");
 		
 		JPanel title=new JPanel();
 		JPanel container1 = new JPanel();
@@ -24,29 +24,29 @@ public class Manage extends JFrame {
 		JPanel container5 = new JPanel();
 		
 		
-		JButton jb1 = new JButton("È¸¿ø Á¤º¸ °ü¸®");
-		JButton jb2 = new JButton("¸Ş´º °ü¸®");
-		JButton jb3 = new JButton("¸ÅÃâ °ü¸®");
-		JButton jb4 = new JButton("¸¸È­Ã¥ °ü¸®");
-		JButton jb5 = new JButton("¸®ºä¹× º°Á¡°ü¸®");
+		JButton jb1 = new JButton("íšŒì› ì •ë³´ ê´€ë¦¬");
+		JButton jb2 = new JButton("ë©”ë‰´ ê´€ë¦¬");
+		JButton jb3 = new JButton("ë§¤ì¶œ ê´€ë¦¬");
+		JButton jb4 = new JButton("ë§Œí™”ì±… ê´€ë¦¬");
+		JButton jb5 = new JButton("ë¦¬ë·°ë° ë³„ì ê´€ë¦¬");
 				
 		
-		JLabel login = new JLabel("°ü¸®ÀÚ È­¸é");
+		JLabel login = new JLabel("ê´€ë¦¬ì í™”ë©´");
 		
 		
 		login.setForeground(new Color(5,0,153));
-		login.setFont(new Font("ÈŞ¸ÕÆíÁöÃ¼",Font.BOLD, 25));
+		login.setFont(new Font("íœ´ë¨¼í¸ì§€ì²´",Font.BOLD, 25));
 		
 		title.add(login);
 		container1.add(jb1);container2.add(jb2);
 		container3.add(jb3);container4.add(jb4);
 		container5.add(jb5);
 		
-		jb1.setFont(new Font("ÈŞ¸ÕÆíÁöÃ¼",Font.BOLD, 20));
-		jb2.setFont(new Font("ÈŞ¸ÕÆíÁöÃ¼",Font.BOLD, 20));
-		jb3.setFont(new Font("ÈŞ¸ÕÆíÁöÃ¼",Font.BOLD, 20));
-		jb4.setFont(new Font("ÈŞ¸ÕÆíÁöÃ¼",Font.BOLD, 20));
-		jb5.setFont(new Font("ÈŞ¸ÕÆíÁöÃ¼",Font.BOLD, 20));
+		jb1.setFont(new Font("íœ´ë¨¼í¸ì§€ì²´",Font.BOLD, 20));
+		jb2.setFont(new Font("íœ´ë¨¼í¸ì§€ì²´",Font.BOLD, 20));
+		jb3.setFont(new Font("íœ´ë¨¼í¸ì§€ì²´",Font.BOLD, 20));
+		jb4.setFont(new Font("íœ´ë¨¼í¸ì§€ì²´",Font.BOLD, 20));
+		jb5.setFont(new Font("íœ´ë¨¼í¸ì§€ì²´",Font.BOLD, 20));
 		
 		JPanel group1 = new JPanel((new BorderLayout()));
 		JPanel group = new JPanel((new BorderLayout()));

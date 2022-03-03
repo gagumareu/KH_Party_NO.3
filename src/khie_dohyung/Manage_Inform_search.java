@@ -1,4 +1,4 @@
-package khie;
+package khie_dohyung;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -21,25 +21,25 @@ public class Manage_Inform_search extends JFrame {
 	JTable table;	
 	
 	public Manage_Inform_search() {
-		setTitle("È¸¿ø Á¤º¸ Å×ÀÌºí");
+		setTitle("íšŒì› ì •ë³´ í…Œì´ë¸”");
 		JPanel container1 = new JPanel();
 		JPanel container2 = new JPanel();
 		JPanel container3 = new JPanel();
 		
 		
-		JLabel jl1 = new JLabel("È¸¿ø¾ÆÀÌµğ:");
+		JLabel jl1 = new JLabel("íšŒì›ì•„ì´ë””:");
 		jtf1= new JTextField(10);
-		JLabel jl2 = new JLabel("ÆĞ½º¿öµå:");
+		JLabel jl2 = new JLabel("íŒ¨ìŠ¤ì›Œë“œ:");
 		jtf2=new JTextField(10);
-		JLabel jl3 = new JLabel("ÀÌ¸§:");
+		JLabel jl3 = new JLabel("ì´ë¦„:");
 		jtf3= new JTextField(10);
-		JLabel jl4 = new JLabel("ÀüÈ­¹øÈ£:");
+		JLabel jl4 = new JLabel("ì „í™”ë²ˆí˜¸:");
 		jtf4= new JTextField(15);
-		JLabel jl5 = new JLabel("ÁÖ¼Ò");
+		JLabel jl5 = new JLabel("ì£¼ì†Œ");
 		jtf5= new JTextField(30);
-		JLabel jl6 = new JLabel("¸¶ÀÏ¸®Áö");
+		JLabel jl6 = new JLabel("ë§ˆì¼ë¦¬ì§€");
 		jtf6= new JTextField(10);
-		String [] header= {"È¸¿ø¾ÆÀÌµğ","ÆĞ½º¿öµå","ÀÌ¸§","ÀüÈ­¹øÈ£","ÁÖ¼Ò","¸¶ÀÏ¸®Áö"};
+		String [] header= {"íšŒì›ì•„ì´ë””","íŒ¨ìŠ¤ì›Œë“œ","ì´ë¦„","ì „í™”ë²ˆí˜¸","ì£¼ì†Œ","ë§ˆì¼ë¦¬ì§€"};
 		
 		model = new DefaultTableModel(header, 0);
 		
@@ -47,11 +47,11 @@ public class Manage_Inform_search extends JFrame {
 		
 		JScrollPane jsp = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		JButton jb1 = new JButton("È¸¿ø ¸ñ·Ï");
-		JButton jb2 = new JButton("È¸¿ø Ãß°¡");
-		JButton jb3 = new JButton("È¸¿ø ¼öÁ¤");
-		JButton jb4 = new JButton("È¸¿ø »èÁ¦");
-		JButton jb5 = new JButton("µ¹¾Æ °¡±â");
+		JButton jb1 = new JButton("íšŒì› ëª©ë¡");
+		JButton jb2 = new JButton("íšŒì› ì¶”ê°€");
+		JButton jb3 = new JButton("íšŒì› ìˆ˜ì •");
+		JButton jb4 = new JButton("íšŒì› ì‚­ì œ");
+		JButton jb5 = new JButton("ëŒì•„ ê°€ê¸°");
 		
 		container1.add(jl1);container1.add(jtf1);
 		container1.add(jl2);container1.add(jtf2);
@@ -128,7 +128,7 @@ public class Manage_Inform_search extends JFrame {
 				jtf1.requestFocus();
 				model.setRowCount(0);
 				select();
-					//DB¿¡¼­ ÀüÃ¼ ³»¿ªÀ» Á¶È¸ÇÏ´Â ¸Ş¼­µå È£Ãâ
+					//DBì—ì„œ ì „ì²´ ë‚´ì—­ì„ ì¡°íšŒí•˜ëŠ” ë©”ì„œë“œ í˜¸ì¶œ
 			}
 		});
 		
@@ -136,9 +136,9 @@ public class Manage_Inform_search extends JFrame {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					int result=JOptionPane.showConfirmDialog(null, "Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?","È®ÀÎ",JOptionPane.YES_NO_OPTION);
+					int result=JOptionPane.showConfirmDialog(null, "ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?","í™•ì¸",JOptionPane.YES_NO_OPTION);
 					if(result== JOptionPane.CLOSED_OPTION) {
-						JOptionPane.showMessageDialog(null, "Ãë¼Ò¸¦ Å¬¸¯ÇÏ¼Ì½À´Ï´Ù.");
+						JOptionPane.showMessageDialog(null, "ì·¨ì†Œë¥¼ í´ë¦­í•˜ì…¨ìŠµë‹ˆë‹¤.");
 					}else if(result==JOptionPane.YES_OPTION) {
 						connect();
 						delete();
@@ -216,7 +216,7 @@ public class Manage_Inform_search extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	} //connect ¿£µå
+	} //connect ì—”ë“œ
 	
 	void select() {
 		
@@ -264,9 +264,9 @@ public class Manage_Inform_search extends JFrame {
 			int res=pstmt.executeUpdate();
 			
 			if(res>0) {
-				JOptionPane.showMessageDialog(null, "È¸¿ø Ãß°¡ ¼º°ø");
+				JOptionPane.showMessageDialog(null, "íšŒì› ì¶”ê°€ ì„±ê³µ");
 			} else {
-				JOptionPane.showMessageDialog(null, "È¸¿ø Ãß°¡ ½ÇÆĞ");
+				JOptionPane.showMessageDialog(null, "íšŒì› ì¶”ê°€ ì‹¤íŒ¨");
 				
 			}
 			pstmt.close();
@@ -279,7 +279,7 @@ public class Manage_Inform_search extends JFrame {
 	}
 	
 	void update() {
-		// 1. µ¥ÀÌÅÍº£ÀÌ½º Àü¼ÛÇÒ SQL¹® ÀÛ¼º
+		// 1. ë°ì´í„°ë² ì´ìŠ¤ ì „ì†¡í•  SQLë¬¸ ì‘ì„±
 		
 		
 		try {
@@ -293,12 +293,12 @@ public class Manage_Inform_search extends JFrame {
 			pstmt.setInt(5, Integer.parseInt(jtf6.getText()));
 			pstmt.setString(6, jtf1.getText());
 			
-			// 2. ¿À¶óÅ¬ µ¥ÀÌÅÍº£ÀÌ½º¿¡ SQL¹® Àü¼Û ¹× SQL¹® ½ÇÇà
+			// 2. ì˜¤ë¼í´ ë°ì´í„°ë² ì´ìŠ¤ì— SQLë¬¸ ì „ì†¡ ë° SQLë¬¸ ì‹¤í–‰
 			int res=pstmt.executeUpdate();
 			if(res>0) {
-				JOptionPane.showMessageDialog(null, "È¸¿øÁ¤º¸¼öÁ¤ ¼º°ø!!!");
+				JOptionPane.showMessageDialog(null, "íšŒì›ì •ë³´ìˆ˜ì • ì„±ê³µ!!!");
 			} else {
-				JOptionPane.showMessageDialog(null, "È¸¿øÁ¤º¸¼öÁ¤ ½ÇÆĞ~~~");
+				JOptionPane.showMessageDialog(null, "íšŒì›ì •ë³´ìˆ˜ì • ì‹¤íŒ¨~~~");
 			}
 			pstmt.close(); 
 			
@@ -309,7 +309,7 @@ public class Manage_Inform_search extends JFrame {
 		
 	}
 	void delete() {
-		//1. ¿À¶óÅ¬ µ¥ÀÌÅÍº£ÀÌ½º¿¡ Àü¼ÛÇÒ SQL¹® ÀÛ¼º
+		//1. ì˜¤ë¼í´ ë°ì´í„°ë² ì´ìŠ¤ì— ì „ì†¡í•  SQLë¬¸ ì‘ì„±
 		
 		
 		try {
@@ -322,16 +322,16 @@ public class Manage_Inform_search extends JFrame {
 			
 			pstmt.setString(1, (String)model.getValueAt(row, 0));
 			
-			// 2.¿À¶óÅ¬ µ¥ÀÌÅÍº£ÀÌ½º¿¡ SQL¹® Àü¼Û ¹× SQL¹® ½ÇÇà
+			// 2.ì˜¤ë¼í´ ë°ì´í„°ë² ì´ìŠ¤ì— SQLë¬¸ ì „ì†¡ ë° SQLë¬¸ ì‹¤í–‰
 			int res =pstmt.executeUpdate();
 			if(res>0) {
-				JOptionPane.showMessageDialog(null, "È¸¿øÁ¤º¸»èÁ¦ ¼º°ø!!!");
+				JOptionPane.showMessageDialog(null, "íšŒì›ì •ë³´ì‚­ì œ ì„±ê³µ!!!");
 			} else {
-				JOptionPane.showMessageDialog(null, "È¸¿øÁ¤º¸»èÁ¦ ½ÇÆĞ~~~");
+				JOptionPane.showMessageDialog(null, "íšŒì›ì •ë³´ì‚­ì œ ì‹¤íŒ¨~~~");
 			}
-			model.removeRow(row);		//Å×ÀÌºí »óÀÇ ÇÑÁÙ »èÁ¦
+			model.removeRow(row);		//í…Œì´ë¸” ìƒì˜ í•œì¤„ ì‚­ì œ
 			
-			//3. ¿À¶óÅ¬ µ¥ÀÌÅÍº£ÀÌ½º¿¡ ¿¬°áµÇ¾î ÀÖ´ø ÀÚ¿ø Á¾·á.
+			//3. ì˜¤ë¼í´ ë°ì´í„°ë² ì´ìŠ¤ì— ì—°ê²°ë˜ì–´ ìˆë˜ ìì› ì¢…ë£Œ.
 			pstmt.close(); con.close();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

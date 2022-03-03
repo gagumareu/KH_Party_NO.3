@@ -1,4 +1,4 @@
-package khie;
+package khie_dohyung;
 
 
 import java.awt.BorderLayout;
@@ -22,29 +22,29 @@ public class Manage_Manwha extends JFrame {
 	
 	public Manage_Manwha() {
 		
-		setTitle("¸¸È­Ã¥ °ü¸® È­¸é");
+		setTitle("ë§Œí™”ì±… ê´€ë¦¬ í™”ë©´");
 		
 		JPanel container1 = new JPanel();
 
 		JPanel container2 = new JPanel();
 
 		
-		JLabel jl1 = new JLabel("Ã¥À§Ä¡:");
+		JLabel jl1 = new JLabel("ì±…ìœ„ì¹˜:");
 		jtf1 = new JTextField(2);
 		
-		JLabel jl2 = new JLabel("Ã¥¹øÈ£:");
+		JLabel jl2 = new JLabel("ì±…ë²ˆí˜¸:");
 		jtf2= new JTextField(8);
 		
-		JLabel jl3 = new JLabel("Ã¥ÀÌ¸§:");
+		JLabel jl3 = new JLabel("ì±…ì´ë¦„:");
 		jtf3= new JTextField(10);
 		
-		JLabel jl4 = new JLabel("±Û¾´ÀÌ:");
+		JLabel jl4 = new JLabel("ê¸€ì“´ì´:");
 		jtf4= new JTextField(10);
 		
-		JLabel jl5 = new JLabel("Àå¸£:");
+		JLabel jl5 = new JLabel("ì¥ë¥´:");
 		jtf5=new JTextField(15);
 		
-		String[] header= {"Ã¥À§Ä¡","Ã¥¹øÈ£","Ã¥ÀÌ¸§","±Û¾´ÀÌ","Àå¸£"};
+		String[] header= {"ì±…ìœ„ì¹˜","ì±…ë²ˆí˜¸","ì±…ì´ë¦„","ê¸€ì“´ì´","ì¥ë¥´"};
 		
 		model = new DefaultTableModel(header,0);
 		
@@ -52,11 +52,11 @@ public class Manage_Manwha extends JFrame {
 		
 		JScrollPane jsp = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		JButton jb1 = new JButton("ÀüÃ¼ ¸ñ·Ï");
-		JButton jb2 = new JButton("µµ¼­ Ãß°¡");
-		JButton jb3 = new JButton("µµ¼­ ¼öÁ¤");
-		JButton jb4 = new JButton("µµ¼­ »èÁ¦");
-		JButton jb5 = new JButton("µ¹¾Æ °¡±â");
+		JButton jb1 = new JButton("ì „ì²´ ëª©ë¡");
+		JButton jb2 = new JButton("ë„ì„œ ì¶”ê°€");
+		JButton jb3 = new JButton("ë„ì„œ ìˆ˜ì •");
+		JButton jb4 = new JButton("ë„ì„œ ì‚­ì œ");
+		JButton jb5 = new JButton("ëŒì•„ ê°€ê¸°");
 		
 		container1.add(jl1);container1.add(jtf1);
 		container1.add(jl2);container1.add(jtf2);
@@ -95,9 +95,9 @@ public class Manage_Manwha extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				connect();		// µ¥ÀÌÅÍº£ÀÌ½º ¿¬°á ÇÏ´Â ¸Ş¼­µå È£Ãâ
-				insert();			//µ¥ÀÌÅÍ º£ÀÌ½º¿¡¼­ ÀúÀåÇÏ´Â ¸Ş¼­µå È£Ãâ
-				//ÀÔ·Â ÅØ½ºÆ®ÇÊµå¿µ¿ª ÃÊ±âÈ­
+				connect();		// ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° í•˜ëŠ” ë©”ì„œë“œ í˜¸ì¶œ
+				insert();			//ë°ì´í„° ë² ì´ìŠ¤ì—ì„œ ì €ì¥í•˜ëŠ” ë©”ì„œë“œ í˜¸ì¶œ
+				//ì…ë ¥ í…ìŠ¤íŠ¸í•„ë“œì˜ì—­ ì´ˆê¸°í™”
 				jtf1.setText("");
 				jtf2.setText("");
 				jtf3.setText("");
@@ -105,7 +105,7 @@ public class Manage_Manwha extends JFrame {
 				jtf5.setText("");
 				jtf1.requestFocus();
 				
-				model.setRowCount(0);		//ÀüÃ¼ Å×ÀÌºíÀÇ È­¸éÀ» Áö¿öÁÖ´Â ¸Ş¼­µå
+				model.setRowCount(0);		//ì „ì²´ í…Œì´ë¸”ì˜ í™”ë©´ì„ ì§€ì›Œì£¼ëŠ” ë©”ì„œë“œ
 				select();		
 				
 			}
@@ -120,11 +120,11 @@ public class Manage_Manwha extends JFrame {
 		String user="web";
 		String password="1234";
 		
-		//1. Á¢¼ÓÇÒ ¿À¶óÅ¬ µå¶óÀÌ¹ö
+		//1. ì ‘ì†í•  ì˜¤ë¼í´ ë“œë¼ì´ë²„
 		try {
 			Class.forName(driver);
 			
-		// 2. ¿À¶óÅ¬ µ¥ÀÌÅÍ º£ÀÌ½º¿Í ¿¬°áÀ» ½Ãµµ.
+		// 2. ì˜¤ë¼í´ ë°ì´í„° ë² ì´ìŠ¤ì™€ ì—°ê²°ì„ ì‹œë„.
 			con =DriverManager.getConnection(url, user, password);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -132,7 +132,7 @@ public class Manage_Manwha extends JFrame {
 		}
 		
 		
-		}// connect()¸Ş¼­µå end
+		}// connect()ë©”ì„œë“œ end
 	
 	void select() {
 		try {
@@ -170,9 +170,9 @@ public class Manage_Manwha extends JFrame {
 			int res=pstmt.executeUpdate();
 			
 			if(res>0) {
-				JOptionPane.showMessageDialog(null, "µµ¼­ Ãß°¡ ¼º°ø!!!!");
+				JOptionPane.showMessageDialog(null, "ë„ì„œ ì¶”ê°€ ì„±ê³µ!!!!");
 			} else {
-				JOptionPane.showMessageDialog(null, "µµ¼­ Ãß°¡ ½ÇÆĞ~~~~");
+				JOptionPane.showMessageDialog(null, "ë„ì„œ ì¶”ê°€ ì‹¤íŒ¨~~~~");
 			}
 			pstmt.close();
 		} catch (SQLException e) {
