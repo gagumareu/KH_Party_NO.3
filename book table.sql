@@ -1,30 +1,41 @@
-drop table review purge;
+--drop table blocation purge;
 
 --장르 테이블
 
-create table blocation(    
+create table blocation(
 blocation varchar (10),
+bgenre varchar (10),
 primary key (blocation)
 );
 
 
 -- 장르번호 및 장르 입력
 insert into blocation
-values ('A');
+values ('A','엑션');
 insert into blocation
-values ('B');
+values ('B','코미디');
 insert into blocation
-values ('C');
+values ('C','love');
 insert into blocation
-values ('D');
+values ('D','fantasy');
 insert into blocation
-values ('E');
+values ('E','sports');
+
+-- 도서 테이블
+
+create table books (
+blocation varchar(10),          --책 위치
+bnumber number(20)primary key,  -- 책 고유 번호 (장르 무관)
+bname varchar(50)unique,        --책이름
+bwriter varchar(50),            --글쓴이
+foreign key (blocation) references blocation (blocation)
+);
 
 
---리뷰 및 별점테이블 
+--리뷰 및 별점테이블
 --리뷰 작성자(rname) 및 리뷰 내용 (review)
 --책 번호로 접근가능
-create table review(    
+create table review(
 bnumber number (20),
 rname varchar(20),
 review varchar (4000),
@@ -33,15 +44,7 @@ regdate date not null,
 foreign key (bnumber) references books (bnumber)
 );
 
--- 도서 테이블
 
-create table books (
-blocation varchar(10),       --책 위치
-bnumber number(20)primary key,  -- 책 고유 번호 (장르 무관)
-bname varchar(50)unique ,        --책이름
-bwriter varchar(50),      --글쓴이
-foreign key (blocation) references blocation (blocation)
-);
 
 
 --책 고유번호
@@ -66,5 +69,5 @@ values ('D',booknum_seq.nextval,'전지적 독자 시점','UMI/슬리피-C');
 insert into books
 values ('E',booknum_seq.nextval,'더 파이팅','모리카와 조지');
 
-insert into review 
+insert into review
 values (1,'오경종','액션신이 너무 좋았다',5,sysdate);
