@@ -1,4 +1,4 @@
---drop table blocation purge;
+
 
 --장르 테이블
 
@@ -71,3 +71,9 @@ values ('E',booknum_seq.nextval,'더 파이팅','모리카와 조지');
 
 insert into review
 values (1,'오경종','액션신이 너무 좋았다',5,sysdate);
+insert into review
+values (1,'오경종','액션신이 너무 좋았다',4,sysdate);
+
+select sum(starsum)
+from review
+where bnumber = 1;
