@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path=""/>
+	<classpathentry kind="lib" path="C:/app/ogj/product/18.0.0/dbhomeXE/jdbc/lib/ojdbc8.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
