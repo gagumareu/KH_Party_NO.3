@@ -4,6 +4,8 @@ package khie_dohyung;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.*;
 
 import javax.swing.*;
@@ -33,22 +35,24 @@ public class Manage_Manwha extends JFrame {
 		JLabel jl1 = new JLabel("책위치:");
 		jcb1 = new JComboBox<String>();
 		
-		JLabel jl2 = new JLabel("책번호:");
+		JLabel jl2 = new JLabel("장르:");
+		jcb2 = new JComboBox<String>();
+		
+		JLabel jl3 = new JLabel("책번호:");
 		jtf2= new JTextField(8);
 		
-		JLabel jl3 = new JLabel("책이름:");
+		JLabel jl4 = new JLabel("책이름:");
 		jtf3= new JTextField(10);
 		
-		JLabel jl4 = new JLabel("글쓴이:");
+		JLabel jl5 = new JLabel("글쓴이:");
 		jtf4= new JTextField(10);
 		
-		JLabel jl5 = new JLabel("장르:");
-		jcb2 = new JComboBox<String>();
+		
 		
 		jcb1.addItem("선택");
 		jcb2.addItem("선택");
 		
-		String[] header= {"책위치","책번호","책이름","글쓴이","장르"};
+		String[] header= {"책위치","장르", "책번호","책이름","글쓴이"};
 		
 		model = new DefaultTableModel(header,0);
 		
@@ -63,10 +67,11 @@ public class Manage_Manwha extends JFrame {
 		JButton jb5 = new JButton("돌아 가기");
 		
 		container1.add(jl1);container1.add(jcb1);
-		container1.add(jl2);container1.add(jtf2);
-		container1.add(jl3);container1.add(jtf3);
-		container1.add(jl4);container1.add(jtf4);
-		container1.add(jl5);container1.add(jcb2);
+		container1.add(jl2);container1.add(jcb2);
+		container1.add(jl3);container1.add(jtf2);
+		container1.add(jl4);container1.add(jtf3);
+		container1.add(jl5);container1.add(jtf4);
+		
 		
 		container2.add(jb1);
 		container2.add(jb2);
@@ -110,7 +115,7 @@ public class Manage_Manwha extends JFrame {
 				jtf2.setText("");
 				jtf3.setText("");
 				jtf4.setText("");
-				jcb1.setSelectedIndex(0);
+				jcb2.setSelectedIndex(0);
 				jtf2.requestFocus();
 				
 				model.setRowCount(0);		//전체 테이블의 화면을 지워주는 메서드
@@ -130,10 +135,83 @@ public class Manage_Manwha extends JFrame {
 				jtf2.setText("");
 				jtf3.setText("");
 				jtf4.setText("");
-				jcb1.setSelectedIndex(0);
+				jcb2.setSelectedIndex(0);
 				jtf2.requestFocus();
 				model.setRowCount(0);		//전체 테이블의 화면을 지워주는 메서드
 				select();	
+				
+			}
+		});
+		
+		jb4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int result= JOptionPane.showConfirmDialog(null, "정말로 삭제하시겠습니까?","확인",JOptionPane.YES_NO_OPTION);
+				if(result== JOptionPane.CLOSED_OPTION) {
+					JOptionPane.showMessageDialog(null, "취소를 클릭하셨습니다.");
+				}else if(result==JOptionPane.YES_OPTION) {
+					connect();
+					delete();
+					jtf2.setText("");
+					jtf3.setText(""); jtf4.setText("");
+					jcb1.setSelectedIndex(0);
+					jcb2.setSelectedIndex(0);
+					
+					jtf2.requestFocus();
+				}
+			}
+		});
+		
+		table.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int row = table.getSelectedRow();
+				
+				jcb1.setSelectedItem(model.getValueAt(row, 0).toString());
+				jcb2.setSelectedItem(model.getValueAt(row, 1).toString());
+				
+				jtf2.setText(model.getValueAt(row, 2).toString());
+				jtf3.setText(model.getValueAt(row, 3).toString());
+				jtf4.setText(model.getValueAt(row, 4).toString());
+
+				
+			}
+		});
+		
+		jb5.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Manage();
+				dispose();
+				
+				
 				
 			}
 		});
@@ -184,7 +262,7 @@ public class Manage_Manwha extends JFrame {
 	void comboGenre() {
 		
 		try {
-			sql= "select distinct(bgenre) from blocation order by bgenre";
+			sql= "select distinct(bgenre) from books order by bgenre";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
@@ -203,18 +281,17 @@ public class Manage_Manwha extends JFrame {
 	
 	void select() {
 		try {
-			sql="select B.BLOCATION,BNUMBER,BNAME,BWRITER,B.BGENRE "
-					+ "from BLOCATION B join BOOKS D "
-					+ "on B.BLOCATION =D.BLOCATION";
+			sql="select * from books";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				String bloc= rs.getString("BLOCATION");
+				String bgenre=rs.getString("BGENRE");
 				int bnum= rs.getInt("BNUMBER");
 				String bname=rs.getString("BNAME");
 				String bwr=rs.getString("BWRITER");
-				String bgenre=rs.getString("BGENRE");
-				Object[] data= {bloc,bnum,bname,bwr,bgenre};
+				
+				Object[] data= {bloc,bgenre,bnum,bname,bwr};
 				model.addRow(data);
 			
 			}
@@ -227,12 +304,13 @@ public class Manage_Manwha extends JFrame {
 	void insert() {
 		
 		try {
-			sql="insert into books values (?,booknum_seq.nextval,?,?)";
+			sql="insert into books values (?,?,booknum_seq.nextval,?,?)";
 			pstmt=con.prepareStatement(sql);
 			
 			pstmt.setString(1, jcb1.getSelectedItem().toString());
-			pstmt.setString(2, jtf3.getText());
-			pstmt.setString(3, jtf4.getText());
+			pstmt.setString(2, jcb2.getSelectedItem().toString());
+			pstmt.setString(3, jtf3.getText());
+			pstmt.setString(4, jtf4.getText());
 			
 			int res=pstmt.executeUpdate();
 			
@@ -250,8 +328,58 @@ public class Manage_Manwha extends JFrame {
 	}
 	void update() {
 		
+		try {
+			sql="update books set blocation =?, bgenre=?, bname=?,bwriter=? where bnumber=? ";
+			pstmt= con.prepareStatement(sql);
+			
+			pstmt.setString(1, jcb1.getSelectedItem().toString());
+			pstmt.setString(2, jcb2.getSelectedItem().toString());
+			pstmt.setString(3, jtf3.getText());
+			pstmt.setString(4, jtf4.getText());
+			pstmt.setInt(5, Integer.parseInt(jtf2.getText()));
+			
+			int res=pstmt.executeUpdate();
+			if(res>0) {
+				JOptionPane.showMessageDialog(null, "도서 수정 성공!!");
+			}else {
+				JOptionPane.showMessageDialog(null, "도서 수정 실패!!");
+			}
+			pstmt.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
+	void delete() {
+		
+		
+		try {
+			sql="delete  from books where bnumber = ?";
+			pstmt=con.prepareStatement(sql);
+			int row =table.getSelectedRow();
+			pstmt.setInt(1, (int)model.getValueAt(row, 2));
+			
+			int res= pstmt.executeUpdate();
+			if(res>0) {
+				JOptionPane.showMessageDialog(null, "도서 삭제 성공");
+			} else {
+				JOptionPane.showMessageDialog(null, "도서 삭제 실패");
+			}
+			model.removeRow(row);
+			pstmt.close();con.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	
+		
+	}
 	
 	
 
