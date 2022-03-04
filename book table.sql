@@ -37,15 +37,15 @@ nocache;
 
 -- 예시로 장르별로 책 한권씩 등록
 insert into books
-values ('A','action',booknum_seq.nextval,'나루토','키시모토 마사시');
+values ('A','엑션',booknum_seq.nextval,'나루토','키시모토 마사시');
 insert into books
-values ('B','comic',booknum_seq.nextval,'이말년시리즈','이말년');
+values ('B','코미디',booknum_seq.nextval,'이말년시리즈','이말년');
 insert into books
-values ('C','love',booknum_seq.nextval,'궁','박소희');
+values ('C','순정',booknum_seq.nextval,'궁','박소희');
 insert into books
-values ('D','fantasy',booknum_seq.nextval,'전지적 독자 시점','UMI/슬리피-C');
+values ('D','판타지',booknum_seq.nextval,'전지적 독자 시점','UMI/슬리피-C');
 insert into books
-values ('E','sport',booknum_seq.nextval,'더 파이팅','모리카와 조지');
+values ('E','스포츠',booknum_seq.nextval,'더 파이팅','모리카와 조지');
 
 insert into review
 values (1,'오경종','액션신이 너무 좋았다',5,sysdate);
