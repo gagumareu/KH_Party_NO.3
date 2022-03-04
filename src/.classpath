@@ -2,6 +2,10 @@
 <classpath>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path=""/>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/app/ogj/product/18.0.0/dbhomeXE/jdbc/lib/ojdbc8.jar"/>
+=======
+	<classpathentry kind="lib" path="C:/app/user1/product/18.0.0/dbhomeXE/jdbc/lib/ojdbc8.jar"/>
+>>>>>>> branch 'master' of https://github.com/gagumareu/KH_Party_NO.3.git
 	<classpathentry kind="output" path=""/>
 </classpath>
