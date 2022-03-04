@@ -17,7 +17,8 @@ public class Manage_Manwha extends JFrame {
 	
 	DefaultTableModel model;
 	JTable table;
-	JTextField jtf1, jtf2, jtf3, jtf4,jtf5;
+	JTextField  jtf2, jtf3, jtf4;
+	JComboBox<String>jcb1,jcb2;
 	
 	
 	public Manage_Manwha() {
@@ -30,7 +31,7 @@ public class Manage_Manwha extends JFrame {
 
 		
 		JLabel jl1 = new JLabel("책위치:");
-		jtf1 = new JTextField(2);
+		jcb1 = new JComboBox<String>();
 		
 		JLabel jl2 = new JLabel("책번호:");
 		jtf2= new JTextField(8);
@@ -42,7 +43,10 @@ public class Manage_Manwha extends JFrame {
 		jtf4= new JTextField(10);
 		
 		JLabel jl5 = new JLabel("장르:");
-		jtf5=new JTextField(15);
+		jcb2 = new JComboBox<String>();
+		
+		jcb1.addItem("선택");
+		jcb2.addItem("선택");
 		
 		String[] header= {"책위치","책번호","책이름","글쓴이","장르"};
 		
@@ -58,11 +62,11 @@ public class Manage_Manwha extends JFrame {
 		JButton jb4 = new JButton("도서 삭제");
 		JButton jb5 = new JButton("돌아 가기");
 		
-		container1.add(jl1);container1.add(jtf1);
+		container1.add(jl1);container1.add(jcb1);
 		container1.add(jl2);container1.add(jtf2);
 		container1.add(jl3);container1.add(jtf3);
 		container1.add(jl4);container1.add(jtf4);
-		container1.add(jl5);container1.add(jtf5);
+		container1.add(jl5);container1.add(jcb2);
 		
 		container2.add(jb1);
 		container2.add(jb2);
@@ -78,6 +82,10 @@ public class Manage_Manwha extends JFrame {
 		setBounds(200,200,800,250);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
+		
+		connect();
+		comboLoc();
+		comboGenre() ;
 		
 		
 		jb1.addActionListener(new ActionListener() {
@@ -98,12 +106,12 @@ public class Manage_Manwha extends JFrame {
 				connect();		// 데이터베이스 연결 하는 메서드 호출
 				insert();			//데이터 베이스에서 저장하는 메서드 호출
 				//입력 텍스트필드영역 초기화
-				jtf1.setText("");
+				jcb1.setSelectedIndex(0);
 				jtf2.setText("");
 				jtf3.setText("");
 				jtf4.setText("");
-				jtf5.setText("");
-				jtf1.requestFocus();
+				jcb1.setSelectedIndex(0);
+				jtf2.requestFocus();
 				
 				model.setRowCount(0);		//전체 테이블의 화면을 지워주는 메서드
 				select();		
@@ -111,6 +119,24 @@ public class Manage_Manwha extends JFrame {
 			}
 		});
 		
+		jb3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				connect();
+				update();
+				
+				jcb1.setSelectedIndex(0);
+				jtf2.setText("");
+				jtf3.setText("");
+				jtf4.setText("");
+				jcb1.setSelectedIndex(0);
+				jtf2.requestFocus();
+				model.setRowCount(0);		//전체 테이블의 화면을 지워주는 메서드
+				select();	
+				
+			}
+		});
 		
 	}
 	
@@ -133,6 +159,47 @@ public class Manage_Manwha extends JFrame {
 		
 		
 		}// connect()메서드 end
+	
+	void comboLoc() {
+		
+		
+		try {
+			sql= "select distinct(blocation) from books order by blocation";
+			pstmt=con.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				String loc= rs.getString("blocation");
+				jcb1.addItem(loc);
+			}
+			rs.close();pstmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	void comboGenre() {
+		
+		try {
+			sql= "select distinct(bgenre) from blocation order by bgenre";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				String genre= rs.getString("bgenre");
+				jcb2.addItem(genre);
+			}
+			rs.close();pstmt.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+				
+
+		}
+	}
+	
 	
 	void select() {
 		try {
@@ -163,7 +230,7 @@ public class Manage_Manwha extends JFrame {
 			sql="insert into books values (?,booknum_seq.nextval,?,?)";
 			pstmt=con.prepareStatement(sql);
 			
-			pstmt.setString(1, jtf1.getText());
+			pstmt.setString(1, jcb1.getSelectedItem().toString());
 			pstmt.setString(2, jtf3.getText());
 			pstmt.setString(3, jtf4.getText());
 			
@@ -179,6 +246,9 @@ public class Manage_Manwha extends JFrame {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+	}
+	void update() {
 		
 	}
 	
