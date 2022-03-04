@@ -8,9 +8,10 @@ bgenre varchar (10),            --책 장르
 bnumber number(20)primary key,  -- 책 고유 번호 (장르 무관)
 bname varchar(50) unique ,        --책이름
 bwriter varchar(50),            --글쓴이
-bstarage number(10),
+bstarage number(10,1),
 breviewsum number (10)
 );
+
 
 
 --리뷰 및 별점테이블
