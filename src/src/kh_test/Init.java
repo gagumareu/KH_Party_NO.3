@@ -2,11 +2,11 @@ package kh_test;
 
 import java.sql.*;
 
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 public class Init extends JFrame {
@@ -18,77 +18,85 @@ public class Init extends JFrame {
 	JTextField jtf1, jtf2;
 	JTable table;
 	
+	private JPanel contentPane;
+	private JTextField tf_id;
+	private JTextField tf_pwd;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Init frame = new Init();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
 	public Init() {
 		setTitle("초기 화면");
 		
-		JPanel container1 = new JPanel();
-		JPanel container2 = new JPanel();
-		JPanel container3 = new JPanel();
-		
-		
-		//1. 컴포넌트 생성
-		JLabel jl1 = new JLabel("아이디: ");
-		jtf1 = new JTextField(10);
-		
-		JLabel jl2 = new JLabel("비밀번호: ");
-		jtf2 = new JPasswordField(10);
-		
-		JButton jb0 = new JButton("로그인");
-		
-		
-		JButton jb1 = new JButton("회원가입");
-		JButton jb2 = new JButton("아이디/비밀번호 찾기");
-		
-		
-		//2. 컴포넌트를 컨테이너에 올리기
-		container1.add(jl1); container1.add(jtf1);
-		container1.add(jl2); container1.add(jtf2);
-		
-		container2.add(jb0);
-		
-		container3.add(jb1); container3.add(jb2);
-		
-		
-		//3. 컨테이너를 프레임에 올리기
-		add(container1, BorderLayout.NORTH);
-		add(container2, BorderLayout.CENTER);
-		add(container3, BorderLayout.SOUTH);
-		
-		setBounds(200, 200, 500, 250);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
+		setBounds(100, 100, 450, 300);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
 		
+		JPanel info_panel = new JPanel();
+		getContentPane().add(info_panel, BorderLayout.NORTH);
+		info_panel.setLayout(new BorderLayout(0, 0));
 		
-		//4. 이벤트 처리
-		jb0.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				connect();
-				String id = jtf1.getText();
-				String pw = jtf2.getText();
-				checkLoginValid(id, pw);
-				model.setRowCount(0);
-			}
-		});	//로그인 버튼 이벤트 처리
+		JPanel id_panel = new JPanel();
+		info_panel.add(id_panel, BorderLayout.NORTH);
 		
-		jb1.addActionListener(new ActionListener() {
+		JLabel jl1 = new JLabel("아이디: ");
+		id_panel.add(jl1);
+		
+		tf_id = new JTextField();
+		tf_id.setColumns(10);
+		id_panel.add(tf_id);
+		
+		JPanel pwd_panel = new JPanel();
+		info_panel.add(pwd_panel, BorderLayout.CENTER);
+		
+		JLabel lblNewLabel = new JLabel("비밀번호: ");
+		pwd_panel.add(lblNewLabel);
+		
+		tf_pwd = new JTextField();
+		pwd_panel.add(tf_pwd);
+		tf_pwd.setColumns(10);
+		
+		JPanel signup_find_panel = new JPanel();
+		getContentPane().add(signup_find_panel, BorderLayout.SOUTH);
+		
+		JButton btnSignUp = new JButton("회원가입");
+		btnSignUp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new SignUp();
 			}
-		});	//회원가입 버튼 이벤트 처리
+		});
+		signup_find_panel.add(btnSignUp);
 		
-		jb2.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});	//아이디/비밀번호 찾기 버튼 이벤트 처리
+		JButton btnFindIdPwd = new JButton("아이디/비밀번호 찾기");
+		signup_find_panel.add(btnFindIdPwd);
+		
+		JPanel login_panel = new JPanel();
+		getContentPane().add(login_panel, BorderLayout.CENTER);
+		
+		JButton btnLogin = new JButton("로그인");
+		login_panel.add(btnLogin);
 	}
-	
+
 	void connect() {
 		try {
 			con = DBConnection.getConnection();
