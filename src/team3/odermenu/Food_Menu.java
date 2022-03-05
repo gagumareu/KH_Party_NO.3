@@ -37,7 +37,7 @@ public class Food_Menu extends JFrame{
 		add(tab, BorderLayout.CENTER);
 		add(container5, BorderLayout.SOUTH);
 		
-		setBounds(750, 350, 500, 500);
+		setBounds(650, 150, 800, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
