@@ -1,4 +1,4 @@
-package src.booktable;
+package team3.booktable;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;

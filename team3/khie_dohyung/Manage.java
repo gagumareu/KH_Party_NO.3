@@ -1,4 +1,4 @@
-package src.khie_dohyung;
+package team3.khie_dohyung;
 
 import javax.swing.JFrame;
 

@@ -1,4 +1,4 @@
-package src.init;
+package team3.init;
 
 import java.sql.*;
 

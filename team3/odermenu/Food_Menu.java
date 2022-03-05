@@ -1,4 +1,4 @@
-package src.odermenu;
+package team3.odermenu;
 
 import java.awt.BorderLayout;
 
