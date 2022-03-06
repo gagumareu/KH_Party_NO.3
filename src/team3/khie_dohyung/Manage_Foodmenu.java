@@ -3,6 +3,8 @@ package team3.khie_dohyung;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.*;
 
 import javax.swing.*;
@@ -135,6 +137,44 @@ public class Manage_Foodmenu extends JFrame {
 					jtf1.requestFocus();
 					
 				}
+				
+			}
+		});
+		
+		table.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int row=table.getSelectedRow();
+				jtf1.setText(model.getValueAt(row, 0).toString());
+				jtf2.setText(model.getValueAt(row, 1).toString());
+				jtf3.setText(model.getValueAt(row, 2).toString());
+				jcb1.setSelectedItem(model.getValueAt(row, 3).toString());
+				
 				
 			}
 		});
