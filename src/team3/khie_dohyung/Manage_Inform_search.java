@@ -17,7 +17,7 @@ public class Manage_Inform_search extends JFrame {
 	ResultSet rs =null;
 	String sql = null;
 	DefaultTableModel model;
-	JTextField jtf1,jtf2,jtf3,jtf4,jtf5,jtf6;
+	JTextField jtf1,jtf2,jtf3,jtf4,jtf5,jtf6,jtf7;
 	JTable table;	
 	
 	public Manage_Inform_search() {
@@ -31,15 +31,17 @@ public class Manage_Inform_search extends JFrame {
 		jtf1= new JTextField(10);
 		JLabel jl2 = new JLabel("패스워드:");
 		jtf2=new JTextField(10);
-		JLabel jl3 = new JLabel("이름:");
+		JLabel jl3 = new JLabel("회원번호:");
 		jtf3= new JTextField(10);
-		JLabel jl4 = new JLabel("전화번호:");
-		jtf4= new JTextField(15);
-		JLabel jl5 = new JLabel("주소");
-		jtf5= new JTextField(30);
-		JLabel jl6 = new JLabel("마일리지");
-		jtf6= new JTextField(10);
-		String [] header= {"회원아이디","패스워드","이름","전화번호","주소","마일리지"};
+		JLabel jl4 = new JLabel("이름:");
+		jtf4= new JTextField(10);
+		JLabel jl5 = new JLabel("전화번호:");
+		jtf5= new JTextField(15);
+		JLabel jl6 = new JLabel("주소");
+		jtf6= new JTextField(30);
+		JLabel jl7 = new JLabel("마일리지");
+		jtf7= new JTextField(10);
+		String [] header= {"회원아이디","패스워드","회원번호","이름","전화번호","주소","마일리지"};
 		
 		model = new DefaultTableModel(header, 0);
 		
@@ -60,6 +62,7 @@ public class Manage_Inform_search extends JFrame {
 		
 		container2.add(jl5);container2.add(jtf5);
 		container2.add(jl6);container2.add(jtf6);
+		container2.add(jl7);container2.add(jtf7);
 		
 		container3.add(jb1);
 		container3.add(jb2);
@@ -106,6 +109,7 @@ public class Manage_Inform_search extends JFrame {
 				jtf4.setText("");
 				jtf5.setText("");
 				jtf6.setText("");
+				jtf7.setText("");
 				jtf1.requestFocus();
 				model.setRowCount(0);
 				select();
@@ -125,6 +129,7 @@ public class Manage_Inform_search extends JFrame {
 				jtf4.setText("");
 				jtf5.setText("");
 				jtf6.setText("");
+				jtf7.setText("");
 				jtf1.requestFocus();
 				model.setRowCount(0);
 				select();
@@ -184,6 +189,7 @@ public class Manage_Inform_search extends JFrame {
 					jtf4.setText(model.getValueAt(row, 3).toString());
 					jtf5.setText(model.getValueAt(row, 4).toString());
 					jtf6.setText(model.getValueAt(row, 5).toString());
+					jtf7.setText(model.getValueAt(row, 6).toString());
 					
 					
 				}
@@ -230,12 +236,13 @@ public class Manage_Inform_search extends JFrame {
 			while(rs.next()) {
 				String mid=rs.getString("mem_id");
 				String mpw=rs.getString("mem_password");
+				String mnum=rs.getString("mem_num");
 				String mname=rs.getString("mem_name");
 				String mphone=rs.getString("mem_contact");
 				String maddr=rs.getString("mem_addr");
 				int mmilleage=rs.getInt("mem_mileage");
 				
-				Object[] data = {mid,mpw,mname,mphone,maddr,mmilleage};
+				Object[] data = {mid,mpw,mnum,mname,mphone,maddr,mmilleage};
 				model.addRow(data);
 
 				
@@ -251,15 +258,15 @@ public class Manage_Inform_search extends JFrame {
 		
 		
 		try {
-			sql = "insert into member values(?,?,?,?,?,?)";
+			sql = "insert into member values(?,?,mem_seq.nextval,?,?,?,?)";
 			pstmt= con.prepareStatement(sql);
 			
 			pstmt.setString(1, jtf1.getText());
 			pstmt.setString(2, jtf2.getText());
-			pstmt.setString(3, jtf3.getText());
-			pstmt.setString(4, jtf4.getText());
-			pstmt.setString(5, jtf5.getText());
-			pstmt.setInt(6, Integer.parseInt(jtf6.getText()));
+			pstmt.setString(3, jtf4.getText());
+			pstmt.setString(4, jtf5.getText());
+			pstmt.setString(5, jtf6.getText());
+			pstmt.setInt(6, Integer.parseInt(jtf7.getText()));
 			
 			int res=pstmt.executeUpdate();
 			
@@ -283,15 +290,16 @@ public class Manage_Inform_search extends JFrame {
 		
 		
 		try {
-			sql="update member set mem_password=?,mem_name=? , mem_contact=?,mem_addr=?, mem_mileage=?  where mem_id=?";
+			sql="update member set  mem_id=? , mem_password=?,mem_name=? , mem_contact=?,mem_addr=?, mem_mileage=?  where mem_num=? ";
 			pstmt=con.prepareStatement(sql);
 			
-			pstmt.setString(1, jtf2.getText());
-			pstmt.setString(2, jtf3.getText());
+			pstmt.setString(1, jtf1.getText());
+			pstmt.setString(2, jtf2.getText());
 			pstmt.setString(3, jtf4.getText());
 			pstmt.setString(4, jtf5.getText());
-			pstmt.setInt(5, Integer.parseInt(jtf6.getText()));
-			pstmt.setString(6, jtf1.getText());
+			pstmt.setString(5, jtf6.getText());
+			pstmt.setInt(6, Integer.parseInt(jtf7.getText()));
+			pstmt.setString(7, jtf3.getText());
 			
 			// 2. 오라클 데이터베이스에 SQL문 전송 및 SQL문 실행
 			int res=pstmt.executeUpdate();
@@ -313,14 +321,14 @@ public class Manage_Inform_search extends JFrame {
 		
 		
 		try {
-			sql="delete from member where mem_id = ?";
+			sql="delete from member where mem_num = ?";
 			pstmt=con.prepareStatement(sql);
 			
 			
 			int row= table.getSelectedRow();
 			
 			
-			pstmt.setString(1, (String)model.getValueAt(row, 0));
+			pstmt.setString(1, (String)model.getValueAt(row, 2));
 			
 			// 2.오라클 데이터베이스에 SQL문 전송 및 SQL문 실행
 			int res =pstmt.executeUpdate();
