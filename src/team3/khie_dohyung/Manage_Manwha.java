@@ -304,7 +304,7 @@ public class Manage_Manwha extends JFrame {
 	void insert() {
 		
 		try {
-			sql="insert into books values (?,?,booknum_seq.nextval,?,?)";
+			sql="insert into books values (?,?,booknum_seq.nextval,?,?,null,null)";
 			pstmt=con.prepareStatement(sql);
 			
 			pstmt.setString(1, jcb1.getSelectedItem().toString());
