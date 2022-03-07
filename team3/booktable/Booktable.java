@@ -3,6 +3,8 @@ package team3.booktable;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -28,17 +30,19 @@ public class Booktable extends JFrame {
 	JComboBox<String> jcb1;
 	JComboBox<String> jcb3;
 	String genre;
-	//search
+	// search
 	String str2;
 	String str;
 
 	JComboBox<String> jcb2;
 	String sort;
-	//sort
+	// sort
 	String sortbname = "";
 	String sortjenre = "";
 	String sortsuch = "";
 	String sortmgr = "n";
+
+	String mtable;
 
 	public Booktable() {
 
@@ -71,8 +75,6 @@ public class Booktable extends JFrame {
 		table = new JTable(model);
 		JScrollPane jsp = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
 				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		
-		
 
 		JButton jb2 = new JButton("전체 보기");
 		JButton jb3 = new JButton("리뷰 쓰기");
@@ -100,8 +102,6 @@ public class Booktable extends JFrame {
 		add(group1, BorderLayout.NORTH);
 		add(jsp, BorderLayout.CENTER);
 		add(group2, BorderLayout.SOUTH);
-		
-		
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -140,21 +140,66 @@ public class Booktable extends JFrame {
 
 			}
 		});
-		
+
 		jcb2.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String sort1 = jcb2.getSelectedItem().toString();
-				
+
 				connect();
 				model.setRowCount(0);
 				sort(sort1);
+
+			}
+		});
+
+		table.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+
+				int row = table.getSelectedRow();
+
+				mtable = model.getValueAt(row, 1).toString();
+			}
+		});
+		
+		
+		jb4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
 				
 				
 			}
 		});
-	}
+		
+		
+		
+		
+		
+		
+		
+
+	}// --------------------------------생성자 end-------------------------------------
 
 	void connect() {
 
@@ -238,8 +283,7 @@ public class Booktable extends JFrame {
 				String bwriter = rs.getString("bwriter");
 				String bgenre = rs.getString("bgenre");
 				int reviewsum = rs.getInt("breviewsum");
-				double star = rs.getDouble("bstarage");
-				
+				double star = rs.getDouble("bstaravg");
 
 				Object[] data = { bgenre, bname, bwriter, star, reviewsum, blocation };
 				model.addRow(data);
@@ -268,9 +312,8 @@ public class Booktable extends JFrame {
 		str2 = jcb1.getSelectedItem().toString();
 		sortjenre = jcb3.getSelectedItem().toString();
 		sortsuch = jcb1.getSelectedItem().toString();
-		
 
-		label : try {
+		label: try {
 			if (jcb3.getSelectedItem().toString().equals("장르 전체")) {
 				if (jtf1.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "장르를 선택 하거나 검색어 를 입력해 주세요.");
@@ -311,7 +354,7 @@ public class Booktable extends JFrame {
 				String bwriter = rs.getString("bwriter");
 				String bgenre = rs.getString("bgenre");
 				int reviewsum = rs.getInt("breviewsum");
-				double star = rs.getDouble("bstarage");
+				double star = rs.getDouble("bstaravg");
 				sortmgr = "y";
 
 				Object[] data = { bgenre, bname, bwriter, star, reviewsum, blocation };
@@ -326,29 +369,25 @@ public class Booktable extends JFrame {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		
 
 	}
 
 	// 정렬 선택시 출력되는 메서드
 	void sort(String sort1) {
 
-		
-		if(sortmgr.equals("n")) {
+		if (sortmgr.equals("n")) {
 			try {
-				
-				
+
 				sql = "select * from books order by ";
 				switch (sort1) {
 				case "이름 순":
-					sql=sql+"bname";
+					sql = sql + "bname";
 					break;
 				case "별점 순":
-					sql=sql+"bstarage desc";
+					sql = sql + "bstaravg desc";
 					break;
 				case "리뷰 순":
-					sql=sql+"breviewsum desc";
+					sql = sql + "breviewsum desc";
 					break;
 				}
 				pstmt = con.prepareStatement(sql);
@@ -361,8 +400,7 @@ public class Booktable extends JFrame {
 					String bwriter = rs.getString("bwriter");
 					String bgenre = rs.getString("bgenre");
 					int reviewsum = rs.getInt("breviewsum");
-					double star = rs.getDouble("bstarage");
-					
+					double star = rs.getDouble("bstaravg");
 
 					Object[] data = { bgenre, bname, bwriter, star, reviewsum, blocation };
 					model.addRow(data);
@@ -380,92 +418,83 @@ public class Booktable extends JFrame {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
-		}else {try {
-			if (sortjenre==("장르 전체")) {
-				if (sortsuch == "도서명") {
-					sql = "select * from books where bname like ?  order by ";
+
+		} else {
+			try {
+				if (sortjenre == ("장르 전체")) {
+					if (sortsuch == "도서명") {
+						sql = "select * from books where bname like ?  order by ";
+
+					} else {
+						sql = "select * from books where bwriter like ? order by ";
+
+					}
+					switch (sort1) {
+					case "이름 순":
+						sql = sql + "bname";
+						break;
+					case "별점 순":
+						sql = sql + "bstaravg desc";
+						break;
+					case "리뷰 순":
+						sql = sql + "breviewsum desc";
+						break;
+					}
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, str);
+
+					rs = pstmt.executeQuery();
 
 				} else {
-					sql = "select * from books where bwriter like ? order by ";
+
+					if (sortsuch == "도서명") {
+						sql = "select * from books where bname like ? and bgenre = ? order by ";
+
+					} else {
+						sql = "select * from books where bwriter like ? and bgenre = ? order by ";
+
+					}
+					switch (sort1) {
+					case "이름 순":
+						sql = sql + "bname";
+						break;
+					case "별점 순":
+						sql = sql + "bstaravg desc";
+						break;
+					case "리뷰 순":
+						sql = sql + "breviewsum desc";
+						break;
+					}
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, str);
+					pstmt.setString(2, jcb3.getSelectedItem().toString());
+
+					rs = pstmt.executeQuery();
+				}
+
+				while (rs.next()) {
+					String bname = rs.getString("bname");
+					String blocation = rs.getString("blocation");
+					String bwriter = rs.getString("bwriter");
+					String bgenre = rs.getString("bgenre");
+					int reviewsum = rs.getInt("breviewsum");
+					double star = rs.getDouble("bstaravg");
+					sortmgr = "y";
+
+					Object[] data = { bgenre, bname, bwriter, star, reviewsum, blocation };
+					model.addRow(data);
 
 				}
-				switch (sort1) {
-				case "이름 순":
-					sql=sql+"bname";
-					break;
-				case "별점 순":
-					sql=sql+"bstarage desc";
-					break;
-				case "리뷰 순":
-					sql=sql+"breviewsum desc";
-					break;
-				}
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, str);
 
-				rs = pstmt.executeQuery();
-
-			} else {
-
-				if (sortsuch == "도서명") {
-					sql = "select * from books where bname like ? and bgenre = ? order by ";
-
-				} else {
-					sql = "select * from books where bwriter like ? and bgenre = ? order by ";
-
-				}
-				switch (sort1) {
-				case "이름 순":
-					sql=sql+"bname";
-					break;
-				case "별점 순":
-					sql=sql+"bstarage desc";
-					break;
-				case "리뷰 순":
-					sql=sql+"breviewsum desc";
-					break;
-				}
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, str);
-				pstmt.setString(2, jcb3.getSelectedItem().toString());
-
-				rs = pstmt.executeQuery();
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 
-			while (rs.next()) {
-				String bname = rs.getString("bname");
-				String blocation = rs.getString("blocation");
-				String bwriter = rs.getString("bwriter");
-				String bgenre = rs.getString("bgenre");
-				int reviewsum = rs.getInt("breviewsum");
-				double star = rs.getDouble("bstarage");
-				sortmgr = "y";
-
-				Object[] data = { bgenre, bname, bwriter, star, reviewsum, blocation };
-				model.addRow(data);
-
-			}
-
-			con.close();
-			pstmt.close();
-			rs.close();
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
 		}
-			
-			
-			
-			
-			
-		}
-		
-		
-		
-		
-
 
 	}
 
@@ -487,34 +516,29 @@ public class Booktable extends JFrame {
 		}
 
 	}
+
 // 리뷰수와 평균별점을 books 테이블의 해당 컬럼에 update
 	void reviewset(int bnumber) {
-		
+
 		int num1 = bnumber;
 		int num2 = review(num1);
 		int num3 = star(num1);
 		double num4 = (double) num3 / (double) num2;
-		double num5 = Math.round(num4*10)/10.0;
-		
+		double num5 = Math.round(num4 * 10) / 10.0;
+
 		try {
-			sql = "update books set bstarage = ? ,breviewsum = ? where bnumber = ? ";
-			pstmt=con.prepareStatement(sql);
+			sql = "update books set bstaravg = ? ,breviewsum = ? where bnumber = ? ";
+			pstmt = con.prepareStatement(sql);
 			pstmt.setDouble(1, num5);
 			pstmt.setInt(2, num2);
 			pstmt.setInt(3, num1);
-			
-			
 
-			
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	
 
 	public static void main(String[] args) {
 
