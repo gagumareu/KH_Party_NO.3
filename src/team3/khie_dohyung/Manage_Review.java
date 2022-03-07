@@ -43,7 +43,7 @@ Connection con = null;
 		jtf3 = new JTextField(10);
 		
 		JLabel jl4= new JLabel("리뷰");
-		jtf4 = new JTextArea(5,35);
+		jtf4 = new JTextArea(5,45);
 		
 	    String header[] = {"책 번호","리뷰 번호","책 이름", "회원 이름", "별점","리뷰"};
 	    model = new DefaultTableModel(header,0);
@@ -56,6 +56,7 @@ Connection con = null;
 	    JButton jb2 = new JButton("리뷰 삽입");
 	    JButton jb3 = new JButton("리뷰 수정");
 	    JButton jb4 = new JButton("리뷰 삭제");
+	
 	    JButton jb5 = new JButton("돌아가기");
 	    
 	    container1.add(jl1); container1.add(jtf1);
@@ -159,6 +160,16 @@ Connection con = null;
 					jtf1.requestFocus();
 				}
 						
+			}
+		});
+	    
+	    jb5.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Manage();
+				dispose();
+				
 			}
 		});
 	    
