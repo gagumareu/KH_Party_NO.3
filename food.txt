@@ -5,7 +5,7 @@ create table food(
     fno number(10) primary key,
     fname varchar2(50) not null,
     price number(10) not null,
-    mealtype varchar2(10) not null               
+    mealno varchar2(10) not null               
 
 );
 
