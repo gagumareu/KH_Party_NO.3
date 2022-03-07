@@ -11,7 +11,7 @@ bgenre varchar (10),            --책 장르
 bnumber number(20)primary key,  -- 책 고유 번호 (장르 무관)
 bname varchar(50) unique ,        --책이름
 bwriter varchar(50),            --글쓴이
-bstarage number(10),
+bstaravg number(10),
 bleviewsum number (10)
 );
 commit;
