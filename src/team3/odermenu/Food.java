@@ -33,6 +33,8 @@ import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import java.awt.Color;
 import javax.swing.SpinnerNumberModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Food extends JFrame {
 
@@ -109,9 +111,11 @@ public class Food extends JFrame {
 		
 		JScrollPane carjsp = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		JButton cartButton = new JButton("장바구니");
-		cartButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\cart2.jpg"));
-		cartButton.setBackground(SystemColor.window);
+		JButton removeButton = new JButton("삭제");
+		
+		
+		removeButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\삭제2.jpg"));
+		removeButton.setBackground(SystemColor.window);
 		
 		JButton payButton = new JButton("결제");
 		payButton.setBackground(SystemColor.window);
@@ -134,13 +138,13 @@ public class Food extends JFrame {
 							.addComponent(plusButton, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
 							.addGap(20)
 							.addComponent(minuButton, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE))
-						.addComponent(cartButton, GroupLayout.PREFERRED_SIZE, 147, Short.MAX_VALUE))
+						.addComponent(removeButton, GroupLayout.PREFERRED_SIZE, 147, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_ButtonPanal.setVerticalGroup(
 			gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_ButtonPanal.createSequentialGroup()
-					.addComponent(cartButton, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
+					.addComponent(removeButton, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
 					.addGap(34)
 					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
 						.addComponent(plusButton, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
@@ -898,14 +902,29 @@ public class Food extends JFrame {
 
 				
 			}
+		});     //////  담기 버튼 끝 ////////////////////////////////////////////////////
+
+		
+		//삭제 버튼
+		removeButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+				removerow();
+				
+				
+			}
 		});
 		
 		
 		
 		
+
+		
 		
 		
 	}
+		
 	
 	
 	
@@ -1078,6 +1097,45 @@ void snackSelect (String snackOrder, int snackSpinner) {
 		e.printStackTrace();
 	}
 }
+
+
+
+
+
+void removerow() {
+	
+	int row = table.getSelectedRow();
+	
+	model.removeRow(row);
+	
+	
+}
+
+
+//void payment() {
+//	
+//	
+//	try {
+//		sql = "insert into payment values(orderNo_sqe, ?, ?, ? . sysdate)";
+//
+//		pstmt = con.prepareStatement(sql);
+//		pstmt.setString(1, x);
+//		
+//	} catch (SQLException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
+//	
+//	
+//	
+//}
+
+
+
+
+
+
+
 
 
 
