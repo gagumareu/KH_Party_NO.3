@@ -35,6 +35,7 @@ import java.awt.Color;
 import javax.swing.SpinnerNumberModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class Food extends JFrame {
 
@@ -86,7 +87,7 @@ public class Food extends JFrame {
 		setTitle("음식 메뉴 주문");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\log.png"));
 		
-		String[] cartHeader = {"상품명", "가격	", "수량"};
+		String[] cartHeader = {"상품명", "가격	", "수량", "분류"};
 		model = new DefaultTableModel(cartHeader, 0);
 		table = new JTable(model);
 		table.setBackground(SystemColor.window);
@@ -914,8 +915,25 @@ public class Food extends JFrame {
 				
 				
 			}
-		});
+		}); 
 		
+		plusButton.addMouseListener(new MouseListener() {
+			
+			public void mouseReleased(MouseEvent e) {
+			}
+			public void mousePressed(MouseEvent e) {
+			}
+			public void mouseExited(MouseEvent e) {
+			}
+			public void mouseEntered(MouseEvent e) {
+			}
+			
+			public void mouseClicked(MouseEvent e) {
+
+				increase();
+				
+			}
+		});
 		
 		
 		
@@ -923,7 +941,7 @@ public class Food extends JFrame {
 		
 		
 		
-	}
+	}  // 생성자 end 
 		
 	
 	
@@ -950,76 +968,23 @@ public class Food extends JFrame {
 
 	
 	
-//	void select () {
-//				
-//		try {
-////			sql = "select fname, price from food where fname = ?";
-//			sql = "select * from food where mealtype = '식사'";
-//			
-//			pstmt = con.prepareStatement(sql);
-//			pstmt.setString(1, kimchNameLabel.getText());
-//			pstmt.setString(1, spamNameLabel.getText());
-//			pstmt.setString(1, chickNameLabel.getText());
-//			res = pstmt.executeQuery();
-//			
-//			
-//			List<Object[]> mealList = new ArrayList<Object[]>();
-//			
-//			while(res.next()) {
-//				
-//				Object[] arrObj = {res.getString("fname"), res.getInt("price")};
-//				mealList.add(arrObj);
-//				
-//				for(int i = 0; i < mealList.size(); i++) {
-//					System.out.println(i);
-//				}
-//				
-//					
-//				
-////				String fname = res.getString("fname");
-////				int price = res.getInt("price");
-////				
-////				Object[] cart = {fname, price, kimchSpinner.getValue()};
-//		
-//				
-////				model.addRow(cart);
-//								
-//			}
-//			
-//			con.close();
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-void mealSelect (String meanlOrder, int mealSpinner) {
+	void mealSelect (String meanlOrder, int mealSpinner) {
 		
 		try {
-			sql = "select fname, price from food where fname = ?";
+			sql = "select fname, price , mealtype from food where fname = ?";
 
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, meanlOrder);
+			
 			res = pstmt.executeQuery();
 			
 			while(res.next()) {
 				
 				String fname = res.getString("fname");
 				int price = res.getInt("price");
-				
-				Object[] cart = {fname, (price * mealSpinner), mealSpinner};
+				String mealtype = res.getString("mealtype");
+				Object[] cart = {fname, (price * mealSpinner), mealSpinner, mealtype};
 					
 				
 				model.addRow(cart);
@@ -1038,78 +1003,146 @@ void mealSelect (String meanlOrder, int mealSpinner) {
 
 
 
-void drinkSelect (String drinkOrder, int drinkSpinner) {
+	void drinkSelect (String drinkOrder, int drinkSpinner) {
 	
-	try {
-		sql = "select fname, price from food where fname = ?";
-
-		
-		pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, drinkOrder);
-		res = pstmt.executeQuery();
-		
-		while(res.next()) {
+		try {
+			sql = "select fname, price, mealtype from food where fname = ?";
+	
 			
-			String fname = res.getString("fname");
-			int price = res.getInt("price");
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, drinkOrder);
+			res = pstmt.executeQuery();
 			
-			Object[] cart = {fname, (price * drinkSpinner), drinkSpinner};
+			while(res.next()) {
 				
-			
-			model.addRow(cart);
-							
-		}
-		
-		con.close();
-		
-	} catch (Exception e) {
-		e.printStackTrace();
-	}
-}
-
-
-
-void snackSelect (String snackOrder, int snackSpinner) {
-	
-	try {
-		sql = "select fname, price from food where fname = ?";
-
-		
-		pstmt = con.prepareStatement(sql);
-		pstmt.setString(1, snackOrder);
-		res = pstmt.executeQuery();
-		
-		while(res.next()) {
-			
-			String fname = res.getString("fname");
-			int price = res.getInt("price");
-			
-			Object[] cart = {fname, (price * snackSpinner), snackSpinner};
+				String fname = res.getString("fname");
+				int price = res.getInt("price");
+				String mealtype = res.getString("mealtype");
+				Object[] cart = {fname, (price * drinkSpinner), drinkSpinner, mealtype};
+					
 				
+				model.addRow(cart);
+								
+			}
 			
-			model.addRow(cart);
-							
+			con.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		con.close();
-		
-	} catch (Exception e) {
-		e.printStackTrace();
 	}
-}
 
 
 
-
-
-void removerow() {
+	void snackSelect (String snackOrder, int snackSpinner) {
+		
+		try {
+			sql = "select fname, price, mealtype from food where fname = ?";
 	
-	int row = table.getSelectedRow();
-	
-	model.removeRow(row);
-	
-	
-}
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, snackOrder);
+			res = pstmt.executeQuery();
+			
+			while(res.next()) {
+				
+				String fname = res.getString("fname");
+				int price = res.getInt("price");
+				String mealtype = res.getString("mealtype");
+				Object[] cart = {fname, (price * snackSpinner), snackSpinner, mealtype};
+					
+				
+				model.addRow(cart);
+								
+			}
+			
+			con.close();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+
+
+
+	void removerow() {
+		
+		int row = table.getSelectedRow();
+		
+		model.removeRow(row);
+		
+		
+	}
+
+
+
+	void increase() {
+		
+		sql = "insert into payment velues (orderNO_sqe, ?, ?, ?, sysdate)";
+		
+		
+		
+		
+		
+		
+		
+	}
+
+
+
+
+
+
+
+
+
+
+//void select () {
+//
+//try {
+////sql = "select fname, price from food where fname = ?";
+//sql = "select * from food where mealtype = '식사'";
+//
+//pstmt = con.prepareStatement(sql);
+//pstmt.setString(1, kimchNameLabel.getText());
+//pstmt.setString(1, spamNameLabel.getText());
+//pstmt.setString(1, chickNameLabel.getText());
+//res = pstmt.executeQuery();
+//
+//
+//List<Object[]> mealList = new ArrayList<Object[]>();
+//
+//while(res.next()) {
+//
+//Object[] arrObj = {res.getString("fname"), res.getInt("price")};
+//mealList.add(arrObj);
+//
+//for(int i = 0; i < mealList.size(); i++) {
+//	System.out.println(i);
+//}
+//
+//	
+//
+////String fname = res.getString("fname");
+////int price = res.getInt("price");
+////
+////Object[] cart = {fname, price, kimchSpinner.getValue()};
+//
+//
+////model.addRow(cart);
+//				
+//}
+//
+//con.close();
+//
+//} catch (Exception e) {
+//e.printStackTrace();
+//}
+//}
+
+
 
 
 //void payment() {
@@ -1129,21 +1162,6 @@ void removerow() {
 //	
 //	
 //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1180,23 +1198,6 @@ void removerow() {
 //	}
 //	
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }
