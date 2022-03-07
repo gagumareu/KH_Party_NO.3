@@ -17,7 +17,7 @@ public class Manage_Foodmenu extends JFrame {
 	ResultSet rs = null;
 	String sql = null;
 	DefaultTableModel model;
-	JTextField jtf1,jtf2,jtf3,jtf4;
+	JTextField jtf1,jtf2,jtf3;
 	JTable table;
 	JComboBox<String>jcb1;
 	

@@ -93,6 +93,16 @@ public class Manage extends JFrame {
 			}
 		});
 		
+		jb4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Manage_TimeTable();
+				dispose();
+				
+			}
+		});
+		
 		jb5.addActionListener(new ActionListener() {
 			
 			@Override
