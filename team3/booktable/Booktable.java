@@ -25,6 +25,8 @@ public class Booktable extends JFrame {
 
 	DefaultTableModel model;
 	JTable table;
+	DefaultTableModel model2;
+	JTable table2;
 
 	JTextField jtf1;
 	JComboBox<String> jcb1;
@@ -41,8 +43,10 @@ public class Booktable extends JFrame {
 	String sortjenre = "";
 	String sortsuch = "";
 	String sortmgr = "n";
+	
+	String mtable=null;
 
-	String mtable;
+	
 
 	public Booktable() {
 
@@ -176,8 +180,12 @@ public class Booktable extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 
 				int row = table.getSelectedRow();
+				
 
 				mtable = model.getValueAt(row, 1).toString();
+				
+
+				
 			}
 		});
 		
@@ -187,7 +195,15 @@ public class Booktable extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				
+				if(mtable==null) {
+					JOptionPane.showMessageDialog(null, "도서를 선택하세요");
+				}else {
+
+					connect();
+					viewer vw = new viewer();
+					vw.viewer(mtable);
+					}
+
 				
 			}
 		});
@@ -538,7 +554,72 @@ public class Booktable extends JFrame {
 			e.printStackTrace();
 		}
 
+		
 	}
+	
+//	//-------------------------------리뷰 보기-----------------------------------------
+//	void viewer(String mtable) {
+//		setTitle("리뷰 목록");
+//		
+//		JLabel vjl1 = new JLabel("도서 명 : "+mtable);
+//		JLabel vjl2 = new JLabel("평균 별점 : ");
+//		String[] vjc = {"최근 등록순","오래된 등록순","별점 높은순","별점 낮은순"};
+//		JComboBox<String> vjcb1 = new JComboBox<String>(vjc);
+//		JLabel vjl3 = new JLabel("정렬");
+//		
+//		String[] header2 = { "리뷰 작성자","리뷰 내용", "평균별점" };
+//		model2 = new DefaultTableModel(header2, 0);
+//		table2 = new JTable(model2);
+//		JScrollPane jsp2 = new JScrollPane(table2, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+//				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+//		
+//		JTextArea vjta1 = new JTextArea(20,10);
+//		
+//		JButton vjb1 = new JButton("리뷰 수정");
+//		JButton vjb2 = new JButton(" 닫   기 ");
+//		
+//		JPanel vcontainer1 = new JPanel();
+//		JPanel vcontainer2 = new JPanel();
+//		JPanel vcontainer3 = new JPanel();
+//		JPanel vgroup1 = new JPanel(new BorderLayout());
+//		JPanel vgroup2 = new JPanel(new BorderLayout());
+//		JPanel vgroup3 = new JPanel(new BorderLayout());
+//		
+//		
+//		
+//		vcontainer1.add(vjl1);
+//		vcontainer1.add(vjl2);
+//		vcontainer2.add(vjcb1);
+//		vcontainer2.add(vjl3);
+//		vgroup1.add(vcontainer2, BorderLayout.WEST);
+//		vcontainer3.add(vjb1);
+//		vcontainer3.add(vjb2);
+//		
+//		vgroup2.add(vcontainer1,BorderLayout.NORTH);
+//		vgroup2.add(vcontainer2);
+//		vgroup2.add(jsp2, BorderLayout.SOUTH);
+//		
+//		vgroup3.add(vjta1, BorderLayout.NORTH);
+//		vgroup3.add(vcontainer3, BorderLayout.SOUTH);
+//		
+//		add(vgroup2, BorderLayout.NORTH);
+//		add(vgroup3, BorderLayout.SOUTH);
+//		
+//		
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//
+//		setSize(900, 400);
+//		setLocationRelativeTo(null);
+//
+//		setVisible(true);
+//		
+//		
+//		
+//		
+//		
+//	}
+	
+	
 
 	public static void main(String[] args) {
 
