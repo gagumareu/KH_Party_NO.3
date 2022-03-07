@@ -26,6 +26,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JSpinner;
@@ -63,6 +65,17 @@ public class Food extends JFrame {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet res = null;
+	String sql = null;
+	DefaultTableModel model;
+	JTable table;
+	
+	
+	JSpinner kimchSpinner, spamSpinner, chickSpinner, ameriSpinner,
+	caraSpinner, caferaSpinner, ramyeonSpinner, ddeockSpinner, rabockSpinner;
+	JLabel kimchNameLabel, spamNameLabel, chickNameLabel,
+	ameriNameLabel, caraNameLabel, caferaNameLabel, ramyeonNameLabel, ddeockNameLabel, rabockNameLabel;
+	
+	
 	
 	
 	
@@ -71,9 +84,9 @@ public class Food extends JFrame {
 		setTitle("음식 메뉴 주문");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\log.png"));
 		
-		String[] cartHeader = {"주문번호", "상품명", "가격	", "수량", "날짜"};
-		DefaultTableModel model = new DefaultTableModel(cartHeader, 0);
-		JTable table = new JTable(model);
+		String[] cartHeader = {"상품명", "가격	", "수량"};
+		model = new DefaultTableModel(cartHeader, 0);
+		table = new JTable(model);
 		table.setBackground(SystemColor.window);
 		
 		
@@ -162,13 +175,13 @@ public class Food extends JFrame {
 		
 		JPanel mealpanel = new JPanel();
 		mealpanel.setBackground(SystemColor.window);
-		OderTebbedPanel.addTab("스낵", new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\dish.png"), mealpanel, null);
+		OderTebbedPanel.addTab("식사", new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\dish.png"), mealpanel, null);
 		
 		JPanel kimPanel = new JPanel();
 		kimPanel.setBackground(Color.WHITE);
 		
-		final JSpinner kimchSpinner = new JSpinner();
-		kimchSpinner.setModel(new SpinnerNumberModel(0, 0, 10, 1));
+		kimchSpinner = new JSpinner();
+		kimchSpinner.setModel(new SpinnerNumberModel(1, 0, 10, 1));
 		kimchSpinner.setForeground(Color.WHITE);
 		kimchSpinner.setBackground(SystemColor.window);
 		
@@ -177,15 +190,16 @@ public class Food extends JFrame {
 		
 		
 		
+		
 		JLabel kimchImageLabel = new JLabel("");
 		kimchImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\김치베이컨2.jpg"));
 		kimchImageLabel.setBackground(SystemColor.window);
 		
-		JLabel kimNameLabel = new JLabel("김치베이컨 볶음밥");
-		kimNameLabel.setBackground(SystemColor.window);
+		kimchNameLabel = new JLabel("김치베이컨 볶음밥");
+		kimchNameLabel.setBackground(SystemColor.window);
 		
-		JLabel kimPriceLabel_1 = new JLabel("6,000원");
-		kimPriceLabel_1.setBackground(SystemColor.window);
+		JLabel kimchPriceLabel = new JLabel("5,900원");
+		kimchPriceLabel.setBackground(SystemColor.window);
 		GroupLayout gl_kimPanel = new GroupLayout(kimPanel);
 		gl_kimPanel.setHorizontalGroup(
 			gl_kimPanel.createParallelGroup(Alignment.LEADING)
@@ -201,10 +215,10 @@ public class Food extends JFrame {
 								.addComponent(kimchImageLabel)))
 						.addGroup(gl_kimPanel.createSequentialGroup()
 							.addGap(53)
-							.addComponent(kimPriceLabel_1, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))
+							.addComponent(kimchPriceLabel, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_kimPanel.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(kimNameLabel)))
+							.addComponent(kimchNameLabel)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_kimPanel.setVerticalGroup(
@@ -217,9 +231,9 @@ public class Food extends JFrame {
 						.addComponent(kimchSpinner, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
 						.addComponent(kimchAddButton, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(kimNameLabel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+					.addComponent(kimchNameLabel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(kimPriceLabel_1, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+					.addComponent(kimchPriceLabel, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(32, Short.MAX_VALUE))
 		);
 		kimPanel.setLayout(gl_kimPanel);
@@ -227,8 +241,8 @@ public class Food extends JFrame {
 		JPanel chickPanel = new JPanel();
 		chickPanel.setBackground(Color.WHITE);
 		
-		JSpinner chickSpinner = new JSpinner();
-		chickSpinner.setModel(new SpinnerNumberModel(0, 0, 10, 1));
+		chickSpinner = new JSpinner();
+		chickSpinner.setModel(new SpinnerNumberModel(1, 0, 10, 1));
 		chickSpinner.setForeground(Color.WHITE);
 		chickSpinner.setBackground(SystemColor.window);
 		
@@ -239,11 +253,11 @@ public class Food extends JFrame {
 		chicImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\치킨가라아게덥밥2.jpg"));
 		chicImageLabel.setBackground(SystemColor.window);
 		
-		JLabel chickNameLabel_1_1 = new JLabel("치킨 가라아게 덮밥");
-		chickNameLabel_1_1.setBackground(SystemColor.window);
+		chickNameLabel = new JLabel("치킨 가라아게 덮밥");
+		chickNameLabel.setBackground(SystemColor.window);
 		
-		JLabel chickPriceLabel_1_2 = new JLabel("6,000원");
-		chickPriceLabel_1_2.setBackground(SystemColor.window);
+		JLabel chickPriceLabel = new JLabel("5900원");
+		chickPriceLabel.setBackground(SystemColor.window);
 		GroupLayout gl_chickPanel = new GroupLayout(chickPanel);
 		gl_chickPanel.setHorizontalGroup(
 			gl_chickPanel.createParallelGroup(Alignment.LEADING)
@@ -259,10 +273,10 @@ public class Food extends JFrame {
 								.addComponent(chicImageLabel)))
 						.addGroup(gl_chickPanel.createSequentialGroup()
 							.addGap(50)
-							.addComponent(chickPriceLabel_1_2, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))
+							.addComponent(chickPriceLabel, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_chickPanel.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(chickNameLabel_1_1, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))
+							.addComponent(chickNameLabel, GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))
 					.addContainerGap())
 		);
 		gl_chickPanel.setVerticalGroup(
@@ -275,9 +289,9 @@ public class Food extends JFrame {
 						.addComponent(chickSpinner, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
 						.addComponent(chickAddButton, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(chickNameLabel_1_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+					.addComponent(chickNameLabel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(chickPriceLabel_1_2, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+					.addComponent(chickPriceLabel, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		chickPanel.setLayout(gl_chickPanel);
@@ -285,8 +299,8 @@ public class Food extends JFrame {
 		JPanel spamPanel = new JPanel();
 		spamPanel.setBackground(Color.WHITE);
 		
-		JSpinner spamSpinner = new JSpinner();
-		spamSpinner.setModel(new SpinnerNumberModel(0, 0, 10, 1));
+		spamSpinner = new JSpinner();
+		spamSpinner.setModel(new SpinnerNumberModel(1, 0, 10, 1));
 		spamSpinner.setForeground(Color.WHITE);
 		spamSpinner.setBackground(SystemColor.window);
 		
@@ -297,24 +311,24 @@ public class Food extends JFrame {
 		spamImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\스펨계란볶음밥2.jpg"));
 		spamImageLabel.setBackground(SystemColor.window);
 		
-		JLabel spamNameLabel_1 = new JLabel("스팸계란 볶음밥");
-		spamNameLabel_1.setBackground(Color.WHITE);
+		spamNameLabel = new JLabel("스팸계란 볶음밥");
+		spamNameLabel.setBackground(Color.WHITE);
 		
-		JLabel spamPriceLabel_1_1 = new JLabel("6,000원");
-		spamPriceLabel_1_1.setBackground(Color.WHITE);
+		JLabel spamPriceLabel = new JLabel("5,900원");
+		spamPriceLabel.setBackground(Color.WHITE);
 		GroupLayout gl_spamPanel = new GroupLayout(spamPanel);
 		gl_spamPanel.setHorizontalGroup(
 			gl_spamPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, gl_spamPanel.createSequentialGroup()
 					.addContainerGap(54, Short.MAX_VALUE)
-					.addComponent(spamPriceLabel_1_1, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
+					.addComponent(spamPriceLabel, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)
 					.addGap(45))
 				.addGroup(gl_spamPanel.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_spamPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_spamPanel.createSequentialGroup()
 							.addGap(10)
-							.addComponent(spamNameLabel_1, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE))
+							.addComponent(spamNameLabel, GroupLayout.PREFERRED_SIZE, 103, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_spamPanel.createSequentialGroup()
 							.addComponent(spamSpinner, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
@@ -332,9 +346,9 @@ public class Food extends JFrame {
 						.addComponent(spamSpinner, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
 						.addComponent(spamAddButton, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(spamNameLabel_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+					.addComponent(spamNameLabel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addComponent(spamPriceLabel_1_1, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+					.addComponent(spamPriceLabel, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap())
 		);
 		spamPanel.setLayout(gl_spamPanel);
@@ -366,69 +380,73 @@ public class Food extends JFrame {
 		drinkPanel.setBackground(SystemColor.window);
 		OderTebbedPanel.addTab("음료", new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\drink.png"), drinkPanel, null);
 		
-		JPanel ameriPanel_1 = new JPanel();
-		ameriPanel_1.setBackground(Color.WHITE);
+		JPanel ameriPanel = new JPanel();
+		ameriPanel.setBackground(Color.WHITE);
 		
-		JSpinner ameriSpinner = new JSpinner();
-		ameriSpinner.setModel(new SpinnerNumberModel(0, 0, 10, 1));
+		ameriSpinner = new JSpinner();
+		ameriSpinner.setModel(new SpinnerNumberModel(1, 0, 10, 1));
 		ameriSpinner.setForeground(Color.WHITE);
 		ameriSpinner.setBackground(SystemColor.window);
 		
 		JButton ameriAddButton = new JButton("담기");
+		ameriAddButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		ameriAddButton.setBackground(SystemColor.window);
 		
 		JLabel ameriImageLabel = new JLabel("");
 		ameriImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\아이스아메리카노2.png"));
 		ameriImageLabel.setBackground(SystemColor.window);
 		
-		JLabel ameriNameLabel_1 = new JLabel("아메리카노");
-		ameriNameLabel_1.setBackground(SystemColor.window);
+		ameriNameLabel = new JLabel("아메리카노");
+		ameriNameLabel.setBackground(SystemColor.window);
 		
-		JLabel ameriPriceLabel_1_1 = new JLabel("3,000원");
-		ameriPriceLabel_1_1.setBackground(Color.WHITE);
-		GroupLayout gl_ameriPanel_1 = new GroupLayout(ameriPanel_1);
-		gl_ameriPanel_1.setHorizontalGroup(
-			gl_ameriPanel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_ameriPanel_1.createSequentialGroup()
+		JLabel ameriPriceLabel = new JLabel("3,000원");
+		ameriPriceLabel.setBackground(Color.WHITE);
+		GroupLayout gl_ameriPanel = new GroupLayout(ameriPanel);
+		gl_ameriPanel.setHorizontalGroup(
+			gl_ameriPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_ameriPanel.createSequentialGroup()
 					.addContainerGap()
-					.addGroup(gl_ameriPanel_1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_ameriPanel_1.createSequentialGroup()
+					.addGroup(gl_ameriPanel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_ameriPanel.createSequentialGroup()
 							.addComponent(ameriSpinner, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(ameriAddButton))
 						.addComponent(ameriImageLabel)
-						.addGroup(gl_ameriPanel_1.createSequentialGroup()
+						.addGroup(gl_ameriPanel.createSequentialGroup()
 							.addGap(39)
-							.addComponent(ameriPriceLabel_1_1, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(ameriPriceLabel, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(13, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_ameriPanel_1.createSequentialGroup()
+				.addGroup(Alignment.TRAILING, gl_ameriPanel.createSequentialGroup()
 					.addContainerGap(42, Short.MAX_VALUE)
-					.addComponent(ameriNameLabel_1, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+					.addComponent(ameriNameLabel, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
 					.addGap(34))
 		);
-		gl_ameriPanel_1.setVerticalGroup(
-			gl_ameriPanel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_ameriPanel_1.createSequentialGroup()
+		gl_ameriPanel.setVerticalGroup(
+			gl_ameriPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_ameriPanel.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(ameriImageLabel, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addGroup(gl_ameriPanel_1.createParallelGroup(Alignment.BASELINE)
+					.addGroup(gl_ameriPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(ameriSpinner, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
 						.addComponent(ameriAddButton, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(ameriNameLabel_1, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
+					.addComponent(ameriNameLabel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(ameriPriceLabel_1_1, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+					.addComponent(ameriPriceLabel, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(135, Short.MAX_VALUE))
 		);
-		ameriPanel_1.setLayout(gl_ameriPanel_1);
+		ameriPanel.setLayout(gl_ameriPanel);
 		
 		JPanel caramelPanel = new JPanel();
 		caramelPanel.setBackground(SystemColor.window);
 		
-		JSpinner caraSpinner = new JSpinner();
-		caraSpinner.setModel(new SpinnerNumberModel(0, 0, 10, 1));
+		caraSpinner = new JSpinner();
+		caraSpinner.setModel(new SpinnerNumberModel(1, 0, 10, 1));
 		caraSpinner.setForeground(Color.WHITE);
 		caraSpinner.setBackground(SystemColor.window);
 		
@@ -439,11 +457,11 @@ public class Food extends JFrame {
 		caraImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\카라멜마끼아또4.jpg"));
 		caraImageLabel.setBackground(SystemColor.window);
 		
-		JLabel caraNameLabel = new JLabel("카라멜마끼아또");
+		caraNameLabel = new JLabel("카라멜마끼아또");
 		caraNameLabel.setBackground(SystemColor.window);
 		
-		JLabel caraPriceLabel_1_1_2 = new JLabel("4,300원");
-		caraPriceLabel_1_1_2.setBackground(SystemColor.window);
+		JLabel caraPriceLabel = new JLabel("4,300원");
+		caraPriceLabel.setBackground(SystemColor.window);
 		GroupLayout gl_caramelPanel = new GroupLayout(caramelPanel);
 		gl_caramelPanel.setHorizontalGroup(
 			gl_caramelPanel.createParallelGroup(Alignment.LEADING)
@@ -459,7 +477,7 @@ public class Food extends JFrame {
 							.addComponent(caraImageLabel))
 						.addGroup(gl_caramelPanel.createSequentialGroup()
 							.addGap(53)
-							.addComponent(caraPriceLabel_1_1_2, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(caraPriceLabel, GroupLayout.PREFERRED_SIZE, 59, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 				.addGroup(Alignment.TRAILING, gl_caramelPanel.createSequentialGroup()
 					.addContainerGap(27, Short.MAX_VALUE)
@@ -479,7 +497,7 @@ public class Food extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(caraNameLabel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(caraPriceLabel_1_1_2, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
+					.addComponent(caraPriceLabel, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(292, Short.MAX_VALUE))
 		);
 		caramelPanel.setLayout(gl_caramelPanel);
@@ -487,22 +505,22 @@ public class Food extends JFrame {
 		JPanel caferaPanel = new JPanel();
 		caferaPanel.setBackground(Color.WHITE);
 		
-		JSpinner caferaSpinner = new JSpinner();
-		caferaSpinner.setModel(new SpinnerNumberModel(0, 0, 10, 1));
+		caferaSpinner = new JSpinner();
+		caferaSpinner.setModel(new SpinnerNumberModel(1, 0, 10, 1));
 		caferaSpinner.setForeground(Color.WHITE);
 		caferaSpinner.setBackground(SystemColor.window);
 		
-		JButton caferaButton = new JButton("담기");
-		caferaButton.setBackground(SystemColor.window);
+		JButton caferaAddButton = new JButton("담기");
+		caferaAddButton.setBackground(SystemColor.window);
 		
 		JLabel caferaImageLabel = new JLabel("");
 		caferaImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\카페라떼3.jpg"));
 		caferaImageLabel.setBackground(SystemColor.window);
 		
-		JLabel caferaNameLabel = new JLabel("카페라떼");
+		caferaNameLabel = new JLabel("카페라떼");
 		caferaNameLabel.setBackground(SystemColor.window);
 		
-		JLabel caferaPriceLabel = new JLabel("4,300원");
+		JLabel caferaPriceLabel = new JLabel("3,800원");
 		caferaPriceLabel.setBackground(SystemColor.window);
 		GroupLayout gl_caferaPanel = new GroupLayout(caferaPanel);
 		gl_caferaPanel.setHorizontalGroup(
@@ -511,7 +529,7 @@ public class Food extends JFrame {
 					.addContainerGap()
 					.addComponent(caferaSpinner, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(caferaButton)
+					.addComponent(caferaAddButton)
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 				.addGroup(Alignment.TRAILING, gl_caferaPanel.createSequentialGroup()
 					.addContainerGap(35, Short.MAX_VALUE)
@@ -534,7 +552,7 @@ public class Food extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_caferaPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(caferaSpinner, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-						.addComponent(caferaButton, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
+						.addComponent(caferaAddButton, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(caferaNameLabel, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
@@ -548,7 +566,7 @@ public class Food extends JFrame {
 			gl_drinkPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_drinkPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(ameriPanel_1, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)
+					.addComponent(ameriPanel, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)
 					.addGap(77)
 					.addComponent(caferaPanel, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
@@ -560,7 +578,7 @@ public class Food extends JFrame {
 				.addGroup(gl_drinkPanel.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_drinkPanel.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(ameriPanel_1, GroupLayout.PREFERRED_SIZE, 226, Short.MAX_VALUE)
+						.addComponent(ameriPanel, GroupLayout.PREFERRED_SIZE, 226, Short.MAX_VALUE)
 						.addComponent(caferaPanel, 0, 0, Short.MAX_VALUE)
 						.addComponent(caramelPanel, 0, 0, Short.MAX_VALUE))
 					.addContainerGap(267, Short.MAX_VALUE))
@@ -569,7 +587,7 @@ public class Food extends JFrame {
 		
 		JPanel snackPanel = new JPanel();
 		snackPanel.setBackground(SystemColor.window);
-		OderTebbedPanel.addTab("식사", new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\snack.png"), snackPanel, null);
+		OderTebbedPanel.addTab("스낵", new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\snack.png"), snackPanel, null);
 		
 		JPanel ramyeonPanel = new JPanel();
 		ramyeonPanel.setBackground(SystemColor.window);
@@ -581,15 +599,15 @@ public class Food extends JFrame {
 		ddeockImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\떡볶이2.jpg"));
 		ddeockImageLabel.setBackground(SystemColor.window);
 		
-		JSpinner ddeockSpinner = new JSpinner();
-		ddeockSpinner.setModel(new SpinnerNumberModel(0, 0, 10, 1));
+		ddeockSpinner = new JSpinner();
+		ddeockSpinner.setModel(new SpinnerNumberModel(1, 0, 10, 1));
 		ddeockSpinner.setForeground(SystemColor.window);
 		ddeockSpinner.setBackground(SystemColor.window);
 		
 		JButton ddeockAddButton = new JButton("담기");
 		ddeockAddButton.setBackground(Color.WHITE);
 		
-		JLabel ddeockNameLabel = new JLabel("떡볶이");
+		ddeockNameLabel = new JLabel("떡볶이");
 		ddeockNameLabel.setBackground(SystemColor.window);
 		
 		JLabel ddeockPriceLabel = new JLabel("4,500원");
@@ -638,15 +656,15 @@ public class Food extends JFrame {
 		rabockImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\라볶이2.jpg"));
 		rabockImageLabel.setBackground(SystemColor.window);
 		
-		JSpinner rabockSpinner = new JSpinner();
-		rabockSpinner.setModel(new SpinnerNumberModel(0, 0, 10, 1));
+		rabockSpinner = new JSpinner();
+		rabockSpinner.setModel(new SpinnerNumberModel(1, 0, 10, 1));
 		rabockSpinner.setForeground(Color.WHITE);
 		rabockSpinner.setBackground(SystemColor.window);
 		
 		JButton rabockAddButton = new JButton("담기");
 		rabockAddButton.setBackground(SystemColor.window);
 		
-		JLabel rabockNameLabel = new JLabel("라볶이");
+		rabockNameLabel = new JLabel("라볶이");
 		rabockNameLabel.setBackground(SystemColor.window);
 		
 		JLabel rabockPriceLabel = new JLabel("5,000원");
@@ -714,15 +732,15 @@ public class Food extends JFrame {
 		ramyeonImageLabel.setBackground(SystemColor.window);
 		ramyeonImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\ramyeon2.jpg"));
 		
-		JSpinner ramyeonSpinner = new JSpinner();
-		ramyeonSpinner.setModel(new SpinnerNumberModel(0, 0, 10, 1));
+		ramyeonSpinner = new JSpinner();
+		ramyeonSpinner.setModel(new SpinnerNumberModel(1, 0, 10, 1));
 		ramyeonSpinner.setForeground(SystemColor.window);
 		ramyeonSpinner.setBackground(SystemColor.window);
 		
 		JButton ramyeonAddButton = new JButton("담기");
 		ramyeonAddButton.setBackground(SystemColor.window);
 		
-		JLabel ramyeonNameLabel = new JLabel("라면");
+		ramyeonNameLabel = new JLabel("라면");
 		ramyeonNameLabel.setBackground(SystemColor.window);
 		
 		JLabel rameyonPriceLabel = new JLabel("3,500원");
@@ -777,23 +795,114 @@ public class Food extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 		
 		
-		// 담기 버튼 액션
+
 		
+		
+///////////////////////////////////    담기 버튼 액션        ///////////////////////////////////////////////////////////////////////////
+		
+		// 식사 버튼
 		kimchAddButton.addActionListener(new ActionListener() {
 			
 		
 			public void actionPerformed(ActionEvent e) {
 				
-	
 				connect();
-				insert();
+				mealSelect("김치베이컨 볶음밥",  Integer.parseInt(kimchSpinner.getValue().toString()));
 				
+			}
+		});
+		
+		
+		spamAddButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
 				
+				connect();
+				mealSelect("스팸계란 볶음밥", Integer.parseInt(spamSpinner.getValue().toString()));
 				
+			}
+		});
+		
+		chickAddButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+
+				connect();
+				mealSelect("치킨가라아게 덮밥", Integer.parseInt(chickSpinner.getValue().toString()));
+				
+			}
+		});
+		
+		// 음료 버튼	
+		ameriAddButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+
+				connect();
+				drinkSelect("아메리카노", Integer.parseInt(ameriSpinner.getValue().toString()));
+				
+							
+			}
+		});
+		
+		
+		caferaAddButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+
+				connect();
+				drinkSelect("카페 라떼", Integer.parseInt(caferaSpinner.getValue().toString()));
+				
+			}
+		});
+		
+		
+		caraAddButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+
+				connect();
+				drinkSelect("카라멜 마끼아또", Integer.parseInt(caraSpinner.getValue().toString()));
+				
+			}
+		});
+		
+		
+		//스낵
+		ramyeonAddButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				connect();
+				snackSelect("라면", Integer.parseInt(ramyeonSpinner.getValue().toString()));
+				
+			}
+		});
+		
+		ddeockAddButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				connect();
+				snackSelect("떡볶이", Integer.parseInt(ddeockSpinner.getValue().toString()));
+				
+			}
+		});
+		
+		rabockAddButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+
+				connect();
+				snackSelect("라볶이", Integer.parseInt(rabockSpinner.getValue().toString()));
 
 				
 			}
 		});
+		
+		
+		
+		
 		
 		
 	}
@@ -819,31 +928,200 @@ public class Food extends JFrame {
 		
 	}
 	
-	void insert() {
-		
+
+	
+	
+//	void select () {
+//				
+//		try {
+////			sql = "select fname, price from food where fname = ?";
+//			sql = "select * from food where mealtype = '식사'";
+//			
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setString(1, kimchNameLabel.getText());
+//			pstmt.setString(1, spamNameLabel.getText());
+//			pstmt.setString(1, chickNameLabel.getText());
+//			res = pstmt.executeQuery();
+//			
+//			
+//			List<Object[]> mealList = new ArrayList<Object[]>();
+//			
+//			while(res.next()) {
+//				
+//				Object[] arrObj = {res.getString("fname"), res.getInt("price")};
+//				mealList.add(arrObj);
+//				
+//				for(int i = 0; i < mealList.size(); i++) {
+//					System.out.println(i);
+//				}
+//				
+//					
+//				
+////				String fname = res.getString("fname");
+////				int price = res.getInt("price");
+////				
+////				Object[] cart = {fname, price, kimchSpinner.getValue()};
+//		
+//				
+////				model.addRow(cart);
+//								
+//			}
+//			
+//			con.close();
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+void mealSelect (String meanlOrder, int mealSpinner) {
 		
 		try {
-			String sql = "insert into cart values (car_sqn.nextval, ?, ?, ?, sysdate)";
+			sql = "select fname, price from food where fname = ?";
 
+			
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, meanlOrder);
+			res = pstmt.executeQuery();
 			
-			int res = pstmt.executeUpdate();
+			while(res.next()) {
+				
+				String fname = res.getString("fname");
+				int price = res.getInt("price");
+				
+				Object[] cart = {fname, (price * mealSpinner), mealSpinner};
+					
+				
+				model.addRow(cart);
+								
+			}
 			
+			con.close();
 			pstmt.close();
-		
-		} catch (SQLException e) {
+			res.close();
+			
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		
 	}
+
+
+
+
+void drinkSelect (String drinkOrder, int drinkSpinner) {
 	
+	try {
+		sql = "select fname, price from food where fname = ?";
+
+		
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, drinkOrder);
+		res = pstmt.executeQuery();
+		
+		while(res.next()) {
+			
+			String fname = res.getString("fname");
+			int price = res.getInt("price");
+			
+			Object[] cart = {fname, (price * drinkSpinner), drinkSpinner};
+				
+			
+			model.addRow(cart);
+							
+		}
+		
+		con.close();
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+
+
+
+void snackSelect (String snackOrder, int snackSpinner) {
 	
-	
-	
-	
-	
+	try {
+		sql = "select fname, price from food where fname = ?";
+
+		
+		pstmt = con.prepareStatement(sql);
+		pstmt.setString(1, snackOrder);
+		res = pstmt.executeQuery();
+		
+		while(res.next()) {
+			
+			String fname = res.getString("fname");
+			int price = res.getInt("price");
+			
+			Object[] cart = {fname, (price * snackSpinner), snackSpinner};
+				
+			
+			model.addRow(cart);
+							
+		}
+		
+		con.close();
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+//	
+//	
+//void spamselect () {
+//		
+//		
+//		try {
+//			sql = "select fname, price from food where fname = ?";
+//
+//			
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setString(1, spamNameLabel.getText());
+//			res = pstmt.executeQuery();
+//			
+//			while(res.next()) {
+//				
+//				String fname = res.getString("fname");
+//				int price = res.getInt("price");
+//				
+//				Object[] cart = {fname, price, spamSpinner.getValue()};
+//					
+//				
+//				model.addRow(cart);
+//								
+//			}
+//			
+//			con.close();
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
+//	
+
 	
 	
 	
