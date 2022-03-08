@@ -121,7 +121,9 @@ public class Init extends JFrame {
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			
-			while(rs.next()) {
+			boolean found = rs.next();
+			
+			if(found) {
 				if(pw.equals(rs.getString("mem_password"))) {
 					System.out.println("비밀번호 일치. 로그인 valid");
 				}
@@ -129,6 +131,10 @@ public class Init extends JFrame {
 					System.out.println("아이디나 비밀번호를 잘못 입력하셨거나 등록되지 않은 아이디입니다.");
 				}
 			}
+			else {
+				System.out.println("아이디나 비밀번호를 잘못 입력하셨거나 등록되지 않은 아이디입니다.");
+			}
+			
 		} catch (SQLException e1) {
 			e1.printStackTrace();
 		}
