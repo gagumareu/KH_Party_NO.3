@@ -137,24 +137,27 @@ public class Food extends JFrame {
 		gl_ButtonPanal.setHorizontalGroup(
 			gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_ButtonPanal.createSequentialGroup()
-					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
-						.addComponent(payButton, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_ButtonPanal.createSequentialGroup()
-							.addComponent(plusButton, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-							.addGap(20)
-							.addComponent(minuButton, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE))
-						.addComponent(removeButton, GroupLayout.PREFERRED_SIZE, 147, Short.MAX_VALUE))
-					.addContainerGap())
+					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(removeButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addGroup(Alignment.LEADING, gl_ButtonPanal.createSequentialGroup()
+							.addGap(2)
+							.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(payButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGroup(gl_ButtonPanal.createSequentialGroup()
+									.addComponent(plusButton, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addComponent(minuButton, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)))))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_ButtonPanal.setVerticalGroup(
 			gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_ButtonPanal.createSequentialGroup()
-					.addComponent(removeButton, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)
-					.addGap(34)
+					.addComponent(removeButton, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+					.addGap(32)
 					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
-						.addComponent(plusButton, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
-						.addComponent(minuButton, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+						.addComponent(minuButton, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
+						.addComponent(plusButton, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
 					.addComponent(payButton, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
 		);
 		ButtonPanal.setLayout(gl_ButtonPanal);
@@ -837,11 +840,11 @@ public class Food extends JFrame {
 		GroupLayout gl_cartPanel = new GroupLayout(cartPanel);
 		gl_cartPanel.setHorizontalGroup(
 			gl_cartPanel.createParallelGroup(Alignment.LEADING)
-				.addComponent(carjsp, GroupLayout.PREFERRED_SIZE, 502, GroupLayout.PREFERRED_SIZE)
+				.addComponent(carjsp, GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
 		);
 		gl_cartPanel.setVerticalGroup(
 			gl_cartPanel.createParallelGroup(Alignment.LEADING)
-				.addComponent(carjsp, GroupLayout.PREFERRED_SIZE, 330, GroupLayout.PREFERRED_SIZE)
+				.addComponent(carjsp, GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
 		);
 		cartPanel.setLayout(gl_cartPanel);
 		
@@ -852,15 +855,19 @@ public class Food extends JFrame {
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(14)
-					.addComponent(OderTebbedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(cartPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(8)
-					.addComponent(ButtonPanal, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addGap(14)
+							.addComponent(OderTebbedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_contentPane.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(cartPanel, GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+							.addGap(18)
+							.addComponent(ButtonPanal, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)))
+					.addGap(14))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -870,9 +877,10 @@ public class Food extends JFrame {
 					.addGap(12)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-							.addComponent(cartPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(ButtonPanal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(ButtonPanal, GroupLayout.PREFERRED_SIZE, 317, GroupLayout.PREFERRED_SIZE)
+							.addComponent(cartPanel, GroupLayout.PREFERRED_SIZE, 317, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE))
+					.addGap(22))
 		);
 		contentPane.setLayout(gl_contentPane);
 		
@@ -910,7 +918,7 @@ public class Food extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				connect();
-				mealSelect("치킨가라아게 덮밥", Integer.parseInt(chickSpinner.getValue().toString()));
+				mealSelect("치킨카라아게 덮밥", Integer.parseInt(chickSpinner.getValue().toString()));
 				
 			}
 		});
@@ -1080,13 +1088,13 @@ public class Food extends JFrame {
 
 	
 	
-	void mealSelect (String meanlOrder, int mealSpinner) {
+	void mealSelect (String mealorder, int mealSpinner) {
 		
 		try {
 			sql = "select fname, price , mealtype from food where fname = ?";
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, meanlOrder);
+			pstmt.setString(1, mealorder);
 			
 			res = pstmt.executeQuery();
 			
