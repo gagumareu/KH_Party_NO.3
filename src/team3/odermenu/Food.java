@@ -74,7 +74,7 @@ public class Food extends JFrame {
 	String sql = null;
 	DefaultTableModel model;
 	JTable table;
-	
+	int i;
 	
 	JSpinner kimchSpinner, spamSpinner, chickSpinner, ameriSpinner,
 	caraSpinner, caferaSpinner, ramyeonSpinner, ddeockSpinner, rabockSpinner;
@@ -1250,18 +1250,24 @@ public class Food extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				
 				increase();
-//				model = (DefaultTableModel) table.getModel();
-//				
-//				int row = table.getSelectedRow();
-//				int plus = (Integer) model.getValueAt(row, 2);
-//				
-//				plus +=1;
+				model = (DefaultTableModel) table.getModel();
+				
+				int row = table.getSelectedRow();
+				Integer plus = (Integer) model.getValueAt(row, 2);
+				plus +=1;
+				model.setValueAt(plus, row, 2);
+				
 				
 				
 			}
 		});
 		
-		
+		minuButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent arg0) {
+//			
+			}
+		});
 		
 		
 		
@@ -1428,12 +1434,14 @@ public class Food extends JFrame {
 				pstmt.setInt(2, (Integer)(model.getValueAt(i, 1)));
 				pstmt.setString(4,  model.getValueAt(i, 3).toString());
 				pstmt.setInt(3, (Integer)(model.getValueAt(i, 2)));
-				pstmt.addBatch();
-				pstmt.clearParameters();
+				pstmt.executeUpdate();
+				
+//				pstmt.addBatch();
+//				pstmt.clearParameters();
 
 			}
 
-			pstmt.executeBatch();
+//			pstmt.executeBatch();
 			
 			con.close();
 			pstmt.close();

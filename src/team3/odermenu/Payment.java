@@ -90,23 +90,15 @@ public class Payment extends JFrame {
 		btnNewButton_1.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\coin2.jpg"));
 		btnNewButton_1.setBackground(Color.WHITE);
-		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setFont(new Font("한컴 고딕", Font.BOLD, 20));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"     결제수단 선택", "               카드", "               현금"}));
-		comboBox.setToolTipText("");
-		comboBox.setBackground(SystemColor.window);
 		GroupLayout gl_payButton_1 = new GroupLayout(payButton_1);
 		gl_payButton_1.setHorizontalGroup(
 			gl_payButton_1.createParallelGroup(Alignment.LEADING)
 				.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
-				.addComponent(comboBox, 0, 211, Short.MAX_VALUE)
 		);
 		gl_payButton_1.setVerticalGroup(
-			gl_payButton_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_payButton_1.createSequentialGroup()
-					.addComponent(comboBox, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+			gl_payButton_1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_payButton_1.createSequentialGroup()
+					.addContainerGap(131, Short.MAX_VALUE)
 					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
 		);
 		payButton_1.setLayout(gl_payButton_1);
@@ -189,7 +181,7 @@ public class Payment extends JFrame {
 		);
 		paymentPanel.setLayout(gl_paymentPanel);
 		contentPane.setLayout(gl_contentPane);
-		
+		setVisible(true);
 		
 		
 		
