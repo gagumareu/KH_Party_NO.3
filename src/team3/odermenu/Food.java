@@ -1218,7 +1218,13 @@ public class Food extends JFrame {
 
 					connect();
 					payment();
-					new Payment();
+					
+					JTable jtbl = new JTable(model);
+//					Payment newWindow = new Payment(jtbl);
+					new Payment(jtbl);
+//					newWindow.setModal(true);
+//					//newWindow.setPaytable(table);
+//					newWindow.setVisible(true);
 					
 
 				super.mouseClicked(e);
@@ -1434,7 +1440,7 @@ public class Food extends JFrame {
 				pstmt.setInt(2, (Integer)(model.getValueAt(i, 1)));
 				pstmt.setString(4,  model.getValueAt(i, 3).toString());
 				pstmt.setInt(3, (Integer)(model.getValueAt(i, 2)));
-				pstmt.executeUpdate();
+				//pstmt.executeUpdate();
 				
 //				pstmt.addBatch();
 //				pstmt.clearParameters();

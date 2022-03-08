@@ -29,6 +29,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Font;
 import javax.swing.ImageIcon;
@@ -37,6 +38,15 @@ import java.awt.Toolkit;
 public class Payment extends JFrame {
 
 	private JPanel contentPane;
+	private JTable paytable;
+
+	public JTable getPaytable() {
+		return paytable;
+	}
+
+	public void setPaytable(JTable paytable) {
+		this.paytable = paytable;
+	}
 
 	/**
 	 * Launch the application.
@@ -69,10 +79,11 @@ public class Payment extends JFrame {
 
 
 	
-	public Payment() {
+	public Payment(JTable paytable) {
 		setTitle("결제 화면");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\comic.png"));
 		setBackground(SystemColor.window);
+//		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(650, 150, 500, 600);
 		contentPane = new JPanel();
@@ -158,14 +169,14 @@ public class Payment extends JFrame {
 		);
 		
 		// 결제창 테이블
-		String[] paymentHeader = 
-			{"주문번호", "이름", "가격", "수량", "분류", "주문날짜"};
-		model = new DefaultTableModel(paymentHeader, 0);
-		table = new JTable(model);
-		table.setBackground(SystemColor.window);
+//		String[] paymentHeader = 
+//			{"주문번호", "이름", "가격", "수량", "분류", "주문날짜"};
+//		model = new DefaultTableModel(paymentHeader, 0);
+//		table = new JTable(model);
+//		table.setBackground(SystemColor.window);
 		
 		JScrollPane payjsp = new JScrollPane(
-				table, 
+				paytable, 
 				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		GroupLayout gl_paymentPanel = new GroupLayout(paymentPanel);
