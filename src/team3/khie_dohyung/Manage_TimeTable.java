@@ -9,6 +9,11 @@ import java.sql.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Toolkit;
+import java.awt.SystemColor;
+import java.awt.Color;
 
 public class Manage_TimeTable extends JFrame{
 	Connection con=null;
@@ -20,10 +25,14 @@ public class Manage_TimeTable extends JFrame{
 	JTable table;
 	
 	public Manage_TimeTable () {
+		getContentPane().setBackground(SystemColor.info);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
 		setTitle("시간 메뉴 테이블");
 		
 		JPanel container1 = new JPanel();
+		container1.setBackground(SystemColor.info);
 		JPanel container2 = new JPanel();
+		container2.setBackground(SystemColor.info);
 		
 		JLabel jl1 = new JLabel("시간:");
 		jtf1= new JTextField(5);
@@ -43,27 +52,145 @@ public class Manage_TimeTable extends JFrame{
 		table = new JTable(model);
 		
 		JScrollPane jsp = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		JButton jb1= new JButton("시간제 목록");
-		JButton jb2= new JButton("시간제 추가");
-		JButton jb3= new JButton("시간제 수정");
-		JButton jb4= new JButton("시간제 삭제");
+		JButton jb1= new JButton("요금 목록");
+		jb1.setBackground(Color.CYAN);
+		JButton jb2= new JButton("요금 추가");
+		jb2.setBackground(Color.CYAN);
+		JButton jb3= new JButton("요금 수정");
+		jb3.setBackground(Color.CYAN);
+		JButton jb4= new JButton("요금 삭제");
+		jb4.setBackground(Color.CYAN);
 		JButton jb5= new JButton("돌아가기");
+		jb5.setBackground(Color.CYAN);
 		
-		container1.add(jl1);container1.add(jtf1);
-		container1.add(jl2);container1.add(jtf2);
-		container1.add(jl3);container1.add(jtf3);
-		container1.add(jl4);container1.add(jtf4);
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\smenu.png"));
+		GroupLayout gl_container1 = new GroupLayout(container1);
+		gl_container1.setHorizontalGroup(
+			gl_container1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_container1.createSequentialGroup()
+					.addGap(50)
+					.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_container1.createSequentialGroup()
+							.addComponent(jl1)
+							.addGap(5)
+							.addComponent(jtf1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_container1.createSequentialGroup()
+							.addComponent(jl3)
+							.addGap(5)
+							.addComponent(jtf3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addPreferredGap(ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
+					.addComponent(lblNewLabel_1)
+					.addGap(126))
+				.addGroup(gl_container1.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(jl2)
+					.addGap(5)
+					.addComponent(jtf2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(33)
+					.addComponent(jl4)
+					.addGap(5)
+					.addComponent(jtf4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(35, Short.MAX_VALUE))
+		);
+		gl_container1.setVerticalGroup(
+			gl_container1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_container1.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblNewLabel_1)
+						.addGroup(gl_container1.createSequentialGroup()
+							.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_container1.createSequentialGroup()
+									.addGap(8)
+									.addComponent(jl1))
+								.addGroup(gl_container1.createSequentialGroup()
+									.addGap(5)
+									.addComponent(jtf1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+							.addPreferredGap(ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+							.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_container1.createSequentialGroup()
+									.addGap(3)
+									.addComponent(jl3))
+								.addComponent(jtf3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)))
+					.addGap(26)
+					.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_container1.createSequentialGroup()
+							.addGap(3)
+							.addComponent(jl4))
+						.addComponent(jtf4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(gl_container1.createSequentialGroup()
+							.addGap(3)
+							.addComponent(jl2))
+						.addComponent(jtf2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		container1.setLayout(gl_container1);
+		GroupLayout gl_container2 = new GroupLayout(container2);
+		gl_container2.setHorizontalGroup(
+			gl_container2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_container2.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_container2.createParallelGroup(Alignment.LEADING)
+						.addComponent(jb1, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+						.addComponent(jb2, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+						.addComponent(jb3, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+						.addComponent(jb4, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+						.addComponent(jb5, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+					.addGap(14))
+		);
+		gl_container2.setVerticalGroup(
+			gl_container2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_container2.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(jb1)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(jb2)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(jb3)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(jb4)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(jb5)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		container2.setLayout(gl_container2);
 		
-		container2.add(jb1);
-		container2.add(jb2);
-		container2.add(jb3);
-		container2.add(jb4);
-		container2.add(jb5);
-		add(container1,BorderLayout.NORTH);
-		add(jsp,BorderLayout.CENTER);
-		add(container2,BorderLayout.SOUTH);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(container2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(lblNewLabel)
+							.addGap(28)
+							.addComponent(container1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(jsp, GroupLayout.PREFERRED_SIZE, 783, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(37)
+							.addComponent(lblNewLabel))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(28)
+							.addComponent(container1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(container2, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 194, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(jsp, GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE))
+		);
+		getContentPane().setLayout(groupLayout);
 		
-		setBounds(200,200,750,250);
+		setBounds(200,200,800,800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
@@ -331,5 +458,4 @@ public class Manage_TimeTable extends JFrame{
 		
 
 	}
-
 }

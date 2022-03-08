@@ -9,6 +9,11 @@ import java.sql.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Toolkit;
+import java.awt.Color;
+import java.awt.SystemColor;
 
 public class Manage_Review extends JFrame{
 Connection con = null;
@@ -22,28 +27,12 @@ Connection con = null;
 	JTable table;
 	
 	public Manage_Review() {
+		getContentPane().setBackground(SystemColor.info);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\git\\KH_PartyNo3\\images\\sreview.png"));
 		
 		setTitle("회원 리뷰 테이블");
-		
-		JPanel container1= new JPanel();
-		JPanel container2= new JPanel();
 		JPanel container3= new JPanel();
-		
-		JLabel jl1= new JLabel("책 번호");
-		jtf1 = new JTextField(5);
-		
-		JLabel jl5= new JLabel("리뷰 번호");
-		jtf5 = new JTextField(5);
-
-		JLabel jl2= new JLabel("회원 이름");
-		jtf2 = new JTextField(10);
-
-		
-		JLabel jl3= new JLabel("별점");
-		jtf3 = new JTextField(10);
-		
-		JLabel jl4= new JLabel("리뷰");
-		jtf4 = new JTextArea(5,45);
+		container3.setBackground(SystemColor.info);
 		
 	    String header[] = {"책 번호","리뷰 번호","책 이름", "회원 이름", "별점","리뷰"};
 	    model = new DefaultTableModel(header,0);
@@ -52,36 +41,206 @@ Connection con = null;
 	    
 	    JScrollPane jsp = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 	    
-	    JButton jb1 = new JButton("리뷰 검색");
-	    JButton jb2 = new JButton("리뷰 삽입");
-	    JButton jb3 = new JButton("리뷰 수정");
-	    JButton jb4 = new JButton("리뷰 삭제");
+	    JButton jb1 = new JButton("리뷰검색");
+	    jb1.setBackground(Color.CYAN);
+	    JButton jb2 = new JButton("리뷰삽입");
+	    jb2.setBackground(Color.CYAN);
+	    JButton jb3 = new JButton("리뷰수정");
+	    jb3.setBackground(Color.CYAN);
+	    JButton jb4 = new JButton("리뷰삭제");
+	    jb4.setBackground(Color.CYAN);
 	
 	    JButton jb5 = new JButton("돌아가기");
-	    
-	    container1.add(jl1); container1.add(jtf1);
-	    container1.add(jl5); container1.add(jtf5);
-	    container1.add(jl2); container1.add(jtf2);
-	    container1.add(jl3); container1.add(jtf3);
-	    
-	    
-	    container2.add(jl4); container2.add(jtf4);
-	    
-	    container3.add(jb1);container3.add(jb2);
-	    container3.add(jb3);container3.add(jb4);
-	    container3.add(jb5);
+	    jb5.setBackground(Color.CYAN);
 	    
 	    JPanel group = new JPanel(new BorderLayout());
 	    
-	    group.add(container1,BorderLayout.NORTH);
-	    group.add(container2,BorderLayout.CENTER);
-
+	    JPanel container1= new JPanel();
+	    container1.setBackground(SystemColor.info);
 	    
-	    add(group, BorderLayout.NORTH);
-	    add(jsp, BorderLayout.CENTER);
-	    add(container3, BorderLayout.SOUTH);
+	    JLabel jl1= new JLabel("책 번호:");
+	    jl1.setBackground(new Color(255, 255, 224));
+	    jtf1 = new JTextField(5);
 	    
-	    setBounds(200,200,600,400);
+	    JLabel jl5= new JLabel("리뷰 번호:");
+	    jl5.setBackground(new Color(255, 255, 224));
+	    jtf5 = new JTextField(5);
+	    
+	    		JLabel jl2= new JLabel("회원 이름:");
+	    		jl2.setBackground(new Color(255, 255, 224));
+	    		jtf2 = new JTextField(10);
+	    		
+	    				
+	    				JLabel jl3= new JLabel("별점:");
+	    				jl3.setBackground(new Color(255, 255, 224));
+	    				jtf3 = new JTextField(10);
+	    				
+	    				JLabel lblNewLabel_1 = new JLabel("");
+	    				lblNewLabel_1.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\sreview.png"));
+	    				GroupLayout gl_container1 = new GroupLayout(container1);
+	    				gl_container1.setHorizontalGroup(
+	    					gl_container1.createParallelGroup(Alignment.LEADING)
+	    						.addGroup(gl_container1.createSequentialGroup()
+	    							.addGap(10)
+	    							.addComponent(jl2)
+	    							.addGap(5)
+	    							.addComponent(jtf2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	    							.addGap(18)
+	    							.addComponent(jl3)
+	    							.addGap(5)
+	    							.addComponent(jtf3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	    							.addContainerGap(15, Short.MAX_VALUE))
+	    						.addGroup(gl_container1.createSequentialGroup()
+	    							.addContainerGap()
+	    							.addGroup(gl_container1.createParallelGroup(Alignment.TRAILING)
+	    								.addGroup(gl_container1.createSequentialGroup()
+	    									.addComponent(jl5)
+	    									.addGap(5)
+	    									.addComponent(jtf5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+	    								.addGroup(gl_container1.createSequentialGroup()
+	    									.addComponent(jl1)
+	    									.addPreferredGap(ComponentPlacement.RELATED)
+	    									.addComponent(jtf1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+	    							.addPreferredGap(ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+	    							.addComponent(lblNewLabel_1)
+	    							.addGap(81))
+	    				);
+	    				gl_container1.setVerticalGroup(
+	    					gl_container1.createParallelGroup(Alignment.LEADING)
+	    						.addGroup(gl_container1.createSequentialGroup()
+	    							.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+	    								.addGroup(gl_container1.createSequentialGroup()
+	    									.addGap(24)
+	    									.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+	    										.addGroup(Alignment.TRAILING, gl_container1.createParallelGroup(Alignment.LEADING)
+	    											.addGroup(gl_container1.createSequentialGroup()
+	    												.addGap(3)
+	    												.addComponent(jl5))
+	    											.addComponent(jtf5, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+	    										.addComponent(lblNewLabel_1))
+	    									.addGap(31)
+	    									.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+	    										.addComponent(jtf3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	    										.addGroup(gl_container1.createParallelGroup(Alignment.TRAILING)
+	    											.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+	    												.addGroup(gl_container1.createSequentialGroup()
+	    													.addGap(3)
+	    													.addComponent(jl2))
+	    												.addComponent(jtf2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+	    											.addComponent(jl3))))
+	    								.addGroup(gl_container1.createSequentialGroup()
+	    									.addContainerGap()
+	    									.addGroup(gl_container1.createParallelGroup(Alignment.BASELINE)
+	    										.addComponent(jl1)
+	    										.addComponent(jtf1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+	    							.addContainerGap(23, Short.MAX_VALUE))
+	    				);
+	    				container1.setLayout(gl_container1);
+	    
+	    JPanel panel = new JPanel();
+	    panel.setBackground(SystemColor.info);
+	    
+	    JLabel lblNewLabel = new JLabel("");
+	    lblNewLabel.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
+	    GroupLayout groupLayout = new GroupLayout(getContentPane());
+	    groupLayout.setHorizontalGroup(
+	    	groupLayout.createParallelGroup(Alignment.LEADING)
+	    		.addGroup(groupLayout.createSequentialGroup()
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+	    				.addComponent(group, GroupLayout.PREFERRED_SIZE, 784, GroupLayout.PREFERRED_SIZE)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addContainerGap()
+	    					.addComponent(container3, GroupLayout.PREFERRED_SIZE, 112, GroupLayout.PREFERRED_SIZE)
+	    					.addGap(56)
+	    					.addComponent(lblNewLabel)
+	    					.addGap(74)
+	    					.addComponent(container1, GroupLayout.PREFERRED_SIZE, 369, GroupLayout.PREFERRED_SIZE))
+	    				.addComponent(jsp, GroupLayout.PREFERRED_SIZE, 784, GroupLayout.PREFERRED_SIZE)
+	    				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+	    					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+	    					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 733, GroupLayout.PREFERRED_SIZE)
+	    					.addGap(24)))
+	    			.addContainerGap())
+	    );
+	    groupLayout.setVerticalGroup(
+	    	groupLayout.createParallelGroup(Alignment.LEADING)
+	    		.addGroup(groupLayout.createSequentialGroup()
+	    			.addComponent(group, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	    			.addPreferredGap(ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+	    			.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+	    						.addGroup(groupLayout.createSequentialGroup()
+	    							.addGap(42)
+	    							.addComponent(lblNewLabel))
+	    						.addGroup(groupLayout.createSequentialGroup()
+	    							.addPreferredGap(ComponentPlacement.RELATED)
+	    							.addComponent(container3, GroupLayout.PREFERRED_SIZE, 195, GroupLayout.PREFERRED_SIZE)))
+	    					.addPreferredGap(ComponentPlacement.RELATED))
+	    				.addGroup(groupLayout.createSequentialGroup()
+	    					.addComponent(container1, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)
+	    					.addGap(27)))
+	    			.addPreferredGap(ComponentPlacement.RELATED)
+	    			.addComponent(panel, GroupLayout.PREFERRED_SIZE, 121, GroupLayout.PREFERRED_SIZE)
+	    			.addPreferredGap(ComponentPlacement.UNRELATED)
+	    			.addComponent(jsp, GroupLayout.PREFERRED_SIZE, 593, GroupLayout.PREFERRED_SIZE)
+	    			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+	    );
+	    jtf4 = new JTextArea(5,60);
+	    
+	    JLabel jl4= new JLabel("리뷰:");
+	    GroupLayout gl_panel = new GroupLayout(panel);
+	    gl_panel.setHorizontalGroup(
+	    	gl_panel.createParallelGroup(Alignment.LEADING)
+	    		.addGroup(gl_panel.createSequentialGroup()
+	    			.addContainerGap()
+	    			.addComponent(jl4)
+	    			.addGap(18)
+	    			.addComponent(jtf4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	    			.addContainerGap(415, Short.MAX_VALUE))
+	    );
+	    gl_panel.setVerticalGroup(
+	    	gl_panel.createParallelGroup(Alignment.LEADING)
+	    		.addGroup(gl_panel.createSequentialGroup()
+	    			.addContainerGap()
+	    			.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+	    				.addComponent(jtf4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+	    				.addComponent(jl4))
+	    			.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+	    );
+	    panel.setLayout(gl_panel);
+	    GroupLayout gl_container3 = new GroupLayout(container3);
+	    gl_container3.setHorizontalGroup(
+	    	gl_container3.createParallelGroup(Alignment.LEADING)
+	    		.addGroup(gl_container3.createSequentialGroup()
+	    			.addContainerGap()
+	    			.addGroup(gl_container3.createParallelGroup(Alignment.LEADING)
+	    				.addComponent(jb1)
+	    				.addComponent(jb2)
+	    				.addComponent(jb3)
+	    				.addComponent(jb4)
+	    				.addComponent(jb5))
+	    			.addContainerGap(648, Short.MAX_VALUE))
+	    );
+	    gl_container3.setVerticalGroup(
+	    	gl_container3.createParallelGroup(Alignment.LEADING)
+	    		.addGroup(gl_container3.createSequentialGroup()
+	    			.addContainerGap()
+	    			.addComponent(jb1)
+	    			.addPreferredGap(ComponentPlacement.UNRELATED)
+	    			.addComponent(jb2)
+	    			.addPreferredGap(ComponentPlacement.UNRELATED)
+	    			.addComponent(jb3)
+	    			.addPreferredGap(ComponentPlacement.UNRELATED)
+	    			.addComponent(jb4)
+	    			.addPreferredGap(ComponentPlacement.UNRELATED)
+	    			.addComponent(jb5)
+	    			.addContainerGap(19, Short.MAX_VALUE))
+	    );
+	    container3.setLayout(gl_container3);
+	    getContentPane().setLayout(groupLayout);
+	    
+	    setBounds(200,200,800,800);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    setVisible(true);
@@ -163,15 +322,7 @@ Connection con = null;
 			}
 		});
 	    
-	    jb5.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new Manage();
-				dispose();
-				
-			}
-		});
+	
 	    
 	    jb5.addActionListener(new ActionListener() {
 			
@@ -371,5 +522,4 @@ Connection con = null;
 		
 
 	}
-
 }

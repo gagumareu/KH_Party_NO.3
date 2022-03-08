@@ -1,6 +1,5 @@
 package team3.khie_dohyung;
 
-
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,6 +9,11 @@ import java.sql.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.Toolkit;
+import java.awt.SystemColor;
+import java.awt.Color;
 
 public class Manage_Manwha extends JFrame {
 	Connection con = null;
@@ -24,18 +28,22 @@ public class Manage_Manwha extends JFrame {
 	
 	
 	public Manage_Manwha() {
+		getContentPane().setBackground(SystemColor.info);
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
 		
 		setTitle("만화책 관리 화면");
 		
 		JPanel container1 = new JPanel();
+		container1.setBackground(SystemColor.info);
 
 		JPanel container2 = new JPanel();
+		container2.setBackground(SystemColor.info);
 
 		
 		JLabel jl1 = new JLabel("책위치:");
 		jcb1 = new JComboBox<String>();
 		
-		JLabel jl2 = new JLabel("장르:");
+		JLabel jl2 = new JLabel("장   르:");
 		jcb2 = new JComboBox<String>();
 		
 		JLabel jl3 = new JLabel("책번호:");
@@ -61,30 +69,155 @@ public class Manage_Manwha extends JFrame {
 		JScrollPane jsp = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
 		JButton jb1 = new JButton("전체 목록");
+		jb1.setBackground(Color.CYAN);
 		JButton jb2 = new JButton("도서 추가");
+		jb2.setBackground(Color.CYAN);
 		JButton jb3 = new JButton("도서 수정");
+		jb3.setBackground(Color.CYAN);
 		JButton jb4 = new JButton("도서 삭제");
+		jb4.setBackground(Color.CYAN);
 		JButton jb5 = new JButton("돌아 가기");
+		jb5.setBackground(Color.CYAN);
 		
-		container1.add(jl1);container1.add(jcb1);
-		container1.add(jl2);container1.add(jcb2);
-		container1.add(jl3);container1.add(jtf2);
-		container1.add(jl4);container1.add(jtf3);
-		container1.add(jl5);container1.add(jtf4);
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\scomic.png"));
+		GroupLayout gl_container1 = new GroupLayout(container1);
+		gl_container1.setHorizontalGroup(
+			gl_container1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_container1.createSequentialGroup()
+					.addGap(22)
+					.addGroup(gl_container1.createParallelGroup(Alignment.LEADING, false)
+						.addGroup(gl_container1.createSequentialGroup()
+							.addComponent(jl3)
+							.addGap(5)
+							.addComponent(jtf2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(lblNewLabel_1))
+						.addGroup(gl_container1.createSequentialGroup()
+							.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_container1.createSequentialGroup()
+									.addComponent(jl2, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED)
+									.addComponent(jcb2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addGap(124)
+									.addComponent(jl1))
+								.addGroup(gl_container1.createParallelGroup(Alignment.TRAILING)
+									.addGroup(gl_container1.createSequentialGroup()
+										.addComponent(jl5)
+										.addGap(5)
+										.addComponent(jtf4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+									.addGroup(gl_container1.createSequentialGroup()
+										.addComponent(jl4)
+										.addGap(5)
+										.addComponent(jtf3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+							.addGap(5)
+							.addComponent(jcb1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(120, Short.MAX_VALUE))
+		);
+		gl_container1.setVerticalGroup(
+			gl_container1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_container1.createSequentialGroup()
+					.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_container1.createSequentialGroup()
+							.addContainerGap()
+							.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_container1.createSequentialGroup()
+									.addGap(3)
+									.addComponent(jl3))
+								.addComponent(jtf2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)
+							.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_container1.createSequentialGroup()
+									.addGap(3)
+									.addComponent(jl4))
+								.addComponent(jtf3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+							.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_container1.createSequentialGroup()
+									.addGap(3)
+									.addComponent(jl5))
+								.addComponent(jtf4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addGap(18))
+						.addGroup(gl_container1.createSequentialGroup()
+							.addGap(20)
+							.addComponent(lblNewLabel_1)
+							.addPreferredGap(ComponentPlacement.RELATED)))
+					.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+						.addComponent(jcb1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(jl1)
+						.addGroup(gl_container1.createSequentialGroup()
+							.addGap(3)
+							.addComponent(jl2))
+						.addComponent(jcb2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		container1.setLayout(gl_container1);
 		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
+		GroupLayout groupLayout = new GroupLayout(getContentPane());
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(22)
+							.addComponent(container2, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
+							.addGap(60)
+							.addComponent(lblNewLabel)
+							.addPreferredGap(ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+							.addComponent(container1, GroupLayout.PREFERRED_SIZE, 418, GroupLayout.PREFERRED_SIZE))
+						.addComponent(jsp, GroupLayout.PREFERRED_SIZE, 784, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap())
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(52)
+							.addComponent(lblNewLabel))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(39)
+							.addComponent(container1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(13)
+							.addComponent(container2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addPreferredGap(ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+					.addComponent(jsp, GroupLayout.PREFERRED_SIZE, 526, GroupLayout.PREFERRED_SIZE))
+		);
+		GroupLayout gl_container2 = new GroupLayout(container2);
+		gl_container2.setHorizontalGroup(
+			gl_container2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_container2.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_container2.createParallelGroup(Alignment.LEADING)
+						.addComponent(jb1)
+						.addComponent(jb2)
+						.addComponent(jb3)
+						.addComponent(jb4)
+						.addComponent(jb5))
+					.addContainerGap(18, Short.MAX_VALUE))
+		);
+		gl_container2.setVerticalGroup(
+			gl_container2.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_container2.createSequentialGroup()
+					.addGap(5)
+					.addComponent(jb1)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(jb2)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(jb3)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(jb4)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(jb5)
+					.addContainerGap(30, Short.MAX_VALUE))
+		);
+		container2.setLayout(gl_container2);
+		getContentPane().setLayout(groupLayout);
 		
-		container2.add(jb1);
-		container2.add(jb2);
-		container2.add(jb3);
-		container2.add(jb4);
-		container2.add(jb5);
-		
-		
-		add(container1,BorderLayout.NORTH);
-		add(jsp,BorderLayout.CENTER);
-		add(container2,BorderLayout.SOUTH);
-		
-		setBounds(200,200,800,250);
+		setBounds(200,200,800,800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		
