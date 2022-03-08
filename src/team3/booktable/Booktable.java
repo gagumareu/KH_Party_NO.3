@@ -1,4 +1,4 @@
-package src.team3.booktable;
+package team3.booktable;
 
 
 import java.awt.BorderLayout;
