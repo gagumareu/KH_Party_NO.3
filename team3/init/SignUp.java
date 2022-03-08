@@ -123,7 +123,7 @@ public class SignUp extends JFrame {
 			sql = "insert into member values(?,?,mem_seq.nextval,?,?,?,0)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, tfId.getText());
-			pstmt.setString(2, pfpwd.getText());
+			pstmt.setString(2, String.valueOf(pfpwd.getPassword()));
 			//mem_num은 시스템에서 부여.
 			pstmt.setString(3, tfName.getText());
 			pstmt.setString(4, tfCont.getText());
@@ -134,7 +134,6 @@ public class SignUp extends JFrame {
 			
 			if(res > 0) {
 				JOptionPane.showMessageDialog(null, "회원가입 완료.");
-				dispose();
 			}else {
 				JOptionPane.showMessageDialog(null, "회원가입 실패.");
 			}

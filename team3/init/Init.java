@@ -7,7 +7,6 @@ import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 
 public class Init extends JFrame {
 	Connection con = null;              // DB와 연결하는 객체.
@@ -88,6 +87,7 @@ public class Init extends JFrame {
 		btnFindIdPwd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				new FindIdPassword();
 			}
 		});
 		signup_find_panel.add(btnFindIdPwd);
@@ -96,6 +96,13 @@ public class Init extends JFrame {
 		getContentPane().add(login_panel, BorderLayout.CENTER);
 		
 		JButton btnLogin = new JButton("로그인");
+		btnLogin.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				connect();
+				checkLoginValid(tf_id.getText(), String.valueOf(pf_pwd.getPassword()));
+			}
+		});
 		login_panel.add(btnLogin);
 	}
 
@@ -109,12 +116,22 @@ public class Init extends JFrame {
 	
 	void checkLoginValid(String id, String pw) {
 		try {
-			sql = "select mem_password where mem_id=?";
+			sql = "select mem_password from member where mem_id=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				if(pw.equals(rs.getString("mem_password"))) {
+					System.out.println("비밀번호 일치. 로그인 valid");
+				}
+				else {
+					System.out.println("아이디나 비밀번호를 잘못 입력하셨거나 등록되지 않은 아이디입니다.");
+				}
+			}
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}
+	
 }
