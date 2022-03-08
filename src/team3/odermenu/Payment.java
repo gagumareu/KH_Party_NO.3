@@ -40,13 +40,13 @@ public class Payment extends JFrame {
 	private JPanel contentPane;
 	private JTable paytable;
 
-	public JTable getPaytable() {
-		return paytable;
-	}
-
-	public void setPaytable(JTable paytable) {
-		this.paytable = paytable;
-	}
+//	public JTable getPaytable() {
+//		return paytable;
+//	}
+//
+//	public void setPaytable(JTable paytable) {
+//		this.paytable = paytable;
+//	}
 
 	/**
 	 * Launch the application.
@@ -55,8 +55,8 @@ public class Payment extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Payment frame = new Payment();
-					frame.setVisible(true);
+//					Payment frame = new Payment();
+//					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -80,6 +80,7 @@ public class Payment extends JFrame {
 
 	
 	public Payment(JTable paytable) {
+		
 		setTitle("결제 화면");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\comic.png"));
 		setBackground(SystemColor.window);
