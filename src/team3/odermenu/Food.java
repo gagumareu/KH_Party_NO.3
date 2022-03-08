@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 import java.awt.SystemColor;
 import javax.swing.GroupLayout;
@@ -123,10 +124,12 @@ public class Food extends JFrame {
 		payButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\payment.png"));
 		
 		JButton plusButton = new JButton("");
+		
 		plusButton.setBackground(SystemColor.window);
 		plusButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\plus.jpg"));
 		
 		JButton minuButton = new JButton("");
+		
 		minuButton.setBackground(SystemColor.window);
 		minuButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\min.jpg"));
 		GroupLayout gl_ButtonPanal = new GroupLayout(ButtonPanal);
@@ -917,23 +920,58 @@ public class Food extends JFrame {
 			}
 		}); 
 		
-		plusButton.addMouseListener(new MouseListener() {
+		
+		
+		payButton.addActionListener(new ActionListener() {
 			
-			public void mouseReleased(MouseEvent e) {
-			}
-			public void mousePressed(MouseEvent e) {
-			}
-			public void mouseExited(MouseEvent e) {
-			}
-			public void mouseEntered(MouseEvent e) {
-			}
-			
-			public void mouseClicked(MouseEvent e) {
+			public void actionPerformed(ActionEvent e) {
 
-				increase();
+
+				connect();
+				payment();
+				
 				
 			}
 		});
+		
+		
+		plusButton.addMouseListener(new MouseListener() {
+			
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			public void mouseClicked(MouseEvent e) {
+				
+				int row = table.getSelectedRow();
+
+				int num = Integer.parseInt(model.getValueAt(row, 2).toString());
+				
+				num++;
+				
+				
+				
+			}
+		});
+		
+		
+		
 		
 		
 		
@@ -1076,17 +1114,49 @@ public class Food extends JFrame {
 		
 	}
 
+	
+	
+	
 
+	void payment() {
+		
+//		TableModel tm = table.getModel();
+//		ArrayList<Object[]> order = new ArrayList<Object[]>();
+		
+		
+		model = (DefaultTableModel) table.getModel();
+		
+		try {
+			
+			
+			System.out.println(model.getRowCount());
+		
+			
+			
+			for(int i = 0; i < model.getRowCount(); i++) {
+				
+				sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, sysdate)";
+				pstmt = con.prepareStatement(sql);
+						
+				pstmt.setString(1, model.getValueAt(i, 0).toString());
+				pstmt.setInt(2, (Integer)(model.getValueAt(i, 1)));
+				pstmt.setString(4,  model.getValueAt(i, 3).toString());
+				pstmt.setInt(3, (Integer)(model.getValueAt(i, 2)));
 
-	void increase() {
-		
-		sql = "insert into payment velues (orderNO_sqe, ?, ?, ?, sysdate)";
-		
-		
-		
-		
-		
-		
+			}
+
+			
+			
+			
+			int result = pstmt.executeUpdate();
+
+			con.close();
+			pstmt.close();
+			
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
 		
 	}
 
