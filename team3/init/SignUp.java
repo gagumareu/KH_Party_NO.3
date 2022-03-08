@@ -14,9 +14,8 @@ public class SignUp extends JFrame {
 	String sql = null;		// SQL문 저장 문자열 변수
 
 	private JPanel contentPane;
-	private JTextField tfId, tfName, tfCont, tfAddr;
+	private JTextField tfId, tfName, tfCont, tfAddr, tfAns;
 	private JPasswordField pfpwd;
-	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -46,6 +45,7 @@ public class SignUp extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setVisible(true);
+		//기본 panel 세팅
 		
 		JPanel panelCenter = new JPanel();
 		panelCenter.setLayout(new FlowLayout());
@@ -63,66 +63,55 @@ public class SignUp extends JFrame {
 		JLabel jl1_id = new JLabel("아이디*: ");
 		tfId = new JTextField();
 		tfId.setColumns(10);
-		
 		panelId.add(jl1_id); panelId.add(tfId);
-		
 		
 		JLabel jl2_pwd = new JLabel("비밀번호*: ");
 		pfpwd = new JPasswordField();
 		pfpwd.setColumns(10);
-		
 		panelPwd.add(jl2_pwd); panelPwd.add(pfpwd);
-		
 		
 		JLabel jl3_name = new JLabel("이름*: ");
 		tfName = new JTextField();
 		tfName.setColumns(10);
-		
 		panelName.add(jl3_name); panelName.add(tfName);
-		
 		
 		JLabel jl4_cont = new JLabel("연락처: ");
 		tfCont = new JTextField();
 		tfCont.setColumns(10);
-		
 		panelCont.add(jl4_cont); panelCont.add(tfCont);
-		
 		
 		JLabel jl5_addr = new JLabel("주소: ");
 		tfAddr = new JTextField();
 		tfAddr.setColumns(10);
-		
 		panelAddr.add(jl5_addr); panelAddr.add(tfAddr);
 		
-		
-		JLabel jl6 = new JLabel("*는 필수 입력");
-		
-		
+
 		panelInfo.add(panelId); panelInfo.add(panelPwd);
 		panelInfo.add(panelName); panelInfo.add(panelCont);
 		panelInfo.add(panelAddr);
 		
+		
+		JLabel jl6_Question = new JLabel("비밀번호 찾기 질문*: ");
+		JPanel panelAns = new JPanel();
+		panelInfo.add(jl6_Question); panelInfo.add(panelAns);
+		
+		JLabel jl6_Ans = new JLabel("어릴때 살던 동네는? ");
+		tfAns = new JTextField();
+		tfAns.setColumns(5);
+		panelAns.add(jl6_Ans); panelAns.add(tfAns);
+		
 		panelCenter.add(panelInfo);
 		
-		JLabel lblNewLabel = new JLabel("비밀번호 찾기 질문*: ");
-		panelInfo.add(lblNewLabel);
-		
-		JPanel panel = new JPanel();
-		panelInfo.add(panel);
-		
-		JLabel lblNewLabel_1 = new JLabel("어릴때 살던 동네는? ");
-		panel.add(lblNewLabel_1);
-		
-		textField = new JTextField();
-		panel.add(textField);
-		textField.setColumns(5);
-		panelCenter.add(jl6);
+		JLabel jl7 = new JLabel("*는 필수 입력");
+		panelCenter.add(jl7);
 		
 		contentPane.add(panelCenter);
 		
 		JPanel panelBtn = new JPanel();
 		contentPane.add(panelBtn, BorderLayout.SOUTH);
 		
+		
+		//버튼 이벤트 처리
 		JButton btnSignUp = new JButton("회원가입");
 		btnSignUp.addActionListener(new ActionListener() {
 			@Override
@@ -145,7 +134,7 @@ public class SignUp extends JFrame {
 	
 	void insert() {
 		try {
-			sql = "insert into member values(?,?,mem_seq.nextval,?,?,?,0)";
+			sql = "insert into member values(?,?,mem_seq.nextval,?,?,?,?,0)";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, tfId.getText());
 			pstmt.setString(2, String.valueOf(pfpwd.getPassword()));
@@ -153,6 +142,7 @@ public class SignUp extends JFrame {
 			pstmt.setString(3, tfName.getText());
 			pstmt.setString(4, tfCont.getText());
 			pstmt.setString(5, tfAddr.getText());
+			pstmt.setString(6, tfAns.getText());
 			//mem_mileage는 초기 0에서 시작.
 			
 			int res = pstmt.executeUpdate();
