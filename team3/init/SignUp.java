@@ -1,26 +1,12 @@
 package team3.init;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.awt.*;
+import java.sql.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JSplitPane;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import java.awt.FlowLayout;
-import javax.swing.BoxLayout;
-import java.awt.GridLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class SignUp extends JFrame {
 	Connection con = null;              // DB와 연결하는 객체.
@@ -29,11 +15,8 @@ public class SignUp extends JFrame {
 	String sql = null;		// SQL문 저장 문자열 변수
 
 	private JPanel contentPane;
-	private JTextField tfId;
+	private JTextField tfId, tfName, tfCont, tfAddr;
 	private JPasswordField pfpwd;
-	private JTextField tfName;
-	private JTextField tfCont;
-	private JTextField tfAddr;
 
 	/**
 	 * Launch the application.
@@ -43,7 +26,6 @@ public class SignUp extends JFrame {
 			public void run() {
 				try {
 					SignUp frame = new SignUp();
-					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -57,66 +39,61 @@ public class SignUp extends JFrame {
 	public SignUp() {
 		setTitle("회원가입");
 		
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 300, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
+		setVisible(true);
 		
 		JPanel panel_info = new JPanel();
 		contentPane.add(panel_info, BorderLayout.CENTER);
 		
-		JSplitPane splitPane_id = new JSplitPane();
 		
 		JLabel jl1_id = new JLabel("아이디: ");
-		splitPane_id.setLeftComponent(jl1_id);
-		
 		tfId = new JTextField();
-		splitPane_id.setRightComponent(tfId);
 		tfId.setColumns(10);
 		
-		JSplitPane splitPane_pwd = new JSplitPane();
-		
 		JLabel jl2_pwd = new JLabel("비밀번호: ");
-		splitPane_pwd.setLeftComponent(jl2_pwd);
-		
 		pfpwd = new JPasswordField();
 		pfpwd.setColumns(10);
-		splitPane_pwd.setRightComponent(pfpwd);
-		
-		JSplitPane splitPane_name = new JSplitPane();
 		
 		JLabel jl3_name = new JLabel("이름: ");
-		splitPane_name.setLeftComponent(jl3_name);
-		
 		tfName = new JTextField();
-		splitPane_name.setRightComponent(tfName);
 		tfName.setColumns(10);
 		
-		JSplitPane splitPane_cont = new JSplitPane();
-		
-		JLabel il4_cont = new JLabel("연락처: ");
-		splitPane_cont.setLeftComponent(il4_cont);
-		
+		JLabel jl4_cont = new JLabel("연락처: ");
 		tfCont = new JTextField();
-		splitPane_cont.setRightComponent(tfCont);
 		tfCont.setColumns(10);
 		
-		JSplitPane splitPane_addr = new JSplitPane();
-		
 		JLabel jl5_addr = new JLabel("주소: ");
-		splitPane_addr.setLeftComponent(jl5_addr);
-		
 		tfAddr = new JTextField();
-		splitPane_addr.setRightComponent(tfAddr);
 		tfAddr.setColumns(20);
+		
+		
+		JPanel panel = new JPanel();
+		panel_info.add(panel);
+
+		JPanel panel_1 = new JPanel();
+		panel_info.add(panel_1);
+
+		JPanel panel_2 = new JPanel();
+		panel_info.add(panel_2);
+
+		JPanel panel_3 = new JPanel();
+		panel_info.add(panel_3);
+
+		JPanel panel_4 = new JPanel();
+		panel_info.add(panel_4);
+		
 		panel_info.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		panel_info.add(splitPane_id);
-		panel_info.add(splitPane_pwd);
-		panel_info.add(splitPane_name);
-		panel_info.add(splitPane_cont);
-		panel_info.add(splitPane_addr);
+		
+		panel.add(jl1_id); panel.add(tfId);
+		panel_1.add(jl2_pwd); panel_1.add(pfpwd);
+		panel_2.add(jl3_name); panel_2.add(tfName);
+		panel_3.add(jl4_cont); panel_3.add(tfCont);
+		panel_4.add(jl5_addr); panel_4.add(tfAddr);
 		
 		JPanel panel_btn = new JPanel();
 		contentPane.add(panel_btn, BorderLayout.SOUTH);
@@ -125,6 +102,12 @@ public class SignUp extends JFrame {
 		panel_btn.add(btnSignUp);
 		
 		JButton btnCancel = new JButton("취소");
+		btnCancel.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 		panel_btn.add(btnCancel);
 	}
 	

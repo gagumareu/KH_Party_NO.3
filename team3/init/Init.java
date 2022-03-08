@@ -14,13 +14,10 @@ public class Init extends JFrame {
 	PreparedStatement pstmt = null;     // SQL문을 DB에 전송하는 객체.
 	ResultSet rs = null;	// SQL문을 실행한 후의 결과값을 가지고 있는 객체.
 	String sql = null;		// SQL문 저장 문자열 변수
-	DefaultTableModel model;
-	JTextField jtf1, jtf2;
-	JTable table;
 	
 	private JPanel contentPane;
 	private JTextField tf_id;
-	private JTextField tf_pwd;
+	private JPasswordField pf_pwd;
 
 	/**
 	 * Launch the application.
@@ -30,7 +27,6 @@ public class Init extends JFrame {
 			public void run() {
 				try {
 					Init frame = new Init();
-					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -50,6 +46,7 @@ public class Init extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		setVisible(true);
 		
 		JPanel info_panel = new JPanel();
 		getContentPane().add(info_panel, BorderLayout.NORTH);
@@ -71,9 +68,9 @@ public class Init extends JFrame {
 		JLabel lblNewLabel = new JLabel("비밀번호: ");
 		pwd_panel.add(lblNewLabel);
 		
-		tf_pwd = new JTextField();
-		pwd_panel.add(tf_pwd);
-		tf_pwd.setColumns(10);
+		pf_pwd = new JPasswordField();
+		pf_pwd.setColumns(10);
+		pwd_panel.add(pf_pwd);
 		
 		JPanel signup_find_panel = new JPanel();
 		getContentPane().add(signup_find_panel, BorderLayout.SOUTH);
@@ -88,6 +85,11 @@ public class Init extends JFrame {
 		signup_find_panel.add(btnSignUp);
 		
 		JButton btnFindIdPwd = new JButton("아이디/비밀번호 찾기");
+		btnFindIdPwd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		signup_find_panel.add(btnFindIdPwd);
 		
 		JPanel login_panel = new JPanel();
