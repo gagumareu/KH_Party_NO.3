@@ -37,6 +37,7 @@ import javax.swing.SpinnerNumberModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JCheckBox;
 
 public class Food extends JFrame {
 
@@ -157,29 +158,72 @@ public class Food extends JFrame {
 					.addComponent(payButton, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
 		);
 		ButtonPanal.setLayout(gl_ButtonPanal);
-		GroupLayout gl_contentPane = new GroupLayout(contentPane);
-		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(14)
-					.addComponent(OderTebbedPanel, GroupLayout.PREFERRED_SIZE, 744, GroupLayout.PREFERRED_SIZE))
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(98)
-					.addComponent(cartPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+		
+		JPanel timeTablePanel = new JPanel();
+		timeTablePanel.setBackground(SystemColor.window);
+		OderTebbedPanel.addTab("시간", new ImageIcon("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\times2.jpg"), timeTablePanel, null);
+		
+		JPanel costPanel = new JPanel();
+		costPanel.setBackground(SystemColor.window);
+		
+		JPanel ramyeonPanel_1 = new JPanel();
+		ramyeonPanel_1.setBackground(SystemColor.window);
+		
+		JCheckBox chckbxNewCheckBox = new JCheckBox("1시간 추가");
+		chckbxNewCheckBox.setBackground(SystemColor.window);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setBackground(SystemColor.window);
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\1시간2.jpg"));
+		GroupLayout gl_ramyeonPanel_1 = new GroupLayout(ramyeonPanel_1);
+		gl_ramyeonPanel_1.setHorizontalGroup(
+			gl_ramyeonPanel_1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_ramyeonPanel_1.createSequentialGroup()
+					.addGroup(gl_ramyeonPanel_1.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_ramyeonPanel_1.createSequentialGroup()
+							.addGap(40)
+							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_ramyeonPanel_1.createSequentialGroup()
+							.addGap(20)
+							.addComponent(chckbxNewCheckBox)))
+					.addContainerGap(41, Short.MAX_VALUE))
+		);
+		gl_ramyeonPanel_1.setVerticalGroup(
+			gl_ramyeonPanel_1.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_ramyeonPanel_1.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(ButtonPanal, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+					.addComponent(chckbxNewCheckBox)
+					.addGap(13))
 		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(12)
-					.addComponent(OderTebbedPanel, GroupLayout.PREFERRED_SIZE, 380, GroupLayout.PREFERRED_SIZE)
-					.addGap(12)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(cartPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(ButtonPanal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap())
+		ramyeonPanel_1.setLayout(gl_ramyeonPanel_1);
+		GroupLayout gl_costPanel = new GroupLayout(costPanel);
+		gl_costPanel.setHorizontalGroup(
+			gl_costPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_costPanel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(ramyeonPanel_1, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(515, Short.MAX_VALUE))
 		);
+		gl_costPanel.setVerticalGroup(
+			gl_costPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_costPanel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(ramyeonPanel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(237, Short.MAX_VALUE))
+		);
+		costPanel.setLayout(gl_costPanel);
+		GroupLayout gl_timeTablePanel = new GroupLayout(timeTablePanel);
+		gl_timeTablePanel.setHorizontalGroup(
+			gl_timeTablePanel.createParallelGroup(Alignment.TRAILING)
+				.addComponent(costPanel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 659, Short.MAX_VALUE)
+		);
+		gl_timeTablePanel.setVerticalGroup(
+			gl_timeTablePanel.createParallelGroup(Alignment.TRAILING)
+				.addComponent(costPanel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+		);
+		timeTablePanel.setLayout(gl_timeTablePanel);
 		
 		JPanel mealpanel = new JPanel();
 		mealpanel.setBackground(SystemColor.window);
@@ -189,7 +233,7 @@ public class Food extends JFrame {
 		kimPanel.setBackground(Color.WHITE);
 		
 		kimchSpinner = new JSpinner();
-		kimchSpinner.setModel(new SpinnerNumberModel(1, 0, 10, 1));
+		kimchSpinner.setModel(new SpinnerNumberModel(1, 1, 10, 1));
 		kimchSpinner.setForeground(Color.WHITE);
 		kimchSpinner.setBackground(SystemColor.window);
 		
@@ -250,7 +294,7 @@ public class Food extends JFrame {
 		chickPanel.setBackground(Color.WHITE);
 		
 		chickSpinner = new JSpinner();
-		chickSpinner.setModel(new SpinnerNumberModel(1, 0, 10, 1));
+		chickSpinner.setModel(new SpinnerNumberModel(1, 1, 10, 1));
 		chickSpinner.setForeground(Color.WHITE);
 		chickSpinner.setBackground(SystemColor.window);
 		
@@ -308,7 +352,7 @@ public class Food extends JFrame {
 		spamPanel.setBackground(Color.WHITE);
 		
 		spamSpinner = new JSpinner();
-		spamSpinner.setModel(new SpinnerNumberModel(1, 0, 10, 1));
+		spamSpinner.setModel(new SpinnerNumberModel(1, 1, 10, 1));
 		spamSpinner.setForeground(Color.WHITE);
 		spamSpinner.setBackground(SystemColor.window);
 		
@@ -392,7 +436,7 @@ public class Food extends JFrame {
 		ameriPanel.setBackground(Color.WHITE);
 		
 		ameriSpinner = new JSpinner();
-		ameriSpinner.setModel(new SpinnerNumberModel(1, 0, 10, 1));
+		ameriSpinner.setModel(new SpinnerNumberModel(1, 1, 10, 1));
 		ameriSpinner.setForeground(Color.WHITE);
 		ameriSpinner.setBackground(SystemColor.window);
 		
@@ -454,7 +498,7 @@ public class Food extends JFrame {
 		caramelPanel.setBackground(SystemColor.window);
 		
 		caraSpinner = new JSpinner();
-		caraSpinner.setModel(new SpinnerNumberModel(1, 0, 10, 1));
+		caraSpinner.setModel(new SpinnerNumberModel(1, 1, 10, 1));
 		caraSpinner.setForeground(Color.WHITE);
 		caraSpinner.setBackground(SystemColor.window);
 		
@@ -514,7 +558,7 @@ public class Food extends JFrame {
 		caferaPanel.setBackground(Color.WHITE);
 		
 		caferaSpinner = new JSpinner();
-		caferaSpinner.setModel(new SpinnerNumberModel(1, 0, 10, 1));
+		caferaSpinner.setModel(new SpinnerNumberModel(1, 1, 10, 1));
 		caferaSpinner.setForeground(Color.WHITE);
 		caferaSpinner.setBackground(SystemColor.window);
 		
@@ -800,6 +844,36 @@ public class Food extends JFrame {
 				.addComponent(carjsp, GroupLayout.PREFERRED_SIZE, 330, GroupLayout.PREFERRED_SIZE)
 		);
 		cartPanel.setLayout(gl_cartPanel);
+		
+		JButton btnNewButton = new JButton("");
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\home.png"));
+		btnNewButton.setBackground(SystemColor.window);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(14)
+					.addComponent(OderTebbedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(cartPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(8)
+					.addComponent(ButtonPanal, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+					.addGap(12)
+					.addComponent(OderTebbedPanel, GroupLayout.PREFERRED_SIZE, 380, GroupLayout.PREFERRED_SIZE)
+					.addGap(12)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+							.addComponent(cartPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addComponent(ButtonPanal, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)))
+		);
 		contentPane.setLayout(gl_contentPane);
 		
 		
@@ -934,7 +1008,6 @@ public class Food extends JFrame {
 			}
 		});
 		
-		
 		plusButton.addMouseListener(new MouseListener() {
 			
 			public void mouseReleased(MouseEvent e) {
@@ -959,12 +1032,13 @@ public class Food extends JFrame {
 			
 			public void mouseClicked(MouseEvent e) {
 				
-				int row = table.getSelectedRow();
-
-				int num = Integer.parseInt(model.getValueAt(row, 2).toString());
-				
-				num++;
-				
+				increase();
+//				model = (DefaultTableModel) table.getModel();
+//				
+//				int row = table.getSelectedRow();
+//				int plus = (Integer) model.getValueAt(row, 2);
+//				
+//				plus +=1;
 				
 				
 			}
@@ -1010,9 +1084,8 @@ public class Food extends JFrame {
 		
 		try {
 			sql = "select fname, price , mealtype from food where fname = ?";
-
-			
 			pstmt = con.prepareStatement(sql);
+			
 			pstmt.setString(1, meanlOrder);
 			
 			res = pstmt.executeQuery();
@@ -1120,36 +1193,31 @@ public class Food extends JFrame {
 
 	void payment() {
 		
-//		TableModel tm = table.getModel();
-//		ArrayList<Object[]> order = new ArrayList<Object[]>();
-		
-		
+	
 		model = (DefaultTableModel) table.getModel();
 		
 		try {
 			
-			
-			System.out.println(model.getRowCount());
 		
-			
+			sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, sysdate)";
+			pstmt = con.prepareStatement(sql);
+		
+					
 			
 			for(int i = 0; i < model.getRowCount(); i++) {
 				
-				sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, sysdate)";
-				pstmt = con.prepareStatement(sql);
-						
+				
 				pstmt.setString(1, model.getValueAt(i, 0).toString());
 				pstmt.setInt(2, (Integer)(model.getValueAt(i, 1)));
 				pstmt.setString(4,  model.getValueAt(i, 3).toString());
 				pstmt.setInt(3, (Integer)(model.getValueAt(i, 2)));
+				pstmt.addBatch();
+				pstmt.clearParameters();
 
 			}
 
+			pstmt.executeBatch();
 			
-			
-			
-			int result = pstmt.executeUpdate();
-
 			con.close();
 			pstmt.close();
 			
@@ -1159,115 +1227,15 @@ public class Food extends JFrame {
 		}
 		
 	}
-
-
-
-
-
-
-
-
-
-
-//void select () {
-//
-//try {
-////sql = "select fname, price from food where fname = ?";
-//sql = "select * from food where mealtype = '식사'";
-//
-//pstmt = con.prepareStatement(sql);
-//pstmt.setString(1, kimchNameLabel.getText());
-//pstmt.setString(1, spamNameLabel.getText());
-//pstmt.setString(1, chickNameLabel.getText());
-//res = pstmt.executeQuery();
-//
-//
-//List<Object[]> mealList = new ArrayList<Object[]>();
-//
-//while(res.next()) {
-//
-//Object[] arrObj = {res.getString("fname"), res.getInt("price")};
-//mealList.add(arrObj);
-//
-//for(int i = 0; i < mealList.size(); i++) {
-//	System.out.println(i);
-//}
-//
-//	
-//
-////String fname = res.getString("fname");
-////int price = res.getInt("price");
-////
-////Object[] cart = {fname, price, kimchSpinner.getValue()};
-//
-//
-////model.addRow(cart);
-//				
-//}
-//
-//con.close();
-//
-//} catch (Exception e) {
-//e.printStackTrace();
-//}
-//}
-
-
-
-
-//void payment() {
-//	
-//	
-//	try {
-//		sql = "insert into payment values(orderNo_sqe, ?, ?, ? . sysdate)";
-//
-//		pstmt = con.prepareStatement(sql);
-//		pstmt.setString(1, x);
-//		
-//	} catch (SQLException e) {
-//		// TODO Auto-generated catch block
-//		e.printStackTrace();
-//	}
-//	
-//	
-//	
-//}
-
-
-
-//	
-//	
-//void spamselect () {
-//		
-//		
-//		try {
-//			sql = "select fname, price from food where fname = ?";
-//
-//			
-//			pstmt = con.prepareStatement(sql);
-//			pstmt.setString(1, spamNameLabel.getText());
-//			res = pstmt.executeQuery();
-//			
-//			while(res.next()) {
-//				
-//				String fname = res.getString("fname");
-//				int price = res.getInt("price");
-//				
-//				Object[] cart = {fname, price, spamSpinner.getValue()};
-//					
-//				
-//				model.addRow(cart);
-//								
-//			}
-//			
-//			con.close();
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
-//	
-
 	
-	
+	void increase() {
+		
+		model = (DefaultTableModel) table.getModel();
+		
+		int row = table.getSelectedRow();
+		int value = (Integer) model.getValueAt(row, 2);
+		model.fireTableCellUpdated(row, 2);
+		value += 1;
+		System.out.println();
+	}
 }
