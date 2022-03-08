@@ -215,11 +215,11 @@ public class Manage_Foodmenu extends JFrame {
 		
 		
 		try {
-			sql="select distinct(mealno) from food order by mealno ";
+			sql="select distinct(mealtype) from food order by mealtype ";
 			pstmt= con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
-				String meal= rs.getString("mealno");
+				String meal= rs.getString("mealtype");
 				jcb1.addItem(meal);
 			}
 			rs.close();pstmt.close();
@@ -234,14 +234,14 @@ public class Manage_Foodmenu extends JFrame {
 		
 		
 		try {
-			sql="select*from food order by mealno, fname";
+			sql="select*from food order by mealtype, fname";
 			pstmt = con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				int fno = rs.getInt("fno");
 				String fname = rs.getString("fname");
 				int price = rs.getInt("price");
-				String meal= rs.getString("mealno");
+				String meal= rs.getString("mealtype");
 				
 				Object[] data= {fno,fname,price,meal};
 				model.addRow(data);
@@ -288,7 +288,7 @@ public class Manage_Foodmenu extends JFrame {
 		
 		
 		try {
-			sql= "update food set fname=?,price=?, mealno=? where fno=?";
+			sql= "update food set fname=?,price=?, mealtype=? where fno=?";
 			pstmt=con.prepareStatement(sql);
 			
 			pstmt.setString(1, jtf2.getText());
