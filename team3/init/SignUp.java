@@ -5,8 +5,7 @@ import java.sql.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import java.awt.event.*;
 
 public class SignUp extends JFrame {
 	Connection con = null;              // DB와 연결하는 객체.
@@ -47,56 +46,78 @@ public class SignUp extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setVisible(true);
 		
-		JPanel panel_info = new JPanel();
-		contentPane.add(panel_info, BorderLayout.CENTER);
+		JPanel panelCenter = new JPanel();
+		panelCenter.setLayout(new FlowLayout());
+		
+		JPanel panelInfo = new JPanel();
+		panelInfo.setLayout(new GridLayout(5, 1));
+		
+		JPanel panelId = new JPanel();
+		JPanel panelPwd = new JPanel();
+		JPanel panelName = new JPanel();
+		JPanel panelCont = new JPanel();
+		JPanel panelAddr = new JPanel();
 		
 		
+		JPanel panel_id1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		JPanel panel_id2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel jl1_id = new JLabel("아이디: ");
 		tfId = new JTextField();
 		tfId.setColumns(10);
 		
+		panel_id1.add(jl1_id); panel_id2.add(tfId);
+		panelId.add(panel_id1); panelId.add(panel_id2);
+		
+		
+		JPanel panel_pwd1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		JPanel panel_pwd2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel jl2_pwd = new JLabel("비밀번호: ");
 		pfpwd = new JPasswordField();
 		pfpwd.setColumns(10);
 		
+		panel_pwd1.add(jl2_pwd); panel_pwd2.add(pfpwd);
+		panelPwd.add(panel_pwd1); panelPwd.add(panel_pwd2);
+		
+		
+		JPanel panel_name1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		JPanel panel_name2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel jl3_name = new JLabel("이름: ");
 		tfName = new JTextField();
 		tfName.setColumns(10);
 		
+		panel_name1.add(jl3_name); panel_name2.add(tfName);
+		panelName.add(panel_name1); panelName.add(panel_name2);
+		
+		
+		JPanel panel_cont1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		JPanel panel_cont2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel jl4_cont = new JLabel("연락처: ");
 		tfCont = new JTextField();
 		tfCont.setColumns(10);
 		
+		panel_cont1.add(jl4_cont); panel_cont2.add(tfCont);
+		panelCont.add(panel_cont1); panelCont.add(panel_cont2);
+		
+		
+		JPanel panel_addr1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		JPanel panel_addr2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel jl5_addr = new JLabel("주소: ");
 		tfAddr = new JTextField();
-		tfAddr.setColumns(20);
+		tfAddr.setColumns(15);
 		
+		panel_addr1.add(jl5_addr); panel_addr2.add(tfAddr);
+		panelAddr.add(panel_addr1); panelAddr.add(panel_addr2);
 		
-		JPanel panel = new JPanel();
-		panel_info.add(panel);
-
-		JPanel panel_1 = new JPanel();
-		panel_info.add(panel_1);
-
-		JPanel panel_2 = new JPanel();
-		panel_info.add(panel_2);
-
-		JPanel panel_3 = new JPanel();
-		panel_info.add(panel_3);
-
-		JPanel panel_4 = new JPanel();
-		panel_info.add(panel_4);
+		panelInfo.add(panelId); panelInfo.add(panelPwd);
+		panelInfo.add(panelName); panelInfo.add(panelCont);
+		panelInfo.add(panelAddr);
 		
-		panel_info.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		panelCenter.add(panelInfo);
 		
-		panel.add(jl1_id); panel.add(tfId);
-		panel_1.add(jl2_pwd); panel_1.add(pfpwd);
-		panel_2.add(jl3_name); panel_2.add(tfName);
-		panel_3.add(jl4_cont); panel_3.add(tfCont);
-		panel_4.add(jl5_addr); panel_4.add(tfAddr);
+		contentPane.add(panelCenter);
 		
-		JPanel panel_btn = new JPanel();
-		contentPane.add(panel_btn, BorderLayout.SOUTH);
+		JPanel panelBtn = new JPanel();
+		contentPane.add(panelBtn, BorderLayout.SOUTH);
 		
 		JButton btnSignUp = new JButton("회원가입");
 		btnSignUp.addActionListener(new ActionListener() {
@@ -106,7 +127,7 @@ public class SignUp extends JFrame {
 				insert();
 			}
 		});
-		panel_btn.add(btnSignUp);
+		panelBtn.add(btnSignUp);
 		
 		JButton btnCancel = new JButton("취소");
 		btnCancel.addActionListener(new ActionListener() {
@@ -115,7 +136,7 @@ public class SignUp extends JFrame {
 				dispose();
 			}
 		});
-		panel_btn.add(btnCancel);
+		panelBtn.add(btnCancel);
 	}
 	
 	void insert() {
