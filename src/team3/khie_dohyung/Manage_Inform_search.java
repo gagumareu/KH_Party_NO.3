@@ -1,4 +1,4 @@
-package team3.khie_dohyung;
+package src.team3.khie_dohyung;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
