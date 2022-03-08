@@ -5,6 +5,7 @@ create table member(
     mem_name varchar(20) not null,
     mem_contact varchar(20),
     mem_addr varchar(100),
+    mem_findpwd_ans varchar(20) not null,
     mem_mileage number(10)
 );
 
