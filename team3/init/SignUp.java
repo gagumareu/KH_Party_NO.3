@@ -99,6 +99,13 @@ public class SignUp extends JFrame {
 		contentPane.add(panel_btn, BorderLayout.SOUTH);
 		
 		JButton btnSignUp = new JButton("회원가입");
+		btnSignUp.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				connect();
+				insert();
+			}
+		});
 		panel_btn.add(btnSignUp);
 		
 		JButton btnCancel = new JButton("취소");
@@ -111,37 +118,38 @@ public class SignUp extends JFrame {
 		panel_btn.add(btnCancel);
 	}
 	
-//	void insert() {
-//		try {
-//			sql = "insert into member values(?,?,mem_seq.nextval,?,?,?,0)";
-//			pstmt = con.prepareStatement(sql);
-//			pstmt.setString(1, jtf1ID.getText());
-//			pstmt.setString(2, jtf2Pwd.getText());
-//			//mem_num은 시스템에서 부여.
-//			pstmt.setString(3, jtf3Name.getText());
-//			pstmt.setString(4, jtf4Cont.getText());
-//			pstmt.setString(5, jtf5Addr.getText());
-//			//mem_mileage는 초기 0에서 시작.
-//			
-//			int res = pstmt.executeUpdate();
-//			
-//			if(res > 0) {
-//				JOptionPane.showMessageDialog(null, "회원가입 완료.");
-//			}else {
-//				JOptionPane.showMessageDialog(null, "회원가입 실패.");
-//			}
-//			
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		}
-//	}
-//	
-//	void connect() {
-//		try {
-//			con = DBConnection.getConnection();
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//	}
+	void insert() {
+		try {
+			sql = "insert into member values(?,?,mem_seq.nextval,?,?,?,0)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, tfId.getText());
+			pstmt.setString(2, pfpwd.getText());
+			//mem_num은 시스템에서 부여.
+			pstmt.setString(3, tfName.getText());
+			pstmt.setString(4, tfCont.getText());
+			pstmt.setString(5, tfAddr.getText());
+			//mem_mileage는 초기 0에서 시작.
+			
+			int res = pstmt.executeUpdate();
+			
+			if(res > 0) {
+				JOptionPane.showMessageDialog(null, "회원가입 완료.");
+				dispose();
+			}else {
+				JOptionPane.showMessageDialog(null, "회원가입 실패.");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	void connect() {
+		try {
+			con = DBConnection.getConnection();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }
