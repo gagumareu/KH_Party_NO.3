@@ -38,6 +38,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JCheckBox;
+import javax.swing.ButtonGroup;
 
 public class Food extends JFrame {
 
@@ -79,6 +80,7 @@ public class Food extends JFrame {
 	caraSpinner, caferaSpinner, ramyeonSpinner, ddeockSpinner, rabockSpinner;
 	JLabel kimchNameLabel, spamNameLabel, chickNameLabel,
 	ameriNameLabel, caraNameLabel, caferaNameLabel, ramyeonNameLabel, ddeockNameLabel, rabockNameLabel;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	
 	
@@ -173,11 +175,15 @@ public class Food extends JFrame {
 		ramyeonPanel_1.setBackground(SystemColor.window);
 		
 		JCheckBox chckbxNewCheckBox = new JCheckBox("1시간 추가");
+		buttonGroup.add(chckbxNewCheckBox);
 		chckbxNewCheckBox.setBackground(SystemColor.window);
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setBackground(SystemColor.window);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\1시간2.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\1hourjpg.jpg"));
+		
+		JLabel lblNewLabel_6 = new JLabel("1,000원");
+		lblNewLabel_6.setBackground(SystemColor.window);
 		GroupLayout gl_ramyeonPanel_1 = new GroupLayout(ramyeonPanel_1);
 		gl_ramyeonPanel_1.setHorizontalGroup(
 			gl_ramyeonPanel_1.createParallelGroup(Alignment.TRAILING)
@@ -187,34 +193,235 @@ public class Food extends JFrame {
 							.addGap(40)
 							.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE))
 						.addGroup(gl_ramyeonPanel_1.createSequentialGroup()
-							.addGap(20)
-							.addComponent(chckbxNewCheckBox)))
-					.addContainerGap(41, Short.MAX_VALUE))
+							.addContainerGap()
+							.addGroup(gl_ramyeonPanel_1.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_ramyeonPanel_1.createSequentialGroup()
+									.addGap(24)
+									.addComponent(lblNewLabel_6))
+								.addComponent(chckbxNewCheckBox))))
+					.addContainerGap(23, Short.MAX_VALUE))
 		);
 		gl_ramyeonPanel_1.setVerticalGroup(
-			gl_ramyeonPanel_1.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_ramyeonPanel_1.createSequentialGroup()
+			gl_ramyeonPanel_1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_ramyeonPanel_1.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+					.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(chckbxNewCheckBox)
-					.addGap(13))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblNewLabel_6)
+					.addGap(7))
 		);
 		ramyeonPanel_1.setLayout(gl_ramyeonPanel_1);
+		
+		JPanel ramyeonPanel_1_1 = new JPanel();
+		ramyeonPanel_1_1.setBackground(Color.WHITE);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\2hourjpg.jpg"));
+		lblNewLabel_1.setBackground(Color.WHITE);
+		
+		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("2시간 추가");
+		buttonGroup.add(chckbxNewCheckBox_1);
+		chckbxNewCheckBox_1.setBackground(SystemColor.window);
+		
+		JLabel lblNewLabel_6_1 = new JLabel("1,000원");
+		lblNewLabel_6_1.setBackground(Color.WHITE);
+		GroupLayout gl_ramyeonPanel_1_1 = new GroupLayout(ramyeonPanel_1_1);
+		gl_ramyeonPanel_1_1.setHorizontalGroup(
+			gl_ramyeonPanel_1_1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_ramyeonPanel_1_1.createSequentialGroup()
+					.addGroup(gl_ramyeonPanel_1_1.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_ramyeonPanel_1_1.createSequentialGroup()
+							.addGap(40)
+							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_ramyeonPanel_1_1.createSequentialGroup()
+							.addContainerGap()
+							.addGroup(gl_ramyeonPanel_1_1.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_ramyeonPanel_1_1.createSequentialGroup()
+									.addGap(24)
+									.addComponent(lblNewLabel_6_1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
+								.addComponent(chckbxNewCheckBox_1))))
+					.addContainerGap(23, Short.MAX_VALUE))
+		);
+		gl_ramyeonPanel_1_1.setVerticalGroup(
+			gl_ramyeonPanel_1_1.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_ramyeonPanel_1_1.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(chckbxNewCheckBox_1)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblNewLabel_6_1)
+					.addGap(9))
+		);
+		ramyeonPanel_1_1.setLayout(gl_ramyeonPanel_1_1);
+		
+		JPanel ramyeonPanel_1_2 = new JPanel();
+		ramyeonPanel_1_2.setBackground(Color.WHITE);
+		
+		JLabel lblNewLabel_2 = new JLabel("");
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\3hour.jpg"));
+		lblNewLabel_2.setBackground(Color.WHITE);
+		
+		JCheckBox chckbxNewCheckBox_2 = new JCheckBox("3시간 추가");
+		buttonGroup.add(chckbxNewCheckBox_2);
+		chckbxNewCheckBox_2.setBackground(Color.WHITE);
+		
+		JLabel lblNewLabel_6_1_1 = new JLabel("1,000원");
+		lblNewLabel_6_1_1.setBackground(Color.WHITE);
+		GroupLayout gl_ramyeonPanel_1_2 = new GroupLayout(ramyeonPanel_1_2);
+		gl_ramyeonPanel_1_2.setHorizontalGroup(
+			gl_ramyeonPanel_1_2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_ramyeonPanel_1_2.createSequentialGroup()
+					.addGroup(gl_ramyeonPanel_1_2.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_ramyeonPanel_1_2.createSequentialGroup()
+							.addGap(40)
+							.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_ramyeonPanel_1_2.createSequentialGroup()
+							.addContainerGap()
+							.addGroup(gl_ramyeonPanel_1_2.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_ramyeonPanel_1_2.createSequentialGroup()
+									.addGap(24)
+									.addComponent(lblNewLabel_6_1_1, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
+								.addComponent(chckbxNewCheckBox_2))))
+					.addContainerGap(23, Short.MAX_VALUE))
+		);
+		gl_ramyeonPanel_1_2.setVerticalGroup(
+			gl_ramyeonPanel_1_2.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_ramyeonPanel_1_2.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel_2, GroupLayout.DEFAULT_SIZE, 95, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(chckbxNewCheckBox_2)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblNewLabel_6_1_1)
+					.addGap(6))
+		);
+		ramyeonPanel_1_2.setLayout(gl_ramyeonPanel_1_2);
+		
+		JPanel ramyeonPanel_1_3 = new JPanel();
+		ramyeonPanel_1_3.setBackground(Color.WHITE);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setBackground(Color.WHITE);
+		
+		JCheckBox chckbxA = new JCheckBox("6시간 추가");
+		chckbxA.setBackground(Color.WHITE);
+		GroupLayout gl_ramyeonPanel_1_3 = new GroupLayout(ramyeonPanel_1_3);
+		gl_ramyeonPanel_1_3.setHorizontalGroup(
+			gl_ramyeonPanel_1_3.createParallelGroup(Alignment.TRAILING)
+				.addGap(0, 130, Short.MAX_VALUE)
+				.addGroup(Alignment.LEADING, gl_ramyeonPanel_1_3.createSequentialGroup()
+					.addGap(23)
+					.addGroup(gl_ramyeonPanel_1_3.createParallelGroup(Alignment.TRAILING)
+						.addComponent(chckbxA)
+						.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(13, Short.MAX_VALUE))
+		);
+		gl_ramyeonPanel_1_3.setVerticalGroup(
+			gl_ramyeonPanel_1_3.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_ramyeonPanel_1_3.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel_3, GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(chckbxA)
+					.addGap(13))
+		);
+		ramyeonPanel_1_3.setLayout(gl_ramyeonPanel_1_3);
+		
+		JPanel ramyeonPanel_1_4 = new JPanel();
+		ramyeonPanel_1_4.setBackground(Color.WHITE);
+		
+		JLabel lblNewLabel_4 = new JLabel("");
+		lblNewLabel_4.setBackground(Color.WHITE);
+		
+		JCheckBox chckbxB = new JCheckBox("10시간 추가");
+		chckbxB.setBackground(Color.WHITE);
+		GroupLayout gl_ramyeonPanel_1_4 = new GroupLayout(ramyeonPanel_1_4);
+		gl_ramyeonPanel_1_4.setHorizontalGroup(
+			gl_ramyeonPanel_1_4.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_ramyeonPanel_1_4.createSequentialGroup()
+					.addGroup(gl_ramyeonPanel_1_4.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_ramyeonPanel_1_4.createSequentialGroup()
+							.addGap(21)
+							.addComponent(chckbxB))
+						.addGroup(gl_ramyeonPanel_1_4.createSequentialGroup()
+							.addGap(34)
+							.addComponent(lblNewLabel_4, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_ramyeonPanel_1_4.setVerticalGroup(
+			gl_ramyeonPanel_1_4.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_ramyeonPanel_1_4.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel_4, GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(chckbxB)
+					.addGap(13))
+		);
+		ramyeonPanel_1_4.setLayout(gl_ramyeonPanel_1_4);
+		
+		JPanel ramyeonPanel_1_5 = new JPanel();
+		ramyeonPanel_1_5.setBackground(Color.WHITE);
+		
+		JLabel lblNewLabel_5 = new JLabel("");
+		lblNewLabel_5.setBackground(Color.WHITE);
+		
+		JCheckBox chckbxC = new JCheckBox("ALL-DAY");
+		chckbxC.setBackground(Color.WHITE);
+		GroupLayout gl_ramyeonPanel_1_5 = new GroupLayout(ramyeonPanel_1_5);
+		gl_ramyeonPanel_1_5.setHorizontalGroup(
+			gl_ramyeonPanel_1_5.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_ramyeonPanel_1_5.createSequentialGroup()
+					.addGap(19)
+					.addGroup(gl_ramyeonPanel_1_5.createParallelGroup(Alignment.TRAILING)
+						.addComponent(chckbxC)
+						.addComponent(lblNewLabel_5, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(20, Short.MAX_VALUE))
+		);
+		gl_ramyeonPanel_1_5.setVerticalGroup(
+			gl_ramyeonPanel_1_5.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_ramyeonPanel_1_5.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel_5, GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(chckbxC)
+					.addGap(13))
+		);
+		ramyeonPanel_1_5.setLayout(gl_ramyeonPanel_1_5);
 		GroupLayout gl_costPanel = new GroupLayout(costPanel);
 		gl_costPanel.setHorizontalGroup(
 			gl_costPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_costPanel.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(ramyeonPanel_1, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(515, Short.MAX_VALUE))
+					.addGap(31)
+					.addGroup(gl_costPanel.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(ramyeonPanel_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(ramyeonPanel_1_3, GroupLayout.PREFERRED_SIZE, 130, Short.MAX_VALUE))
+					.addGap(89)
+					.addGroup(gl_costPanel.createParallelGroup(Alignment.TRAILING)
+						.addComponent(ramyeonPanel_1_1, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+						.addComponent(ramyeonPanel_1_4, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+					.addGroup(gl_costPanel.createParallelGroup(Alignment.TRAILING)
+						.addComponent(ramyeonPanel_1_2, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+						.addComponent(ramyeonPanel_1_5, GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
+					.addGap(29))
 		);
 		gl_costPanel.setVerticalGroup(
 			gl_costPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_costPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(ramyeonPanel_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(237, Short.MAX_VALUE))
+					.addGroup(gl_costPanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(ramyeonPanel_1, GroupLayout.PREFERRED_SIZE, 164, GroupLayout.PREFERRED_SIZE)
+						.addComponent(ramyeonPanel_1_2, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(ramyeonPanel_1_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_costPanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(ramyeonPanel_1_3, GroupLayout.PREFERRED_SIZE, 165, GroupLayout.PREFERRED_SIZE)
+						.addComponent(ramyeonPanel_1_5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(ramyeonPanel_1_4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addContainerGap())
 		);
 		costPanel.setLayout(gl_costPanel);
 		GroupLayout gl_timeTablePanel = new GroupLayout(timeTablePanel);
@@ -1004,15 +1211,17 @@ public class Food extends JFrame {
 		
 		
 		
-		payButton.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
+		payButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
 
 
-				connect();
-				payment();
-				
-				
+					connect();
+					payment();
+					new Payment();
+					
+
+				super.mouseClicked(e);
 			}
 		});
 		
