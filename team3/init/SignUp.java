@@ -16,6 +16,7 @@ public class SignUp extends JFrame {
 	private JPanel contentPane;
 	private JTextField tfId, tfName, tfCont, tfAddr;
 	private JPasswordField pfpwd;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -39,7 +40,7 @@ public class SignUp extends JFrame {
 		setTitle("회원가입");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 250, 300);
+		setBounds(100, 100, 250, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -50,7 +51,7 @@ public class SignUp extends JFrame {
 		panelCenter.setLayout(new FlowLayout());
 		
 		JPanel panelInfo = new JPanel();
-		panelInfo.setLayout(new GridLayout(5, 1));
+		panelInfo.setLayout(new GridLayout(7, 1));
 		
 		JPanel panelId = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		JPanel panelPwd = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -102,6 +103,19 @@ public class SignUp extends JFrame {
 		panelInfo.add(panelAddr);
 		
 		panelCenter.add(panelInfo);
+		
+		JLabel lblNewLabel = new JLabel("비밀번호 찾기 질문*: ");
+		panelInfo.add(lblNewLabel);
+		
+		JPanel panel = new JPanel();
+		panelInfo.add(panel);
+		
+		JLabel lblNewLabel_1 = new JLabel("어릴때 살던 동네는? ");
+		panel.add(lblNewLabel_1);
+		
+		textField = new JTextField();
+		panel.add(textField);
+		textField.setColumns(5);
 		panelCenter.add(jl6);
 		
 		contentPane.add(panelCenter);
