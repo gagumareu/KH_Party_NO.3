@@ -90,7 +90,7 @@ public class Food extends JFrame {
 	public Food() {
 		
 		setTitle("음식 메뉴 주문");
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\log.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\comic.png"));
 		
 		String[] cartHeader = {"상품명", "가격	", "수량", "분류"};
 		model = new DefaultTableModel(cartHeader, 0);

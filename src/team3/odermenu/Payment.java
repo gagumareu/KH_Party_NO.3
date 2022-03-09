@@ -37,8 +37,8 @@ import java.awt.Toolkit;
 
 public class Payment extends JFrame {
 
-	private JPanel contentPane;
-	private JTable paytable;
+	JPanel contentPane;
+	static JTable paytable;
 
 //	public JTable getPaytable() {
 //		return paytable;
@@ -55,7 +55,7 @@ public class Payment extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-//					Payment frame = new Payment();
+					Payment frame = new Payment(paytable);
 //					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -79,14 +79,14 @@ public class Payment extends JFrame {
 
 
 	
-	public Payment(JTable paytable) {
+	public Payment(JTable orderTable) {
 		
 		setTitle("결제 화면");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\comic.png"));
 		setBackground(SystemColor.window);
 //		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(650, 150, 500, 600);
+		setBounds(850, 250, 500, 600);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.info);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -95,55 +95,64 @@ public class Payment extends JFrame {
 		JPanel paymentPanel = new JPanel();
 		paymentPanel.setBackground(SystemColor.window);
 		
-		JPanel payButton_1 = new JPanel();
-		payButton_1.setBackground(SystemColor.info);
+		JPanel payButtonPanel = new JPanel();
+		payButtonPanel.setBackground(SystemColor.info);
 		
-		JButton btnNewButton_1 = new JButton("결제 하기");
-		btnNewButton_1.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\coin2.jpg"));
-		btnNewButton_1.setBackground(Color.WHITE);
-		GroupLayout gl_payButton_1 = new GroupLayout(payButton_1);
-		gl_payButton_1.setHorizontalGroup(
-			gl_payButton_1.createParallelGroup(Alignment.LEADING)
-				.addComponent(btnNewButton_1, GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+		JButton payButton = new JButton("결제 하기");
+		payButton.setBackground(SystemColor.window);
+		payButton.setForeground(SystemColor.infoText);
+		payButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		payButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\coin2.jpg"));
+		
+		
+		JComboBox<String> payComboBox = new JComboBox<String>();
+		payComboBox.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		payComboBox.setModel(new DefaultComboBoxModel(new String[] {"     결제수단 선택", "            카드", "            현금"}));
+		payComboBox.setBackground(SystemColor.window);
+		GroupLayout gl_payButtonPanel = new GroupLayout(payButtonPanel);
+		gl_payButtonPanel.setHorizontalGroup(
+			gl_payButtonPanel.createParallelGroup(Alignment.LEADING)
+				.addComponent(payButton, GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+				.addComponent(payComboBox, 0, 211, Short.MAX_VALUE)
 		);
-		gl_payButton_1.setVerticalGroup(
-			gl_payButton_1.createParallelGroup(Alignment.TRAILING)
-				.addGroup(gl_payButton_1.createSequentialGroup()
-					.addContainerGap(131, Short.MAX_VALUE)
-					.addComponent(btnNewButton_1, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
+		gl_payButtonPanel.setVerticalGroup(
+			gl_payButtonPanel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_payButtonPanel.createSequentialGroup()
+					.addComponent(payComboBox, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+					.addComponent(payButton, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
 		);
-		payButton_1.setLayout(gl_payButton_1);
+		payButtonPanel.setLayout(gl_payButtonPanel);
 		
-		JPanel payButton = new JPanel();
-		payButton.setBackground(SystemColor.info);
+		JPanel BackButtonPanel = new JPanel();
+		BackButtonPanel.setBackground(SystemColor.info);
 		
-		JButton btnNewButton_1_1 = new JButton("뒤로가기");
-		btnNewButton_1_1.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\back-button2.jpg"));
-		btnNewButton_1_1.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		btnNewButton_1_1.setBackground(SystemColor.window);
+		JButton BackButton = new JButton("뒤로가기");
+		BackButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\back-button2.jpg"));
+		BackButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		BackButton.setBackground(SystemColor.window);
 		
-		JButton btnNewButton_1_1_1 = new JButton("HOME");
-		btnNewButton_1_1_1.setFont(new Font("맑은 고딕", Font.BOLD, 20));
-		btnNewButton_1_1_1.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\home22.jpg"));
-		btnNewButton_1_1_1.setBackground(SystemColor.window);
-		GroupLayout gl_payButton = new GroupLayout(payButton);
-		gl_payButton.setHorizontalGroup(
-			gl_payButton.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_payButton.createSequentialGroup()
-					.addGroup(gl_payButton.createParallelGroup(Alignment.LEADING)
-						.addComponent(btnNewButton_1_1, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnNewButton_1_1_1, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
+		JButton HomeButton = new JButton("HOME");
+		HomeButton.setFont(new Font("맑은 고딕", Font.BOLD, 20));
+		HomeButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\home22.jpg"));
+		HomeButton.setBackground(SystemColor.window);
+		GroupLayout gl_BackButtonPanel = new GroupLayout(BackButtonPanel);
+		gl_BackButtonPanel.setHorizontalGroup(
+			gl_BackButtonPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_BackButtonPanel.createSequentialGroup()
+					.addGroup(gl_BackButtonPanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(BackButton, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE)
+						.addComponent(HomeButton, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
-		gl_payButton.setVerticalGroup(
-			gl_payButton.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_payButton.createSequentialGroup()
-					.addComponent(btnNewButton_1_1_1, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
+		gl_BackButtonPanel.setVerticalGroup(
+			gl_BackButtonPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_BackButtonPanel.createSequentialGroup()
+					.addComponent(HomeButton, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
-					.addComponent(btnNewButton_1_1, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
+					.addComponent(BackButton, GroupLayout.PREFERRED_SIZE, 66, GroupLayout.PREFERRED_SIZE))
 		);
-		payButton.setLayout(gl_payButton);
+		BackButtonPanel.setLayout(gl_BackButtonPanel);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -152,9 +161,9 @@ public class Payment extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(paymentPanel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
 						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
-							.addComponent(payButton, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE)
+							.addComponent(BackButtonPanel, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-							.addComponent(payButton_1, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE)))
+							.addComponent(payButtonPanel, GroupLayout.PREFERRED_SIZE, 211, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
@@ -164,8 +173,8 @@ public class Payment extends JFrame {
 					.addComponent(paymentPanel, GroupLayout.PREFERRED_SIZE, 304, GroupLayout.PREFERRED_SIZE)
 					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(payButton_1, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE)
-						.addComponent(payButton, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE))
+						.addComponent(payButtonPanel, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE)
+						.addComponent(BackButtonPanel, GroupLayout.PREFERRED_SIZE, 197, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap())
 		);
 		
@@ -177,7 +186,7 @@ public class Payment extends JFrame {
 //		table.setBackground(SystemColor.window);
 		
 		JScrollPane payjsp = new JScrollPane(
-				paytable, 
+				orderTable, 
 				JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, 
 				JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		GroupLayout gl_paymentPanel = new GroupLayout(paymentPanel);
