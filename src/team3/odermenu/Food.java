@@ -177,11 +177,6 @@ public class Food extends JFrame {
 		JPanel oneHourPanel = new JPanel();
 		oneHourPanel.setBackground(SystemColor.window);
 		
-		JCheckBox oneCheckBox = new JCheckBox("1시간 추가");
-		buttonGroup.add(oneCheckBox);
-		oneCheckBox.setFont(new Font("한컴 고딕", Font.BOLD, 17));
-		oneCheckBox.setBackground(SystemColor.window);
-		
 		JLabel oneImageLabel = new JLabel("");
 		oneImageLabel.setBackground(SystemColor.window);
 		oneImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\1hours.jpg"));
@@ -189,216 +184,213 @@ public class Food extends JFrame {
 		JLabel onePriceLabel = new JLabel("1,000원");
 		onePriceLabel.setFont(new Font("한컴 고딕", Font.BOLD, 19));
 		onePriceLabel.setBackground(SystemColor.window);
+		
+		JButton oneButton = new JButton("1시간 추가");
+		oneButton.setBackground(SystemColor.window);
+		oneButton.setFont(new Font("한컴 고딕", Font.BOLD, 17));
 		GroupLayout gl_oneHourPanel = new GroupLayout(oneHourPanel);
 		gl_oneHourPanel.setHorizontalGroup(
 			gl_oneHourPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_oneHourPanel.createSequentialGroup()
-					.addContainerGap()
 					.addGroup(gl_oneHourPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_oneHourPanel.createSequentialGroup()
-							.addGap(24)
+							.addContainerGap()
+							.addComponent(oneButton))
+						.addGroup(gl_oneHourPanel.createSequentialGroup()
+							.addGap(34)
 							.addComponent(onePriceLabel))
-						.addComponent(oneCheckBox))
-					.addContainerGap(23, Short.MAX_VALUE))
-				.addGroup(gl_oneHourPanel.createSequentialGroup()
-					.addGap(23)
-					.addComponent(oneImageLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(31))
+						.addGroup(gl_oneHourPanel.createSequentialGroup()
+							.addGap(26)
+							.addComponent(oneImageLabel)))
+					.addContainerGap(21, Short.MAX_VALUE))
 		);
 		gl_oneHourPanel.setVerticalGroup(
 			gl_oneHourPanel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_oneHourPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(oneImageLabel, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-					.addGap(8)
-					.addComponent(oneCheckBox)
+					.addComponent(oneImageLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(oneButton)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(onePriceLabel)
-					.addGap(7))
+					.addGap(5))
 		);
 		oneHourPanel.setLayout(gl_oneHourPanel);
 		
 		JPanel twoHourPanel = new JPanel();
 		twoHourPanel.setBackground(SystemColor.window);
 		
+		JLabel twoPriceLabel = new JLabel("2,000원");
+		twoPriceLabel.setFont(new Font("한컴 고딕", Font.BOLD, 19));
+		twoPriceLabel.setBackground(Color.WHITE);
+		
+		JButton twoButton = new JButton("2시간 추가");
+		twoButton.setFont(new Font("한컴 고딕", Font.BOLD, 17));
+		twoButton.setBackground(Color.WHITE);
+		
 		JLabel twoImageLabel = new JLabel("");
 		twoImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\22.jpg"));
 		twoImageLabel.setBackground(SystemColor.window);
-		
-		JLabel twoPriceLabel = new JLabel("2,000원");
-		twoPriceLabel.setFont(new Font("한컴 고딕", Font.BOLD, 19));
-		twoPriceLabel.setBackground(SystemColor.window);
-		
-		JCheckBox twoCheckBox = new JCheckBox("2시간 추가");
-		buttonGroup.add(twoCheckBox);
-		twoCheckBox.setFont(new Font("한컴 고딕", Font.BOLD, 17));
-		twoCheckBox.setBackground(SystemColor.window);
 		GroupLayout gl_twoHourPanel = new GroupLayout(twoHourPanel);
 		gl_twoHourPanel.setHorizontalGroup(
 			gl_twoHourPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_twoHourPanel.createSequentialGroup()
-					.addContainerGap()
 					.addGroup(gl_twoHourPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_twoHourPanel.createSequentialGroup()
-							.addGap(24)
-							.addComponent(twoPriceLabel))
-						.addComponent(twoCheckBox))
-					.addContainerGap(23, Short.MAX_VALUE))
-				.addGroup(gl_twoHourPanel.createSequentialGroup()
-					.addGap(23)
-					.addComponent(twoImageLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(31))
+							.addContainerGap()
+							.addComponent(twoButton))
+						.addGroup(gl_twoHourPanel.createSequentialGroup()
+							.addGap(34)
+							.addComponent(twoPriceLabel)))
+					.addContainerGap(21, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_twoHourPanel.createSequentialGroup()
+					.addContainerGap(34, Short.MAX_VALUE)
+					.addComponent(twoImageLabel, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+					.addGap(38))
 		);
 		gl_twoHourPanel.setVerticalGroup(
 			gl_twoHourPanel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_twoHourPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(twoImageLabel, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-					.addGap(8)
-					.addComponent(twoCheckBox)
+					.addComponent(twoImageLabel, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(twoButton)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(twoPriceLabel)
-					.addGap(7))
+					.addGap(5))
 		);
 		twoHourPanel.setLayout(gl_twoHourPanel);
 		
 		JPanel threeHourPanel = new JPanel();
 		threeHourPanel.setBackground(SystemColor.window);
 		
+		JLabel threePriceLabel = new JLabel("3,000원");
+		threePriceLabel.setFont(new Font("한컴 고딕", Font.BOLD, 19));
+		threePriceLabel.setBackground(Color.WHITE);
+		
+		JButton threeButton = new JButton("3시간 추가");
+		threeButton.setFont(new Font("한컴 고딕", Font.BOLD, 17));
+		threeButton.setBackground(SystemColor.window);
+		
 		JLabel threeImageLabel = new JLabel("");
 		threeImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\33.jpg"));
 		threeImageLabel.setBackground(SystemColor.window);
-		
-		JLabel threePriceLabel = new JLabel("3,000원");
-		threePriceLabel.setFont(new Font("한컴 고딕", Font.BOLD, 19));
-		threePriceLabel.setBackground(SystemColor.window);
-		
-		JCheckBox threeCheckBox = new JCheckBox("3시간 추가");
-		buttonGroup.add(threeCheckBox);
-		threeCheckBox.setFont(new Font("한컴 고딕", Font.BOLD, 17));
-		threeCheckBox.setBackground(SystemColor.window);
 		GroupLayout gl_threeHourPanel = new GroupLayout(threeHourPanel);
 		gl_threeHourPanel.setHorizontalGroup(
 			gl_threeHourPanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 140, Short.MAX_VALUE)
 				.addGroup(gl_threeHourPanel.createSequentialGroup()
-					.addContainerGap()
 					.addGroup(gl_threeHourPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_threeHourPanel.createSequentialGroup()
-							.addGap(24)
-							.addComponent(threePriceLabel))
-						.addComponent(threeCheckBox))
-					.addContainerGap(23, Short.MAX_VALUE))
-				.addGroup(gl_threeHourPanel.createSequentialGroup()
-					.addGap(23)
-					.addComponent(threeImageLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(31))
+							.addContainerGap()
+							.addComponent(threeButton))
+						.addGroup(gl_threeHourPanel.createSequentialGroup()
+							.addGap(34)
+							.addComponent(threePriceLabel)))
+					.addContainerGap(21, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_threeHourPanel.createSequentialGroup()
+					.addContainerGap(34, Short.MAX_VALUE)
+					.addComponent(threeImageLabel, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
+					.addGap(38))
 		);
 		gl_threeHourPanel.setVerticalGroup(
 			gl_threeHourPanel.createParallelGroup(Alignment.TRAILING)
 				.addGap(0, 164, Short.MAX_VALUE)
 				.addGroup(gl_threeHourPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(threeImageLabel, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-					.addGap(8)
-					.addComponent(threeCheckBox)
+					.addComponent(threeImageLabel, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(threeButton)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(threePriceLabel)
-					.addGap(7))
+					.addGap(5))
 		);
 		threeHourPanel.setLayout(gl_threeHourPanel);
 		
 		JPanel sixHourPanel = new JPanel();
 		sixHourPanel.setBackground(SystemColor.window);
 		
-		JLabel sixImageLabel = new JLabel("");
-		sixImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\66.jpg"));
-		sixImageLabel.setBackground(SystemColor.window);
-		
 		JLabel sixPriceLabel = new JLabel("4,000원");
 		sixPriceLabel.setFont(new Font("한컴 고딕", Font.BOLD, 19));
 		sixPriceLabel.setBackground(SystemColor.window);
 		
-		JCheckBox sixCheckBox = new JCheckBox("6시간 추가");
-		buttonGroup.add(sixCheckBox);
-		sixCheckBox.setFont(new Font("한컴 고딕", Font.BOLD, 17));
-		sixCheckBox.setBackground(SystemColor.window);
+		JButton sixButton = new JButton("6시간 추가");
+		sixButton.setFont(new Font("한컴 고딕", Font.BOLD, 17));
+		sixButton.setBackground(SystemColor.window);
+		
+		JLabel sixImageLabel = new JLabel("");
+		sixImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\66.jpg"));
+		sixImageLabel.setBackground(SystemColor.window);
 		GroupLayout gl_sixHourPanel = new GroupLayout(sixHourPanel);
 		gl_sixHourPanel.setHorizontalGroup(
 			gl_sixHourPanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 140, Short.MAX_VALUE)
 				.addGroup(gl_sixHourPanel.createSequentialGroup()
-					.addContainerGap()
 					.addGroup(gl_sixHourPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_sixHourPanel.createSequentialGroup()
-							.addGap(24)
+							.addContainerGap()
+							.addComponent(sixButton))
+						.addGroup(gl_sixHourPanel.createSequentialGroup()
+							.addGap(34)
 							.addComponent(sixPriceLabel))
-						.addComponent(sixCheckBox))
-					.addContainerGap(23, Short.MAX_VALUE))
-				.addGroup(gl_sixHourPanel.createSequentialGroup()
-					.addGap(23)
-					.addComponent(sixImageLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(31))
+						.addGroup(gl_sixHourPanel.createSequentialGroup()
+							.addGap(27)
+							.addComponent(sixImageLabel, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(21, Short.MAX_VALUE))
 		);
 		gl_sixHourPanel.setVerticalGroup(
 			gl_sixHourPanel.createParallelGroup(Alignment.TRAILING)
-				.addGap(0, 164, Short.MAX_VALUE)
 				.addGroup(gl_sixHourPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(sixImageLabel, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-					.addGap(8)
-					.addComponent(sixCheckBox)
+					.addComponent(sixImageLabel, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(sixButton)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(sixPriceLabel)
-					.addGap(7))
+					.addGap(5))
 		);
 		sixHourPanel.setLayout(gl_sixHourPanel);
 		
 		JPanel twelHourPanel = new JPanel();
-		twelHourPanel.setBackground(SystemColor.window);
+		twelHourPanel.setBackground(Color.WHITE);
 		
-		JLabel twelImageLabel = new JLabel("");
-		twelImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\12.jpg"));
-		twelImageLabel.setBackground(SystemColor.window);
+		JLabel sixImageLabel_1 = new JLabel("");
+		sixImageLabel_1.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\12.jpg"));
+		sixImageLabel_1.setBackground(SystemColor.window);
 		
-		JLabel twelPriceLabel = new JLabel("8,000원");
+		JButton twelButton = new JButton("6시간 추가");
+		twelButton.setFont(new Font("한컴 고딕", Font.BOLD, 17));
+		twelButton.setBackground(SystemColor.window);
+		
+		JLabel twelPriceLabel = new JLabel("6,000원");
 		twelPriceLabel.setFont(new Font("한컴 고딕", Font.BOLD, 19));
 		twelPriceLabel.setBackground(SystemColor.window);
-		
-		JCheckBox twelCheckBox = new JCheckBox("12시간 추가");
-		buttonGroup.add(twelCheckBox);
-		twelCheckBox.setFont(new Font("한컴 고딕", Font.BOLD, 17));
-		twelCheckBox.setBackground(SystemColor.window);
 		GroupLayout gl_twelHourPanel = new GroupLayout(twelHourPanel);
 		gl_twelHourPanel.setHorizontalGroup(
 			gl_twelHourPanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 140, Short.MAX_VALUE)
-				.addGap(0, 140, Short.MAX_VALUE)
+				.addGap(0, 146, Short.MAX_VALUE)
 				.addGroup(gl_twelHourPanel.createSequentialGroup()
-					.addContainerGap()
 					.addGroup(gl_twelHourPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_twelHourPanel.createSequentialGroup()
-							.addGap(24)
+							.addContainerGap()
+							.addComponent(twelButton))
+						.addGroup(gl_twelHourPanel.createSequentialGroup()
+							.addGap(34)
 							.addComponent(twelPriceLabel))
-						.addComponent(twelCheckBox))
-					.addContainerGap(23, Short.MAX_VALUE))
-				.addGroup(gl_twelHourPanel.createSequentialGroup()
-					.addGap(23)
-					.addComponent(twelImageLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(31))
+						.addGroup(gl_twelHourPanel.createSequentialGroup()
+							.addGap(27)
+							.addComponent(sixImageLabel_1, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(21, Short.MAX_VALUE))
 		);
 		gl_twelHourPanel.setVerticalGroup(
 			gl_twelHourPanel.createParallelGroup(Alignment.TRAILING)
 				.addGap(0, 164, Short.MAX_VALUE)
-				.addGap(0, 164, Short.MAX_VALUE)
 				.addGroup(gl_twelHourPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(twelImageLabel, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-					.addGap(8)
-					.addComponent(twelCheckBox)
+					.addComponent(sixImageLabel_1, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(twelButton)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(twelPriceLabel)
-					.addGap(7))
+					.addGap(5))
 		);
 		twelHourPanel.setLayout(gl_twelHourPanel);
 		
@@ -409,46 +401,43 @@ public class Food extends JFrame {
 		twenImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\24.jpg"));
 		twenImageLabel.setBackground(SystemColor.window);
 		
+		JButton twenButton = new JButton("24시간 추가");
+		twenButton.setFont(new Font("한컴 고딕", Font.BOLD, 17));
+		twenButton.setBackground(SystemColor.window);
+		
 		JLabel twenPriceLabel = new JLabel("10,000원");
 		twenPriceLabel.setFont(new Font("한컴 고딕", Font.BOLD, 19));
 		twenPriceLabel.setBackground(SystemColor.window);
-		
-		JCheckBox twenCheckBox = new JCheckBox("ALL-DAY");
-		buttonGroup.add(twenCheckBox);
-		twenCheckBox.setFont(new Font("한컴 고딕", Font.BOLD, 17));
-		twenCheckBox.setBackground(SystemColor.window);
 		GroupLayout gl_twenHourPanel = new GroupLayout(twenHourPanel);
 		gl_twenHourPanel.setHorizontalGroup(
 			gl_twenHourPanel.createParallelGroup(Alignment.LEADING)
-				.addGap(0, 140, Short.MAX_VALUE)
-				.addGap(0, 140, Short.MAX_VALUE)
-				.addGap(0, 140, Short.MAX_VALUE)
+				.addGap(0, 146, Short.MAX_VALUE)
+				.addGap(0, 146, Short.MAX_VALUE)
 				.addGroup(gl_twenHourPanel.createSequentialGroup()
-					.addContainerGap()
 					.addGroup(gl_twenHourPanel.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_twenHourPanel.createSequentialGroup()
-							.addGap(24)
+							.addContainerGap()
+							.addComponent(twenButton))
+						.addGroup(gl_twenHourPanel.createSequentialGroup()
+							.addGap(34)
 							.addComponent(twenPriceLabel))
-						.addComponent(twenCheckBox))
-					.addContainerGap(23, Short.MAX_VALUE))
-				.addGroup(gl_twenHourPanel.createSequentialGroup()
-					.addGap(23)
-					.addComponent(twenImageLabel, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(31))
+						.addGroup(gl_twenHourPanel.createSequentialGroup()
+							.addGap(27)
+							.addComponent(twenImageLabel, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(21, Short.MAX_VALUE))
 		);
 		gl_twenHourPanel.setVerticalGroup(
 			gl_twenHourPanel.createParallelGroup(Alignment.TRAILING)
 				.addGap(0, 164, Short.MAX_VALUE)
 				.addGap(0, 164, Short.MAX_VALUE)
-				.addGap(0, 164, Short.MAX_VALUE)
 				.addGroup(gl_twenHourPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(twenImageLabel, GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
-					.addGap(8)
-					.addComponent(twenCheckBox)
+					.addComponent(twenImageLabel, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(twenButton)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(twenPriceLabel)
-					.addGap(7))
+					.addGap(5))
 		);
 		twenHourPanel.setLayout(gl_twenHourPanel);
 		GroupLayout gl_costPanel = new GroupLayout(costPanel);
@@ -458,16 +447,16 @@ public class Food extends JFrame {
 					.addGap(49)
 					.addGroup(gl_costPanel.createParallelGroup(Alignment.LEADING)
 						.addComponent(oneHourPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(sixHourPanel, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE))
-					.addGap(68)
+						.addComponent(sixHourPanel, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
 					.addGroup(gl_costPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(twoHourPanel, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
-						.addComponent(twelHourPanel, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+						.addComponent(twoHourPanel, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+						.addComponent(twelHourPanel, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE))
+					.addGap(61)
 					.addGroup(gl_costPanel.createParallelGroup(Alignment.LEADING)
-						.addComponent(twenHourPanel, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
-						.addComponent(threeHourPanel, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE))
-					.addGap(54))
+						.addComponent(twenHourPanel, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE)
+						.addComponent(threeHourPanel, GroupLayout.PREFERRED_SIZE, 146, GroupLayout.PREFERRED_SIZE))
+					.addGap(49))
 		);
 		gl_costPanel.setVerticalGroup(
 			gl_costPanel.createParallelGroup(Alignment.LEADING)
@@ -508,7 +497,7 @@ public class Food extends JFrame {
 		kimchSpinner.setForeground(Color.WHITE);
 		kimchSpinner.setBackground(SystemColor.window);
 		
-		final JButton kimchAddButton = new JButton("담기");
+		JButton kimchAddButton = new JButton("담기");
 		kimchAddButton.setBackground(SystemColor.window);
 		
 		
@@ -1257,7 +1246,7 @@ public class Food extends JFrame {
 				
 			}
 		});     
-///////////////////////////////////////////////////////////////////////////////////////////////////
+
 		
 		//삭제 버튼
 		removeButton.addMouseListener(new MouseAdapter() {
@@ -1343,26 +1332,67 @@ public class Food extends JFrame {
 			}
 		});
 		
-		
-////////                시간 요금제               ////////////////////////////////////////////////////
-		oneCheckBox.addActionListener(new ActionListener() {
+
+		oneButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 
 				connect();
 				timePlan(1);
-				
+			}
+		});
+
+		twoButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+
+				connect();
+				timePlan(2);
 			}
 		});
 		
+		threeButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
 
+				connect();
+				timePlan(3);
+			}
+		});
 		
+		sixButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+
+				connect();
+				timePlan(6);
+			}
+		});
+		
+		twelButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+
+				connect();
+				timePlan(12);
+			}
+		});
+		
+		twenButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+
+				connect();
+				timePlan(24);
+			}
+		});
 		
 		
 	}  // 생성자 end 
 		
 	
-	
+////////////////////////////////////    메소드               ////////////////////////////////////////////////////
+
 	
 	void connect() {
 		
@@ -1504,12 +1534,9 @@ public class Food extends JFrame {
 		
 		try {
 			
-		
 			sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, sysdate)";
 			pstmt = con.prepareStatement(sql);
 		
-					
-			
 			for(int i = 0; i < model.getRowCount(); i++) {
 				
 				
@@ -1541,7 +1568,7 @@ public class Food extends JFrame {
 		
 		
 		try {
-			sql = "select tname, tprice from timetable where hours = ? ";
+			sql = "select tname, tprice , type from timetable where hours = ? ";
 
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, hours);
@@ -1549,12 +1576,12 @@ public class Food extends JFrame {
 			while(res.next()) {
 				String tname = res.getString("tname");
 				int tprice = res.getInt("tprice");
-//				String type = res.getString("type");
+				int amount = 1;
+				String type = res.getString("type");
 				
-				Object[] tdate = {tname, tprice,};
+				Object[] tdate = {tname, tprice, amount, type};
 				
 				model.addRow(tdate);
-				
 				
 			}
 			
@@ -1564,10 +1591,10 @@ public class Food extends JFrame {
 			e.printStackTrace();
 		}
 		
-		
-		
-		
 	}
+	
+	
+	
 	
 	
 	
