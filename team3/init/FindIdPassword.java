@@ -161,7 +161,7 @@ public class FindIdPassword extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				connect();
-				searchPassword(tf_pwName.toString(), tf_pwId.toString(), tf_pwAns.toString());
+				searchPassword(tf_pwName.getText(), tf_pwId.getText(), tf_pwAns.getText());
 			}
 		});
 		panel_pwdBtn.add(btnFindPwd);
@@ -214,6 +214,28 @@ public class FindIdPassword extends JFrame {
 	}
 	
 	void searchPassword(String name, String id, String answer) {
-		
+		try {
+			sql = "select * from member where mem_id=? and mem_name=? and mem_findpwd_ans=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, name);
+			pstmt.setString(3, answer);
+			
+			rs = pstmt.executeQuery();
+			
+			boolean found = rs.next();
+			
+			if(found) {
+				String string = "해당 정보로 가입된 아이디의 비밀번호는 " + rs.getString("mem_password") + "입니다.";
+				
+				JOptionPane.showMessageDialog(null, string);
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "입력된 정보가 올바르지 않거나, 해당 정보로 가입된 아이디가 없습니다.");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 }
