@@ -111,26 +111,12 @@ public class MemberInfoCheck extends JFrame {
 		panel_wrapCenter.add(panel_pwdFind);
 		
 		JButton btnFindPwd = new JButton("비밀번호 찾기 질문 답 확인");
-		btnFindPwd.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String input = JOptionPane.showInputDialog("비밀번호를 입력해 주세요.");
-				connect();
-//				checkPassword(input);
-			}
-		});
 		panel_pwdFind.add(btnFindPwd);
 		
 		JPanel panel_south = new JPanel();
 		contentPane.add(panel_south, BorderLayout.SOUTH);
 		
 		JButton btnToEdit = new JButton("회원 정보 수정");
-		btnToEdit.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new MemberInfoEdit();
-			}
-		});
 		panel_south.add(btnToEdit);
 		
 		JButton btnClose = new JButton("닫기");
@@ -163,56 +149,59 @@ public class MemberInfoCheck extends JFrame {
 		JPanel panel1_num = new JPanel();
 		panel_wrapCenter.add(panel1_num);
 		
-		JLabel jl1_num1 = new JLabel("회원 번호: ");
-		panel1_num.add(jl1_num1);
-		
-		JLabel jl1_num2 = new JLabel("New label");
-		panel1_num.add(jl1_num2);
-		
 		JPanel panel2_name = new JPanel();
 		panel_wrapCenter.add(panel2_name);
-		
-		JLabel jl2_name1 = new JLabel("회원 이름: ");
-		panel2_name.add(jl2_name1);
-		
-		JLabel jl2_name2 = new JLabel("New label");
-		panel2_name.add(jl2_name2);
 		
 		JPanel panel3_id = new JPanel();
 		panel_wrapCenter.add(panel3_id);
 		
-		JLabel jl3_id1 = new JLabel("회원 아이디: ");
-		panel3_id.add(jl3_id1);
-		
-		JLabel jl3_id2 = new JLabel("New label");
-		panel3_id.add(jl3_id2);
-		
 		JPanel panel4_contact = new JPanel();
 		panel_wrapCenter.add(panel4_contact);
-		
-		JLabel jl4_cont1 = new JLabel("회원 연락처: ");
-		panel4_contact.add(jl4_cont1);
-		
-		JLabel jl4_cont2 = new JLabel("New label");
-		panel4_contact.add(jl4_cont2);
 		
 		JPanel panel5_address = new JPanel();
 		panel_wrapCenter.add(panel5_address);
 		
-		JLabel jl5_addr1 = new JLabel("회원 주소: ");
-		panel5_address.add(jl5_addr1);
-		
-		JLabel jl5_addr2 = new JLabel("New label");
-		panel5_address.add(jl5_addr2);
-		
 		JPanel panel6_mileage = new JPanel();
 		panel_wrapCenter.add(panel6_mileage);
 		
+		
+		getMemberInfo(id);
+		
+		
+		JLabel jl1_num1 = new JLabel("회원 번호: ");
+		JLabel jl2_name1 = new JLabel("회원 이름: ");
+		JLabel jl3_id1 = new JLabel("회원 아이디: ");
+		JLabel jl4_cont1 = new JLabel("회원 연락처: ");
+		JLabel jl5_addr1 = new JLabel("회원 주소: ");
 		JLabel jl6_mile1 = new JLabel("보유 마일리지: ");
+		panel1_num.add(jl1_num1);
+		panel2_name.add(jl2_name1);
+		panel3_id.add(jl3_id1);
+		panel4_contact.add(jl4_cont1);
+		panel5_address.add(jl5_addr1);
 		panel6_mileage.add(jl6_mile1);
 		
-		JLabel jl6_mile2 = new JLabel("New label");
+		
+		JLabel jl1_num2 = null, jl2_name2 = null, jl3_id2 = null, 
+				jl4_cont2 = null, jl5_addr2 = null, jl6_mile2 = null;
+		try {
+			jl1_num2 = new JLabel(rs.getString("mem_num"));
+			jl2_name2 = new JLabel(rs.getString("mem_name"));
+			jl3_id2 = new JLabel(rs.getString("mem_id"));
+			jl4_cont2 = new JLabel(rs.getString("mem_contact"));
+			jl5_addr2 = new JLabel(rs.getString("mem_addr"));
+			jl6_mile2 = new JLabel(rs.getString("mem_mileage"));
+			
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		panel1_num.add(jl1_num2);
+		panel2_name.add(jl2_name2);
+		panel3_id.add(jl3_id2);
+		panel4_contact.add(jl4_cont2);
+		panel5_address.add(jl5_addr2);
 		panel6_mileage.add(jl6_mile2);
+		
 		
 		JPanel panel_pwdFind = new JPanel();
 		panel_wrapCenter.add(panel_pwdFind);
@@ -222,7 +211,6 @@ public class MemberInfoCheck extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				String input = JOptionPane.showInputDialog("비밀번호를 입력해 주세요.");
-				connect();
 				checkPassword(id, input);
 			}
 		});
@@ -252,21 +240,40 @@ public class MemberInfoCheck extends JFrame {
 	}
 	
 	
-	void connect() {
+	void connectGetInfo(String id) {
 		try {
 			con = DBConnection.getConnection();
+			sql = "select * from member where mem_id=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	void checkPassword(String id, String password) {
+	void getMemberInfo(String id) {
+		connectGetInfo(id);
+
 		try {
-			sql = "select * from member where mem_id=?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, id);
-			rs = pstmt.executeQuery();
+			boolean found = rs.next();
 			
+			if(found) {
+				JOptionPane.showMessageDialog(null, "회원 정보를 가져왔습니다.");
+			}
+			else {
+				JOptionPane.showMessageDialog(null, "회원 정보를 제대로 가져오지 못했습니다.");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	void checkPassword(String id, String password) {
+		connectGetInfo(id);
+		
+		try {
 			boolean found = rs.next();
 			if(found) {
 				if(password.equals(rs.getString("mem_password"))) {
