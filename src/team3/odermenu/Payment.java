@@ -37,9 +37,17 @@ import java.awt.Toolkit;
 
 public class Payment extends JFrame {
 
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	ResultSet res = null;
+	
+	String sql = null;
+	DefaultTableModel model1;
+	
 	JPanel contentPane;
-	static JTable paytable;
-
+	//static JTable paytable;
+	static JTable orderTable;
+	
 //	public JTable getPaytable() {
 //		return paytable;
 //	}
@@ -55,8 +63,8 @@ public class Payment extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Payment frame = new Payment(paytable);
-//					frame.setVisible(true);
+					Payment frame = new Payment(orderTable);
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -68,25 +76,22 @@ public class Payment extends JFrame {
 	 * Create the frame.
 	 */
 	
-	Connection con = null;
-	PreparedStatement pstmt = null;
-	ResultSet res = null;
 	
-	String sql = null;
-	DefaultTableModel model;
-	JTable table;
 	
 
 
 	
 	public Payment(JTable orderTable) {
 		
+	//	model1 = DefaultTableModel();
+	//	orderTable = new JTable(model1);
+		
 		setTitle("결제 화면");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\comic.png"));
 		setBackground(SystemColor.window);
 //		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(850, 250, 500, 600);
+		setBounds(790, 250, 500, 600);
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.info);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -205,6 +210,15 @@ public class Payment extends JFrame {
 		setVisible(true);
 		
 		
+		payButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+
+				connect();
+				payment();
+				
+			}
+		});
 		
 		
 		
@@ -245,14 +259,14 @@ public class Payment extends JFrame {
 			while(res.next()) {
 				int oderno = res.getInt("orderno");
 				String fname = res.getString("fname");
-				int price = res.getInt("price");
+				int total = res.getInt("total");
 				int amount = res.getInt("amount");
 				String type = res.getString("type");
 				String regdate = res.getString("ragdate");
 				
-				Object[] paydate = {oderno, fname, price, amount, type, regdate};
+				Object[] paydate = {oderno, fname, total, amount, type, regdate};
 				
-				model.addRow(paydate);
+				model1.addRow(paydate);
 				
 			}
 			res.close();
@@ -265,4 +279,45 @@ public class Payment extends JFrame {
 		}
 			
 	}
-}
+	
+	
+	void payment() {
+		
+		
+		
+		//model1 = (DefaultTableModel) orderTable.getModel();
+		
+		try {
+			
+			sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, sysdate)";
+			pstmt = con.prepareStatement(sql);
+		
+			for(int i = 0; i < model1.getRowCount(); i++) {
+				
+				
+				pstmt.setString(1, model1.getValueAt(i, 0).toString());
+				pstmt.setInt(2, (Integer)(model1.getValueAt(i, 1)));
+				pstmt.setString(4,  model1.getValueAt(i, 3).toString());
+				pstmt.setInt(3, (Integer)(model1.getValueAt(i, 2)));
+				pstmt.executeUpdate();
+				
+
+			}
+
+			
+			con.close();
+			pstmt.close();
+			
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		
+	}
+
+	
+	
+	
+	
+	
+} // the end

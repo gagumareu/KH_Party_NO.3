@@ -169,7 +169,8 @@ public class Food extends JFrame {
 		
 		JPanel timeTablePanel = new JPanel();
 		timeTablePanel.setBackground(SystemColor.window);
-		OderTebbedPanel.addTab("시간", new ImageIcon("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\times2.jpg"), timeTablePanel, null);
+		OderTebbedPanel.addTab("시간", new ImageIcon
+				("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\times2.jpg"), timeTablePanel);
 		
 		JPanel costPanel = new JPanel();
 		costPanel.setBackground(SystemColor.window);
@@ -309,7 +310,7 @@ public class Food extends JFrame {
 		JPanel sixHourPanel = new JPanel();
 		sixHourPanel.setBackground(SystemColor.window);
 		
-		JLabel sixPriceLabel = new JLabel("4,000원");
+		JLabel sixPriceLabel = new JLabel("5,000원");
 		sixPriceLabel.setFont(new Font("한컴 고딕", Font.BOLD, 19));
 		sixPriceLabel.setBackground(SystemColor.window);
 		
@@ -356,11 +357,11 @@ public class Food extends JFrame {
 		sixImageLabel_1.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\12.jpg"));
 		sixImageLabel_1.setBackground(SystemColor.window);
 		
-		JButton twelButton = new JButton("6시간 추가");
+		JButton twelButton = new JButton("12시간 추가");
 		twelButton.setFont(new Font("한컴 고딕", Font.BOLD, 17));
 		twelButton.setBackground(SystemColor.window);
 		
-		JLabel twelPriceLabel = new JLabel("6,000원");
+		JLabel twelPriceLabel = new JLabel("8,000원");
 		twelPriceLabel.setFont(new Font("한컴 고딕", Font.BOLD, 19));
 		twelPriceLabel.setBackground(SystemColor.window);
 		GroupLayout gl_twelHourPanel = new GroupLayout(twelHourPanel);
@@ -405,7 +406,7 @@ public class Food extends JFrame {
 		twenButton.setFont(new Font("한컴 고딕", Font.BOLD, 17));
 		twenButton.setBackground(SystemColor.window);
 		
-		JLabel twenPriceLabel = new JLabel("10,000원");
+		JLabel twenPriceLabel = new JLabel("12,000원");
 		twenPriceLabel.setFont(new Font("한컴 고딕", Font.BOLD, 19));
 		twenPriceLabel.setBackground(SystemColor.window);
 		GroupLayout gl_twenHourPanel = new GroupLayout(twenHourPanel);
@@ -487,7 +488,7 @@ public class Food extends JFrame {
 		
 		JPanel mealpanel = new JPanel();
 		mealpanel.setBackground(SystemColor.window);
-		OderTebbedPanel.addTab("식사", new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\dish.png"), mealpanel, null);
+		OderTebbedPanel.addTab("식사", new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\dish.png"), mealpanel);
 		
 		JPanel kimPanel = new JPanel();
 		kimPanel.setBackground(Color.WHITE);
@@ -568,7 +569,7 @@ public class Food extends JFrame {
 		chickNameLabel = new JLabel("치킨 가라아게 덮밥");
 		chickNameLabel.setBackground(SystemColor.window);
 		
-		JLabel chickPriceLabel = new JLabel("5900원");
+		JLabel chickPriceLabel = new JLabel("5,900원");
 		chickPriceLabel.setBackground(SystemColor.window);
 		GroupLayout gl_chickPanel = new GroupLayout(chickPanel);
 		gl_chickPanel.setHorizontalGroup(
@@ -690,7 +691,7 @@ public class Food extends JFrame {
 		
 		JPanel drinkPanel = new JPanel();
 		drinkPanel.setBackground(SystemColor.window);
-		OderTebbedPanel.addTab("음료", new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\drink.png"), drinkPanel, null);
+		OderTebbedPanel.addTab("음료", new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\drink.png"), drinkPanel);
 		
 		JPanel ameriPanel = new JPanel();
 		ameriPanel.setBackground(Color.WHITE);
@@ -899,7 +900,7 @@ public class Food extends JFrame {
 		
 		JPanel snackPanel = new JPanel();
 		snackPanel.setBackground(SystemColor.window);
-		OderTebbedPanel.addTab("스낵", new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\snack.png"), snackPanel, null);
+		OderTebbedPanel.addTab("스낵", new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\snack.png"), snackPanel);
 		
 		JPanel ramyeonPanel = new JPanel();
 		ramyeonPanel.setBackground(SystemColor.window);
@@ -1154,7 +1155,7 @@ public class Food extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				connect();
-				mealSelect("김치베이컨 볶음밥",  Integer.parseInt(kimchSpinner.getValue().toString()));
+				mealSelect(6,  Integer.parseInt(kimchSpinner.getValue().toString()));
 				
 			}
 		});
@@ -1165,7 +1166,7 @@ public class Food extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				connect();
-				mealSelect("스팸계란 볶음밥", Integer.parseInt(spamSpinner.getValue().toString()));
+				mealSelect(4, Integer.parseInt(spamSpinner.getValue().toString()));
 				
 			}
 		});
@@ -1175,7 +1176,7 @@ public class Food extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				connect();
-				mealSelect("치킨카라아게 덮밥", Integer.parseInt(chickSpinner.getValue().toString()));
+				mealSelect(5, Integer.parseInt(chickSpinner.getValue().toString()));
 				
 			}
 		});
@@ -1332,7 +1333,8 @@ public class Food extends JFrame {
 			}
 		});
 		
-
+		
+		// 요금제 버튼   
 		oneButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -1388,6 +1390,11 @@ public class Food extends JFrame {
 		});
 		
 		
+		
+		
+		
+		
+		
 	}  // 생성자 end 
 		
 	
@@ -1416,13 +1423,13 @@ public class Food extends JFrame {
 
 	
 	// 식사 메뉴 
-	void mealSelect (String mealorder, int mealSpinner) {
+	void mealSelect (int fnumber, int mealSpinner) {
 		
 		try {
-			sql = "select fname, price , mealtype from food where fname = ?";
+			sql = "select fname, price , mealtype from food where fno = ?";
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setString(1, mealorder);
+			pstmt.setInt(1, fnumber);
 			
 			res = pstmt.executeQuery();
 			
@@ -1563,7 +1570,7 @@ public class Food extends JFrame {
 		
 	}
 	
-	
+	// 요금제 메뉴
 	void timePlan(int hours){
 		
 		
