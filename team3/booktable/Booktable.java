@@ -44,7 +44,8 @@ public class Booktable extends JFrame {
 	String sortsuch = "";
 	String sortmgr = "n";
 	
-	String mtable=null;
+	String mtable="";
+	
 
 	
 
@@ -184,6 +185,7 @@ public class Booktable extends JFrame {
 
 				mtable = model.getValueAt(row, 1).toString();
 				
+				
 
 				
 			}
@@ -199,12 +201,23 @@ public class Booktable extends JFrame {
 					JOptionPane.showMessageDialog(null, "도서를 선택하세요");
 				}else {
 
-					connect();
 					viewer vw = new viewer();
 					vw.viewer(mtable);
 					}
 
 				
+			}
+		});
+		
+		jb3.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				stre st = new stre();
+				if(mtable.equals("")) {
+					JOptionPane.showMessageDialog(null, "도서를 선택하세요");
+				}else {
+				st.stre(mtable);}
 			}
 		});
 		
@@ -236,51 +249,9 @@ public class Booktable extends JFrame {
 		}
 	}
 
-	// 특정 책의 리뷰 수를 불러오는 메서드
-	int review(int bnumber) {
-		int num = bnumber;
-		int review = 0;
 
-		try {
-			sql = "select count(*) from review where bnumber=? ";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			ResultSet rs1 = pstmt.executeQuery();
 
-			while (rs1.next()) {
-				review = rs1.getInt("count(*)");
-			}
 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return review;
-	}
-
-	// 특정 책의 별점합을 구하는 메서드
-	int star(int bnumber) {
-		int num = bnumber;
-		int star = 0;
-
-		try {
-			sql = "select sum(starsum) from review where bnumber=? ";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, num);
-			ResultSet rs2 = pstmt.executeQuery();
-
-			while (rs2.next()) {
-				star = rs2.getInt("sum(starsum)");
-
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return star;
-
-	}
 
 	// 전체화면을 출력
 	// 실행시, 전체보기 클릭시
@@ -533,91 +504,31 @@ public class Booktable extends JFrame {
 
 	}
 
-// 리뷰수와 평균별점을 books 테이블의 해당 컬럼에 update
-	void reviewset(int bnumber) {
-
-		int num1 = bnumber;
-		int num2 = review(num1);
-		int num3 = star(num1);
-		double num4 = (double) num3 / (double) num2;
-		double num5 = Math.round(num4 * 10) / 10.0;
-
-		try {
-			sql = "update books set bstaravg = ? ,breviewsum = ? where bnumber = ? ";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setDouble(1, num5);
-			pstmt.setInt(2, num2);
-			pstmt.setInt(3, num1);
-
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		
-	}
-	
-//	//-------------------------------리뷰 보기-----------------------------------------
-//	void viewer(String mtable) {
-//		setTitle("리뷰 목록");
-//		
-//		JLabel vjl1 = new JLabel("도서 명 : "+mtable);
-//		JLabel vjl2 = new JLabel("평균 별점 : ");
-//		String[] vjc = {"최근 등록순","오래된 등록순","별점 높은순","별점 낮은순"};
-//		JComboBox<String> vjcb1 = new JComboBox<String>(vjc);
-//		JLabel vjl3 = new JLabel("정렬");
-//		
-//		String[] header2 = { "리뷰 작성자","리뷰 내용", "평균별점" };
-//		model2 = new DefaultTableModel(header2, 0);
-//		table2 = new JTable(model2);
-//		JScrollPane jsp2 = new JScrollPane(table2, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
-//				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-//		
-//		JTextArea vjta1 = new JTextArea(20,10);
-//		
-//		JButton vjb1 = new JButton("리뷰 수정");
-//		JButton vjb2 = new JButton(" 닫   기 ");
-//		
-//		JPanel vcontainer1 = new JPanel();
-//		JPanel vcontainer2 = new JPanel();
-//		JPanel vcontainer3 = new JPanel();
-//		JPanel vgroup1 = new JPanel(new BorderLayout());
-//		JPanel vgroup2 = new JPanel(new BorderLayout());
-//		JPanel vgroup3 = new JPanel(new BorderLayout());
-//		
-//		
-//		
-//		vcontainer1.add(vjl1);
-//		vcontainer1.add(vjl2);
-//		vcontainer2.add(vjcb1);
-//		vcontainer2.add(vjl3);
-//		vgroup1.add(vcontainer2, BorderLayout.WEST);
-//		vcontainer3.add(vjb1);
-//		vcontainer3.add(vjb2);
-//		
-//		vgroup2.add(vcontainer1,BorderLayout.NORTH);
-//		vgroup2.add(vcontainer2);
-//		vgroup2.add(jsp2, BorderLayout.SOUTH);
-//		
-//		vgroup3.add(vjta1, BorderLayout.NORTH);
-//		vgroup3.add(vcontainer3, BorderLayout.SOUTH);
-//		
-//		add(vgroup2, BorderLayout.NORTH);
-//		add(vgroup3, BorderLayout.SOUTH);
-//		
-//		
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//// 리뷰수와 평균별점을 books 테이블의 해당 컬럼에 update
+//	void reviewset(int bnumber) {
 //
-//		setSize(900, 400);
-//		setLocationRelativeTo(null);
+//		int num1 = bnumber;
+//		int num2 = review(num1);
+//		int num3 = star(num1);
+//		double num4 = (double) num3 / (double) num2;
+//		double num5 = Math.round(num4 * 10) / 10.0;
 //
-//		setVisible(true);
-//		
-//		
-//		
-//		
+//		try {
+//			sql = "update books set bstaravg = ? ,breviewsum = ? where bnumber = ? ";
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setDouble(1, num5);
+//			pstmt.setInt(2, num2);
+//			pstmt.setInt(3, num1);
+//
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
 //		
 //	}
+//	
+
 	
 	
 

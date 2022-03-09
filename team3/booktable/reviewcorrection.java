@@ -29,6 +29,8 @@ public class reviewcorrection extends JFrame{
 		
 		setTitle("리뷰 수정");
 		jta2 = new JTextArea(20,20);
+		JScrollPane jsp = new JScrollPane(jta2, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
+				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		jta2.setLineWrap(true);   
 		jta2.setText(review);
 		JButton jb4 = new JButton("수정 완료");
@@ -67,7 +69,7 @@ public class reviewcorrection extends JFrame{
 		
 		jb2.add(bg1, BorderLayout.CENTER);
 		jb2.add(jb, BorderLayout.SOUTH);
-		add(jta2, BorderLayout.NORTH);
+		add(jsp, BorderLayout.NORTH);
 		add(jl5p);
 		add(jb2, BorderLayout.SOUTH);
 		
