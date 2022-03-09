@@ -109,7 +109,7 @@ public class MyPage extends JFrame {
 		btnCheck.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new MemberInfoCheck();
+				new MemberInfoCheck(id);
 			}
 		});
 		panelBtn.add(btnCheck);
