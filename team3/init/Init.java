@@ -126,7 +126,8 @@ public class Init extends JFrame {
 			if(found) {
 				if(pw.equals(rs.getString("mem_password"))) {
 					JOptionPane.showMessageDialog(null, "로그인되었습니다.");
-					new MemberInfo();
+					//통합 이후 여기에서 고객 창 생성
+					new MemberInfo(id);
 					dispose();
 				}
 				else {
