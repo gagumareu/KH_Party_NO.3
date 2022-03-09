@@ -118,7 +118,7 @@ public class MyPage extends JFrame {
 		btnEdit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new MemberInfoEdit();
+				new MemberInfoEdit(id);
 			}
 		});
 		panelBtn.add(btnEdit);

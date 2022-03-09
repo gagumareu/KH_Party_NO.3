@@ -223,7 +223,7 @@ public class MemberInfoCheck extends JFrame {
 		btnToEdit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new MemberInfoEdit();
+				new MemberInfoEdit(id);
 			}
 		});
 		panel_south.add(btnToEdit);
@@ -259,7 +259,7 @@ public class MemberInfoCheck extends JFrame {
 			boolean found = rs.next();
 			
 			if(found) {
-				JOptionPane.showMessageDialog(null, "회원 정보를 가져왔습니다.");
+				return;
 			}
 			else {
 				JOptionPane.showMessageDialog(null, "회원 정보를 제대로 가져오지 못했습니다.");
