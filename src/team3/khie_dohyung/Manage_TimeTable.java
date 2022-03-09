@@ -353,9 +353,9 @@ public class Manage_TimeTable extends JFrame{
 				int tho= rs.getInt("hours");
 				String tname= rs.getString("tname");
 				int tprice= rs.getInt("tprice");
-				String packag = rs.getString("package");
+				String type = rs.getString("type");
 				
-				Object[] data = {tho,tname,tprice,packag};
+				Object[] data = {tho,tname,tprice,type};
 				model.addRow(data);
 			}
 			rs.close();pstmt.close();con.close();
@@ -399,7 +399,7 @@ public class Manage_TimeTable extends JFrame{
 		
 		
 		try {
-			sql="update timeTable set tname=?,tprice=?,package=? where hours=?";
+			sql="update timeTable set tname=?,tprice=?,type=? where hours=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, jtf2.getText());
 			pstmt.setInt(2, Integer.parseInt(jtf3.getText()));
