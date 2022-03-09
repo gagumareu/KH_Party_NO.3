@@ -43,9 +43,10 @@ insert into timetable values('24', '24시간 추가', '12000', 'ALL-DAY');
 create table payment(
     oderno number primary key,
     pname varchar2(50) not null,
-    total number(10) not null,
     amount number(10),
-    ptype varchar2(10) not null,
+    total number(10) not null,
+    sort varchar2(10) not null,
+    cashtype varchar2(10) not null,
     regdate date
 );
 commit;
