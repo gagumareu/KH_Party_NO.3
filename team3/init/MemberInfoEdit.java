@@ -19,26 +19,16 @@ public class MemberInfoEdit extends JFrame {
 
 
 	/**
-	 * Launch the application.
+	 * Application launched by other application - MyPage or MemberInfoCheck
+	 * 기본 생성자는 형식만 구현. 실제로 사용되지 않음.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MemberInfoEdit frame = new MemberInfoEdit();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public MemberInfoEdit() {
 		setTitle("회원 정보 수정");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 350, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -373,9 +363,10 @@ public class MemberInfoEdit extends JFrame {
 	int updatePwd(String id, String pwd) {
 		int res = 0;
 		try {
-			sql = "update member set mem_password='" + pwd 
-					+ "' where mem_id='" + id + "'";
+			sql = "update member set mem_password=? where mem_id=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, id);
 			res = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -386,9 +377,10 @@ public class MemberInfoEdit extends JFrame {
 	int updateCont(String id, String cont) {
 		int res = 0;
 		try {
-			sql = "update member set mem_contact='" + cont 
-					+ "' where mem_id='" + id + "'";
+			sql = "update member set mem_contact=? where mem_id=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, cont);
+			pstmt.setString(2, id);
 			res = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -399,9 +391,10 @@ public class MemberInfoEdit extends JFrame {
 	int updateAddr(String id, String addr) {
 		int res = 0;
 		try {
-			sql = "update member set mem_addr='" + addr 
-					+ "' where mem_id='" + id + "'";
+			sql = "update member set mem_addr=? where mem_id=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, addr);
+			pstmt.setString(2, id);
 			res = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

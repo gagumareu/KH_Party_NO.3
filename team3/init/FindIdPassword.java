@@ -36,6 +36,7 @@ public class FindIdPassword extends JFrame {
 	 * Create the frame.
 	 */
 	public FindIdPassword() {
+		//윈도우 설정, 기본이 되는 컨테이너 생성
 		setTitle("아이디/비밀번호 찾기");
 		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -48,7 +49,6 @@ public class FindIdPassword extends JFrame {
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
-		//윈도우, 기본이 되는 panel 생성
 		
 		
 		//아이디 찾기 tab
@@ -56,11 +56,12 @@ public class FindIdPassword extends JFrame {
 		tabbedPane.addTab("아이디 찾기", null, panelFindId, null);
 		panelFindId.setLayout(new GridLayout(3, 1));
 		
+		
 		JPanel panel_id1 = new JPanel();
 		panelFindId.add(panel_id1);
-		
 		JLabel jl1_ex = new JLabel("아이디를 찾기 위한 정보를 입력하세요.");
 		panel_id1.add(jl1_ex);
+		
 		
 		JPanel panel_id2 = new JPanel();
 		panelFindId.add(panel_id2);
@@ -72,9 +73,9 @@ public class FindIdPassword extends JFrame {
 		tf_idName.setColumns(10);
 		panel_id2.add(tf_idName);
 		
+		
 		JPanel panel_idBtn = new JPanel();
 		panelFindId.add(panel_idBtn);
-		
 		JButton btnFindId = new JButton("아이디 찾기");
 		btnFindId.addActionListener(new ActionListener() {
 			@Override
@@ -86,6 +87,7 @@ public class FindIdPassword extends JFrame {
 		panel_idBtn.add(btnFindId);
 		
 		
+		
 		//비밀번호 찾기 tab
 		JPanel panelFindPwd = new JPanel();
 		tabbedPane.addTab("비밀번호 찾기", null, panelFindPwd, null);
@@ -93,20 +95,18 @@ public class FindIdPassword extends JFrame {
 		
 		JPanel panel_pwd1 = new JPanel();
 		panelFindPwd.add(panel_pwd1, BorderLayout.NORTH);
-		
 		JLabel jl2_ex = new JLabel("비밀번호 찾기를 위한 정보를 입력하세요.");
 		panel_pwd1.add(jl2_ex);
 		
+		
 		JPanel panel_pwd2 = new JPanel();
 		panelFindPwd.add(panel_pwd2, BorderLayout.CENTER);
-		
 		JPanel panel_wrapPwdInfo = new JPanel();
 		panel_pwd2.add(panel_wrapPwdInfo);
 		panel_wrapPwdInfo.setLayout(new GridLayout(3, 1));
 		
-		JPanel panel_pwdInfo1 = new JPanel();
-		FlowLayout fl_panel_pwdInfo1 = (FlowLayout) panel_pwdInfo1.getLayout();
-		fl_panel_pwdInfo1.setAlignment(FlowLayout.RIGHT);
+		
+		JPanel panel_pwdInfo1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		panel_wrapPwdInfo.add(panel_pwdInfo1);
 		
 		JLabel jl2_name = new JLabel("이름: ");
@@ -116,9 +116,8 @@ public class FindIdPassword extends JFrame {
 		tf_pwName.setColumns(10);
 		panel_pwdInfo1.add(tf_pwName);
 		
-		JPanel panel_pwdInfo2 = new JPanel();
-		FlowLayout fl_panel_pwdInfo2 = (FlowLayout) panel_pwdInfo2.getLayout();
-		fl_panel_pwdInfo2.setAlignment(FlowLayout.RIGHT);
+		
+		JPanel panel_pwdInfo2 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		panel_wrapPwdInfo.add(panel_pwdInfo2);
 		
 		JLabel jl2_id = new JLabel("아이디: ");
@@ -128,9 +127,8 @@ public class FindIdPassword extends JFrame {
 		tf_pwId.setColumns(10);
 		panel_pwdInfo2.add(tf_pwId);
 		
-		JPanel panel_pwdInfo3 = new JPanel();
-		FlowLayout fl_panel_pwdInfo3 = (FlowLayout) panel_pwdInfo3.getLayout();
-		fl_panel_pwdInfo3.setAlignment(FlowLayout.RIGHT);
+		
+		JPanel panel_pwdInfo3 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		panel_wrapPwdInfo.add(panel_pwdInfo3);
 		
 		JLabel jl2_ans = new JLabel("어릴 때 살던 동네는? ");
@@ -139,6 +137,7 @@ public class FindIdPassword extends JFrame {
 		tf_pwAns = new JTextField();
 		tf_pwAns.setColumns(10);
 		panel_pwdInfo3.add(tf_pwAns);
+		
 		
 		JPanel panel_pwdBtn = new JPanel();
 		panelFindPwd.add(panel_pwdBtn, BorderLayout.SOUTH);
@@ -153,9 +152,10 @@ public class FindIdPassword extends JFrame {
 		});
 		panel_pwdBtn.add(btnFindPwd);
 		
+		
+		//하단의 모든 탭이 공통으로 갖는 취소 버튼
 		JPanel panelCancel = new JPanel();
 		contentPane.add(panelCancel, BorderLayout.SOUTH);
-		
 		JButton btnCancel = new JButton("취소");
 		btnCancel.addActionListener(new ActionListener() {
 			@Override

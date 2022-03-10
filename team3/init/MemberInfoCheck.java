@@ -16,24 +16,15 @@ public class MemberInfoCheck extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
+	 * Application launched by other application - My Page
+	 * 기본 생성자는 형식만 구현. 실제로 사용되지 않음.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MemberInfoCheck frame = new MemberInfoCheck();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the frame.
 	 */
 	public MemberInfoCheck() {
+		//윈도우 설정, 기본이 되는 컨테이너 생성
 		setTitle("회원 정보 확인");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 350, 350);
@@ -42,6 +33,7 @@ public class MemberInfoCheck extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
+		//가운데의 panel
 		JPanel panel_center = new JPanel();
 		contentPane.add(panel_center, BorderLayout.CENTER);
 		
@@ -52,69 +44,60 @@ public class MemberInfoCheck extends JFrame {
 		JPanel panel1_num = new JPanel();
 		panel_wrapCenter.add(panel1_num);
 		
-		JLabel jl1_num1 = new JLabel("회원 번호: ");
-		panel1_num.add(jl1_num1);
-		
-		JLabel jl1_num2 = new JLabel("New label");
-		panel1_num.add(jl1_num2);
-		
 		JPanel panel2_name = new JPanel();
 		panel_wrapCenter.add(panel2_name);
-		
-		JLabel jl2_name1 = new JLabel("회원 이름: ");
-		panel2_name.add(jl2_name1);
-		
-		JLabel jl2_name2 = new JLabel("New label");
-		panel2_name.add(jl2_name2);
 		
 		JPanel panel3_id = new JPanel();
 		panel_wrapCenter.add(panel3_id);
 		
-		JLabel jl3_id1 = new JLabel("회원 아이디: ");
-		panel3_id.add(jl3_id1);
-		
-		JLabel jl3_id2 = new JLabel("New label");
-		panel3_id.add(jl3_id2);
-		
 		JPanel panel4_contact = new JPanel();
 		panel_wrapCenter.add(panel4_contact);
-		
-		JLabel jl4_cont1 = new JLabel("회원 연락처: ");
-		panel4_contact.add(jl4_cont1);
-		
-		JLabel jl4_cont2 = new JLabel("New label");
-		panel4_contact.add(jl4_cont2);
 		
 		JPanel panel5_address = new JPanel();
 		panel_wrapCenter.add(panel5_address);
 		
-		JLabel jl5_addr1 = new JLabel("회원 주소: ");
-		panel5_address.add(jl5_addr1);
-		
-		JLabel jl5_addr2 = new JLabel("New label");
-		panel5_address.add(jl5_addr2);
-		
 		JPanel panel6_mileage = new JPanel();
 		panel_wrapCenter.add(panel6_mileage);
 		
+		
+		JLabel jl1_num1 = new JLabel("회원 번호: ");
+		JLabel jl2_name1 = new JLabel("회원 이름: ");
+		JLabel jl3_id1 = new JLabel("회원 아이디: ");
+		JLabel jl4_cont1 = new JLabel("회원 연락처: ");
+		JLabel jl5_addr1 = new JLabel("회원 주소: ");
 		JLabel jl6_mile1 = new JLabel("보유 마일리지: ");
+		panel1_num.add(jl1_num1);
+		panel2_name.add(jl2_name1);
+		panel3_id.add(jl3_id1);
+		panel4_contact.add(jl4_cont1);
+		panel5_address.add(jl5_addr1);
 		panel6_mileage.add(jl6_mile1);
 		
-		JLabel jl6_mile2 = new JLabel("New label");
+		JLabel jl1_num2 = new JLabel("회원 번호 들어가는 곳");
+		JLabel jl2_name2 = new JLabel("회원 이름 들어가는 곳");
+		JLabel jl3_id2 = new JLabel("회원 아이디 들어가는 곳");
+		JLabel jl4_cont2 = new JLabel("회원 연락처 들어가는 곳");
+		JLabel jl5_addr2 = new JLabel("회원 주소 들어가는 곳");
+		JLabel jl6_mile2 = new JLabel("보유 마일리지 들어가는 곳");
+		panel1_num.add(jl1_num2);
+		panel2_name.add(jl2_name2);
+		panel3_id.add(jl3_id2);
+		panel4_contact.add(jl4_cont2);
+		panel5_address.add(jl5_addr2);
 		panel6_mileage.add(jl6_mile2);
+		
 		
 		JPanel panel_pwdFind = new JPanel();
 		panel_wrapCenter.add(panel_pwdFind);
-		
 		JButton btnFindPwd = new JButton("비밀번호 찾기 질문 답 확인");
 		panel_pwdFind.add(btnFindPwd);
+		
 		
 		JPanel panel_south = new JPanel();
 		contentPane.add(panel_south, BorderLayout.SOUTH);
 		
 		JButton btnToEdit = new JButton("회원 정보 수정");
 		panel_south.add(btnToEdit);
-		
 		JButton btnClose = new JButton("닫기");
 		btnClose.addActionListener(new ActionListener() {
 			@Override
