@@ -16,7 +16,7 @@ bnumber number(20)primary key,  -- 책 고유 번호 (장르 무관)
 bname varchar(50) unique ,        --책이름
 bwriter varchar(50),            --글쓴이
 bstaravg number(10),
-bleviewsum number (10)
+breviewsum number (10)
 );
 commit;
 
@@ -28,7 +28,6 @@ commit;
 create table review(
 bnumber number (20),
 reviewnum number(20),
-reviewpass number(20),
 rname varchar(20),
 review varchar (4000),
 starsum number (20),          --별점
@@ -55,15 +54,17 @@ nocache;
 
 -- 예시로 장르별로 책 한권씩 등록
 insert into books
-values ('A','액션',booknum_seq.nextval,'나루토','키시모토 마사시',null,null);
+values ('A','액션',booknum_seq.nextval,'나루토','키시모토 마사시',0,0);
 insert into books
-values ('A','액션',booknum_seq.nextval,'원피스','에이치로 오다',null,null);
+values ('A','액션',booknum_seq.nextval,'원피스','에이치로 오다',0,0);
 insert into books
-values ('B','코미디',booknum_seq.nextval,'이말년시리즈','이말년',null,null);
+values ('B','코미디',booknum_seq.nextval,'이말년시리즈','이말년',0,0);
 insert into books
-values ('C','순정',booknum_seq.nextval,'궁','박소희',null,null);
+values ('C','순정',booknum_seq.nextval,'궁','박소희',0,0);
 insert into books
-values ('D','판타지',booknum_seq.nextval,'전지적 독자 시점','UMI/슬리피-C',null,null);
+values ('D','판타지',booknum_seq.nextval,'전지적 독자 시점','UMI/슬리피-C',0,0);
 insert into books
-values ('E','스포츠',booknum_seq.nextval,'더 파이팅','모리카와 조지',null,null);
+values ('E','스포츠',booknum_seq.nextval,'더 파이팅','모리카와 조지',0,0);
+
+
 
