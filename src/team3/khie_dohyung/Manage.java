@@ -164,6 +164,16 @@ public class Manage extends JFrame {
 		jb2.setBackground(Color.CYAN);
 		jb2.setFont(new Font("휴먼편지체",Font.BOLD, 35));
 		
+		jb2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new Manage_Sales();
+				dispose();
+				
+			}
+		});
+		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\ssales.png"));
 		GroupLayout gl_panel_1_2 = new GroupLayout(panel_1_2);
