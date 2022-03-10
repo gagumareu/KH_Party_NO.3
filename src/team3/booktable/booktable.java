@@ -1,36 +1,55 @@
 package team3.booktable;
 
-import java.awt.*;
-import java.awt.event.*;
-import java.sql.*;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import java.awt.Color;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-import jdk.nashorn.internal.scripts.JO;
-import team3.khie_dohyung.ManwhaMain;
+import javax.swing.UIManager;
+import java.awt.Font;
+import javax.swing.JScrollPane;
 
-public class Booktable extends JFrame {
-
+public class booktable extends JFrame {
+	
 	Connection con = null; // DB와 연결하는 객체
 	PreparedStatement pstmt = null; // sql문을 db에 전송하는 객체
 	ResultSet rs = null; // sql문 실행 결과를 가지고 있는 객체
 	String sql = null; // sql문을 저장하는 문자열 변수.
 
+	private JPanel contentPane;
+	private JTextField jtf1;
+	private JTable table;
+	
 	DefaultTableModel model;
-	JTable table;
-	DefaultTableModel model2;
-	JTable table2;
 
-	JTextField jtf1;
 	JComboBox<String> jcb1;
+	JComboBox<String> jcb2;
 	JComboBox<String> jcb3;
 	String genre;
 	// search
 	String str2;
 	String str;
 
-	JComboBox<String> jcb2;
 	String sort;
 	// sort
 	String sortbname = "";
@@ -39,199 +58,227 @@ public class Booktable extends JFrame {
 	String sortmgr = "n";
 	
 	String mtable="";
-	
 
-	
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					booktable frame = new booktable("이승민");
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
-	public Booktable() {
-
-		setTitle("도서검색");
-
-		JPanel container1 = new JPanel();
-		JPanel container2 = new JPanel(new BorderLayout());
-		JPanel container3 = new JPanel();
-		JPanel container4 = new JPanel();
-
-		String[] bname = { "도서명", "작가명" };
-
-		jcb3 = new JComboBox<>();
-
-		jcb3.addItem("장르 전체");
-
-		jcb1 = new JComboBox<String>(bname);
-		String[] bname2 = { "이름 순", "리뷰 순", "별점 순" };
-
-		jcb2 = new JComboBox<String>(bname2);
-
-		jtf1 = new JTextField(15);
-		JButton jb1 = new JButton("검색");
-
-		JLabel jl1 = new JLabel("정렬");
-
-		String[] header = { "장르", "도서명", "작가명", "평균별점", "리뷰수", "도서위치" };
-
-		model = new DefaultTableModel(header, 0);
-		table = new JTable(model);
-		JScrollPane jsp = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-		JButton jb2 = new JButton("전체 보기");
-		JButton jb3 = new JButton("리뷰 쓰기");
-		JButton jb4 = new JButton("리뷰 보기");
-		JButton jb5 = new JButton("HOME");
-
-		container1.add(jcb3);
-		container1.add(jcb1);
-		container1.add(jtf1);
-		container1.add(jb1);
-		container2.add(jcb2, BorderLayout.WEST);
-		container2.add(jl1);
-		container3.add(jb2);
-		container3.add(jb3);
-		container3.add(jb4);
-		container3.add(jb5);
-
-		JPanel group1 = new JPanel(new BorderLayout());
-		JPanel group2 = new JPanel(new BorderLayout());
-		group1.add(container1, BorderLayout.NORTH);
-		group1.add(container2, BorderLayout.SOUTH);
-		group2.add(container3, BorderLayout.NORTH);
-		group2.add(container4, BorderLayout.SOUTH);
-
-		add(group1, BorderLayout.NORTH);
-		add(jsp, BorderLayout.CENTER);
-		add(group2, BorderLayout.SOUTH);
-
+	/**
+	 * Create the frame.
+	 */
+	public booktable(String mname) {
+		setTitle("도서 검색");
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		setSize(900, 400);
+		setBounds(100, 100, 906, 471);
 		setLocationRelativeTo(null);
-
-		setVisible(true);
-
+		contentPane = new JPanel();
+		contentPane.setBackground(UIManager.getColor("info"));
+		contentPane.setForeground(UIManager.getColor("activeCaptionText"));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		jcb3 = new JComboBox();
+		jcb3.setBounds(464, 87, 80, 28);
+		jcb3.setBackground(UIManager.getColor("Table.background"));
+		jcb3.setModel(new DefaultComboBoxModel(new String[] {"장르 전체"}));
+		contentPane.add(jcb3);
+		
+		jcb1 = new JComboBox();
+		jcb1.setBounds(553, 87, 80, 28);
+		jcb1.setBackground(UIManager.getColor("Table.background"));
+		jcb1.setModel(new DefaultComboBoxModel(new String[] {"도서명", "작가명"}));
+		contentPane.add(jcb1);
+		
+		jtf1 = new JTextField();
+		jtf1.setBounds(464, 125, 185, 28);
+		contentPane.add(jtf1);
+		jtf1.setColumns(10);
+		
+		JButton jb1 = new JButton("검 색");
+		jb1.setBounds(661, 124, 97, 28);
+		jb1.setBackground(UIManager.getColor("Table.selectionBackground"));
+		jb1.setForeground(UIManager.getColor("InternalFrame.inactiveTitleForeground"));
+		contentPane.add(jb1);
+		
+		jcb2 = new JComboBox();
+		jcb2.setBounds(28, 167, 74, 21);
+		jcb2.setBackground(UIManager.getColor("Table.background"));
+		jcb2.setModel(new DefaultComboBoxModel(new String[] {"이름 순", "별점 순", "리뷰 순"}));
+		contentPane.add(jcb2);
+		
+		JButton jb3 = new JButton("리뷰 작성");
+		jb3.setBounds(28, 48, 121, 28);
+		jb3.setFont(new Font("돋움", Font.BOLD, 14));
+		jb3.setBackground(UIManager.getColor("Table.selectionBackground"));
+		contentPane.add(jb3);
+		
+		JButton jb4 = new JButton("리뷰 보기");
+		jb4.setBounds(28, 86, 121, 28);
+		jb4.setFont(new Font("돋움", Font.BOLD, 14));
+		jb4.setBackground(UIManager.getColor("Table.selectionBackground"));
+		contentPane.add(jb4);
+		
+		JButton jb2 = new JButton("전체 보기");
+		jb2.setBounds(28, 10, 121, 28);
+		jb2.setFont(new Font("돋움", Font.BOLD, 14));
+		jb2.setBackground(UIManager.getColor("Table.selectionBackground"));
+		contentPane.add(jb2);
+		
+		JButton jb5 = new JButton("Home");
+		jb5.setForeground(new Color(0, 0, 0));
+		jb5.setIcon(null);
+		jb5.setBounds(28, 124, 121, 28);
+		jb5.setFont(new Font("돋움", Font.BOLD, 14));
+		jb5.setBackground(UIManager.getColor("info"));
+		contentPane.add(jb5);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(28, 198, 821, 204);
+		contentPane.add(scrollPane);
+		String[] header = { "장르", "도서명", "작가명", "평균별점", "리뷰수", "도서위치" };
+		model = new DefaultTableModel(header, 0);
+		table = new JTable();
+		table.setModel(model
+		);
+		scrollPane.setViewportView(table);
+		
 		connect();
 		combogenre();
 		view();
-
+		
+		
+		
 		// 검색버튼 (특정부분만 입력해도 포함되어있는 값을 검색해주는 시스템)
-		jb1.addActionListener(new ActionListener() {
+				jb1.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				connect();
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						connect();
 
-				model.setRowCount(0);
+						model.setRowCount(0);
 
-				search();
+						search();
 
-				jtf1.setText("");
+						jtf1.setText("");
 
-			}
-		});
+					}
+				});
 
-		jb2.addActionListener(new ActionListener() {
+				jb2.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				connect();
-				model.setRowCount(0);
-				view();
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						connect();
+						model.setRowCount(0);
+						view();
 
-			}
-		});
+					}
+				});
 
-		jcb2.addActionListener(new ActionListener() {
+				jcb2.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				String sort1 = jcb2.getSelectedItem().toString();
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						String sort1 = jcb2.getSelectedItem().toString();
 
-				connect();
-				model.setRowCount(0);
-				sort(sort1);
+						connect();
+						model.setRowCount(0);
+						sort(sort1);
 
-			}
-		});
+					}
+				});
 
-		table.addMouseListener(new MouseListener() {
+				table.addMouseListener(new MouseListener() {
 
-			@Override
-			public void mouseReleased(MouseEvent e) {
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-
-				int row = table.getSelectedRow();
-				
-
-				mtable = model.getValueAt(row, 1).toString();
-				
-				
-
-				
-			}
-		});
-		
-		
-		jb4.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				if(mtable.equals("")) {
-					JOptionPane.showMessageDialog(null, "도서를 선택하세요");
-				}else {
-
-					viewer vw = new viewer();
-					vw.viewer(mtable);
+					@Override
+					public void mouseReleased(MouseEvent e) {
 					}
 
-				
-			}
-		});
-		
-		jb3.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				stre st = new stre();
-				if(mtable.equals("")) {
-					JOptionPane.showMessageDialog(null, "도서를 선택하세요");
-				}else {
-				st.stre(mtable);}
-			}
-		});
-		jb5.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new ManwhaMain();
-				dispose();
-				
-			}
-		});
-		
-		
-		
-		
-		
-		
+					@Override
+					public void mousePressed(MouseEvent e) {
+					}
 
-	}// --------------------------------생성자 end-------------------------------------
+					@Override
+					public void mouseExited(MouseEvent e) {
+					}
 
+					@Override
+					public void mouseEntered(MouseEvent e) {
+					}
+
+					@Override
+					public void mouseClicked(MouseEvent e) {
+
+						int row = table.getSelectedRow();
+						
+
+						mtable = model.getValueAt(row, 1).toString();
+						
+						
+
+						
+					}
+				});
+				
+				
+				jb4.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						
+						if(mtable.equals("")) {
+							JOptionPane.showMessageDialog(null, "도서를 선택하세요");
+						}else {
+
+							viewer v2 = new viewer(mtable,mname);
+							v2.setVisible(true);
+							}
+
+						
+					}
+				});
+				
+				jb3.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+//						connect();
+//						JOptionPane.showMessageDialog(null, sysdate(bnumber(mtable),mname));
+						
+						
+						
+						if(mtable.equals("")) {
+							JOptionPane.showMessageDialog(null, "도서를 선택하세요");
+						}else {
+							}
+						stre st = new stre(mtable,mname);
+						st.setVisible(true);
+					}
+				});
+				
+				
+				
+				
+				
+				
+				
+
+	}
+	
 	void connect() {
 
 		String driver = "oracle.jdbc.driver.OracleDriver";
@@ -486,6 +533,33 @@ public class Booktable extends JFrame {
 		}
 
 	}
+	
+	String sysdate(int bnumber , String mname) {
+		String sysdate = "";
+		
+		
+		try {
+			sql = "select regdate from review where bnumber = ? and rname = ?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, bnumber);
+			pstmt.setString(2, mname);
+			
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				sysdate = rs.getString("regdate");
+			}
+			con.close();
+			pstmt.close();
+			rs.close();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return sysdate; 
+	}
 
 	// 장르를 콤보박스에 넣음.
 	void combogenre() {
@@ -505,39 +579,27 @@ public class Booktable extends JFrame {
 		}
 
 	}
+	// ----------책이름 > 책번호 ----------------------
+	int bnumber(String bname) {
+		int bnumber = 0;
+		try {
+			sql = "select bnumber from books where bname = ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, bname);
+			rs = pstmt.executeQuery();
 
-//// 리뷰수와 평균별점을 books 테이블의 해당 컬럼에 update
-//	void reviewset(int bnumber) {
-//
-//		int num1 = bnumber;
-//		int num2 = review(num1);
-//		int num3 = star(num1);
-//		double num4 = (double) num3 / (double) num2;
-//		double num5 = Math.round(num4 * 10) / 10.0;
-//
-//		try {
-//			sql = "update books set bstaravg = ? ,breviewsum = ? where bnumber = ? ";
-//			pstmt = con.prepareStatement(sql);
-//			pstmt.setDouble(1, num5);
-//			pstmt.setInt(2, num2);
-//			pstmt.setInt(3, num1);
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//
-//		
-//	}
-//	
+			while (rs.next()) {
+				bnumber = rs.getInt("bnumber");
+			}
+			rs.close();
+			pstmt.close();
 
-	
-	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-	public static void main(String[] args) {
-
-		new Booktable();
+		return bnumber;
 
 	}
-
 }
