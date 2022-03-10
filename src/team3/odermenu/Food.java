@@ -1541,7 +1541,7 @@ public class Food extends JFrame {
 		
 		try {
 			
-			sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, ? sysdate)";
+			sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, sysdate)";
 			pstmt = con.prepareStatement(sql);
 		
 			for(int i = 0; i < model.getRowCount(); i++) {

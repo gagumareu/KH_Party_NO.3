@@ -49,7 +49,7 @@ public class Manage_Sales extends JFrame {
 		JPanel container2 = new JPanel();
 		container2.setBackground(SystemColor.info);
 		
-		jl1 = new JLabel("총 매출 :");
+		jl1 = new JLabel("총 매출:");
 		jl2 = new JLabel("카드:");
 		jl3 = new JLabel("현금:");
 		
@@ -62,8 +62,7 @@ public class Manage_Sales extends JFrame {
 		
 		JButton jb1 = new JButton("전체 목록");
 		jb1.setBackground(Color.CYAN);
-		JButton jb2 = new JButton("날짜별 매출");
-		jb2.setBackground(Color.CYAN);
+		
 		JButton jb3 = new JButton("음식별 매출");
 		jb3.setBackground(Color.CYAN);
 		JButton jb4 = new JButton("요금제 매출");
@@ -80,17 +79,17 @@ public class Manage_Sales extends JFrame {
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(container2, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
-					.addGap(48)
-					.addComponent(lblNewLabel)
-					.addGap(48)
-					.addComponent(container1, GroupLayout.PREFERRED_SIZE, 303, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-					.addGap(20))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(jsp, GroupLayout.PREFERRED_SIZE, 784, GroupLayout.PREFERRED_SIZE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(container2, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
+							.addGap(48)
+							.addComponent(lblNewLabel)
+							.addGap(67)
+							.addComponent(container1, GroupLayout.PREFERRED_SIZE, 283, GroupLayout.PREFERRED_SIZE)
+							.addGap(27)
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE))
+						.addComponent(jsp, GroupLayout.PREFERRED_SIZE, 784, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
@@ -98,22 +97,18 @@ public class Manage_Sales extends JFrame {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(43)
+							.addComponent(lblNewLabel))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(43)
-									.addComponent(lblNewLabel))
-								.addGroup(groupLayout.createSequentialGroup()
-									.addContainerGap()
-									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-										.addComponent(container2, GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-										.addComponent(container1, 0, 0, Short.MAX_VALUE))))
-							.addGap(18))
+								.addComponent(container2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(container1, GroupLayout.PREFERRED_SIZE, 173, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(56)
-							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(jsp, GroupLayout.PREFERRED_SIZE, 532, GroupLayout.PREFERRED_SIZE))
+							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 82, GroupLayout.PREFERRED_SIZE)))
+					.addPreferredGap(ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+					.addComponent(jsp, GroupLayout.PREFERRED_SIZE, 550, GroupLayout.PREFERRED_SIZE))
 		);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
@@ -127,7 +122,7 @@ public class Manage_Sales extends JFrame {
 					.addGroup(gl_container2.createParallelGroup(Alignment.LEADING, false)
 						.addComponent(jb3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(jb1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(jb2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						
 						.addComponent(jb4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(jb5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap(531, Short.MAX_VALUE))
@@ -138,8 +133,7 @@ public class Manage_Sales extends JFrame {
 					.addContainerGap()
 					.addComponent(jb1)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(jb2)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
+					
 					.addComponent(jb3)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(jb4)
@@ -153,22 +147,22 @@ public class Manage_Sales extends JFrame {
 			gl_container1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_container1.createSequentialGroup()
 					.addGap(20)
-					.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
-							.addComponent(jl3)
-							.addComponent(jl2))
+					.addGroup(gl_container1.createParallelGroup(Alignment.TRAILING)
+						.addComponent(jl3)
+						.addComponent(jl2)
 						.addComponent(jl1))
-					.addGap(285))
+					.addGap(141))
 		);
 		gl_container1.setVerticalGroup(
 			gl_container1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_container1.createSequentialGroup()
-					.addGap(5)
-					.addComponent(jl1)
-					.addGap(18)
+					.addContainerGap()
+					.addComponent(jl3)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(jl2)
-					.addGap(18)
-					.addComponent(jl3))
+					.addPreferredGap(ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+					.addComponent(jl1)
+					.addContainerGap())
 		);
 		container1.setLayout(gl_container1);
 		getContentPane().setLayout(groupLayout);
@@ -189,22 +183,7 @@ public class Manage_Sales extends JFrame {
 			}
 		});
 		
-		jb2.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				connect();
-				model.setRowCount(0);
-				select();
-				sales=0;card=0;cash=0;
-				
-		
-
-				
-				
-			}
-		});
-		
+	
 		
 		jl1.setFont(new Font("휴먼편지체",Font.BOLD, 30));
 		jl2.setFont(new Font("휴먼편지체",Font.BOLD, 30));

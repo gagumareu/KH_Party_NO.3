@@ -47,7 +47,7 @@ public class Payment extends JFrame {
 	String paySelect;
 
 	String sql = null;
-	DefaultTableModel model;
+	DefaultTableModel model,model1;
 	
 	JPanel contentPane;
 	static JTable orderTable;
@@ -90,8 +90,7 @@ public class Payment extends JFrame {
 	
 	public Payment(JTable orderTable) {
 		
-	//	model1 = DefaultTableModel();
-	//	orderTable = new JTable(model1);
+	//	
 		
 		setTitle("결제 화면");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\comic.png"));
@@ -284,8 +283,10 @@ public class Payment extends JFrame {
 	void payment() {
 		
 		
+		model1 = new DefaultTableModel();
+		orderTable = new JTable(model1);
 		
-		//model = (DefaultTableModel) orderTable.getModel();
+		model = (DefaultTableModel) orderTable.getModel();
 		
 		try {
 			
@@ -293,6 +294,7 @@ public class Payment extends JFrame {
 			pstmt = con.prepareStatement(sql);
 			
 			System.out.println(orderTable);
+			
 		
 			for(int i = 0; i < orderTable.getRowCount(); i++) {
 				
@@ -304,8 +306,14 @@ public class Payment extends JFrame {
 				pstmt.setString(5, paySelect);
 				pstmt.executeUpdate();
 				
+				pstmt.addBatch();
+				pstmt.clearParameters();
 
 			}
+
+			pstmt.executeBatch();
+
+		
 
 			
 			con.close();
