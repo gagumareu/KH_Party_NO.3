@@ -37,7 +37,6 @@ foreign key (bnumber) references books (bnumber)
 );
 
 
-update review set review = '액션이 너무 너무 좋다' where reviewnum = 2;
 
 
 
