@@ -45,7 +45,7 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 
-public class OrderMenu extends JFrame {
+public class OrderMenu2_backUP extends JFrame {
 
 	private JPanel contentPane;
 	
@@ -58,7 +58,7 @@ public class OrderMenu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					OrderMenu frame = new OrderMenu();
+					OrderMenu2_backUP frame = new OrderMenu2_backUP();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -66,7 +66,7 @@ public class OrderMenu extends JFrame {
 			}
 		});
 		
-		new OrderMenu();
+		new OrderMenu2_backUP();
 	}
 
 	/**
@@ -77,8 +77,8 @@ public class OrderMenu extends JFrame {
 	PreparedStatement pstmt = null;
 	ResultSet res = null;
 	String sql = null;
-	public DefaultTableModel model;
-	public JTable cartTable;
+	DefaultTableModel model;
+	JTable cartTable;
 	
 	
 	JSpinner kimchSpinner, spamSpinner, chickSpinner, ameriSpinner,
@@ -88,17 +88,15 @@ public class OrderMenu extends JFrame {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
 	JComboBox chooseComboBox;
-	Object choose = null;
 	String paySelect;
-	int totalAmount = 0;
-	int totalSales = 0;
-	int tAmount = 0;
-	int tSales = 0;
+	
+	public int tAmount = 0;
+	public int tSale = 0;
 	private JTextField cashTextField;
 	
 	
 	// 생성자 
-	public OrderMenu() {
+	public OrderMenu2_backUP() {
 		
 		setTitle("음식 메뉴 주문");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\comic.png"));
@@ -1299,95 +1297,47 @@ public class OrderMenu extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 
 			
+				calculator(tAmount, tSale);                   // 총 수량 및 총 결제 금액 메서드
+				
+				
 				
 				JTable jtbl = new JTable(model);
-				
-				calculator();                   // 총 수량 및 총 결제 금액 메서드
-								
-//				for(int i = 0; i < jtbl.getRowCount(); i++) {
-//					tAmount = tAmount + Integer.parseInt((jtbl.getValueAt(i, 1).toString()));
-//				}				
-//				for(int i = 0; i < jtbl.getRowCount(); i++) {
-//					tSale = tSale + Integer.parseInt(jtbl.getValueAt(i, 2).toString());					
-//				}				
-//				JTable jtbl = new JTable(model);
 
 				String paySelect = chooseComboBox.getSelectedItem().toString();
 				
 				if(paySelect.equals(" 결제수단선택")) {           // 1-1. 결제 방식 선택 안했을 때 
 					String[] cashOrCreadit = {"카드", "현금"};
-					Object choose = JOptionPane.showInputDialog(
-							null, 
-							"지불 방법을 선택해주세요", 
-							"결제수단", 
-							JOptionPane.QUESTION_MESSAGE, 
-							null, 
-							cashOrCreadit, 
-							"결제수단");
-					if(choose == "카드") {            // 1-2. 결제 방식 선택 안했을 때 - 카드 선택
+					Object choice = JOptionPane.showInputDialog(null, "지불 방법을 선택해주세요", "결제수단", JOptionPane.QUESTION_MESSAGE, null, cashOrCreadit, "결제수단");
+					if(choice == "카드") {            // 1-2. 결제 방식 선택 안했을 때 - 카드 선택
 						connect();
-//						checkOut2();						
-						try {
-							sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, ?, sysdate)";
-							pstmt = con.prepareStatement(sql);				
-							for(int i = 0; i < model.getRowCount(); i++) {								
-								pstmt.setString(1, model.getValueAt(i, 0).toString());
-								pstmt.setInt(2, (Integer)(model.getValueAt(i, 1)));
-								pstmt.setInt(3, (Integer)(model.getValueAt(i, 2)));
-								pstmt.setString(4,  model.getValueAt(i, 3).toString());
-								pstmt.setString(5, choose.toString());								
-								pstmt.executeUpdate();												
-							}
-							con.close();
-							pstmt.close();							
-						} catch (Exception e1) {
-							e1.printStackTrace();
-						}
-						
-						System.out.println("결제방식 선택 X - 카드");     // 삭제 예정
-						new Receipt(jtbl);
-					}else if(choose == "현금"){       // 1-3. 결제 방식 선택 안했을 때 - 현금 선택
-						System.out.println("결제 방식 선택 X - 현금");     // 삭제 예정
+						payment();
+						System.out.println("카드2");
+						new CheckOut2_backUp(jtbl);
+					}else if(choice == "현금"){       // 1-3. 결제 방식 선택 안했을 때 - 현금 선택
+						System.out.println("현금2");
 						connect();
-//						checkOut2();						
-						try {
-							sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, ?, sysdate)";
-							pstmt = con.prepareStatement(sql);				
-							for(int i = 0; i < model.getRowCount(); i++) {								
-								pstmt.setString(1, model.getValueAt(i, 0).toString());
-								pstmt.setInt(2, (Integer)(model.getValueAt(i, 1)));
-								pstmt.setInt(3, (Integer)(model.getValueAt(i, 2)));
-								pstmt.setString(4,  model.getValueAt(i, 3).toString());
-								pstmt.setString(5, choose.toString());								
-								pstmt.executeUpdate();												
-							}
-							con.close();
-							pstmt.close();							
-						} catch (Exception e1) {
-							e1.printStackTrace();
-						}
-						
-						new Receipt(jtbl);
+						payment();
+						new CheckOut2_backUp(jtbl);
 					}else {
 							System.out.println("취소");        // 1-4. 취소 버튼   (생략 고민 중)
 					}
 					
 				}else if(paySelect.equals("         카드")) {    // 2. 결제 방식 선택 후 
 					System.out.println("by card");              // 2-1. 카드결제
-					connect();
-					checkOut();
-					new Receipt(jtbl);
+//					connect();
+//					payment();
+					new CheckOut2_backUp(jtbl);
 				}else if(paySelect.equals("         현금")){     // 2-2. 현금 결제
 					System.out.println("by Cash");
 					connect();
-					checkOut();
-					new Receipt(jtbl);
+					payment();
+					new CheckOut2_backUp(jtbl);
 				}
 				
-////////////////// 총 수량 및 총 금액 변수////////////////////////////////////
-				System.out.println("oder amount : " + tAmount); // 총 수량
-				System.out.println("order sale : " + tSales);   // 총 금액
-////////////////////  삭제 예정 ///////////////////////////////////////////				
+				// 총 수량 및 총 금액 변수
+				System.out.println("order2 amount : " + tAmount); // 총 수량
+				System.out.println("order2 sale : " + tSale);   // 총 금액
+				
 				
 				
 				
@@ -1398,9 +1348,10 @@ public class OrderMenu extends JFrame {
 //					//newWindow.setPaytable(table);
 //					newWindow.setVisible(true);
 //					dispose();
+
 //				super.mouseClicked(e);
 			}
-		});  // checkout 끝
+		});  // paybutton the end
 		
 		
 		
@@ -1658,7 +1609,7 @@ public class OrderMenu extends JFrame {
 	
 	
 	// 결제창 
-	void checkOut() {
+	void payment() {
 		
 	
 		model = (DefaultTableModel) cartTable.getModel();
@@ -1695,28 +1646,6 @@ public class OrderMenu extends JFrame {
 		
 	}
 	
-//	void checkOut2() {		 
-//		model = (DefaultTableModel) cartTable.getModel();		
-//		try {			
-//			sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, ?, sysdate)";
-//			pstmt = con.prepareStatement(sql);		
-//			for(int i = 0; i < model.getRowCount(); i++) {				
-//				pstmt.setString(1, model.getValueAt(i, 0).toString());
-//				pstmt.setInt(2, (Integer)(model.getValueAt(i, 1)));
-//				pstmt.setInt(3, (Integer)(model.getValueAt(i, 2)));
-//				pstmt.setString(4,  model.getValueAt(i, 3).toString());
-//				pstmt.setString(5, choose.toString());				
-//				pstmt.executeUpdate();								
-//				pstmt.addBatch();
-//				pstmt.clearParameters();
-//			}
-//			pstmt.executeBatch();			
-//			con.close();
-//			pstmt.close();			
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}		
-//	}
 	
 	
 	
@@ -1753,7 +1682,7 @@ public class OrderMenu extends JFrame {
 	}
 	
 	
-	public void calculator() {
+	public void calculator(int tAmount, int tSale) {
 		
 		JTable jtbl = new JTable(model);
 		
@@ -1762,37 +1691,12 @@ public class OrderMenu extends JFrame {
 		}
 		
 		for(int i = 0; i < jtbl.getRowCount(); i++) {
-			tSales = tSales + Integer.parseInt(jtbl.getValueAt(i, 2).toString());
+			tSale = tSale + Integer.parseInt(jtbl.getValueAt(i, 2).toString());
 			
 		}
 		
+				
 	}
-	
-	
-	protected int totalSale(int totalSales) {
-		
-		JTable jtbl = new JTable(model);
-		
-		for(int i = 0; i < jtbl.getRowCount(); i++) {
-			totalSales = totalSales + Integer.parseInt((jtbl.getValueAt(i, 1).toString()));
-		}
-		
-		return totalSales;
-	}
-	
-	protected int totalAmount(int totalAmount) {
-		
-		JTable jtbl = new JTable(model);
-		
-		for(int i = 0; i < jtbl.getRowCount(); i++) {
-			totalAmount = totalAmount + Integer.parseInt((jtbl.getValueAt(i, 1).toString()));
-		}
-		
-		return totalAmount;
-
-	}
-	
-	
 	
 	
 //		void total() {

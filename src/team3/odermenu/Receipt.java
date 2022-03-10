@@ -10,6 +10,13 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
@@ -20,13 +27,20 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
 
-public class CheckOut extends JFrame {
+public class Receipt extends JFrame {
 
 	private JPanel contentPane;
-	private static JTable table;
 	private JTextField totalTextField;
-
-	String tSale;
+	
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	DefaultTableModel model;
+	ResultSet res = null;
+	String sql = null;
+	static JTable table;
+	
+	
+//	String tSale, tAmount;
 	
 	/**
 	 * Launch the application.
@@ -35,7 +49,7 @@ public class CheckOut extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					CheckOut frame = new CheckOut(table);
+					Receipt frame = new Receipt(table);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,8 +61,21 @@ public class CheckOut extends JFrame {
 	/**
 	 * Create the frame.
 	 * @param jtbl 
+	 * @param jtbl 
 	 */
-	public CheckOut(JTable jtbl) {
+	public Receipt(JTable jtbl) {
+		
+		OrderMenu order = new OrderMenu();
+		
+		model = (DefaultTableModel) order.cartTable.getModel();
+		table = new JTable(model);
+		
+		
+		
+		System.out.println("checkout amout : " + order.totalAmount);
+		System.out.println("checkout sale : " + order.totalSales);
+		System.out.println(order.model);
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(800, 300, 500, 500);
 		contentPane = new JPanel();
@@ -66,16 +93,17 @@ public class CheckOut extends JFrame {
 		JPanel orderPanel = new JPanel();
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(75)
 					.addComponent(orderPanel, GroupLayout.PREFERRED_SIZE, 325, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(72, Short.MAX_VALUE))
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(33, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
-						.addComponent(HomePanel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+						.addComponent(HomePanel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addGroup(gl_contentPane.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 394, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(table, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -88,7 +116,7 @@ public class CheckOut extends JFrame {
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(table, GroupLayout.PREFERRED_SIZE, 94, GroupLayout.PREFERRED_SIZE)
 						.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
-					.addGap(18)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(orderPanel, GroupLayout.PREFERRED_SIZE, 159, GroupLayout.PREFERRED_SIZE)
 					.addGap(39)
 					.addComponent(HomePanel, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
@@ -103,7 +131,7 @@ public class CheckOut extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		
 		
-		totalTextField = new JTextField(tSale);
+		totalTextField = new JTextField(order.tSales);
 		totalTextField.setColumns(10);
 		GroupLayout gl_orderPanel = new GroupLayout(orderPanel);
 		gl_orderPanel.setHorizontalGroup(
@@ -159,14 +187,104 @@ public class CheckOut extends JFrame {
 		
 		
 		
+		btnHome.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				connect();
+				
+
+				try {
+					
+					sql = "insert into test1 values( ?, ?, ?, ?)";
+					pstmt = con.prepareStatement(sql);
+				
+					for(int i = 0; i < model.getRowCount(); i++) {
+						
+						pstmt.setString(1, model.getValueAt(i, 0).toString());
+						pstmt.setInt(2, (Integer)(model.getValueAt(i, 1)));
+						pstmt.setInt(3, (Integer)(model.getValueAt(i, 2)));
+						pstmt.setString(4,  model.getValueAt(i, 3).toString());
+						
+						pstmt.executeUpdate();
+										
+						//pstmt.addBatch();
+						//pstmt.clearParameters();
+
+					}
+
+					//pstmt.executeBatch();
+					
+					con.close();
+					pstmt.close();
+					
+				} catch (Exception e1) {
+
+					e1.printStackTrace();
+				}				
+				
+			}
+		});
 		
 		
 		
-		
-	} // 생성자 end
+	} // 생성자 endF
 
 	
+	void connect() {
+		
+		String driver = "oracle.jdbc.driver.OracleDriver";
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String user = "sooriowl";
+		String password = "0641";
+		
+		
+		try {
+			Class.forName(driver);
+			
+			con = DriverManager.getConnection(url, user, password);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	void checkOut() {
+		
+		
+	//	model = (DefaultTableModel) table.getModel();
+		
+		try {
+			
+			sql = "insert into test1 values( ?, ?, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+		
+			for(int i = 0; i < model.getRowCount(); i++) {
+				
+				pstmt.setString(1, model.getValueAt(i, 0).toString());
+				pstmt.setInt(2, (Integer)(model.getValueAt(i, 1)));
+				pstmt.setInt(3, (Integer)(model.getValueAt(i, 2)));
+				pstmt.setString(4,  model.getValueAt(i, 3).toString());
+				
+				pstmt.executeUpdate();
+								
+				//pstmt.addBatch();
+				//pstmt.clearParameters();
 
+			}
+
+			//pstmt.executeBatch();
+			
+			con.close();
+			pstmt.close();
+			
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 	
