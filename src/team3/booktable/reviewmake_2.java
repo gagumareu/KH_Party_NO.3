@@ -21,7 +21,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.Color;
 
-public class reviewmake extends JFrame {
+public class reviewmake_2 extends JFrame {
 	
 	Connection con = null; // DB와 연결하는 객체
 	PreparedStatement pstmt = null; // sql문을 db에 전송하는 객체
@@ -40,7 +40,7 @@ public class reviewmake extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					reviewmake frame = new reviewmake("","");
+					reviewmake_2 frame = new reviewmake_2("궁","오경종",6,"");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,13 +52,14 @@ public class reviewmake extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public reviewmake(String bname,String mname) {
+	public reviewmake_2(String bname,String mname,int no,String review) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 484, 527);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
 		
 		JLabel jtf = new JLabel("도서 명 :   "+bname);
 		jtf.setBounds(109, 10, 252, 31);
@@ -68,6 +69,8 @@ public class reviewmake extends JFrame {
 		jta = new JTextArea();
 		jta.setBounds(46, 54, 368, 281);
 		contentPane.add(jta);
+		
+		
 		
 		JButton jb1 = new JButton("등 록");
 		jb1.setBounds(58, 422, 91, 44);
@@ -130,6 +133,8 @@ public class reviewmake extends JFrame {
 		jtl2.setHorizontalAlignment(JLabel.CENTER);
 		jtl2.setBounds(159, 391, 161, 15);
 		contentPane.add(jtl2);
+		
+		jta.setText(review);
 		
 	st1.addActionListener(new ActionListener() {
 			
@@ -212,7 +217,7 @@ public class reviewmake extends JFrame {
 					JOptionPane.showMessageDialog(null, "리뷰내용을 입력하세요");
 				} else {
 					connect();
-					review(bnumber(bname),mname);
+					review(bnumber(bname),mname,no);
 				}
 
 				setVisible(false);
@@ -264,16 +269,15 @@ public class reviewmake extends JFrame {
 		}
 	}
 
-	void review(int bnumber,String mname) {
+	void review(int bnumber,String mname,int no) {
 
 		try {
 
-			sql = "insert into review values (?,reviewnum_seq.nextval,?,?,?,sysdate)";
+			sql = "update review set review = ? , starsum = ?, regdate = sysdate where reviewnum = ?";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, bnumber);
-			pstmt.setString(2, mname);
-			pstmt.setString(3, jta.getText());
-			pstmt.setInt(4, star);
+			pstmt.setString(1, jta.getText());
+			pstmt.setInt(2, star);
+			pstmt.setInt(3, no);
 
 			int res = pstmt.executeUpdate();
 

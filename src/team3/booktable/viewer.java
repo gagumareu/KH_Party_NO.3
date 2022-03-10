@@ -1,6 +1,7 @@
 package team3.booktable;
 
 import java.awt.BorderLayout;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -11,112 +12,161 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JComboBox;
+import javax.swing.JTextArea;
+import javax.swing.JButton;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
 
 public class viewer extends JFrame {
+	
 
 	Connection con = null; // DB와 연결하는 객체
 	PreparedStatement pstmt = null; // sql문을 db에 전송하는 객체
 	ResultSet rs = null; // sql문 실행 결과를 가지고 있는 객체
 	String sql = null; // sql문을 저장하는 문자열 변수.
-
-	DefaultTableModel model2;
-	JTable table2;
-
-	JComboBox<String> vjcb1;
-
-	String bm;
-	double staravg = 0.0;
-
-	JLabel vjl2;
-
-	JTextArea vjta1;
+	
+	JComboBox jcb;
+	
+	String rname ; 
 	int no1;
+	String review2 = null;
 
-	String review;
 
-	public viewer() {
+	private JPanel contentPane;
+	private JTable table;
+	DefaultTableModel model;
+	
+	JTextArea jta;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					viewer frame = new viewer("궁","오경종");
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
-	public void viewer(String bname) {
-		bm = bname;
-
-		setTitle("리뷰 목록");
-
-		JLabel vjl1 = new JLabel("도서 명 : " + bname + "                            ");
-
-		vjl2 = new JLabel("평균 별점 : " + staravg);
-
-		String[] vjc = { "최근 등록순", "오래된 등록순", "별점 높은순", "별점 낮은순" };
-		vjcb1 = new JComboBox<String>(vjc);
-		JLabel vjl3 = new JLabel("정렬");
-
-		String[] header2 = { "No.", "작성자", "리뷰 내용", "별  점", "작성 날짜" };
-		model2 = new DefaultTableModel(header2, 0);
-		table2 = new JTable(model2);
-		JScrollPane jsp2 = new JScrollPane(table2, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-		vjta1 = new JTextArea(14, 5);
-		vjta1.setLineWrap(true);
-		JScrollPane jsp3 = new JScrollPane(vjta1, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,
-				ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-
-		JButton vjb1 = new JButton("리뷰 수정");
-		JButton vjb3 = new JButton("새로 고침");
-		JButton vjb2 = new JButton(" 닫   기 ");
-
-		JPanel vcontainer1 = new JPanel();
-		JPanel vcontainer2 = new JPanel();
-		JPanel vcontainer3 = new JPanel();
-		JPanel vgroup1 = new JPanel(new BorderLayout());
-		JPanel vgroup2 = new JPanel(new BorderLayout());
-		JPanel vgroup3 = new JPanel(new BorderLayout());
-
-		vcontainer1.add(vjl1);
-		vcontainer1.add(vjl2);
-		vcontainer2.add(vjcb1);
-		vcontainer2.add(vjl3);
-		vgroup1.add(vcontainer2, BorderLayout.WEST);
-		vcontainer3.add(vjb1);
-		vcontainer3.add(vjb3);
-		vcontainer3.add(vjb2);
-
-		vgroup2.add(vcontainer1, BorderLayout.NORTH);
-		vgroup2.add(vcontainer2, BorderLayout.SOUTH);
-		vgroup2.add(jsp2);
-
-		vgroup3.add(jsp3, BorderLayout.NORTH);
-		vgroup3.add(vcontainer3, BorderLayout.SOUTH);
-
-		add(vgroup2, BorderLayout.NORTH);
-		add(jsp2, BorderLayout.CENTER);
-		add(vgroup3, BorderLayout.SOUTH);
-
+	/**
+	 * Create the frame.
+	 */
+	public viewer(String bname , String mname) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		setSize(600, 500);
+		setBounds(100, 100, 512, 502);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		setLocationRelativeTo(null);
-
-		setVisible(true);
-
+		
+		JLabel lblNewLabel = new JLabel("도서 명 : " + bname);
+		lblNewLabel.setHorizontalAlignment(JLabel.CENTER);
+		lblNewLabel.setBounds(150, 10, 203, 15);
+		contentPane.add(lblNewLabel);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(12, 72, 472, 141);
+		contentPane.add(scrollPane);
+		
+		String[] header = { "No.", "작성자", "리뷰 내용", "별  점", "작성 날짜" };
+		model = new DefaultTableModel(header, 0);
+		table = new JTable();
+		table.setModel(model
+		);
+		scrollPane.setViewportView(table);
+		
+		jcb = new JComboBox();
+		jcb.setModel(new DefaultComboBoxModel(new String[] { "최근 등록순", "오래된 등록순", "별점 높은순", "별점 낮은순" }));
+		jcb.setBounds(12, 41, 102, 21);
+		contentPane.add(jcb);
+		
+		jta = new JTextArea();
+		jta.setBounds(12, 216, 472, 154);
+		contentPane.add(jta);
+		
+		JButton jb1 = new JButton("나의 리뷰 보기");
+		jb1.setBounds(12, 413, 127, 23);
+		contentPane.add(jb1);
+		
+		JButton jb3 = new JButton("닫 기");
+		jb3.setBounds(357, 413, 127, 23);
+		contentPane.add(jb3);
+		
+		JButton jb2 = new JButton("전체 보기");
+		jb2.setBounds(184, 413, 127, 23);
+		contentPane.add(jb2);
+		
+		JLabel lblNewLabel_1 = new JLabel("평균 별점 : " + staravg(bname));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setBounds(150, 25, 203, 15);
+		contentPane.add(lblNewLabel_1);
+		
+		JButton jb4 = new JButton("수정하기");
+		jb4.setBounds(387, 380, 97, 23);
+		contentPane.add(jb4);
+		jb4.setEnabled(false);
+		
 		connect();
-		staravg();
-		view2();
-
-		vjcb1.addActionListener(new ActionListener() {
+		view(bname);
+		
+		jcb.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				connect();
-				model2.setRowCount(0);
-				view2();
+				model.setRowCount(0);
+				view(bname);
 
 			}
 		});
+		
+		jb1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				connect();
+				model.setRowCount(0);
+				myview(bname,mname);
+				
+			}
+		});
+		
+		jb2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				connect();
+				model.setRowCount(0);
+				view(bname);
+				
+			}
+		});
+		jb3.addActionListener(new ActionListener() {
 
-		table2.addMouseListener(new MouseListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				setVisible(false);
+
+			}
+		});
+		
+		table.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -136,72 +186,36 @@ public class viewer extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int row = table2.getSelectedRow();
-				no1 = Integer.parseInt(model2.getValueAt(row, 0).toString());
+				int row = table.getSelectedRow();
+				no1 = Integer.parseInt(model.getValueAt(row, 0).toString());
 				connect();
 				show2(no1);
-
-			}
-		});
-
-		vjb1.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				String rccom = null;
-				if (no1 == 0) {
-					JOptionPane.showMessageDialog(null, "도서를 선택하세요");
-				} else {
-
-					String pass = JOptionPane.showInputDialog("리뷰 작성시 설정한 비밀번호를 입력하세요.");
-					connect();
-//				if(pass.equals(null)) {
-//					JOptionPane.showMessageDialog(null, "패스워드를 입력해주세요.");
-//				
-//				}
-
-					if (pass == null) {
-					} else if (pass.equals("")) {
-						JOptionPane.showMessageDialog(null, "패스워드를 입력해주세요.");
-					} else if (Integer.parseInt(pass) == pass(no1)) {
-						reviewcorrection rc = new reviewcorrection();
-						rc.reviewcorrection(review, no1);
-
-						model2.setRowCount(0);
-
-					} else if (Integer.parseInt(pass) != pass(no1)) {
-						JOptionPane.showMessageDialog(null, "패스워드가 틀립니다.");
-
-					}
-
+				if (rname.equals(mname)) {
+					jb4.setEnabled(true);
+				}else {
+					jb4.setEnabled(false);
 				}
 
 			}
-
 		});
-		vjb3.addActionListener(new ActionListener() {
-
+		
+		jb4.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				connect();
-				model2.setRowCount(0);
-				view2();
-
+				reviewmake_2 rm3 = new reviewmake_2(bname,mname,no1,review2(no1));
+				rm3.setVisible(true);
+				
+				
 			}
 		});
 
-		vjb2.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				setVisible(false);
-
-			}
-		});
-
+		
+		
+		
 	}
+	
 
 	void connect() {
 
@@ -221,35 +235,36 @@ public class viewer extends JFrame {
 			e.printStackTrace();
 		}
 	}
-
-	void view2() {
+	
+	void view(String bname) {
 		String rname2 = null;
 		String review2 = null;
 
 		try {
-			if (vjcb1.getSelectedItem().toString().equals("최근 등록순")) {
+			if (jcb.getSelectedItem().toString().equals("최근 등록순")) {
 				sql = "select reviewnum,rname , review , starsum , regdate  from review r join books b on r.bnumber = b.bnumber where bname = ? and not review is null order by regdate desc";
-			} else if (vjcb1.getSelectedItem().toString().equals("오래된 등록순")) {
+			} else if (jcb.getSelectedItem().toString().equals("오래된 등록순")) {
 				sql = "select reviewnum,rname , review , starsum , regdate  from review r join books b on r.bnumber = b.bnumber where bname = ? and not review is null order by regdate";
-			} else if (vjcb1.getSelectedItem().toString().equals("별점 높은순")) {
+			} else if (jcb.getSelectedItem().toString().equals("별점 높은순")) {
 				sql = "select reviewnum,rname , review , starsum , regdate  from review r join books b on r.bnumber = b.bnumber where bname = ? and not review is null order by starsum desc";
-			} else if (vjcb1.getSelectedItem().toString().equals("별점 낮은순")) {
+			} else if (jcb.getSelectedItem().toString().equals("별점 낮은순")) {
 				sql = "select reviewnum,rname , review , starsum , regdate  from review r join books b on r.bnumber = b.bnumber where bname = ? and not review is null order by starsum";
 			}
 
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, bm);
+			pstmt.setString(1, bname);
 
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 
 				int rnum = rs.getInt("reviewnum");
-				String rname = rs.getString("rname");
+				String rname = rs.getString("rname"); 
+				review2 = rs.getString("review");
+				
 
 				rname2 = rname.substring(0, 2) + "*";
 
-				review2 = rs.getString("review");
 				if (review2 == null) {
 					continue;
 				}
@@ -261,7 +276,63 @@ public class viewer extends JFrame {
 				double star = rs.getDouble("starsum");
 
 				Object[] data = { rnum, rname2, review2, star, regdate };
-				model2.addRow(data);
+				model.addRow(data);
+			}
+
+			rs.close();
+			pstmt.close();
+			con.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+
+	}
+	
+	void myview(String bname, String mname) {
+		String rname2 = null;
+		String review2 = null;
+
+		try {
+			if (jcb.getSelectedItem().toString().equals("최근 등록순")) {
+				sql = "select reviewnum,rname , review , starsum , regdate  from review r join books b on r.bnumber = b.bnumber where bname = ? and rname = ? and not review is null order by regdate desc";
+			} else if (jcb.getSelectedItem().toString().equals("오래된 등록순")) {
+				sql = "select reviewnum,rname , review , starsum , regdate  from review r join books b on r.bnumber = b.bnumber where bname = ? and rname = ? and not review is null order by regdate";
+			} else if (jcb.getSelectedItem().toString().equals("별점 높은순")) {
+				sql = "select reviewnum,rname , review , starsum , regdate  from review r join books b on r.bnumber = b.bnumber where bname = ? and rname = ? and not review is null order by starsum desc";
+			} else if (jcb.getSelectedItem().toString().equals("별점 낮은순")) {
+				sql = "select reviewnum,rname , review , starsum , regdate  from review r join books b on r.bnumber = b.bnumber where bname = ? and rname = ? and not review is null order by starsum";
+			}
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, bname);
+			pstmt.setString(2, mname);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+
+				int rnum = rs.getInt("reviewnum");
+				String rname = rs.getString("rname"); 
+
+				rname2 = rname.substring(0, 2) + "*";
+				review2 = rs.getString("review");
+
+				if (review2 == null) {
+					continue;
+				}
+				if (review2.length() > 10) {
+					review2 = review2.substring(0, 10) + "...";
+				}
+
+				String regdate = rs.getString("regdate").substring(0, 10);
+				double star = rs.getDouble("starsum");
+
+				Object[] data = { rnum, rname2, review2, star, regdate };
+				model.addRow(data);
 			}
 
 			rs.close();
@@ -274,14 +345,40 @@ public class viewer extends JFrame {
 		}
 
 	}
+	
+	void show2(int no) {
+		try {
+			sql = "select review,rname from review where reviewnum = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				jta.setText(rs.getString("review"));
+				rname = rs.getString("rname");
+				//review = rs.getString("review");
 
-	// --평균 별점--
-	void staravg() {
+			}
+
+			rs.close();
+			pstmt.close();
+			con.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	double staravg(String bname) {
+		
+		connect();
+		
+		double staravg=0.0;
 		try {
 			sql = "select  bstaravg  from books where bname = ?";
 
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, bm);
+			pstmt.setString(1, bname);
 
 			rs = pstmt.executeQuery();
 
@@ -289,69 +386,43 @@ public class viewer extends JFrame {
 				staravg = rs.getDouble("bstaravg");
 
 			}
-
-			vjl2.setText("평균 별점 : " + staravg);
+			rs.close();
+			pstmt.close();
+			con.close();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		return staravg;
 
 	}
-
-	// --리뷰 출력--
-	void show2(int no) {
+	
+	String review2(int no) {
+		String review = "";
+		
+		
 		try {
 			sql = "select review from review where reviewnum = ?";
-			pstmt = con.prepareStatement(sql);
+			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, no);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				vjta1.setText(rs.getString("review"));
+			
+			rs= pstmt.executeQuery();
+			
+			while(rs.next()) {
 				review = rs.getString("review");
-
 			}
-
-			rs.close();
-			pstmt.close();
-			con.close();
-
+			
+			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		
+		return review;
+		
 	}
-
-	// -- 비밀번호 호출--
-	int pass(int no) {
-		int pass = 0;
-		try {
-			sql = "select reviewpass from review where reviewnum = ?";
-			pstmt = con.prepareStatement(sql);
-			pstmt.setInt(1, no);
-			rs = pstmt.executeQuery();
-			while (rs.next()) {
-				pass = rs.getInt("reviewpass");
-
-			}
-
-			rs.close();
-			pstmt.close();
-			con.close();
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return pass;
-
-	}
-
-	public static void main(String[] args) {
-
-		viewer vw = new viewer();
-		vw.viewer("더 파이팅");
-
-	}
+	
+	
 
 }
