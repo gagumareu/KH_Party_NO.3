@@ -101,7 +101,7 @@ public class Payment extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JPanel paymentPanel = new JPanel();
+		JPanel Panel = new JPanel();
 		paymentPanel.setBackground(SystemColor.window);
 		
 		JPanel payButtonPanel = new JPanel();
@@ -236,7 +236,7 @@ public class Payment extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				
-				new Food();
+				new OrderMenu();
 				dispose();
 			}
 		});
@@ -271,10 +271,13 @@ public class Payment extends JFrame {
 	void payment() {
 		
 		
-		
-		//model = (DefaultTableModel) orderTable.getModel();
+			System.out.println(orderTable.getRowCount());
+			System.out.println(orderTable.getValueAt(0, 0));
+			model = (DefaultTableModel) orderTable.getModel();
 		
 		try {
+			
+			
 			
 			sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, ?, sysdate)";
 			pstmt = con.prepareStatement(sql);
@@ -296,8 +299,7 @@ public class Payment extends JFrame {
 
 			
 			con.close();
-			pstmt.close();
-			
+			pstmt.close();			
 		} catch (Exception e) {
 
 			e.printStackTrace();

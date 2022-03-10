@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.Component;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import java.awt.Color;
 import javax.swing.SpinnerNumberModel;
@@ -40,8 +41,10 @@ import java.awt.event.MouseListener;
 import javax.swing.JCheckBox;
 import javax.swing.ButtonGroup;
 import java.awt.Font;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
-public class Food extends JFrame {
+public class OrderMenu extends JFrame {
 
 	private JPanel contentPane;
 	
@@ -54,7 +57,7 @@ public class Food extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Food frame = new Food();
+					OrderMenu frame = new OrderMenu();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -83,16 +86,16 @@ public class Food extends JFrame {
 	ameriNameLabel, caraNameLabel, caferaNameLabel, ramyeonNameLabel, ddeockNameLabel, rabockNameLabel;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	
+	JComboBox chooseComboBox;
+	String paySelect;
 	
 	
-	
-	
-	public Food() {
+	public OrderMenu() {
 		
 		setTitle("음식 메뉴 주문");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\comic.png"));
 		
-		String[] cartHeader = {"상품명","수량", "가격", "분류"};
+		String[] cartHeader = {"상품명", "수량", "가격", "분류"};
 		model = new DefaultTableModel(cartHeader, 0);
 		cartTable = new JTable(model);
 		cartTable.setBackground(SystemColor.window);
@@ -117,7 +120,7 @@ public class Food extends JFrame {
 		
 		JScrollPane carjsp = new JScrollPane(cartTable, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
-		JButton removeButton = new JButton("삭제");
+		JButton removeButton = new JButton("");
 		removeButton.setFont(new Font("굴림", Font.BOLD, 17));
 		
 		
@@ -125,7 +128,7 @@ public class Food extends JFrame {
 		removeButton.setBackground(SystemColor.window);
 		
 		JButton payButton = new JButton("결제");
-		payButton.setFont(new Font("굴림", Font.BOLD, 17));
+		payButton.setFont(new Font("함초롬돋움", Font.BOLD, 18));
 		payButton.setBackground(SystemColor.window);
 		payButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\payment.png"));
 		
@@ -138,31 +141,47 @@ public class Food extends JFrame {
 		
 		minuButton.setBackground(SystemColor.window);
 		minuButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\Junghwan3\\KH_Party_NO.3\\cartoon\\min.jpg"));
+		
+		chooseComboBox = new JComboBox();
+		chooseComboBox.setFont(new Font("함초롬돋움", Font.PLAIN, 18));
+		chooseComboBox.setBackground(SystemColor.window);
+		chooseComboBox.setModel(new DefaultComboBoxModel(new String[] {" 결제수단선택", "         카드", "         현금"}));
 		GroupLayout gl_ButtonPanal = new GroupLayout(ButtonPanal);
 		gl_ButtonPanal.setHorizontalGroup(
 			gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_ButtonPanal.createSequentialGroup()
-					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(removeButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addGroup(Alignment.LEADING, gl_ButtonPanal.createSequentialGroup()
-							.addGap(2)
-							.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(payButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addGroup(gl_ButtonPanal.createSequentialGroup()
-									.addComponent(plusButton, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-									.addGap(18)
-									.addComponent(minuButton, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)))))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addComponent(chooseComboBox, 0, 147, Short.MAX_VALUE)
+					.addGap(14))
+				.addGroup(gl_ButtonPanal.createSequentialGroup()
+					.addGap(2)
+					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_ButtonPanal.createSequentialGroup()
+							.addComponent(payButton, GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+							.addContainerGap())
+						.addGroup(gl_ButtonPanal.createSequentialGroup()
+							.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.TRAILING)
+								.addComponent(minuButton, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
+								.addComponent(plusButton, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE))
+							.addGap(18)
+							.addComponent(removeButton, GroupLayout.PREFERRED_SIZE, 62, Short.MAX_VALUE)
+							.addGap(14))))
 		);
 		gl_ButtonPanal.setVerticalGroup(
 			gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_ButtonPanal.createSequentialGroup()
-					.addComponent(removeButton, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-					.addGap(32)
 					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
-						.addComponent(minuButton, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)
-						.addComponent(plusButton, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+						.addGroup(gl_ButtonPanal.createSequentialGroup()
+							.addComponent(chooseComboBox, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.TRAILING)
+								.addComponent(minuButton, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+								.addComponent(removeButton, GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
+							.addGap(15))
+						.addGroup(gl_ButtonPanal.createSequentialGroup()
+							.addGap(86)
+							.addComponent(plusButton, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
+							.addGap(92)))
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(payButton, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
 		);
 		ButtonPanal.setLayout(gl_ButtonPanal);
@@ -1266,19 +1285,41 @@ public class Food extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
-
-					connect();
-//					payment();
-					JTable jtbl = new JTable(model);
+				JTable jtbl = new JTable(model);
+				
+				
+				String paySelect = chooseComboBox.getSelectedItem().toString();
+				if(paySelect.equals(" 결제수단선택")) {
+					String[] cashOrCreadit = {"카드", "현금"};
+					Object choice = JOptionPane.showInputDialog(null, "지불 방법을 선택해주세요", "결제수단", JOptionPane.QUESTION_MESSAGE, null, cashOrCreadit, "결제수단");
+					if(choice == "         카드") {
+						connect();
+						payment();
+						new CheckOut(jtbl);
+					}else {
+						System.out.println("취소");
+						}
 					
+				}else {
+					connect();
+					payment();
+					new CheckOut(jtbl);
+				}
+				
+				
+				
+					
+				
+				
+//					JTable jtbl = new JTable(model);	
 //					Payment newWindow = new Payment(jtbl);
-					new Payment(jtbl);
+//					new Payment(jtbl);
 //					newWindow.setModal(true);
 //					//newWindow.setPaytable(table);
 //					newWindow.setVisible(true);
-					dispose();
+//					dispose();
 
-				super.mouseClicked(e);
+//				super.mouseClicked(e);
 			}
 		});
 		
@@ -1286,25 +1327,16 @@ public class Food extends JFrame {
 		plusButton.addMouseListener(new MouseListener() {
 			
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
 			
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
 			
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
 			
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
-			
 			public void mouseClicked(MouseEvent e) {
 				
 				model = (DefaultTableModel) cartTable.getModel();
@@ -1313,8 +1345,6 @@ public class Food extends JFrame {
 				Integer plus = (Integer) model.getValueAt(row, 1);
 				plus +=1;
 				model.setValueAt(plus, row, 1);
-				
-				
 			}
 		});
 		
@@ -1388,7 +1418,15 @@ public class Food extends JFrame {
 			}
 		});
 		
-		
+		chooseComboBox.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+
+				//Object paySelect = chooseComboBox.getSelectedItem().toString();
+
+				
+			}
+		});
 		
 		
 		
@@ -1541,24 +1579,25 @@ public class Food extends JFrame {
 		
 		try {
 			
-			sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, ? sysdate)";
+			sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, ?, sysdate)";
 			pstmt = con.prepareStatement(sql);
 		
 			for(int i = 0; i < model.getRowCount(); i++) {
 				
-				
 				pstmt.setString(1, model.getValueAt(i, 0).toString());
 				pstmt.setInt(2, (Integer)(model.getValueAt(i, 1)));
-				pstmt.setString(4,  model.getValueAt(i, 3).toString());
 				pstmt.setInt(3, (Integer)(model.getValueAt(i, 2)));
-				pstmt.executeUpdate();
+				pstmt.setString(4,  model.getValueAt(i, 3).toString());
+				pstmt.setString(5, chooseComboBox.getSelectedItem().toString());
 				
-				pstmt.addBatch();
-				pstmt.clearParameters();
+				pstmt.executeUpdate();
+								
+				//pstmt.addBatch();
+				//pstmt.clearParameters();
 
 			}
 
-			pstmt.executeBatch();
+			//pstmt.executeBatch();
 			
 			con.close();
 			pstmt.close();
