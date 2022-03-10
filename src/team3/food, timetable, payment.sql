@@ -46,7 +46,7 @@ create table payment(
     amount number(10),
     total number(10) not null,
     sort varchar2(10) not null,
-    cashtype varchar2(10) not null,
+    cashtype varchar2(50) not null,
     regdate date
 );
 commit;
