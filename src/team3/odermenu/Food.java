@@ -92,7 +92,7 @@ public class Food extends JFrame {
 		setTitle("음식 메뉴 주문");
 		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\comic.png"));
 		
-		String[] cartHeader = {"상품명", "가격	", "수량", "분류"};
+		String[] cartHeader = {"상품명","수량", "가격", "분류"};
 		model = new DefaultTableModel(cartHeader, 0);
 		cartTable = new JTable(model);
 		cartTable.setBackground(SystemColor.window);
@@ -1142,7 +1142,7 @@ public class Food extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 		
-		
+		setVisible(true);
 
 		
 		
@@ -1187,7 +1187,7 @@ public class Food extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				connect();
-				drinkSelect("아메리카노", Integer.parseInt(ameriSpinner.getValue().toString()));
+				drinkSelect(7, Integer.parseInt(ameriSpinner.getValue().toString()));
 				
 							
 			}
@@ -1199,7 +1199,7 @@ public class Food extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				connect();
-				drinkSelect("카페 라떼", Integer.parseInt(caferaSpinner.getValue().toString()));
+				drinkSelect(8, Integer.parseInt(caferaSpinner.getValue().toString()));
 				
 			}
 		});
@@ -1210,7 +1210,7 @@ public class Food extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				connect();
-				drinkSelect("카라멜 마끼아또", Integer.parseInt(caraSpinner.getValue().toString()));
+				drinkSelect(9, Integer.parseInt(caraSpinner.getValue().toString()));
 				
 			}
 		});
@@ -1222,7 +1222,7 @@ public class Food extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				connect();
-				snackSelect("라면", Integer.parseInt(ramyeonSpinner.getValue().toString()));
+				snackSelect(1, Integer.parseInt(ramyeonSpinner.getValue().toString()));
 				
 			}
 		});
@@ -1232,7 +1232,7 @@ public class Food extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				connect();
-				snackSelect("떡볶이", Integer.parseInt(ddeockSpinner.getValue().toString()));
+				snackSelect(2, Integer.parseInt(ddeockSpinner.getValue().toString()));
 				
 			}
 		});
@@ -1242,7 +1242,7 @@ public class Food extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 
 				connect();
-				snackSelect("라볶이", Integer.parseInt(rabockSpinner.getValue().toString()));
+				snackSelect(3, Integer.parseInt(rabockSpinner.getValue().toString()));
 
 				
 			}
@@ -1268,15 +1268,15 @@ public class Food extends JFrame {
 
 
 					connect();
-					payment();
-					
+//					payment();
 					JTable jtbl = new JTable(model);
+					
 //					Payment newWindow = new Payment(jtbl);
 					new Payment(jtbl);
 //					newWindow.setModal(true);
 //					//newWindow.setPaytable(table);
 //					newWindow.setVisible(true);
-					
+					dispose();
 
 				super.mouseClicked(e);
 			}
@@ -1310,10 +1310,9 @@ public class Food extends JFrame {
 				model = (DefaultTableModel) cartTable.getModel();
 				
 				int row = cartTable.getSelectedRow();
-				Integer plus = (Integer) model.getValueAt(row, 2);
+				Integer plus = (Integer) model.getValueAt(row, 1);
 				plus +=1;
-				model.setValueAt(plus, row, 2);
-				
+				model.setValueAt(plus, row, 1);
 				
 				
 			}
@@ -1327,9 +1326,9 @@ public class Food extends JFrame {
 				model = (DefaultTableModel) cartTable.getModel();
 				
 				int row = cartTable.getSelectedRow();
-				Integer minus = (Integer) model.getValueAt(row, 2);
+				Integer minus = (Integer) model.getValueAt(row, 1);
 				minus += -1;
-				model.setValueAt(minus, row, 2);
+				model.setValueAt(minus, row, 1);
 			}
 		});
 		
@@ -1438,7 +1437,7 @@ public class Food extends JFrame {
 				String fname = res.getString("fname");
 				int price = res.getInt("price");
 				String mealtype = res.getString("mealtype");
-				Object[] cart = {fname, (price * mealSpinner), mealSpinner, mealtype};
+				Object[] cart = {fname, mealSpinner, (price * mealSpinner), mealtype};
 					
 				
 				model.addRow(cart);
@@ -1457,14 +1456,14 @@ public class Food extends JFrame {
 
 
 	// 음료 메뉴
-	void drinkSelect (String drinkOrder, int drinkSpinner) {
+	void drinkSelect (int dnumber, int drinkSpinner) {
 	
 		try {
-			sql = "select fname, price, mealtype from food where fname = ?";
+			sql = "select fname, price, mealtype from food where fno = ?";
 	
 			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, drinkOrder);
+			pstmt.setInt(1, dnumber);
 			res = pstmt.executeQuery();
 			
 			while(res.next()) {
@@ -1472,7 +1471,7 @@ public class Food extends JFrame {
 				String fname = res.getString("fname");
 				int price = res.getInt("price");
 				String mealtype = res.getString("mealtype");
-				Object[] cart = {fname, (price * drinkSpinner), drinkSpinner, mealtype};
+				Object[] cart = {fname, drinkSpinner, (price * drinkSpinner), mealtype};
 					
 				
 				model.addRow(cart);
@@ -1488,14 +1487,14 @@ public class Food extends JFrame {
 
 
 	// 스낵 메뉴
-	void snackSelect (String snackOrder, int snackSpinner) {
+	void snackSelect (int snumber, int snackSpinner) {
 		
 		try {
-			sql = "select fname, price, mealtype from food where fname = ?";
+			sql = "select fname, price, mealtype from food where fno = ?";
 	
 			
 			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, snackOrder);
+			pstmt.setInt(1, snumber);
 			res = pstmt.executeQuery();
 			
 			while(res.next()) {
@@ -1503,7 +1502,7 @@ public class Food extends JFrame {
 				String fname = res.getString("fname");
 				int price = res.getInt("price");
 				String mealtype = res.getString("mealtype");
-				Object[] cart = {fname, (price * snackSpinner), snackSpinner, mealtype};
+				Object[] cart = {fname, snackSpinner, (price * snackSpinner), mealtype};
 					
 				
 				model.addRow(cart);
@@ -1531,7 +1530,8 @@ public class Food extends JFrame {
 	}
 
 	
-	
+	//DefaultTableModel model = new DefaultTableModel(cartHeader, 0);
+	//JTable cartTable = new JTable(model);
 	
 	// 결제창 
 	void payment() {
@@ -1541,7 +1541,7 @@ public class Food extends JFrame {
 		
 		try {
 			
-			sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, sysdate)";
+			sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, ? sysdate)";
 			pstmt = con.prepareStatement(sql);
 		
 			for(int i = 0; i < model.getRowCount(); i++) {
@@ -1553,12 +1553,12 @@ public class Food extends JFrame {
 				pstmt.setInt(3, (Integer)(model.getValueAt(i, 2)));
 				pstmt.executeUpdate();
 				
-//				pstmt.addBatch();
-//				pstmt.clearParameters();
+				pstmt.addBatch();
+				pstmt.clearParameters();
 
 			}
 
-//			pstmt.executeBatch();
+			pstmt.executeBatch();
 			
 			con.close();
 			pstmt.close();
@@ -1586,7 +1586,7 @@ public class Food extends JFrame {
 				int amount = 1;
 				String type = res.getString("type");
 				
-				Object[] tdate = {tname, tprice, amount, type};
+				Object[] tdate = {tname, amount, tprice, type};
 				
 				model.addRow(tdate);
 				

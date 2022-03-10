@@ -41,17 +41,21 @@ public class Payment extends JFrame {
 	PreparedStatement pstmt = null;
 	ResultSet res = null;
 	
+	String paySelect;
+
 	String sql = null;
-	DefaultTableModel model1;
+	DefaultTableModel model;
 	
 	JPanel contentPane;
-	//static JTable paytable;
 	static JTable orderTable;
+	
+	
+	
 	
 //	public JTable getPaytable() {
 //		return paytable;
 //	}
-//
+
 //	public void setPaytable(JTable paytable) {
 //		this.paytable = paytable;
 //	}
@@ -110,7 +114,7 @@ public class Payment extends JFrame {
 		payButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\coin2.jpg"));
 		
 		
-		JComboBox<String> payComboBox = new JComboBox<String>();
+		final JComboBox<String> payComboBox = new JComboBox<String>();
 		payComboBox.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		payComboBox.setModel(new DefaultComboBoxModel(new String[] {"     결제수단 선택", "            카드", "            현금"}));
 		payComboBox.setBackground(SystemColor.window);
@@ -209,6 +213,14 @@ public class Payment extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 		setVisible(true);
 		
+		payComboBox.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+
+				String paySelect = payComboBox.getSelectedItem().toString();
+			}
+		});
+		
 		
 		payButton.addActionListener(new ActionListener() {
 			
@@ -220,7 +232,14 @@ public class Payment extends JFrame {
 			}
 		});
 		
-		
+		BackButton.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				
+				new Food();
+				dispose();
+			}
+		});
 		
 		
 		
@@ -246,59 +265,30 @@ public class Payment extends JFrame {
 	}
 	
 	
-	void select() {
-		
-		
-		try {
-			sql = "select * from payment";
-
-			pstmt = con.prepareStatement(sql);
-			
-			res = pstmt.executeQuery();
-			
-			while(res.next()) {
-				int oderno = res.getInt("orderno");
-				String fname = res.getString("fname");
-				int total = res.getInt("total");
-				int amount = res.getInt("amount");
-				String type = res.getString("type");
-				String regdate = res.getString("ragdate");
-				
-				Object[] paydate = {oderno, fname, total, amount, type, regdate};
-				
-				model1.addRow(paydate);
-				
-			}
-			res.close();
-			pstmt.close();
-			con.close();
-			
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
-			
-	}
+	
 	
 	
 	void payment() {
 		
 		
 		
-		//model1 = (DefaultTableModel) orderTable.getModel();
+		//model = (DefaultTableModel) orderTable.getModel();
 		
 		try {
 			
-			sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, sysdate)";
+			sql = "insert into payment values(orderNO_sqe.nextval, ?, ?, ?, ?, ?, sysdate)";
 			pstmt = con.prepareStatement(sql);
+			
+			System.out.println(orderTable);
 		
-			for(int i = 0; i < model1.getRowCount(); i++) {
+			for(int i = 0; i < orderTable.getRowCount(); i++) {
 				
 				
-				pstmt.setString(1, model1.getValueAt(i, 0).toString());
-				pstmt.setInt(2, (Integer)(model1.getValueAt(i, 1)));
-				pstmt.setString(4,  model1.getValueAt(i, 3).toString());
-				pstmt.setInt(3, (Integer)(model1.getValueAt(i, 2)));
+				pstmt.setString(1, orderTable.getValueAt(i, 0).toString());
+				pstmt.setInt(2, (Integer)(orderTable.getValueAt(i, 1)));
+				pstmt.setInt(3, (Integer)(orderTable.getValueAt(i, 2)));
+				pstmt.setString(4,  orderTable.getValueAt(i, 3).toString());
+				pstmt.setString(5, paySelect);
 				pstmt.executeUpdate();
 				
 
