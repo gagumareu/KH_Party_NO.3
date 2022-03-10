@@ -1,25 +1,12 @@
 package team3.init;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
-import java.awt.GridLayout;
-import javax.swing.JTextField;
-import javax.swing.JTabbedPane;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.awt.event.ActionEvent;
-import java.awt.FlowLayout;
+import java.awt.event.*;
+import java.sql.*;
 
 public class FindIdPassword extends JFrame {
 	Connection con = null;              // DB와 연결하는 객체.

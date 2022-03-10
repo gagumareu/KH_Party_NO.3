@@ -1,15 +1,11 @@
 package team3.init;
 
 import java.awt.*;
+import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.awt.event.ActionEvent;
+import java.sql.*;
 
 public class MemberInfoCheck extends JFrame {
 	Connection con = null;              // DB와 연결하는 객체.
