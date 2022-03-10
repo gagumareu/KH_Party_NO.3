@@ -24,6 +24,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.UIManager;
 import java.awt.Font;
@@ -256,17 +258,27 @@ public class booktable extends JFrame {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-//						connect();
-//						JOptionPane.showMessageDialog(null, sysdate(bnumber(mtable),mname));
 						
+						SimpleDateFormat sys = new SimpleDateFormat("yyyy-MM-dd");
+
+						Date now = new Date();
+						String sysdate = sys.format(now);
+						connect();
+						
+						//System.out.println(sysdate(bnumber(mtable),mname));
+						//System.out.println(mname);
 						
 						
 						if(mtable.equals("")) {
 							JOptionPane.showMessageDialog(null, "도서를 선택하세요");
-						}else {
+						}
+						else if(sysdate(bnumber(mtable),mname).substring(0,10).equals(sysdate)){
+							JOptionPane.showMessageDialog(null, "이미 오늘 리뷰를 작성하셨습니다. 같은책의 리뷰는 하루 한번 가능합니다.");
+						}
+						else {
+							stre st = new stre(mtable,mname);
+							st.setVisible(true);
 							}
-						stre st = new stre(mtable,mname);
-						st.setVisible(true);
 					}
 				});
 				
@@ -535,7 +547,7 @@ public class booktable extends JFrame {
 	}
 	
 	String sysdate(int bnumber , String mname) {
-		String sysdate = "";
+		String sysdate = "ddddddddddddd";
 		
 		
 		try {
