@@ -10,6 +10,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.AncestorEvent;
 import javax.swing.event.AncestorListener;
 import javax.swing.table.DefaultTableModel;
+
+import team3.khie_dohyung.ManwhaMain;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import java.awt.SystemColor;
@@ -213,6 +216,16 @@ public class Payment extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 		setVisible(true);
 		
+		
+		HomeButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ManwhaMain();
+				dispose();
+				
+			}
+		});
 		payComboBox.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {

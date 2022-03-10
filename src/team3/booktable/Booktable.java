@@ -95,7 +95,7 @@ public class Booktable extends JFrame {
 		container3.add(jb2);
 		container3.add(jb3);
 		container3.add(jb4);
-		container4.add(jb5);
+		container3.add(jb5);
 
 		JPanel group1 = new JPanel(new BorderLayout());
 		JPanel group2 = new JPanel(new BorderLayout());
@@ -386,7 +386,7 @@ public class Booktable extends JFrame {
 					String blocation = rs.getString("blocation");
 					String bwriter = rs.getString("bwriter");
 					String bgenre = rs.getString("bgenre");
-					int reviewsum = rs.getInt("bleviewsum");
+					int reviewsum = rs.getInt("breviewsum");
 					double star = rs.getDouble("bstaravg");
 
 					Object[] data = { bgenre, bname, bwriter, star, reviewsum, blocation };

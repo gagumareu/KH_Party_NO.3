@@ -8,6 +8,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import team3.khie_dohyung.ManwhaMain;
+
 public class Init extends JFrame {
 	Connection con = null;              // DB와 연결하는 객체.
 	PreparedStatement pstmt = null;     // SQL문을 DB에 전송하는 객체.
@@ -128,7 +130,7 @@ public class Init extends JFrame {
 				if(pw.equals(rs.getString("mem_password"))) {
 					JOptionPane.showMessageDialog(null, "로그인되었습니다.");
 					//merge 이후 여기에서 고객 창 생성
-					new MyPage(id);	//고객에 맞춘 윈도우 생성
+					new ManwhaMain();	//고객에 맞춘 윈도우 생성
 					dispose();
 				}
 				else {
