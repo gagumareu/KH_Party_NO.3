@@ -28,7 +28,7 @@ public class Manage_Inform_search extends JFrame {
 		JPanel container3 = new JPanel();
 		container3.setBackground(SystemColor.info);
 		JLabel jl6 = new JLabel("주소:");
-		jtf6= new JTextField(30);
+		jtf6 = new JTextField(30);
 		
 		String [] header= {"회원아이디","패스워드","회원번호","이름","전화번호","주소","패스워드 정답","마일리지"};
 		
