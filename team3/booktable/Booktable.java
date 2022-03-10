@@ -197,7 +197,7 @@ public class Booktable extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				if(mtable==null) {
+				if(mtable.equals("")) {
 					JOptionPane.showMessageDialog(null, "도서를 선택하세요");
 				}else {
 
