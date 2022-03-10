@@ -15,6 +15,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import jdk.nashorn.internal.scripts.JO;
+import team3.khie_dohyung.ManwhaMain;
 
 public class Booktable extends JFrame {
 
@@ -221,6 +222,15 @@ public class Booktable extends JFrame {
 			}
 		});
 		
+		jb5.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ManwhaMain();
+				dispose();
+				
+			}
+		});
 		
 		
 		

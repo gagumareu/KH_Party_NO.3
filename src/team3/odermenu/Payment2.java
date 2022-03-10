@@ -115,6 +115,7 @@ public class Payment2 extends JFrame {
 		comboBox.setBackground(SystemColor.window);
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"결제수단 선택", "카드", "현금"}));
 		GroupLayout gl_payButtonPanel = new GroupLayout(payButtonPanel);
+		comboBox.setFont(new Font("맑은 고딕", Font.BOLD, 20));
 		gl_payButtonPanel.setHorizontalGroup(
 			gl_payButtonPanel.createParallelGroup(Alignment.LEADING)
 				.addComponent(payButton, GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)

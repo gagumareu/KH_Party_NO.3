@@ -75,6 +75,7 @@ public class Manage_Sales extends JFrame {
 		lblNewLabel.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
 		
 		JPanel panel = new JPanel();
+		panel.setBackground(SystemColor.info);
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
