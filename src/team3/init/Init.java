@@ -9,6 +9,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import team3.khie_dohyung.ManwhaMain;
+import javax.swing.GroupLayout.Alignment;
 
 public class Init extends JFrame {
 	Connection con = null;              // DB와 연결하는 객체.
@@ -57,21 +58,55 @@ public class Init extends JFrame {
 		info_panel.add(id_panel, BorderLayout.NORTH);
 		
 		JLabel jl1 = new JLabel("아이디: ");
-		id_panel.add(jl1);
 		
 		tf_id = new JTextField();
 		tf_id.setColumns(10);
-		id_panel.add(tf_id);
+		GroupLayout gl_id_panel = new GroupLayout(id_panel);
+		gl_id_panel.setHorizontalGroup(
+			gl_id_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_id_panel.createSequentialGroup()
+					.addGap(129)
+					.addComponent(jl1)
+					.addGap(5)
+					.addComponent(tf_id, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_id_panel.setVerticalGroup(
+			gl_id_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_id_panel.createSequentialGroup()
+					.addGap(8)
+					.addComponent(jl1))
+				.addGroup(gl_id_panel.createSequentialGroup()
+					.addGap(5)
+					.addComponent(tf_id, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+		);
+		id_panel.setLayout(gl_id_panel);
 		
 		JPanel pwd_panel = new JPanel();
 		info_panel.add(pwd_panel, BorderLayout.CENTER);
 		
 		JLabel lblNewLabel = new JLabel("비밀번호: ");
-		pwd_panel.add(lblNewLabel);
 		
 		pf_pwd = new JPasswordField();
 		pf_pwd.setColumns(10);
-		pwd_panel.add(pf_pwd);
+		GroupLayout gl_pwd_panel = new GroupLayout(pwd_panel);
+		gl_pwd_panel.setHorizontalGroup(
+			gl_pwd_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pwd_panel.createSequentialGroup()
+					.addGap(123)
+					.addComponent(lblNewLabel)
+					.addGap(5)
+					.addComponent(pf_pwd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+		);
+		gl_pwd_panel.setVerticalGroup(
+			gl_pwd_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pwd_panel.createSequentialGroup()
+					.addGap(8)
+					.addComponent(lblNewLabel))
+				.addGroup(gl_pwd_panel.createSequentialGroup()
+					.addGap(5)
+					.addComponent(pf_pwd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+		);
+		pwd_panel.setLayout(gl_pwd_panel);
 		
 		JPanel signup_find_panel = new JPanel();
 		getContentPane().add(signup_find_panel, BorderLayout.SOUTH);
@@ -83,7 +118,6 @@ public class Init extends JFrame {
 				new SignUp();
 			}
 		});
-		signup_find_panel.add(btnSignUp);
 		
 		JButton btnFindIdPwd = new JButton("아이디/비밀번호 찾기");
 		btnFindIdPwd.addActionListener(new ActionListener() {
@@ -92,7 +126,24 @@ public class Init extends JFrame {
 				new FindIdPassword();
 			}
 		});
-		signup_find_panel.add(btnFindIdPwd);
+		GroupLayout gl_signup_find_panel = new GroupLayout(signup_find_panel);
+		gl_signup_find_panel.setHorizontalGroup(
+			gl_signup_find_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_signup_find_panel.createSequentialGroup()
+					.addGap(93)
+					.addComponent(btnSignUp)
+					.addGap(5)
+					.addComponent(btnFindIdPwd))
+		);
+		gl_signup_find_panel.setVerticalGroup(
+			gl_signup_find_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_signup_find_panel.createSequentialGroup()
+					.addGap(5)
+					.addGroup(gl_signup_find_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnSignUp)
+						.addComponent(btnFindIdPwd)))
+		);
+		signup_find_panel.setLayout(gl_signup_find_panel);
 		
 		JPanel login_panel = new JPanel();
 		getContentPane().add(login_panel, BorderLayout.CENTER);
@@ -106,7 +157,20 @@ public class Init extends JFrame {
 				checkLoginValid(tf_id.getText(), String.valueOf(pf_pwd.getPassword()));
 			}
 		});
-		login_panel.add(btnLogin);
+		GroupLayout gl_login_panel = new GroupLayout(login_panel);
+		gl_login_panel.setHorizontalGroup(
+			gl_login_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_login_panel.createSequentialGroup()
+					.addGap(177)
+					.addComponent(btnLogin))
+		);
+		gl_login_panel.setVerticalGroup(
+			gl_login_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_login_panel.createSequentialGroup()
+					.addGap(5)
+					.addComponent(btnLogin))
+		);
+		login_panel.setLayout(gl_login_panel);
 	}
 
 	void connect() {

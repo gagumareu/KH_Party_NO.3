@@ -35,6 +35,8 @@ public class Manage_Sales extends JFrame {
 	int sales, total;
 	int card, cash;
 	
+
+	SpinnerTest st;
 	
 	
 	JTable table;
@@ -61,6 +63,8 @@ public class Manage_Sales extends JFrame {
 		JScrollPane jsp = new JScrollPane(table, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED,ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		
 		JButton jb1 = new JButton("전체 목록");
+		jb1.setBackground(Color.CYAN);
+		JButton jb2 = new JButton("날짜별 매출");
 		jb1.setBackground(Color.CYAN);
 		
 		JButton jb3 = new JButton("음식별 매출");
@@ -122,7 +126,7 @@ public class Manage_Sales extends JFrame {
 					.addGroup(gl_container2.createParallelGroup(Alignment.LEADING, false)
 						.addComponent(jb3, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(jb1, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						
+						.addComponent(jb2, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(jb4, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(jb5, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 					.addContainerGap(531, Short.MAX_VALUE))
@@ -133,7 +137,8 @@ public class Manage_Sales extends JFrame {
 					.addContainerGap()
 					.addComponent(jb1)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					
+					.addComponent(jb2)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(jb3)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(jb4)
@@ -178,6 +183,19 @@ public class Manage_Sales extends JFrame {
 				connect();
 				model.setRowCount(0);
 				select();
+				sales=0;card=0;cash=0;
+				
+			}
+		});
+		
+jb2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				connect();
+				model.setRowCount(0);
+				st=new SpinnerTest();
+				
 				sales=0;card=0;cash=0;
 				
 			}
@@ -287,6 +305,53 @@ public class Manage_Sales extends JFrame {
 		
 	}
 	
+void selectA() {
+		
+		
+		try {
+			sql="select* from payment where regdate=?";
+			pstmt=con.prepareStatement(sql);
+			
+			
+			
+			
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				int oderno=rs.getInt("oderno");
+				String pname = rs.getString("pname");
+				int amount=rs.getInt("amount");
+				total=rs.getInt("total");
+				String sort=rs.getString("sort");
+				String cashtype = rs.getString("cashtype");
+				String regdate = rs.getString("regdate").substring(0,10);
+				
+				
+				Object[] data= {oderno,pname,amount,total,sort,cashtype,regdate};
+				model.addRow(data);
+				sales+=total;
+				if(cashtype.equalsIgnoreCase("카드")) {
+					card+=total;
+							
+				} else  {
+					cash+=total;
+				}
+				
+			}
+			
+			
+			jl1.setText("총 매출:"+String.format("%,d",sales));
+			jl2.setText("카드:"+String.format("%,d",card));
+			jl3.setText("현금:"+String.format("%,d",cash));
+			
+			rs.close();pstmt.close();con.close();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 void selectB() {
 		
 		
@@ -294,6 +359,7 @@ void selectB() {
 			sql="select* from payment_food";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
+			
 			while(rs.next()) {
 				int oderno=rs.getInt("oderno");
 				String pname = rs.getString("pname");
