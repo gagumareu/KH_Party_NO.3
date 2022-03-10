@@ -49,6 +49,7 @@ public class FindIdPassword extends JFrame {
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
+		//윈도우, 기본이 되는 panel 생성
 		
 		
 		//아이디 찾기 tab
@@ -86,8 +87,7 @@ public class FindIdPassword extends JFrame {
 		});
 		panel_idBtn.add(btnFindId);
 		
-		
-		
+
 		//비밀번호 찾기 tab
 		JPanel panelFindPwd = new JPanel();
 		tabbedPane.addTab("비밀번호 찾기", null, panelFindPwd, null);
@@ -95,12 +95,14 @@ public class FindIdPassword extends JFrame {
 		
 		JPanel panel_pwd1 = new JPanel();
 		panelFindPwd.add(panel_pwd1, BorderLayout.NORTH);
+
 		JLabel jl2_ex = new JLabel("비밀번호 찾기를 위한 정보를 입력하세요.");
 		panel_pwd1.add(jl2_ex);
 		
 		
 		JPanel panel_pwd2 = new JPanel();
 		panelFindPwd.add(panel_pwd2, BorderLayout.CENTER);
+
 		JPanel panel_wrapPwdInfo = new JPanel();
 		panel_pwd2.add(panel_wrapPwdInfo);
 		panel_wrapPwdInfo.setLayout(new GridLayout(3, 1));

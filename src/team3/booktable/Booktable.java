@@ -1,20 +1,14 @@
 package team3.booktable;
 
-import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import jdk.nashorn.internal.scripts.JO;
+import team3.khie_dohyung.ManwhaMain;
 
 public class Booktable extends JFrame {
 
@@ -84,7 +78,7 @@ public class Booktable extends JFrame {
 		JButton jb2 = new JButton("전체 보기");
 		JButton jb3 = new JButton("리뷰 쓰기");
 		JButton jb4 = new JButton("리뷰 보기");
-		JButton jb5 = new JButton("닫 기");
+		JButton jb5 = new JButton("HOME");
 
 		container1.add(jcb3);
 		container1.add(jcb1);
@@ -95,7 +89,7 @@ public class Booktable extends JFrame {
 		container3.add(jb2);
 		container3.add(jb3);
 		container3.add(jb4);
-		container4.add(jb5);
+		container3.add(jb5);
 
 		JPanel group1 = new JPanel(new BorderLayout());
 		JPanel group2 = new JPanel(new BorderLayout());
@@ -220,7 +214,15 @@ public class Booktable extends JFrame {
 				st.stre(mtable);}
 			}
 		});
-		
+		jb5.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ManwhaMain();
+				dispose();
+				
+			}
+		});
 		
 		
 		

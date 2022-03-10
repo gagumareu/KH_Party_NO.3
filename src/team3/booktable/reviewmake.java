@@ -366,5 +366,4 @@ public class reviewmake extends JFrame {
 		rm.reviewmake("나루토");
 
 	}
-
 }
