@@ -43,6 +43,7 @@ import javax.swing.ButtonGroup;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
 
 public class OrderMenu extends JFrame {
 
@@ -89,6 +90,9 @@ public class OrderMenu extends JFrame {
 	JComboBox chooseComboBox;
 	String paySelect;
 	
+	int tAmount = 0;
+	int tSale = 0;
+	private JTextField cashTextField;
 	
 	public OrderMenu() {
 		
@@ -146,43 +150,48 @@ public class OrderMenu extends JFrame {
 		chooseComboBox.setFont(new Font("함초롬돋움", Font.PLAIN, 18));
 		chooseComboBox.setBackground(SystemColor.window);
 		chooseComboBox.setModel(new DefaultComboBoxModel(new String[] {" 결제수단선택", "         카드", "         현금"}));
+		
+		cashTextField = new JTextField();
+		cashTextField.setToolTipText("현금 입금");
+		cashTextField.setFont(new Font("함초롬돋움", Font.BOLD, 20));
+		cashTextField.setBackground(SystemColor.window);
+		cashTextField.setColumns(10);
 		GroupLayout gl_ButtonPanal = new GroupLayout(ButtonPanal);
 		gl_ButtonPanal.setHorizontalGroup(
 			gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_ButtonPanal.createSequentialGroup()
-					.addComponent(chooseComboBox, 0, 147, Short.MAX_VALUE)
-					.addGap(14))
-				.addGroup(gl_ButtonPanal.createSequentialGroup()
 					.addGap(2)
 					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_ButtonPanal.createSequentialGroup()
-							.addComponent(payButton, GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+							.addComponent(cashTextField, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
 							.addContainerGap())
 						.addGroup(gl_ButtonPanal.createSequentialGroup()
-							.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.TRAILING)
-								.addComponent(minuButton, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-								.addComponent(plusButton, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE))
-							.addGap(18)
-							.addComponent(removeButton, GroupLayout.PREFERRED_SIZE, 62, Short.MAX_VALUE)
+							.addComponent(payButton, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE)
+							.addContainerGap())
+						.addGroup(gl_ButtonPanal.createSequentialGroup()
+							.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
+								.addComponent(chooseComboBox, Alignment.TRAILING, 0, 148, Short.MAX_VALUE)
+								.addGroup(gl_ButtonPanal.createSequentialGroup()
+									.addComponent(plusButton, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.UNRELATED)
+									.addComponent(minuButton))
+								.addComponent(removeButton, GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
 							.addGap(14))))
 		);
 		gl_ButtonPanal.setVerticalGroup(
 			gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_ButtonPanal.createSequentialGroup()
-					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_ButtonPanal.createSequentialGroup()
-							.addComponent(chooseComboBox, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
-							.addGap(18)
-							.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.TRAILING)
-								.addComponent(minuButton, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-								.addComponent(removeButton, GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
-							.addGap(15))
-						.addGroup(gl_ButtonPanal.createSequentialGroup()
-							.addGap(86)
-							.addComponent(plusButton, GroupLayout.PREFERRED_SIZE, 64, GroupLayout.PREFERRED_SIZE)
-							.addGap(92)))
+					.addComponent(chooseComboBox, GroupLayout.PREFERRED_SIZE, 68, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(payButton, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE))
+					.addComponent(cashTextField, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
+						.addComponent(plusButton, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
+						.addComponent(minuButton, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(removeButton, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(payButton))
 		);
 		ButtonPanal.setLayout(gl_ButtonPanal);
 		
@@ -1285,30 +1294,49 @@ public class OrderMenu extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 
+			
+				calculator();                   // 총 수량 및 총 결제 금액 메서드
+				
+				
+				
 				JTable jtbl = new JTable(model);
-				
-				
+
 				String paySelect = chooseComboBox.getSelectedItem().toString();
-				if(paySelect.equals(" 결제수단선택")) {
+				
+				if(paySelect.equals(" 결제수단선택")) {           // 1-1. 결제 방식 선택 안했을 때 
 					String[] cashOrCreadit = {"카드", "현금"};
 					Object choice = JOptionPane.showInputDialog(null, "지불 방법을 선택해주세요", "결제수단", JOptionPane.QUESTION_MESSAGE, null, cashOrCreadit, "결제수단");
-					if(choice == "         카드") {
+					if(choice == "카드") {            // 1-2. 결제 방식 선택 안했을 때 - 카드 선택
+						connect();
+						payment();
+						System.out.println("카드2");
+						new CheckOut(jtbl);
+					}else if(choice == "현금"){       // 1-3. 결제 방식 선택 안했을 때 - 현금 선택
+						System.out.println("현금2");
 						connect();
 						payment();
 						new CheckOut(jtbl);
 					}else {
-						System.out.println("취소");
-						}
+							System.out.println("취소");        // 1-4. 취소 버튼   (생략 고민 중)
+					}
 					
-				}else {
+				}else if(paySelect.equals("         카드")) {    // 2. 결제 방식 선택 후 
+					System.out.println("by card");              // 2-1. 카드결제
+					connect();
+					payment();
+					new CheckOut(jtbl);
+				}else if(paySelect.equals("         현금")){     // 2-2. 현금 결제
+					System.out.println("by Cash");
 					connect();
 					payment();
 					new CheckOut(jtbl);
 				}
 				
+				// 총 수량 및 총 금액 변수
+				System.out.println(tAmount); // 총 수량
+				System.out.println(tSale);   // 총 금액
 				
 				
-					
 				
 				
 //					JTable jtbl = new JTable(model);	
@@ -1321,7 +1349,11 @@ public class OrderMenu extends JFrame {
 
 //				super.mouseClicked(e);
 			}
-		});
+		});  // paybutton the end
+		
+		
+		
+		
 		
 		// 플러스 버튼
 		plusButton.addMouseListener(new MouseListener() {
@@ -1427,6 +1459,10 @@ public class OrderMenu extends JFrame {
 				
 			}
 		});
+		
+		
+		
+		
 		
 		
 		
@@ -1561,15 +1597,14 @@ public class OrderMenu extends JFrame {
 	void removerow() {
 		
 		int row = cartTable.getSelectedRow();
-		
 		model.removeRow(row);
+		
+		
 		
 		
 	}
 
 	
-	//DefaultTableModel model = new DefaultTableModel(cartHeader, 0);
-	//JTable cartTable = new JTable(model);
 	
 	// 결제창 
 	void payment() {
@@ -1609,6 +1644,11 @@ public class OrderMenu extends JFrame {
 		
 	}
 	
+	
+	
+	
+	
+	
 	// 요금제 메뉴
 	void timePlan(int hours){
 		
@@ -1640,6 +1680,37 @@ public class OrderMenu extends JFrame {
 	}
 	
 	
+	void calculator() {
+		
+		JTable jtbl = new JTable(model);
+		
+		for(int i = 0; i < jtbl.getRowCount(); i++) {
+			tAmount = tAmount + Integer.parseInt((jtbl.getValueAt(i, 1).toString()));
+		}
+		
+		for(int i = 0; i < jtbl.getRowCount(); i++) {
+			tSale = tSale + Integer.parseInt(jtbl.getValueAt(i, 2).toString());
+			
+		}
+		
+	}
+	
+	
+//		void total() {
+		
+//		model = (DefaultTableModel) cartTable.getModel();
+//		
+//		for(int i = 0; i < model.getRowCount(); i++) {
+//			int tAmount = (Integer) model.getValueAt(i, 1);
+//			int tPay = (Integer) model.getValueAt(i, 2);
+//		}
+		
+//		System.out.println(tAmount); 
+//		System.out.println(tSale); 
+		
+		
+		
+//	}   보류
 	
 	
 	
