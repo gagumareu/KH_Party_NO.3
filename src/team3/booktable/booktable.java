@@ -13,6 +13,9 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import team3.init.MyPage;
+
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -283,6 +286,16 @@ public class booktable extends JFrame {
 							st.setVisible(true);
 							}
 
+					}
+				});
+				
+				jb5.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						new MyPage(id);
+						setVisible(false);
+						
 					}
 				});
 				
