@@ -101,6 +101,13 @@ public class OrderMenu extends JFrame {
 	int minus = 0;
 	int plus = 0;
 	private JTextField cashTextField;
+	int cash;
+	private JTextField changeTextField;
+	private JTextField earnCashTextField;
+	
+	
+	
+	
 	// 생성자 
 	public OrderMenu() {
 		
@@ -1220,8 +1227,15 @@ public class OrderMenu extends JFrame {
 		amountLabel.setBackground(SystemColor.info);
 		amountLabel.setFont(new Font("함초롬돋움", Font.BOLD, 27));
 		
-		JPanel panel2 = new JPanel();
-		panel2.setBackground(SystemColor.window);
+		changeTextField = new JTextField();
+		changeTextField.setFont(new Font("함초롬돋움", Font.BOLD, 27));
+		changeTextField.setColumns(10);
+		changeTextField.setBackground(SystemColor.info);
+		
+		earnCashTextField = new JTextField();
+		earnCashTextField.setFont(new Font("함초롬돋움", Font.BOLD, 27));
+		earnCashTextField.setColumns(10);
+		earnCashTextField.setBackground(SystemColor.info);
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -1232,8 +1246,10 @@ public class OrderMenu extends JFrame {
 						.addComponent(amountTextField, GroupLayout.PREFERRED_SIZE, 314, GroupLayout.PREFERRED_SIZE)
 						.addComponent(SalesTextField, GroupLayout.PREFERRED_SIZE, 314, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 314, GroupLayout.PREFERRED_SIZE)
-							.addGap(6)
+							.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+								.addComponent(changeTextField, GroupLayout.PREFERRED_SIZE, 314, GroupLayout.PREFERRED_SIZE)
+								.addComponent(earnCashTextField, GroupLayout.PREFERRED_SIZE, 314, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(amountLabel, GroupLayout.PREFERRED_SIZE, 316, GroupLayout.PREFERRED_SIZE))))
 		);
 		gl_panel.setVerticalGroup(
@@ -1247,9 +1263,11 @@ public class OrderMenu extends JFrame {
 					.addComponent(SalesTextField, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
 					.addGap(7)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
-						.addComponent(amountLabel, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(92, Short.MAX_VALUE))
+						.addComponent(amountLabel, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+						.addComponent(earnCashTextField, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(changeTextField, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(33, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		contentPane.setLayout(gl_contentPane);
@@ -1406,7 +1424,7 @@ public class OrderMenu extends JFrame {
 					System.out.println("by card");                                           // 2-1. 카드결제
 					connect();
 					checkOut();
-					receipt();
+					cardReceipt();
 					tAmount = 0;
 					tSales = 0;
 					model.setRowCount(0);
@@ -1415,7 +1433,7 @@ public class OrderMenu extends JFrame {
 					System.out.println("by Cash");
 					connect();
 					checkOut();
-					receipt();
+					cashReceipt();
 					tAmount = 0;
 					tSales = 0;
 					model.setRowCount(0);
@@ -1820,11 +1838,23 @@ public class OrderMenu extends JFrame {
 		
 	}
 	
-	void receipt() {
+	void cardReceipt() {
+		amountTextField.setText("총 수량 : " + (int)(tAmount) + "개");              // 총수량
+		SalesTextField.setText("총 금액 : " + (int)(tSales) + "원");                // 총 금액
 		
-		amountTextField.setText("총 수량 : " + (int)(tAmount));
-
-		SalesTextField.setText("총 금액 : " + (int)(tSales));
+	}
+	
+	
+	void cashReceipt() {
+		
+		amountTextField.setText("총 수량 : " + (int)(tAmount) + "개");              // 총수량
+		SalesTextField.setText("총 금액 : " + (int)(tSales) + "원");                // 총 금액
+		
+		int cash = Integer.parseInt(cashTextField.getText().toString());     
+			
+		earnCashTextField.setText("입금한 현금 : " + (cash) + "원");                    // 입금한 현금액
+		changeTextField.setText("현금 잔돈 : " + (cash-tSales) + "원");                // 잔돈
+		
 		
 	}
 	
