@@ -7,8 +7,8 @@ import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import team3.booktable.Booktable;
-import team3.odermenu.Food;
+import team3.booktable.booktable;
+//import team3.odermenu.Food;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -24,7 +24,7 @@ public class ManwhaMain extends JFrame {
 	JTable table;
 	JComboBox<String>jcb1;
 	
-	public ManwhaMain() {
+	public ManwhaMain(String id) {
 		
 		setTitle("메인 메뉴 테이블");
 		
@@ -88,7 +88,7 @@ public class ManwhaMain extends JFrame {
 		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new Food();
+				//new Food();
 				dispose();
 				super.mouseClicked(e);
 			}
@@ -98,7 +98,7 @@ public class ManwhaMain extends JFrame {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new Booktable();
+				new booktable(id);
 				dispose();
 				super.mouseClicked(e);
 			}
@@ -107,7 +107,7 @@ public class ManwhaMain extends JFrame {
 		jl1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new Food();
+				//new Food();
 				dispose();
 				super.mouseClicked(e);
 			}
@@ -115,7 +115,7 @@ public class ManwhaMain extends JFrame {
 		jl2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new Booktable();
+				new booktable(id);
 				dispose();
 				super.mouseClicked(e);
 			}
@@ -127,7 +127,7 @@ public class ManwhaMain extends JFrame {
 	
 
 	public static void main(String[] args) {
-	new ManwhaMain();
+	new ManwhaMain("id");
 
 	}
 }

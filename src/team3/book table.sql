@@ -65,3 +65,9 @@ insert into books
 values ('D','판타지',booknum_seq.nextval,'전지적 독자 시점','UMI/슬리피-C',0,0);
 insert into books
 values ('E','스포츠',booknum_seq.nextval,'더 파이팅','모리카와 조지',0,0);
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> refs/remotes/origin/5gj
