@@ -95,12 +95,12 @@ public class OrderMenu extends JFrame {
 	String paySelect;
 	int tAmount;
 	int tSales;
-	JTextField cashTextField;
 	JTextField amountTextField;
 	JTextField SalesTextField;
 	JLabel amountLabel;
-	
-	
+	int minus = 0;
+	int plus = 0;
+	private JTextField cashTextField;
 	// 생성자 
 	public OrderMenu() {
 		
@@ -150,53 +150,80 @@ public class OrderMenu extends JFrame {
 		chooseComboBox = new JComboBox();
 		chooseComboBox.setFont(new Font("함초롬돋움", Font.PLAIN, 18));
 		chooseComboBox.setBackground(SystemColor.window);
-		chooseComboBox.setModel(new DefaultComboBoxModel(new String[] {" 결제수단선택", "         카드", "         현금"}));
+		chooseComboBox.setModel(new DefaultComboBoxModel(new String[] {" 결제수단선택", "카드", "현금"}));
 		
 		cashTextField = new JTextField();
-		cashTextField.setToolTipText("현금 입금");
+		cashTextField.setToolTipText("");
 		cashTextField.setFont(new Font("함초롬돋움", Font.BOLD, 20));
-		cashTextField.setBackground(SystemColor.window);
 		cashTextField.setColumns(10);
+		cashTextField.setBackground(SystemColor.window);
+		
+		JButton deleteAllButton = new JButton(" 전체 삭제\r\n");
+		deleteAllButton.setBackground(SystemColor.window);
+		deleteAllButton.setFont(new Font("함초롬돋움", Font.BOLD, 25));
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(SystemColor.window);
 		GroupLayout gl_ButtonPanal = new GroupLayout(ButtonPanal);
 		gl_ButtonPanal.setHorizontalGroup(
 			gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_ButtonPanal.createSequentialGroup()
-					.addGap(2)
-					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
+					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_ButtonPanal.createSequentialGroup()
-							.addComponent(chooseComboBox, 0, 368, Short.MAX_VALUE)
-							.addContainerGap())
-						.addGroup(Alignment.TRAILING, gl_ButtonPanal.createSequentialGroup()
-							.addComponent(cashTextField, GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
-							.addContainerGap())
-						.addGroup(Alignment.TRAILING, gl_ButtonPanal.createSequentialGroup()
-							.addComponent(payButton, GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
-							.addContainerGap())
-						.addGroup(Alignment.TRAILING, gl_ButtonPanal.createSequentialGroup()
-							.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
+							.addGap(2)
+							.addComponent(chooseComboBox, 0, 166, Short.MAX_VALUE))
+						.addComponent(deleteAllButton, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+						.addGroup(gl_ButtonPanal.createSequentialGroup()
+							.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.TRAILING)
+								.addComponent(removeButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
 								.addGroup(gl_ButtonPanal.createSequentialGroup()
-									.addComponent(plusButton, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.UNRELATED)
-									.addComponent(minuButton))
-								.addComponent(removeButton, GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE))
-							.addGap(14))))
+									.addComponent(plusButton, GroupLayout.DEFAULT_SIZE, 74, Short.MAX_VALUE)
+									.addGap(18)
+									.addComponent(minuButton, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)))
+							.addPreferredGap(ComponentPlacement.RELATED)))
+					.addGap(14)
+					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+						.addComponent(payButton, GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+						.addComponent(cashTextField, GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE))
+					.addContainerGap())
 		);
 		gl_ButtonPanal.setVerticalGroup(
 			gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_ButtonPanal.createSequentialGroup()
-					.addGap(8)
-					.addComponent(chooseComboBox, GroupLayout.PREFERRED_SIZE, 60, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(cashTextField, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
+					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.BASELINE)
+						.addComponent(chooseComboBox, GroupLayout.PREFERRED_SIZE, 67, GroupLayout.PREFERRED_SIZE)
+						.addComponent(cashTextField, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(panel_1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(deleteAllButton, GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
-						.addComponent(plusButton, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE)
-						.addComponent(minuButton, GroupLayout.DEFAULT_SIZE, 51, Short.MAX_VALUE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(removeButton, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(payButton))
+						.addGroup(gl_ButtonPanal.createSequentialGroup()
+							.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
+								.addComponent(plusButton, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+								.addComponent(minuButton, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(removeButton, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
+						.addComponent(payButton, GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
+					.addContainerGap())
 		);
+		
+		JLabel lblNewLabel_1 = new JLabel("현금 입금");
+		lblNewLabel_1.setBackground(SystemColor.window);
+		lblNewLabel_1.setFont(new Font("함초롬돋움", Font.BOLD, 23));
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\KHPartyNO.3\\cartoon\\left-arrow.jpg"));
+		GroupLayout gl_panel_1 = new GroupLayout(panel_1);
+		gl_panel_1.setHorizontalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, 174, Short.MAX_VALUE)
+		);
+		gl_panel_1.setVerticalGroup(
+			gl_panel_1.createParallelGroup(Alignment.LEADING)
+				.addComponent(lblNewLabel_1, GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
+		);
+		panel_1.setLayout(gl_panel_1);
 		ButtonPanal.setLayout(gl_ButtonPanal);
 		
 		JPanel timeTablePanel = new JPanel();
@@ -1144,11 +1171,11 @@ public class OrderMenu extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-					.addGap(13)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addComponent(carjsp, GroupLayout.PREFERRED_SIZE, 657, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
 					.addComponent(ButtonPanal, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE)
-					.addGap(13))
+					.addContainerGap())
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(14)
 					.addComponent(OderTebbedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
@@ -1163,19 +1190,16 @@ public class OrderMenu extends JFrame {
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(12)
 							.addComponent(OderTebbedPanel, GroupLayout.PREFERRED_SIZE, 380, GroupLayout.PREFERRED_SIZE)
-							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(266)
-									.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE))
-								.addGroup(gl_contentPane.createSequentialGroup()
-									.addGap(14)
-									.addComponent(carjsp, GroupLayout.PREFERRED_SIZE, 313, GroupLayout.PREFERRED_SIZE))))
+							.addGap(16)
+							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
+								.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+								.addComponent(carjsp, GroupLayout.PREFERRED_SIZE, 313, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(16)
 							.addComponent(panel, GroupLayout.PREFERRED_SIZE, 371, GroupLayout.PREFERRED_SIZE)
-							.addGap(11)
-							.addComponent(ButtonPanal, GroupLayout.PREFERRED_SIZE, 317, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(22, Short.MAX_VALUE))
+							.addGap(18)
+							.addComponent(ButtonPanal, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+					.addGap(22))
 		);
 		
 		JLabel lblNewLabel = new JLabel("             RECEIPT");
@@ -1195,30 +1219,36 @@ public class OrderMenu extends JFrame {
 		amountLabel = new JLabel("");
 		amountLabel.setBackground(SystemColor.info);
 		amountLabel.setFont(new Font("함초롬돋움", Font.BOLD, 27));
+		
+		JPanel panel2 = new JPanel();
+		panel2.setBackground(SystemColor.window);
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(26)
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
-						.addComponent(amountLabel, GroupLayout.PREFERRED_SIZE, 316, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 314, GroupLayout.PREFERRED_SIZE)
+						.addComponent(amountTextField, GroupLayout.PREFERRED_SIZE, 314, GroupLayout.PREFERRED_SIZE)
 						.addComponent(SalesTextField, GroupLayout.PREFERRED_SIZE, 314, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
-							.addComponent(lblNewLabel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(amountTextField, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)))
-					.addContainerGap(23, Short.MAX_VALUE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 314, GroupLayout.PREFERRED_SIZE)
+							.addGap(6)
+							.addComponent(amountLabel, GroupLayout.PREFERRED_SIZE, 316, GroupLayout.PREFERRED_SIZE))))
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel.createSequentialGroup()
 					.addGap(17)
 					.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(7)
 					.addComponent(amountTextField, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGap(7)
 					.addComponent(SalesTextField, GroupLayout.PREFERRED_SIZE, 57, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(amountLabel, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+					.addGap(7)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addComponent(panel2, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE)
+						.addComponent(amountLabel, GroupLayout.PREFERRED_SIZE, 62, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(92, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
@@ -1342,6 +1372,7 @@ public class OrderMenu extends JFrame {
 			}
 		}); 
 		
+
 		
 		// 결제창 버튼
 		payButton.addMouseListener(new MouseAdapter() {
@@ -1371,39 +1402,36 @@ public class OrderMenu extends JFrame {
 					}else {
 							System.out.println("취소");        // 1-4. 취소 버튼   (생략 고민 중)
 					}					
-				}else if(paySelect.equals("         카드")) {    // 2. 결제 방식 선택 후 
-					System.out.println("by card");              // 2-1. 카드결제
+				}else if(paySelect.equals("카드")) {    // 2. 결제 방식 선택 후 
+					System.out.println("by card");                                           // 2-1. 카드결제
 					connect();
 					checkOut();
 					receipt();
-					//amountLabel.setText("총 수량 : " + (int)(tAmount));
-
-				}else if(paySelect.equals("         현금")){     // 2-2. 현금 결제
+					tAmount = 0;
+					tSales = 0;
+					model.setRowCount(0);
+					 
+				}else if(paySelect.equals("현금")){     // 2-2. 현금 결제
 					System.out.println("by Cash");
 					connect();
 					checkOut();
 					receipt();
+					tAmount = 0;
+					tSales = 0;
+					model.setRowCount(0);
+					
+
 				}
 				
-				tAmount = 0;
-				tSales = 0;
-				model.setRowCount(0);
-
+				
+				
+				
 ////////////////// 총 수량 및 총 금액 변수////////////////////////////////////
 				System.out.println("order amount : " + tAmount); // 총 수량
 				System.out.println("order sale : " + tSales);   // 총 금액
 ////////////////////     삭제 예정              ///////////////////////////////////////////				
 				
-				
-				
-//					JTable jtbl = new JTable(model);	
-//					Payment newWindow = new Payment(jtbl);
-//					new Payment(jtbl);
-//					newWindow.setModal(true);
-//					//newWindow.setPaytable(table);
-//					newWindow.setVisible(true);
-//					dispose();
-//				super.mouseClicked(e);
+
 			}
 		});  // checkout 끝
 		
@@ -1413,16 +1441,12 @@ public class OrderMenu extends JFrame {
 		
 		// 플러스 버튼
 		plusButton.addMouseListener(new MouseListener() {
-			
 			public void mouseReleased(MouseEvent e) {
 			}
-			
 			public void mousePressed(MouseEvent e) {
 			}
-			
 			public void mouseExited(MouseEvent e) {
 			}
-			
 			public void mouseEntered(MouseEvent e) {
 			}
 			public void mouseClicked(MouseEvent e) {
@@ -1433,6 +1457,10 @@ public class OrderMenu extends JFrame {
 				Integer plus = (Integer) model.getValueAt(row, 1);
 				plus +=1;
 				model.setValueAt(plus, row, 1);
+				if(plus > 10) {
+					JOptionPane.showMessageDialog(null, "최대 주문은 10개 이하로 부탁드립니다.");
+					model.setValueAt(10, row, 1);
+				}
 			}
 		});
 		
@@ -1447,8 +1475,14 @@ public class OrderMenu extends JFrame {
 				Integer minus = (Integer) model.getValueAt(row, 1);
 				minus += -1;
 				model.setValueAt(minus, row, 1);
+				if(minus <= 0) {
+					JOptionPane.showMessageDialog(null, "최수 주문 1개이상 부탁드립니다.");
+					model.setValueAt(1, row, 1);
+				}
 			}
 		});
+		
+		
 		
 		
 		// 요금제 버튼   
@@ -1516,9 +1550,17 @@ public class OrderMenu extends JFrame {
 			}
 		});
 		
+
 		
+		deleteAllButton.addActionListener(new ActionListener() {
 		
-		
+		public void actionPerformed(ActionEvent e) {
+
+			model.setRowCount(0);
+			
+			
+		}
+	});
 		
 		
 		
@@ -1654,7 +1696,19 @@ public class OrderMenu extends JFrame {
 	void removerow() {
 		
 		int row = cartTable.getSelectedRow();
-		model.removeRow(row);	
+//		model.removeRow(row);
+		
+//		if(model.getValueAt(row, 0) == null) {
+//		JOptionPane.showMessageDialog(null, "최소 한개 이상의 상품이 있어야 합니다.");				
+//		}
+		
+		if(model == null) {
+			JOptionPane.showMessageDialog(null, "최소 한개 이상의 상품이 있어야 합니다.");
+		}else {
+			model.removeRow(row);
+
+		}
+		
 	}
 
 	
@@ -1771,6 +1825,7 @@ public class OrderMenu extends JFrame {
 		amountTextField.setText("총 수량 : " + (int)(tAmount));
 
 		SalesTextField.setText("총 금액 : " + (int)(tSales));
+		
 	}
 	
 	void reSetText() {
@@ -1778,11 +1833,4 @@ public class OrderMenu extends JFrame {
 		amountTextField.setText("");
 		SalesTextField.setText("");
 	}
-	
-	
-	
-	
-	
-	
-	
 } // 마지막 
