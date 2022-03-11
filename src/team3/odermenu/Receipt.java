@@ -26,9 +26,11 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.Font;
+import java.awt.GraphicsConfiguration;
 
 public class Receipt extends JFrame {
 
+//	private static final GraphicsConfiguration tSales = null;
 	private JPanel contentPane;
 	private JTextField totalTextField;
 	
@@ -38,7 +40,8 @@ public class Receipt extends JFrame {
 	ResultSet res = null;
 	String sql = null;
 	static JTable table;
-	
+	int tAmoun, tSales;
+
 	
 //	String tSale, tAmount;
 	
@@ -72,9 +75,9 @@ public class Receipt extends JFrame {
 		
 		
 		
-		System.out.println("checkout amout : " + order.totalAmount);
-		System.out.println("checkout sale : " + order.totalSales);
-		System.out.println(order.model);
+		System.out.println("checkout amout : " + order.tAmount);  ///////  삭제 예정  /////////////////
+		System.out.println("checkout sale : " + order.tSales);    ///////  삭제 예정  /////////////////
+		System.out.println(order.model);                              ///////  삭제 예정  /////////////////
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(800, 300, 500, 500);
@@ -131,7 +134,7 @@ public class Receipt extends JFrame {
 		JLabel lblNewLabel_2 = new JLabel("New label");
 		
 		
-		totalTextField = new JTextField(order.tSales);
+		totalTextField = new JTextField(order);
 		totalTextField.setColumns(10);
 		GroupLayout gl_orderPanel = new GroupLayout(orderPanel);
 		gl_orderPanel.setHorizontalGroup(
@@ -287,7 +290,10 @@ public class Receipt extends JFrame {
 	}
 	
 	
-	
+	public void sum(JTable jtbl, int tAmount, int Sales) {
+		
+		
+	}
 	
 	
 	
