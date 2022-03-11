@@ -156,6 +156,8 @@ public class booktable extends JFrame {
 		);
 		scrollPane.setViewportView(table);
 		
+		setVisible(true);
+		
 		connect();
 		combogenre();
 		view();

@@ -26,9 +26,10 @@ public class ManwhaMain extends JFrame {
 	JTextField jtf1,jtf2,jtf3,jtf4;
 	JTable table;
 	JComboBox<String>jcb1;
-	String mname;
+	String id;
 	
-	public ManwhaMain() {
+	
+	public ManwhaMain(String mname) {
 		
 		setTitle("메인 메뉴 테이블");
 		
@@ -131,7 +132,7 @@ public class ManwhaMain extends JFrame {
 	
 
 	public static void main(String[] args) {
-	new ManwhaMain();
+	
 
 	}
 }
