@@ -24,6 +24,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.UIManager;
 import java.awt.Font;
@@ -58,6 +60,8 @@ public class booktable extends JFrame {
 	String sortmgr = "n";
 	
 	String mtable="";
+	
+	String mname = "";
 
 	/**
 	 * Launch the application.
@@ -66,7 +70,7 @@ public class booktable extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					booktable frame = new booktable("이승민");
+					booktable frame = new booktable("ogj5555");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -78,7 +82,10 @@ public class booktable extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public booktable(String mname) {
+	public booktable(String id) {
+		
+		String mname = name(id);
+		
 		setTitle("도서 검색");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -258,17 +265,26 @@ public class booktable extends JFrame {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-//						connect();
-//						JOptionPane.showMessageDialog(null, sysdate(bnumber(mtable),mname));
+						SimpleDateFormat sys = new SimpleDateFormat("yyyy-MM-dd");
+
+						Date now = new Date();
+						String sysdate = sys.format(now);
+						connect();
 						
+
 						
 						
 						if(mtable.equals("")) {
 							JOptionPane.showMessageDialog(null, "도서를 선택하세요");
-						}else {
+						}
+						else if(sysdate(bnumber(mtable),mname).substring(0,10).equals(sysdate)){
+							JOptionPane.showMessageDialog(null, "이미 오늘 리뷰를 작성하셨습니다. 같은책의 리뷰는 하루 한번 가능합니다.");
+						}
+						else {
+							stre st = new stre(mtable,mname);
+							st.setVisible(true);
 							}
-						stre st = new stre(mtable,mname);
-						st.setVisible(true);
+
 					}
 				});
 				
@@ -537,7 +553,7 @@ public class booktable extends JFrame {
 	}
 	
 	String sysdate(int bnumber , String mname) {
-		String sysdate = "";
+		String sysdate = "ddddddddddddddddd";
 		
 		
 		try {
@@ -602,6 +618,34 @@ public class booktable extends JFrame {
 		}
 
 		return bnumber;
+
+	}
+	
+	// ==id > 이름 ====
+	
+	String name(String id) {
+		
+		connect();
+		String mem_name = "";
+		try {
+			sql = "select mem_name from member where mem_id = ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				mem_name = rs.getString("mem_name");
+			}
+			rs.close();
+			pstmt.close();
+			con.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return mem_name;
 
 	}
 }
