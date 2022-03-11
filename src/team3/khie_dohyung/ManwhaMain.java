@@ -7,8 +7,11 @@ import java.sql.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-import team3.booktable.Booktable;
-import team3.odermenu.Food;
+
+import team3.booktable.booktable;
+
+import team3.odermenu.OrderMenu;
+
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -23,6 +26,7 @@ public class ManwhaMain extends JFrame {
 	JTextField jtf1,jtf2,jtf3,jtf4;
 	JTable table;
 	JComboBox<String>jcb1;
+	String mname;
 	
 	public ManwhaMain() {
 		
@@ -88,7 +92,7 @@ public class ManwhaMain extends JFrame {
 		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new Food();
+				new OrderMenu();
 				dispose();
 				super.mouseClicked(e);
 			}
@@ -98,7 +102,7 @@ public class ManwhaMain extends JFrame {
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new Booktable();
+				new booktable(mname);
 				dispose();
 				super.mouseClicked(e);
 			}
@@ -107,7 +111,7 @@ public class ManwhaMain extends JFrame {
 		jl1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new Food();
+				new OrderMenu();
 				dispose();
 				super.mouseClicked(e);
 			}
@@ -115,7 +119,7 @@ public class ManwhaMain extends JFrame {
 		jl2.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new Booktable();
+				new booktable(mname);
 				dispose();
 				super.mouseClicked(e);
 			}
