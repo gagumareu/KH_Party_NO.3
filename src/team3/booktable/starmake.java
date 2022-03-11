@@ -71,7 +71,7 @@ public class starmake extends JFrame {
 		JButton st1 = new JButton("");
 		st1.setForeground(UIManager.getColor("text"));
 		st1.setBackground(UIManager.getColor("menu"));
-		st1.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
+		st1.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
 		st1.setBounds(91, 77, 41, 36);
 		st1.setFocusPainted(false);
 		st1.setBorderPainted(false);;
@@ -79,7 +79,7 @@ public class starmake extends JFrame {
 		contentPane.add(st1);
 		
 		JButton st2 = new JButton("");
-		st2.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
+		st2.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
 		st2.setForeground(Color.WHITE);
 		st2.setFocusPainted(false);
 		st2.setBorderPainted(false);
@@ -88,7 +88,7 @@ public class starmake extends JFrame {
 		contentPane.add(st2);
 		
 		JButton st3 = new JButton("");
-		st3.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
+		st3.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
 		st3.setForeground(Color.WHITE);
 		st3.setFocusPainted(false);
 		st3.setBorderPainted(false);
@@ -97,7 +97,7 @@ public class starmake extends JFrame {
 		contentPane.add(st3);
 		
 		JButton st4 = new JButton("");
-		st4.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
+		st4.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
 		st4.setForeground(Color.WHITE);
 		st4.setFocusPainted(false);
 		st4.setBorderPainted(false);
@@ -110,7 +110,7 @@ public class starmake extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		st5.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
+		st5.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
 		st5.setForeground(Color.WHITE);
 		st5.setFocusPainted(false);
 		st5.setBorderPainted(false);
@@ -138,11 +138,11 @@ public class starmake extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				star = 1;
 				jtl2.setText(" (1점)    별로 에요");
-				st1.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
-				st2.setIcon(new ImageIcon("team3/booktable/img/회색 별.jpg"));
-				st3.setIcon(new ImageIcon("team3/booktable/img/회색 별.jpg"));
-				st4.setIcon(new ImageIcon("team3/booktable/img/회색 별.jpg"));
-				st5.setIcon(new ImageIcon("team3/booktable/img/회색 별.jpg"));
+				st1.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
+				st2.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/회색 별.jpg")));
+				st3.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/회색 별.jpg")));
+				st4.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/회색 별.jpg")));
+				st5.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/회색 별.jpg")));
 				
 			}
 		});
@@ -152,11 +152,11 @@ public class starmake extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				star = 2;
 				jtl2.setText(" (2점)    그냥 그래요");
-				st1.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
-				st2.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
-				st3.setIcon(new ImageIcon("team3/booktable/img/회색 별.jpg"));
-				st4.setIcon(new ImageIcon("team3/booktable/img/회색 별.jpg"));
-				st5.setIcon(new ImageIcon("team3/booktable/img/회색 별.jpg"));
+				st1.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
+				st2.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
+				st3.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/회색 별.jpg")));
+				st4.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/회색 별.jpg")));
+				st5.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/회색 별.jpg")));
 				
 			}
 		});
@@ -166,11 +166,11 @@ public class starmake extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				star = 3;
 				jtl2.setText(" (3점)    보통 이에요");
-				st1.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
-				st2.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
-				st3.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
-				st4.setIcon(new ImageIcon("team3/booktable/img/회색 별.jpg"));
-				st5.setIcon(new ImageIcon("team3/booktable/img/회색 별.jpg"));
+				st1.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
+				st2.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
+				st3.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
+				st4.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/회색 별.jpg")));
+				st5.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/회색 별.jpg")));
 				
 			}
 		});
@@ -180,11 +180,11 @@ public class starmake extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				star = 4;
 				jtl2.setText(" (4점)    재미 있어요!");
-				st1.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
-				st2.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
-				st3.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
-				st4.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
-				st5.setIcon(new ImageIcon("team3/booktable/img/회색 별.jpg"));
+				st1.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
+				st2.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
+				st3.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
+				st4.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
+				st5.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/회색 별.jpg")));
 				
 			}
 		});
@@ -194,11 +194,11 @@ public class starmake extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				star = 5;
 				jtl2.setText(" (5점)    최고 에요!!");
-				st1.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
-				st2.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
-				st3.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
-				st4.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
-				st5.setIcon(new ImageIcon("team3/booktable/img/노란 별.jpg"));
+				st1.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
+				st2.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
+				st3.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
+				st4.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
+				st5.setIcon(new ImageIcon(starmake.class.getResource("/team3/booktable/img/노란 별.jpg")));
 				
 			}
 		});
