@@ -1449,6 +1449,7 @@ public class OrderMenu extends JFrame {
 						chooseComboBox.setSelectedItem("카드");
 					}else if(choose == "현금"){       // 1-3. 결제 방식 선택 안했을 때 - 현금 선택
 						chooseComboBox.setSelectedItem("현금");
+						cashPlz();
 					}else {
 							//System.out.println("취소");        // 1-4. 취소 버튼   (생략 고민 중)
 					}					
@@ -1456,39 +1457,36 @@ public class OrderMenu extends JFrame {
 					connect();
 					checkOut();
 					cardReceipt();
-					tAmount = 0;
-					tSales = 0;
-					model.setRowCount(0);					 
+									 
 				}else if(paySelect.equals("현금")){     // 2-2. 현금 결제
-					connect();
-					// 현금 입금 안했을 시 경고 창
-					while(cashTextField.getText().equals("")) {
-						String cashplease = JOptionPane.showInputDialog("현금을 입급하세요");
-						cashTextField.setText(cashplease);
-						while(Integer.parseInt(cashTextField.getText().toString()) < tSales) {
-							String recheck = JOptionPane.showInputDialog("주문 하신 총 결제 금액 이상으로 입금 하세요");
-							cashTextField.setText(recheck);
-						}
-					}
-					
+					connect();					
+					cashPlz();					
 					checkOut();
 					cashReceipt();
-					tAmount = 0;
-					tSales = 0;
-					model.setRowCount(0);					
-				}																
+								
+				}	
+				tAmount = 0;
+				tSales = 0;
+				model.setRowCount(0);
 							
 			}
 		});  // checkout 끝
 		
 						
 			
-		chooseComboBox.addActionListener(new ActionListener() {			
-			public void actionPerformed(ActionEvent e) {
-				//Object paySelect = chooseComboBox.getSelectedItem().toString();				
-			}
-		});
+	cashPlzButton.addActionListener(new ActionListener() {
 		
+		public void actionPerformed(ActionEvent e) {
+			while(cashTextField.getText().equals("")) {
+				String cashplease = JOptionPane.showInputDialog("현금을 입금하세요");
+				cashTextField.setText(cashplease);
+				while(Integer.parseInt(cashTextField.getText().toString()) < tSales) {
+					String recheck = JOptionPane.showInputDialog("주문하신 총 결제 금액 이상으로 입금하세요");
+					cashTextField.setText(recheck);
+				}
+			}		
+		}
+	});
 		
 		
 		
@@ -1743,7 +1741,23 @@ public class OrderMenu extends JFrame {
 	}
 	
 	
-	
+	void cashPlz(){
+		
+		if(cashTextField.getText().equals("")) {
+		String cashplease = JOptionPane.showInputDialog("현금을 입금하세요");
+		cashTextField.setText(cashplease);
+		}
+		while(true) {
+			if(Integer.parseInt(cashTextField.getText().toString()) < tSales) {
+				String recheck = JOptionPane.showInputDialog("주문하신 총 결제 금액 이상으로 입금하세요");
+				cashTextField.setText(recheck);				
+			}
+			break;
+		}
+		
+		
+		
+	}
 	
 	
 	
