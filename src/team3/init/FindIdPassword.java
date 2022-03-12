@@ -42,29 +42,34 @@ public class FindIdPassword extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.info);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		setVisible(true);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBackground(SystemColor.menu);
 		contentPane.add(tabbedPane, BorderLayout.CENTER);
 		//윈도우, 기본이 되는 panel 생성
 		
 		
 		//아이디 찾기 tab
 		JPanel panelFindId = new JPanel();
+		panelFindId.setBackground(SystemColor.menu);
 		tabbedPane.addTab("아이디 찾기", null, panelFindId, null);
 		panelFindId.setLayout(new GridLayout(3, 1));
 		
 		
 		JPanel panel_id1 = new JPanel();
+		panel_id1.setBackground(SystemColor.menu);
 		panelFindId.add(panel_id1);
 		JLabel jl1_ex = new JLabel("아이디를 찾기 위한 정보를 입력하세요.");
 		panel_id1.add(jl1_ex);
 		
 		
 		JPanel panel_id2 = new JPanel();
+		panel_id2.setBackground(SystemColor.menu);
 		panelFindId.add(panel_id2);
 		
 		JLabel jl1_name = new JLabel("이름: ");
@@ -76,8 +81,10 @@ public class FindIdPassword extends JFrame {
 		
 		
 		JPanel panel_idBtn = new JPanel();
+		panel_idBtn.setBackground(SystemColor.menu);
 		panelFindId.add(panel_idBtn);
 		JButton btnFindId = new JButton("아이디 찾기");
+		btnFindId.setBackground(SystemColor.text);
 		btnFindId.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -90,10 +97,12 @@ public class FindIdPassword extends JFrame {
 
 		//비밀번호 찾기 tab
 		JPanel panelFindPwd = new JPanel();
+		panelFindPwd.setBackground(SystemColor.menu);
 		tabbedPane.addTab("비밀번호 찾기", null, panelFindPwd, null);
 		panelFindPwd.setLayout(new BorderLayout(0, 0));
 		
 		JPanel panel_pwd1 = new JPanel();
+		panel_pwd1.setBackground(SystemColor.menu);
 		panelFindPwd.add(panel_pwd1, BorderLayout.NORTH);
 
 		JLabel jl2_ex = new JLabel("비밀번호 찾기를 위한 정보를 입력하세요.");
@@ -101,6 +110,7 @@ public class FindIdPassword extends JFrame {
 		
 		
 		JPanel panel_pwd2 = new JPanel();
+		panel_pwd2.setBackground(SystemColor.menu);
 		panelFindPwd.add(panel_pwd2, BorderLayout.CENTER);
 
 		JPanel panel_wrapPwdInfo = new JPanel();
@@ -142,9 +152,11 @@ public class FindIdPassword extends JFrame {
 		
 		
 		JPanel panel_pwdBtn = new JPanel();
+		panel_pwdBtn.setBackground(SystemColor.menu);
 		panelFindPwd.add(panel_pwdBtn, BorderLayout.SOUTH);
 		
 		JButton btnFindPwd = new JButton("비밀번호 찾기");
+		btnFindPwd.setBackground(SystemColor.text);
 		btnFindPwd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -157,8 +169,10 @@ public class FindIdPassword extends JFrame {
 		
 		//하단의 모든 탭이 공통으로 갖는 취소 버튼
 		JPanel panelCancel = new JPanel();
+		panelCancel.setBackground(SystemColor.info);
 		contentPane.add(panelCancel, BorderLayout.SOUTH);
 		JButton btnCancel = new JButton("취소");
+		btnCancel.setBackground(SystemColor.inactiveCaption);
 		btnCancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

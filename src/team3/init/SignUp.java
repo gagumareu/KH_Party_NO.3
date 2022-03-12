@@ -41,6 +41,7 @@ public class SignUp extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 250, 350);
 		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.info);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
@@ -48,16 +49,23 @@ public class SignUp extends JFrame {
 		//기본 panel 세팅
 		
 		JPanel panelCenter = new JPanel();
+		panelCenter.setBackground(SystemColor.info);
 		panelCenter.setLayout(new FlowLayout());
 		
 		JPanel panelInfo = new JPanel();
+		panelInfo.setBackground(SystemColor.info);
 		panelInfo.setLayout(new GridLayout(7, 1));
 		
 		JPanel panelId = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		panelId.setBackground(SystemColor.info);
 		JPanel panelPwd = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		panelPwd.setBackground(SystemColor.info);
 		JPanel panelName = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		panelName.setBackground(SystemColor.info);
 		JPanel panelCont = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		panelCont.setBackground(SystemColor.info);
 		JPanel panelAddr = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		panelAddr.setBackground(SystemColor.info);
 		
 		
 		JLabel jl1_id = new JLabel("아이디*: ");
@@ -92,7 +100,9 @@ public class SignUp extends JFrame {
 		
 		
 		JLabel jl6_Question = new JLabel("비밀번호 찾기 질문*: ");
+		jl6_Question.setBackground(SystemColor.info);
 		JPanel panelAns = new JPanel();
+		panelAns.setBackground(SystemColor.info);
 		panelInfo.add(jl6_Question); panelInfo.add(panelAns);
 		
 		JLabel jl6_Ans = new JLabel("어릴때 살던 동네는? ");
@@ -108,11 +118,13 @@ public class SignUp extends JFrame {
 		contentPane.add(panelCenter);
 		
 		JPanel panelBtn = new JPanel();
+		panelBtn.setBackground(SystemColor.info);
 		contentPane.add(panelBtn, BorderLayout.SOUTH);
 		
 		
 		//버튼 이벤트 처리
-		JButton btnSignUp = new JButton("회원가입");
+		JButton btnSignUp = new JButton("가입하기");
+		btnSignUp.setBackground(SystemColor.window);
 		btnSignUp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -123,6 +135,7 @@ public class SignUp extends JFrame {
 		panelBtn.add(btnSignUp);
 		
 		JButton btnCancel = new JButton("취소");
+		btnCancel.setBackground(SystemColor.window);
 		btnCancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -154,6 +167,7 @@ public class SignUp extends JFrame {
 			}
 			
 		} catch (SQLException e) {
+			JOptionPane.showMessageDialog(null, "필수정보를 입력해주세요.");
 			e.printStackTrace();
 		}
 	}
