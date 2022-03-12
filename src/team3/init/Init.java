@@ -16,8 +16,8 @@ public class Init extends JFrame {
 	String sql = null;		// SQL문 저장 문자열 변수
 	
 	private JPanel contentPane;
-	private JTextField textField;
-	private JPasswordField passwordField;
+	private JTextField tf_id;
+	private JPasswordField pf_pwd;
 
 	/**
 	 * Launch the application.
@@ -72,10 +72,22 @@ public class Init extends JFrame {
 		panel_bottonBtns.add(panel_wrapBtns);
 		
 		JButton btnSignUp = new JButton("회원가입");
+		btnSignUp.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new SignUp();
+			}
+		});
 		btnSignUp.setBackground(Color.WHITE);
 		panel_wrapBtns.add(btnSignUp);
 		
 		JButton btnFindIdPwd = new JButton("아이디/비밀번호 찾기");
+		btnFindIdPwd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new FindIdPassword();
+			}
+		});
 		btnFindIdPwd.setBackground(Color.WHITE);
 		panel_wrapBtns.add(btnFindIdPwd);
 		
@@ -98,9 +110,9 @@ public class Init extends JFrame {
 		JLabel jl1 = new JLabel("아이디:    ");
 		id_panel.add(jl1);
 		
-		textField = new JTextField();
-		textField.setColumns(10);
-		id_panel.add(textField);
+		tf_id = new JTextField();
+		tf_id.setColumns(10);
+		id_panel.add(tf_id);
 		
 		JPanel pwd_panel = new JPanel();
 		pwd_panel.setBackground(SystemColor.info);
@@ -109,15 +121,21 @@ public class Init extends JFrame {
 		JLabel jl2 = new JLabel("비밀번호: ");
 		pwd_panel.add(jl2);
 		
-		passwordField = new JPasswordField();
-		passwordField.setColumns(10);
-		pwd_panel.add(passwordField);
+		pf_pwd = new JPasswordField();
+		pf_pwd.setColumns(10);
+		pwd_panel.add(pf_pwd);
 		
 		JPanel panel_btnLogin = new JPanel();
 		panel_btnLogin.setBackground(SystemColor.info);
 		panel_login.add(panel_btnLogin, BorderLayout.SOUTH);
 		
 		JButton btnLogin = new JButton("로그인");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				connect();
+				checkLoginValid(tf_id.getText(), String.valueOf(pf_pwd.getPassword()));
+			}
+		});
 		btnLogin.setPreferredSize(new Dimension(82, 40));
 		btnLogin.setBackground(Color.WHITE);
 		panel_btnLogin.add(btnLogin);
