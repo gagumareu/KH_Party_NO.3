@@ -16,8 +16,8 @@ public class Init extends JFrame {
 	String sql = null;		// SQL문 저장 문자열 변수
 	
 	private JPanel contentPane;
-	private JTextField tf_id;
-	private JPasswordField pf_pwd;
+	private JTextField textField;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -38,7 +38,7 @@ public class Init extends JFrame {
 	 * Create the frame.
 	 */
 	public Init() {
-		setTitle("초기 화면");
+		setTitle("로그인");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -49,77 +49,93 @@ public class Init extends JFrame {
 		setContentPane(contentPane);
 		setVisible(true);
 		
-		JPanel info_panel = new JPanel();
-		info_panel.setBackground(SystemColor.info);
-		getContentPane().add(info_panel, BorderLayout.NORTH);
-		info_panel.setLayout(new BorderLayout(0, 0));
+		JPanel panel_top = new JPanel();
+		panel_top.setBackground(SystemColor.info);
+		getContentPane().add(panel_top, BorderLayout.NORTH);
+		panel_top.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_title = new JPanel();
+		panel_title.setBackground(SystemColor.info);
+		panel_top.add(panel_title, BorderLayout.NORTH);
+		
+		JLabel jl0_title = new JLabel("만화카페 사용자 시스템");
+		jl0_title.setFont(new Font("휴먼편지체", Font.BOLD, 32));
+		panel_title.add(jl0_title);
+		
+		JPanel panel_bottonBtns = new JPanel();
+		panel_bottonBtns.setBackground(SystemColor.info);
+		getContentPane().add(panel_bottonBtns, BorderLayout.SOUTH);
+		panel_bottonBtns.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_wrapBtns = new JPanel();
+		panel_wrapBtns.setBackground(SystemColor.info);
+		panel_bottonBtns.add(panel_wrapBtns);
+		
+		JButton btnSignUp = new JButton("회원가입");
+		btnSignUp.setBackground(Color.WHITE);
+		panel_wrapBtns.add(btnSignUp);
+		
+		JButton btnFindIdPwd = new JButton("아이디/비밀번호 찾기");
+		btnFindIdPwd.setBackground(Color.WHITE);
+		panel_wrapBtns.add(btnFindIdPwd);
+		
+		JLabel jl_indentBtm = new JLabel(" ");
+		panel_bottonBtns.add(jl_indentBtm, BorderLayout.NORTH);
+		
+		JPanel panel_login = new JPanel();
+		panel_login.setBackground(SystemColor.info);
+		getContentPane().add(panel_login, BorderLayout.CENTER);
+		panel_login.setLayout(new BorderLayout(0, 0));
+		
+		JPanel panel_fields = new JPanel();
+		panel_login.add(panel_fields, BorderLayout.CENTER);
+		panel_fields.setLayout(new BorderLayout(0, 0));
 		
 		JPanel id_panel = new JPanel();
 		id_panel.setBackground(SystemColor.info);
-		info_panel.add(id_panel, BorderLayout.CENTER);
+		panel_fields.add(id_panel, BorderLayout.NORTH);
 		
 		JLabel jl1 = new JLabel("아이디:    ");
 		id_panel.add(jl1);
 		
-		tf_id = new JTextField();
-		tf_id.setColumns(10);
-		id_panel.add(tf_id);
+		textField = new JTextField();
+		textField.setColumns(10);
+		id_panel.add(textField);
 		
 		JPanel pwd_panel = new JPanel();
 		pwd_panel.setBackground(SystemColor.info);
-		info_panel.add(pwd_panel, BorderLayout.SOUTH);
+		panel_fields.add(pwd_panel);
 		
 		JLabel jl2 = new JLabel("비밀번호: ");
 		pwd_panel.add(jl2);
 		
-		pf_pwd = new JPasswordField();
-		pf_pwd.setColumns(10);
-		pwd_panel.add(pf_pwd);
+		passwordField = new JPasswordField();
+		passwordField.setColumns(10);
+		pwd_panel.add(passwordField);
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(SystemColor.info);
-		info_panel.add(panel_1, BorderLayout.NORTH);
-		
-		JLabel jl0 = new JLabel("만화카페 사용자 시스템");
-		jl0.setFont(new Font("휴먼편지체", Font.BOLD, 32));
-		panel_1.add(jl0);
-		
-		JPanel signup_find_panel = new JPanel();
-		signup_find_panel.setBackground(SystemColor.info);
-		getContentPane().add(signup_find_panel, BorderLayout.SOUTH);
-		
-		JButton btnSignUp = new JButton("회원가입");
-		btnSignUp.setBackground(SystemColor.window);
-		btnSignUp.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new SignUp();
-			}
-		});
-		signup_find_panel.add(btnSignUp);
-		
-		JButton btnFindIdPwd = new JButton("아이디/비밀번호 찾기");
-		btnFindIdPwd.setBackground(SystemColor.window);
-		btnFindIdPwd.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new FindIdPassword();
-			}
-		});
-		signup_find_panel.add(btnFindIdPwd);
-		
-		JPanel login_panel = new JPanel();
-		login_panel.setBackground(SystemColor.info);
-		getContentPane().add(login_panel, BorderLayout.CENTER);
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(SystemColor.info);
-		login_panel.add(panel);
+		JPanel panel_btnLogin = new JPanel();
+		panel_btnLogin.setBackground(SystemColor.info);
+		panel_login.add(panel_btnLogin, BorderLayout.SOUTH);
 		
 		JButton btnLogin = new JButton("로그인");
-		btnLogin.setBackground(SystemColor.window);
 		btnLogin.setPreferredSize(new Dimension(82, 40));
-		panel.add(btnLogin);
+		btnLogin.setBackground(Color.WHITE);
+		panel_btnLogin.add(btnLogin);
+		
+		JPanel panel_indentTop = new JPanel();
+		panel_indentTop.setBackground(SystemColor.info);
+		panel_login.add(panel_indentTop, BorderLayout.NORTH);
+		
+		JLabel jl_indentTop = new JLabel(" ");
+		panel_indentTop.add(jl_indentTop);
+		
+		JPanel panel_icon = new JPanel();
+		panel_icon.setBackground(SystemColor.info);
+		contentPane.add(panel_icon, BorderLayout.WEST);
+		
+		JLabel jl_icon = new JLabel("");
+		jl_icon.setIcon(new ImageIcon(Init.class.getResource("/images/제목 없음2.jpg")));
+		panel_icon.add(jl_icon);
 	}
 
 	void connect() {
