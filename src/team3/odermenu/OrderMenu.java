@@ -195,56 +195,10 @@ public class OrderMenu extends JFrame {
 			}
 		});
 		
-		JButton minuButton = new JButton("");
-		
-		minuButton.setBackground(SystemColor.window);
-		minuButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\KHPartyNO.3\\cartoon\\min.jpg"));
-		
-		// 마이너스 버튼
-		minuButton.addActionListener(new ActionListener() {			
-			public void actionPerformed(ActionEvent arg0) {				
-				model = (DefaultTableModel) cartTable.getModel();				
-				int row = cartTable.getSelectedRow();
-				Integer minus = (Integer) model.getValueAt(row, 1);
-				minus += -1;
-				model.setValueAt(minus, row, 1);
-				if(minus <= 0) {
-					JOptionPane.showMessageDialog(null, "최수 주문 1개이상 부탁드립니다.");
-					model.setValueAt(1, row, 1);
-				}
-			}
-		});
-		
-		JButton plusButton = new JButton("");
-		
-		plusButton.setBackground(SystemColor.window);
-		plusButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\KHPartyNO.3\\cartoon\\plus.jpg"));
-		
-				
-		// 플러스 버튼
-		plusButton.addMouseListener(new MouseListener() {
-			public void mouseReleased(MouseEvent e) {
-			}
-			public void mousePressed(MouseEvent e) {
-			}
-			public void mouseExited(MouseEvent e) {
-			}
-			public void mouseEntered(MouseEvent e) {
-			}
-			public void mouseClicked(MouseEvent e) {
-		
-		model = (DefaultTableModel) cartTable.getModel();
-		
-		int row = cartTable.getSelectedRow();
-		Integer plus = (Integer) model.getValueAt(row, 1);
-		plus +=1;
-		model.setValueAt(plus, row, 1);
-		if(plus > 10) {
-			JOptionPane.showMessageDialog(null, "최대 주문은 10개 이하로 부탁드립니다.");
-			model.setValueAt(10, row, 1);
-		}
-			}
-		});
+		JButton btnNewButton = new JButton("HOME");
+		btnNewButton.setFont(new Font("함초롬돋움", Font.BOLD, 23));
+		btnNewButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\home.png"));
+		btnNewButton.setBackground(SystemColor.window);
 		GroupLayout gl_ButtonPanal = new GroupLayout(ButtonPanal);
 		gl_ButtonPanal.setHorizontalGroup(
 			gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
@@ -252,16 +206,11 @@ public class OrderMenu extends JFrame {
 					.addContainerGap()
 					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_ButtonPanal.createSequentialGroup()
-							.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
-								.addGroup(Alignment.TRAILING, gl_ButtonPanal.createSequentialGroup()
-									.addComponent(plusButton, GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-									.addGap(18)
-									.addComponent(minuButton, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
-									.addGap(18))
-								.addGroup(gl_ButtonPanal.createSequentialGroup()
-									.addComponent(removeButton, GroupLayout.PREFERRED_SIZE, 182, GroupLayout.PREFERRED_SIZE)
-									.addPreferredGap(ComponentPlacement.RELATED)))
-							.addComponent(payButton, GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
+							.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(removeButton, GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE))
+							.addGap(18)
+							.addComponent(payButton, GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE))
 						.addGroup(gl_ButtonPanal.createSequentialGroup()
 							.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.TRAILING, false)
 								.addComponent(deleteAllButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -287,11 +236,9 @@ public class OrderMenu extends JFrame {
 					.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING, false)
 						.addComponent(payButton, GroupLayout.PREFERRED_SIZE, 141, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_ButtonPanal.createSequentialGroup()
-							.addGroup(gl_ButtonPanal.createParallelGroup(Alignment.LEADING)
-								.addComponent(minuButton, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-								.addComponent(plusButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE))
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(removeButton)))
+							.addComponent(removeButton)
+							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)))
 					.addGap(8))
 		);
 		ButtonPanal.setLayout(gl_ButtonPanal);
@@ -1224,10 +1171,6 @@ public class OrderMenu extends JFrame {
 		);
 		ramyeonPanel.setLayout(gl_ramyeonPanel);
 		snackPanel.setLayout(gl_snackPanel);
-		
-		JButton btnNewButton = new JButton("");
-		btnNewButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\home.png"));
-		btnNewButton.setBackground(SystemColor.window);
 		cartTable = new JTable(model);
 		cartTable.setBackground(SystemColor.window);
 		
@@ -1239,15 +1182,11 @@ public class OrderMenu extends JFrame {
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addGap(14)
-					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+					.addGap(17)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addComponent(OderTebbedPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(gl_contentPane.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(carjsp, GroupLayout.PREFERRED_SIZE, 663, GroupLayout.PREFERRED_SIZE)))
-					.addPreferredGap(ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+						.addComponent(carjsp, GroupLayout.PREFERRED_SIZE, 663, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 365, GroupLayout.PREFERRED_SIZE)
 						.addComponent(ButtonPanal, GroupLayout.PREFERRED_SIZE, 370, GroupLayout.PREFERRED_SIZE))
@@ -1266,8 +1205,7 @@ public class OrderMenu extends JFrame {
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING)
 						.addComponent(ButtonPanal, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
-						.addComponent(carjsp, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE)
-						.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE))
+						.addComponent(carjsp, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
 					.addGap(22))
 		);
 		
