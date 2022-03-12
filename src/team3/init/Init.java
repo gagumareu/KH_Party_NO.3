@@ -45,17 +45,20 @@ public class Init extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setBackground(SystemColor.info);
 		setContentPane(contentPane);
 		setVisible(true);
 		
 		JPanel info_panel = new JPanel();
+		info_panel.setBackground(SystemColor.info);
 		getContentPane().add(info_panel, BorderLayout.NORTH);
 		info_panel.setLayout(new BorderLayout(0, 0));
 		
 		JPanel id_panel = new JPanel();
+		id_panel.setBackground(SystemColor.info);
 		info_panel.add(id_panel, BorderLayout.NORTH);
 		
-		JLabel jl1 = new JLabel("아이디: ");
+		JLabel jl1 = new JLabel("아이디:    ");
 		id_panel.add(jl1);
 		
 		tf_id = new JTextField();
@@ -63,16 +66,18 @@ public class Init extends JFrame {
 		id_panel.add(tf_id);
 		
 		JPanel pwd_panel = new JPanel();
+		pwd_panel.setBackground(SystemColor.info);
 		info_panel.add(pwd_panel, BorderLayout.CENTER);
 		
-		JLabel lblNewLabel = new JLabel("비밀번호: ");
-		pwd_panel.add(lblNewLabel);
+		JLabel jl2 = new JLabel("비밀번호: ");
+		pwd_panel.add(jl2);
 		
 		pf_pwd = new JPasswordField();
 		pf_pwd.setColumns(10);
 		pwd_panel.add(pf_pwd);
 		
 		JPanel signup_find_panel = new JPanel();
+		signup_find_panel.setBackground(SystemColor.info);
 		getContentPane().add(signup_find_panel, BorderLayout.SOUTH);
 		
 		JButton btnSignUp = new JButton("회원가입");
@@ -94,17 +99,16 @@ public class Init extends JFrame {
 		signup_find_panel.add(btnFindIdPwd);
 		
 		JPanel login_panel = new JPanel();
+		login_panel.setBackground(SystemColor.info);
 		getContentPane().add(login_panel, BorderLayout.CENTER);
 		
+		JPanel panel = new JPanel();
+		panel.setBackground(SystemColor.info);
+		login_panel.add(panel);
+		
 		JButton btnLogin = new JButton("로그인");
-		btnLogin.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				connect();
-				checkLoginValid(tf_id.getText(), String.valueOf(pf_pwd.getPassword()));
-			}
-		});
-		login_panel.add(btnLogin);
+		btnLogin.setPreferredSize(new Dimension(82, 40));
+		panel.add(btnLogin);
 	}
 
 	void connect() {
