@@ -90,6 +90,7 @@ public class MemberInfoCheck extends JFrame {
 		JPanel panel_pwdFind = new JPanel();
 		panel_wrapCenter.add(panel_pwdFind);
 		JButton btnFindPwd = new JButton("비밀번호 찾기 질문 답 확인");
+		btnFindPwd.setBackground(Color.WHITE);
 		panel_pwdFind.add(btnFindPwd);
 		
 		
@@ -97,8 +98,10 @@ public class MemberInfoCheck extends JFrame {
 		contentPane.add(panel_south, BorderLayout.SOUTH);
 		
 		JButton btnToEdit = new JButton("회원 정보 수정");
+		btnToEdit.setBackground(Color.WHITE);
 		panel_south.add(btnToEdit);
 		JButton btnClose = new JButton("닫기");
+		btnClose.setBackground(Color.WHITE);
 		btnClose.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -116,31 +119,40 @@ public class MemberInfoCheck extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setBackground(SystemColor.info);
 		setContentPane(contentPane);
 		
 		JPanel panel_center = new JPanel();
+		panel_center.setBackground(SystemColor.info);
 		contentPane.add(panel_center, BorderLayout.CENTER);
 		
 		JPanel panel_wrapCenter = new JPanel();
 		panel_center.add(panel_wrapCenter);
 		panel_wrapCenter.setLayout(new GridLayout(7, 1));
+		panel_wrapCenter.setBackground(SystemColor.info);
 		
 		JPanel panel1_num = new JPanel();
+		panel1_num.setBackground(SystemColor.info);
 		panel_wrapCenter.add(panel1_num);
 		
 		JPanel panel2_name = new JPanel();
+		panel2_name.setBackground(SystemColor.info);
 		panel_wrapCenter.add(panel2_name);
 		
 		JPanel panel3_id = new JPanel();
+		panel3_id.setBackground(SystemColor.info);
 		panel_wrapCenter.add(panel3_id);
 		
 		JPanel panel4_contact = new JPanel();
+		panel4_contact.setBackground(SystemColor.info);
 		panel_wrapCenter.add(panel4_contact);
 		
 		JPanel panel5_address = new JPanel();
+		panel5_address.setBackground(SystemColor.info);
 		panel_wrapCenter.add(panel5_address);
 		
 		JPanel panel6_mileage = new JPanel();
+		panel6_mileage.setBackground(SystemColor.info);
 		panel_wrapCenter.add(panel6_mileage);
 		
 		
@@ -183,9 +195,11 @@ public class MemberInfoCheck extends JFrame {
 		
 		
 		JPanel panel_pwdFind = new JPanel();
+		panel_pwdFind.setBackground(SystemColor.info);
 		panel_wrapCenter.add(panel_pwdFind);
 		
 		JButton btnFindPwd = new JButton("비밀번호 찾기 질문 답 확인");
+		btnFindPwd.setBackground(Color.WHITE);
 		btnFindPwd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -196,9 +210,11 @@ public class MemberInfoCheck extends JFrame {
 		panel_pwdFind.add(btnFindPwd);
 		
 		JPanel panel_south = new JPanel();
+		panel_south.setBackground(SystemColor.info);
 		contentPane.add(panel_south, BorderLayout.SOUTH);
 		
 		JButton btnToEdit = new JButton("회원 정보 수정");
+		btnToEdit.setBackground(Color.WHITE);
 		btnToEdit.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -208,6 +224,7 @@ public class MemberInfoCheck extends JFrame {
 		panel_south.add(btnToEdit);
 		
 		JButton btnClose = new JButton("닫기");
+		btnClose.setBackground(Color.WHITE);
 		btnClose.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

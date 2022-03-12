@@ -147,6 +147,7 @@ public class MemberInfoEdit extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setBackground(SystemColor.info);
 		setContentPane(contentPane);
 		setVisible(true);
 		
@@ -154,19 +155,24 @@ public class MemberInfoEdit extends JFrame {
 		contentPane.add(jl1_counter, BorderLayout.NORTH);
 		
 		JPanel panel_center = new JPanel();
+		panel_center.setBackground(SystemColor.info);
 		contentPane.add(panel_center, BorderLayout.CENTER);
 		
 		JPanel panel_wrapcenter = new JPanel();
+		panel_wrapcenter.setBackground(SystemColor.info);
 		panel_center.add(panel_wrapcenter);
 		panel_wrapcenter.setLayout(new GridLayout(7, 1));
 		
 		JPanel panel1_num = new JPanel();
+		panel1_num.setBackground(SystemColor.info);
 		panel_wrapcenter.add(panel1_num);
 		
 		JPanel panel2_name = new JPanel();
+		panel2_name.setBackground(SystemColor.info);
 		panel_wrapcenter.add(panel2_name);
 		
 		JPanel panel3_id = new JPanel();
+		panel3_id.setBackground(SystemColor.info);
 		panel_wrapcenter.add(panel3_id);
 		
 		
@@ -195,6 +201,7 @@ public class MemberInfoEdit extends JFrame {
 		
 		
 		JPanel panel4_pwdConfirm = new JPanel();
+		panel4_pwdConfirm.setBackground(SystemColor.info);
 		FlowLayout flowLayout = (FlowLayout) panel4_pwdConfirm.getLayout();
 		flowLayout.setAlignment(FlowLayout.RIGHT);
 		panel_wrapcenter.add(panel4_pwdConfirm);
@@ -207,6 +214,7 @@ public class MemberInfoEdit extends JFrame {
 		panel4_pwdConfirm.add(pf4_pwdConfirm);
 		
 		JPanel panel5_changePwd = new JPanel();
+		panel5_changePwd.setBackground(SystemColor.info);
 		FlowLayout flowLayout_1 = (FlowLayout) panel5_changePwd.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.RIGHT);
 		panel_wrapcenter.add(panel5_changePwd);
@@ -219,6 +227,7 @@ public class MemberInfoEdit extends JFrame {
 		panel5_changePwd.add(pf5_changePwd);
 		
 		JPanel panel6_changeCont = new JPanel();
+		panel6_changeCont.setBackground(SystemColor.info);
 		FlowLayout flowLayout_2 = (FlowLayout) panel6_changeCont.getLayout();
 		flowLayout_2.setAlignment(FlowLayout.RIGHT);
 		panel_wrapcenter.add(panel6_changeCont);
@@ -231,6 +240,7 @@ public class MemberInfoEdit extends JFrame {
 		panel6_changeCont.add(tf6_changeCont);
 		
 		JPanel panel7_changeAddr = new JPanel();
+		panel7_changeAddr.setBackground(SystemColor.info);
 		FlowLayout flowLayout_3 = (FlowLayout) panel7_changeAddr.getLayout();
 		flowLayout_3.setAlignment(FlowLayout.RIGHT);
 		panel_wrapcenter.add(panel7_changeAddr);
@@ -247,9 +257,11 @@ public class MemberInfoEdit extends JFrame {
 		
 		
 		JPanel panel_btn = new JPanel();
+		panel_btn.setBackground(SystemColor.info);
 		contentPane.add(panel_btn, BorderLayout.SOUTH);
 		
 		JButton btnConfirm = new JButton("수정 완료");
+		btnConfirm.setBackground(Color.WHITE);
 		btnConfirm.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -261,6 +273,7 @@ public class MemberInfoEdit extends JFrame {
 		panel_btn.add(btnConfirm);
 		
 		JButton btnCancel = new JButton("취소");
+		btnCancel.setBackground(Color.WHITE);
 		btnCancel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
