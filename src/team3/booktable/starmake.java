@@ -1,28 +1,12 @@
 package team3.booktable;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JButton;
-import javax.swing.ImageIcon;
-import javax.swing.UIManager;
-import java.awt.SystemColor;
-import java.awt.Color;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.awt.event.ActionEvent;
+import java.sql.*;
 
 public class starmake extends JFrame {
 	

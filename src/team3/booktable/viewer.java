@@ -1,29 +1,12 @@
 package team3.booktable;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.awt.*;
+import java.awt.event.*;
+import java.sql.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
-import javax.swing.JComboBox;
-import javax.swing.JTextArea;
-import javax.swing.JButton;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTable;
-import javax.swing.SwingConstants;
 
 public class viewer extends JFrame {
 	

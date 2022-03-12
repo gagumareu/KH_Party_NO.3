@@ -1,25 +1,11 @@
 package team3.booktable;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.*;
+import java.awt.event.*;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.awt.Color;
+import java.sql.*;
 
 public class reviewmake_2 extends JFrame {
 	
