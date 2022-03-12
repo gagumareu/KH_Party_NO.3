@@ -56,7 +56,7 @@ public class Init extends JFrame {
 		
 		JPanel id_panel = new JPanel();
 		id_panel.setBackground(SystemColor.info);
-		info_panel.add(id_panel, BorderLayout.NORTH);
+		info_panel.add(id_panel, BorderLayout.CENTER);
 		
 		JLabel jl1 = new JLabel("아이디:    ");
 		id_panel.add(jl1);
@@ -67,7 +67,7 @@ public class Init extends JFrame {
 		
 		JPanel pwd_panel = new JPanel();
 		pwd_panel.setBackground(SystemColor.info);
-		info_panel.add(pwd_panel, BorderLayout.CENTER);
+		info_panel.add(pwd_panel, BorderLayout.SOUTH);
 		
 		JLabel jl2 = new JLabel("비밀번호: ");
 		pwd_panel.add(jl2);
@@ -76,11 +76,20 @@ public class Init extends JFrame {
 		pf_pwd.setColumns(10);
 		pwd_panel.add(pf_pwd);
 		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(SystemColor.info);
+		info_panel.add(panel_1, BorderLayout.NORTH);
+		
+		JLabel jl0 = new JLabel("만화카페 사용자 시스템");
+		jl0.setFont(new Font("휴먼편지체", Font.BOLD, 32));
+		panel_1.add(jl0);
+		
 		JPanel signup_find_panel = new JPanel();
 		signup_find_panel.setBackground(SystemColor.info);
 		getContentPane().add(signup_find_panel, BorderLayout.SOUTH);
 		
 		JButton btnSignUp = new JButton("회원가입");
+		btnSignUp.setBackground(SystemColor.window);
 		btnSignUp.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -90,6 +99,7 @@ public class Init extends JFrame {
 		signup_find_panel.add(btnSignUp);
 		
 		JButton btnFindIdPwd = new JButton("아이디/비밀번호 찾기");
+		btnFindIdPwd.setBackground(SystemColor.window);
 		btnFindIdPwd.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -107,6 +117,7 @@ public class Init extends JFrame {
 		login_panel.add(panel);
 		
 		JButton btnLogin = new JButton("로그인");
+		btnLogin.setBackground(SystemColor.window);
 		btnLogin.setPreferredSize(new Dimension(82, 40));
 		panel.add(btnLogin);
 	}
