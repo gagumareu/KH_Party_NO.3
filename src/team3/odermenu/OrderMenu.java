@@ -70,7 +70,7 @@ public class OrderMenu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					OrderMenu frame = new OrderMenu();
+					OrderMenu frame = new OrderMenu("TypeP");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -78,7 +78,7 @@ public class OrderMenu extends JFrame {
 			}
 		});
 		
-		new OrderMenu();
+		
 	}
 
 	
@@ -1509,8 +1509,8 @@ public class OrderMenu extends JFrame {
 	void connect() {		
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "sooriowl";
-		String password = "0641";				
+		String user = "web";
+		String password = "1234";				
 		try {
 			Class.forName(driver);			
 			con = DriverManager.getConnection(url, user, password);			
