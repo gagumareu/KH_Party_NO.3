@@ -131,6 +131,13 @@ public class Init extends JFrame {
 		btnLogin.setPreferredSize(new Dimension(82, 40));
 		btnLogin.setBackground(Color.WHITE);
 		
+		pf_pwd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnLogin.doClick();
+			}
+		});
+		
+		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("images/제목 없음2.jpg"));
 		GroupLayout gl_panel = new GroupLayout(panel);

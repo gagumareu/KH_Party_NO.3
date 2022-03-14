@@ -70,7 +70,11 @@ public class OrderMenu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+//<<<<<<< HEAD
 					OrderMenu frame = new OrderMenu("TypeP");
+//=======
+//					OrderMenu frame = new OrderMenu("sooriowl");
+//>>>>>>> branch 'main' of https://github.com/gagumareu/KH_Party_NO.3.git
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -78,7 +82,11 @@ public class OrderMenu extends JFrame {
 			}
 		});
 		
+/*<<<<<<< HEAD
 		
+=======
+>>>>>>> branch 'main' of https://github.com/gagumareu/KH_Party_NO.3.git
+*/
 	}
 
 	
@@ -133,6 +141,8 @@ public class OrderMenu extends JFrame {
 		setBackground(SystemColor.window);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(650, 150, 1200, 800);
+		setLocationRelativeTo(null);
+
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.info);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
