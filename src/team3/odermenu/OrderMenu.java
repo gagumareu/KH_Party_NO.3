@@ -123,7 +123,7 @@ public class OrderMenu extends JFrame {
 	public OrderMenu() {
 		
 		setTitle("음식 메뉴 주문");
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\comic.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(OrderMenu.class.getResource("/team3/odermenu/cartoon/comic.png")));
 		
 		String[] cartHeader = {"상품명", "수량", "가격", "분류"};
 		model = new DefaultTableModel(cartHeader, 0);
@@ -145,7 +145,7 @@ public class OrderMenu extends JFrame {
 		JButton payButton = new JButton("결제");
 		payButton.setFont(new Font("함초롬돋움", Font.BOLD, 25));
 		payButton.setBackground(SystemColor.window);
-		payButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\valid2.jpg"));
+		payButton.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/valid2.jpg")));
 		
 		chooseComboBox = new JComboBox();
 		chooseComboBox.setFont(new Font("함초롬돋움", Font.PLAIN, 18));
@@ -161,7 +161,7 @@ public class OrderMenu extends JFrame {
 		JButton cashPlzButton = new JButton("현금 입금");
 		cashPlzButton.setFont(new Font("한컴산뜻돋움", Font.BOLD, 16));
 		cashPlzButton.setBackground(SystemColor.window);
-		cashPlzButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\left-arrow.jpg"));
+		cashPlzButton.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/left-arrow.jpg")));
 		
 		JButton deleteAllButton = new JButton(" 전체 삭제\r\n");
 		deleteAllButton.setBackground(SystemColor.window);
@@ -183,7 +183,7 @@ public class OrderMenu extends JFrame {
 		removeButton.setFont(new Font("굴림", Font.BOLD, 17));
 		
 		
-		removeButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\삭제2.jpg"));
+		removeButton.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/삭제2.jpg")));
 		removeButton.setBackground(SystemColor.window);
 		
 	////  요금제 버튼 끝 //////	
@@ -199,7 +199,7 @@ public class OrderMenu extends JFrame {
 		
 		JButton homeButton = new JButton("HOME");
 		homeButton.setFont(new Font("함초롬돋움", Font.BOLD, 23));
-		homeButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\home22.jpg"));
+		homeButton.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/home22.jpg")));
 		homeButton.setBackground(SystemColor.window);
 		GroupLayout gl_ButtonPanal = new GroupLayout(ButtonPanal);
 		gl_ButtonPanal.setHorizontalGroup(
@@ -247,7 +247,7 @@ public class OrderMenu extends JFrame {
 		
 		JPanel timeTablePanel = new JPanel();
 		timeTablePanel.setBackground(SystemColor.window);
-		OderTebbedPanel.addTab("시간", new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\times2.jpg"), timeTablePanel);
+		OderTebbedPanel.addTab("시간", new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/times2.jpg")), timeTablePanel);
 		
 		JPanel costPanel = new JPanel();
 		costPanel.setBackground(SystemColor.window);
@@ -257,7 +257,7 @@ public class OrderMenu extends JFrame {
 		
 		JLabel oneImageLabel = new JLabel("");
 		oneImageLabel.setBackground(SystemColor.window);
-		oneImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\1hours.jpg"));
+		oneImageLabel.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/1hours.jpg")));
 		
 		JLabel onePriceLabel = new JLabel("1,000원");
 		onePriceLabel.setFont(new Font("한컴 고딕", Font.BOLD, 19));
@@ -307,7 +307,7 @@ public class OrderMenu extends JFrame {
 		twoButton.setBackground(Color.WHITE);
 		
 		JLabel twoImageLabel = new JLabel("");
-		twoImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\22.jpg"));
+		twoImageLabel.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/22.jpg")));
 		twoImageLabel.setBackground(SystemColor.window);
 		GroupLayout gl_twoHourPanel = new GroupLayout(twoHourPanel);
 		gl_twoHourPanel.setHorizontalGroup(
@@ -351,7 +351,7 @@ public class OrderMenu extends JFrame {
 		threeButton.setBackground(SystemColor.window);
 		
 		JLabel threeImageLabel = new JLabel("");
-		threeImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\33.jpg"));
+		threeImageLabel.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/33.jpg")));
 		threeImageLabel.setBackground(SystemColor.window);
 		GroupLayout gl_threeHourPanel = new GroupLayout(threeHourPanel);
 		gl_threeHourPanel.setHorizontalGroup(
@@ -396,7 +396,7 @@ public class OrderMenu extends JFrame {
 		sixButton.setBackground(SystemColor.window);
 		
 		JLabel sixImageLabel = new JLabel("");
-		sixImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\66.jpg"));
+		sixImageLabel.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/66.jpg")));
 		sixImageLabel.setBackground(SystemColor.window);
 		GroupLayout gl_sixHourPanel = new GroupLayout(sixHourPanel);
 		gl_sixHourPanel.setHorizontalGroup(
@@ -431,7 +431,7 @@ public class OrderMenu extends JFrame {
 		twelHourPanel.setBackground(Color.WHITE);
 		
 		JLabel sixImageLabel_1 = new JLabel("");
-		sixImageLabel_1.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\12.jpg"));
+		sixImageLabel_1.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/12.jpg")));
 		sixImageLabel_1.setBackground(SystemColor.window);
 		
 		JButton twelButton = new JButton("12시간 추가");
@@ -476,7 +476,7 @@ public class OrderMenu extends JFrame {
 		twenHourPanel.setBackground(SystemColor.window);
 		
 		JLabel twenImageLabel = new JLabel("");
-		twenImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\24.jpg"));
+		twenImageLabel.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/24.jpg")));
 		twenImageLabel.setBackground(SystemColor.window);
 		
 		JButton twenButton = new JButton("24시간 추가");
@@ -565,7 +565,7 @@ public class OrderMenu extends JFrame {
 		
 		JPanel mealpanel = new JPanel();
 		mealpanel.setBackground(SystemColor.window);
-		OderTebbedPanel.addTab("식사", new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\dish.png"), mealpanel);
+		OderTebbedPanel.addTab("식사", new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/dish.png")), mealpanel);
 		
 		JPanel kimPanel = new JPanel();
 		kimPanel.setBackground(Color.WHITE);
@@ -582,7 +582,7 @@ public class OrderMenu extends JFrame {
 		
 		
 		JLabel kimchImageLabel = new JLabel("");
-		kimchImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\김치베이컨2.jpg"));
+		kimchImageLabel.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/김치베이컨2.jpg")));
 		kimchImageLabel.setBackground(SystemColor.window);
 		
 		kimchNameLabel = new JLabel("김치베이컨 볶음밥");
@@ -640,7 +640,7 @@ public class OrderMenu extends JFrame {
 		chickAddButton.setBackground(SystemColor.window);
 		
 		JLabel chicImageLabel = new JLabel("");
-		chicImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\치킨가라아게덥밥2.jpg"));
+		chicImageLabel.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/치킨가라아게덥밥2.jpg")));
 		chicImageLabel.setBackground(SystemColor.window);
 		
 		chickNameLabel = new JLabel("치킨 가라아게 덮밥");
@@ -698,7 +698,7 @@ public class OrderMenu extends JFrame {
 		spamAddButton.setBackground(SystemColor.window);
 		
 		JLabel spamImageLabel = new JLabel("");
-		spamImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\스펨계란볶음밥2.jpg"));
+		spamImageLabel.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/스펨계란볶음밥2.jpg")));
 		spamImageLabel.setBackground(SystemColor.window);
 		
 		spamNameLabel = new JLabel("스팸계란 볶음밥");
@@ -768,7 +768,7 @@ public class OrderMenu extends JFrame {
 		
 		JPanel drinkPanel = new JPanel();
 		drinkPanel.setBackground(SystemColor.window);
-		OderTebbedPanel.addTab("음료", new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\drink.png"), drinkPanel);
+		OderTebbedPanel.addTab("음료", new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/drink.png")), drinkPanel);
 		
 		JPanel ameriPanel = new JPanel();
 		ameriPanel.setBackground(Color.WHITE);
@@ -786,7 +786,7 @@ public class OrderMenu extends JFrame {
 		ameriAddButton.setBackground(SystemColor.window);
 		
 		JLabel ameriImageLabel = new JLabel("");
-		ameriImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\아이스아메리카노2.png"));
+		ameriImageLabel.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/아이스아메리카노2.png")));
 		ameriImageLabel.setBackground(SystemColor.window);
 		
 		ameriNameLabel = new JLabel("아메리카노");
@@ -844,7 +844,7 @@ public class OrderMenu extends JFrame {
 		caraAddButton.setBackground(SystemColor.window);
 		
 		JLabel caraImageLabel = new JLabel("");
-		caraImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\카라멜마끼아또4.jpg"));
+		caraImageLabel.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/카라멜마끼아또4.jpg")));
 		caraImageLabel.setBackground(SystemColor.window);
 		
 		caraNameLabel = new JLabel("카라멜마끼아또");
@@ -904,7 +904,7 @@ public class OrderMenu extends JFrame {
 		caferaAddButton.setBackground(SystemColor.window);
 		
 		JLabel caferaImageLabel = new JLabel("");
-		caferaImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\카페라떼3.jpg"));
+		caferaImageLabel.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/카페라떼3.jpg")));
 		caferaImageLabel.setBackground(SystemColor.window);
 		
 		caferaNameLabel = new JLabel("카페라떼");
@@ -977,7 +977,7 @@ public class OrderMenu extends JFrame {
 		
 		JPanel snackPanel = new JPanel();
 		snackPanel.setBackground(SystemColor.window);
-		OderTebbedPanel.addTab("스낵", new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\snack.png"), snackPanel);
+		OderTebbedPanel.addTab("스낵", new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/snack.png")), snackPanel);
 		
 		JPanel ramyeonPanel = new JPanel();
 		ramyeonPanel.setBackground(SystemColor.window);
@@ -986,7 +986,7 @@ public class OrderMenu extends JFrame {
 		ddeockPanl.setBackground(Color.WHITE);
 		
 		JLabel ddeockImageLabel = new JLabel("");
-		ddeockImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\떡볶이2.jpg"));
+		ddeockImageLabel.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/떡볶이2.jpg")));
 		ddeockImageLabel.setBackground(SystemColor.window);
 		
 		ddeockSpinner = new JSpinner();
@@ -1043,7 +1043,7 @@ public class OrderMenu extends JFrame {
 		rabockPanel.setBackground(SystemColor.window);
 		
 		JLabel rabockImageLabel = new JLabel("");
-		rabockImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\라볶이2.jpg"));
+		rabockImageLabel.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/라볶이2.jpg")));
 		rabockImageLabel.setBackground(SystemColor.window);
 		
 		rabockSpinner = new JSpinner();
@@ -1120,7 +1120,7 @@ public class OrderMenu extends JFrame {
 		
 		JLabel ramyeonImageLabel = new JLabel("");
 		ramyeonImageLabel.setBackground(SystemColor.window);
-		ramyeonImageLabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\ramyeon2.jpg"));
+		ramyeonImageLabel.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/ramyeon2.jpg")));
 		
 		ramyeonSpinner = new JSpinner();
 		ramyeonSpinner.setModel(new SpinnerNumberModel(1, 1, 10, 1));
@@ -1211,7 +1211,7 @@ public class OrderMenu extends JFrame {
 		);
 		
 		JLabel receipPabel = new JLabel("     RECEIPT");
-		receipPabel.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\main_team3\\cartoon\\loge2.jpg"));
+		receipPabel.setIcon(new ImageIcon(OrderMenu.class.getResource("/team3/odermenu/cartoon/loge2.jpg")));
 		receipPabel.setFont(new Font("NSimSun", Font.BOLD | Font.ITALIC, 27));
 		receipPabel.setBackground(SystemColor.info);
 		
