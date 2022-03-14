@@ -1,5 +1,7 @@
 # KH_Party_NO.3
-# 이파일 받으셔서 빌드패스 진행해주시면되구요
-# 파일: jcalendar-1.3.2.jar.zip
-#위파일은 카톡에 있습니다.
+### 만화카페 사용자, 관리자 시스템
 
+
+## Required: jcalendar-1.3.2.jar
+Download: http://www.java2s.com/Code/Jar/j/Downloadjcalendar132jar.htm   
+Project명 우클릭 - Build Path - Configure Build Path - Add External JARs로 추가
