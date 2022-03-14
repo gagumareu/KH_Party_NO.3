@@ -10,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
+import team3.init.MyPage;
+
 import java.awt.SystemColor;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -91,6 +93,8 @@ public class OrderMenu extends JFrame {
 	public DefaultTableModel model;
 	public JTable cartTable;
 	
+	String id;
+	
 	
 	JSpinner kimchSpinner, spamSpinner, chickSpinner, ameriSpinner,
 	caraSpinner, caferaSpinner, ramyeonSpinner, ddeockSpinner, rabockSpinner;
@@ -121,7 +125,7 @@ public class OrderMenu extends JFrame {
 	public OrderMenu() {
 		
 		setTitle("음식 메뉴 주문");
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\JUNGHWAN\\Downloads\\꼬리치레\\comic.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("images/comic.png"));
 		
 		String[] cartHeader = {"상품명", "수량", "가격", "분류"};
 		model = new DefaultTableModel(cartHeader, 0);
@@ -143,7 +147,7 @@ public class OrderMenu extends JFrame {
 		JButton payButton = new JButton("결제");
 		payButton.setFont(new Font("함초롬돋움", Font.BOLD, 25));
 		payButton.setBackground(SystemColor.window);
-		payButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\KHPartyNO.3\\cartoon\\valid2.jpg"));
+		payButton.setIcon(new ImageIcon("cartoon/valid2.jpg"));
 		
 		chooseComboBox = new JComboBox();
 		chooseComboBox.setFont(new Font("함초롬돋움", Font.PLAIN, 18));
@@ -159,7 +163,7 @@ public class OrderMenu extends JFrame {
 		JButton cashPlzButton = new JButton("현금 입금");
 		cashPlzButton.setFont(new Font("한컴산뜻돋움", Font.BOLD, 16));
 		cashPlzButton.setBackground(SystemColor.window);
-		cashPlzButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\git\\KHPartyNO.3\\cartoon\\left-arrow.jpg"));
+		cashPlzButton.setIcon(new ImageIcon("cartoon/left-arrow.jpg"));
 		
 		JButton deleteAllButton = new JButton(" 전체 삭제\r\n");
 		deleteAllButton.setBackground(SystemColor.window);
@@ -181,7 +185,7 @@ public class OrderMenu extends JFrame {
 		removeButton.setFont(new Font("굴림", Font.BOLD, 17));
 		
 		
-		removeButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\삭제2.jpg"));
+		removeButton.setIcon(new ImageIcon("cartoon/삭제2.jpg"));
 		removeButton.setBackground(SystemColor.window);
 		
 	////  요금제 버튼 끝 //////	
@@ -197,7 +201,7 @@ public class OrderMenu extends JFrame {
 		
 		JButton homeButton = new JButton("HOME");
 		homeButton.setFont(new Font("함초롬돋움", Font.BOLD, 23));
-		homeButton.setIcon(new ImageIcon("C:\\Users\\JUNGHWAN\\OneDrive\\바탕 화면\\새 폴더\\cartoon\\home.png"));
+		homeButton.setIcon(new ImageIcon("cartoon/home.png"));
 		homeButton.setBackground(SystemColor.window);
 		GroupLayout gl_ButtonPanal = new GroupLayout(ButtonPanal);
 		gl_ButtonPanal.setHorizontalGroup(
@@ -1492,6 +1496,8 @@ public class OrderMenu extends JFrame {
 	homeButton.addActionListener(new ActionListener() {
 		
 		public void actionPerformed(ActionEvent e) {
+			new MyPage(id);
+			dispose();
 
 			
 		}

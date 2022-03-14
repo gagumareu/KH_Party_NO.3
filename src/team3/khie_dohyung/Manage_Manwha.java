@@ -23,7 +23,7 @@ public class Manage_Manwha extends JFrame {
 	
 	public Manage_Manwha() {
 		getContentPane().setBackground(SystemColor.info);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("images/제목 없음2.jpg"));
 		
 		setTitle("만화책 관리 화면");
 		
@@ -74,7 +74,7 @@ public class Manage_Manwha extends JFrame {
 		jb5.setBackground(Color.CYAN);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\scomic.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("images/scomic.png"));
 		GroupLayout gl_container1 = new GroupLayout(container1);
 		gl_container1.setHorizontalGroup(
 			gl_container1.createParallelGroup(Alignment.LEADING)
@@ -148,7 +148,7 @@ public class Manage_Manwha extends JFrame {
 		container1.setLayout(gl_container1);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("images/제목 없음2.jpg"));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

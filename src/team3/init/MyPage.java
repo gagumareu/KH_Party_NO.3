@@ -58,14 +58,6 @@ public class MyPage extends JFrame {
 		jl1.setFont(new Font("휴먼편지체",Font.BOLD, 70));
 		jl2.setFont(new Font("휴먼편지체",Font.BOLD, 70));
 		
-		getContentPane().add(container1);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\dreview.png"));
-		
-		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\dmenu.png"));
-		
 		JLabel jl_greet1 = new JLabel("안녕하세요, " + id + "님.");
 		
 		JLabel jl_greet2 = new JLabel("마이 페이지에 오신 것을 환영합니다.");
@@ -93,36 +85,46 @@ public class MyPage extends JFrame {
 		
 		btnCheck.setFont(new Font("휴먼편지체",Font.BOLD, 30));
 		btnEdit.setFont(new Font("휴먼편지체",Font.BOLD, 30));
+		
+		JLabel lblNewLabel = new JLabel("");
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("images/dmenu.png"));
+		
+		JLabel lblNewLabel_1_1 = new JLabel("");
+		lblNewLabel_1_1.setIcon(new ImageIcon("images/dreview.png"));
 		GroupLayout gl_container1 = new GroupLayout(container1);
 		gl_container1.setHorizontalGroup(
 			gl_container1.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_container1.createSequentialGroup()
-					.addContainerGap(250, Short.MAX_VALUE)
-					.addGroup(gl_container1.createParallelGroup(Alignment.TRAILING)
-						.addComponent(jl1)
+					.addGap(82)
+					.addComponent(jl1)
+					.addPreferredGap(ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+					.addComponent(jl2)
+					.addGap(80))
+				.addGroup(Alignment.LEADING, gl_container1.createSequentialGroup()
+					.addGap(20)
+					.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_container1.createSequentialGroup()
+							.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 365, GroupLayout.PREFERRED_SIZE)
+							.addGap(18)
+							.addComponent(lblNewLabel_1_1, GroupLayout.PREFERRED_SIZE, 365, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(lblNewLabel))
 						.addGroup(gl_container1.createSequentialGroup()
 							.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
 								.addComponent(jl_greet2)
-								.addComponent(lblNewLabel_1)
 								.addComponent(jl_greet1))
-							.addPreferredGap(ComponentPlacement.RELATED)))
-					.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_container1.createSequentialGroup()
-							.addGap(80)
-							.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnEdit)
-								.addComponent(btnCheck)))
-						.addGroup(gl_container1.createSequentialGroup()
-							.addGap(24)
-							.addGroup(gl_container1.createParallelGroup(Alignment.TRAILING)
-								.addComponent(lblNewLabel)
-								.addComponent(jl2))))
-					.addGap(240))
+							.addGap(45)
+							.addGroup(gl_container1.createParallelGroup(Alignment.LEADING, false)
+								.addComponent(btnEdit, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(btnCheck, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+					.addContainerGap(36, Short.MAX_VALUE))
 		);
 		gl_container1.setVerticalGroup(
 			gl_container1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_container1.createSequentialGroup()
-					.addGap(31)
+					.addGap(51)
 					.addGroup(gl_container1.createParallelGroup(Alignment.TRAILING)
 						.addGroup(gl_container1.createSequentialGroup()
 							.addComponent(jl_greet1)
@@ -130,25 +132,42 @@ public class MyPage extends JFrame {
 							.addComponent(jl_greet2))
 						.addGroup(gl_container1.createSequentialGroup()
 							.addComponent(btnCheck)
-							.addGap(26)
+							.addPreferredGap(ComponentPlacement.RELATED)
 							.addComponent(btnEdit)))
-					.addPreferredGap(ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
 					.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
-						.addComponent(lblNewLabel_1)
-						.addComponent(lblNewLabel))
-					.addGap(36)
+						.addGroup(gl_container1.createSequentialGroup()
+							.addGap(170)
+							.addComponent(lblNewLabel))
+						.addGroup(gl_container1.createSequentialGroup()
+							.addGap(53)
+							.addGroup(gl_container1.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblNewLabel_1_1, GroupLayout.PREFERRED_SIZE, 376, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 376, GroupLayout.PREFERRED_SIZE))))
+					.addGap(26)
 					.addGroup(gl_container1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(jl2)
-						.addComponent(jl1)))
+						.addComponent(jl1))
+					.addGap(45))
 		);
 		container1.setLayout(gl_container1);
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+			gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+					.addComponent(container1, GroupLayout.PREFERRED_SIZE, 784, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addComponent(container1, GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
+		);
+		contentPane.setLayout(gl_contentPane);
 		
 		
 		setBounds(200,200,800,800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		setVisible(true);
-		
 		
 		
 		lblNewLabel_1.addMouseListener(new MouseAdapter() {
@@ -160,8 +179,7 @@ public class MyPage extends JFrame {
 			}
 		});
 		
-		lblNewLabel.addMouseListener(new MouseAdapter() {
-			
+		lblNewLabel_1_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				new booktable(id);
@@ -169,6 +187,7 @@ public class MyPage extends JFrame {
 				super.mouseClicked(e);
 			}
 		});
+		
 		
 		jl1.addMouseListener(new MouseAdapter() {
 			@Override

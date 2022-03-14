@@ -20,7 +20,7 @@ public class Manage_TimeTable extends JFrame{
 	
 	public Manage_TimeTable () {
 		getContentPane().setBackground(SystemColor.info);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("images/제목 없음2.jpg"));
 		setTitle("시간 메뉴 테이블");
 		
 		JPanel container1 = new JPanel();
@@ -58,7 +58,7 @@ public class Manage_TimeTable extends JFrame{
 		jb5.setBackground(Color.CYAN);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\smenu.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("images/smenu.png"));
 		GroupLayout gl_container1 = new GroupLayout(container1);
 		gl_container1.setHorizontalGroup(
 			gl_container1.createParallelGroup(Alignment.LEADING)
@@ -152,7 +152,7 @@ public class Manage_TimeTable extends JFrame{
 		container2.setLayout(gl_container2);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("images/제목 없음2.jpg"));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
