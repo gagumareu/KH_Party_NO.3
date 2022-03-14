@@ -71,7 +71,11 @@ public class OrderMenu extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					OrderMenu frame = new OrderMenu("sooriowl");
+//<<<<<<< HEAD
+					OrderMenu frame = new OrderMenu("TypeP");
+//=======
+//					OrderMenu frame = new OrderMenu("sooriowl");
+//>>>>>>> branch 'main' of https://github.com/gagumareu/KH_Party_NO.3.git
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -79,6 +83,11 @@ public class OrderMenu extends JFrame {
 			}
 		});
 		
+/*<<<<<<< HEAD
+		
+=======
+>>>>>>> branch 'main' of https://github.com/gagumareu/KH_Party_NO.3.git
+*/
 	}
 
 	

@@ -7,7 +7,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import team3.khie_dohyung.ManwhaMain;
+
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -130,6 +130,13 @@ public class Init extends JFrame {
 		});
 		btnLogin.setPreferredSize(new Dimension(82, 40));
 		btnLogin.setBackground(Color.WHITE);
+		
+		pf_pwd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				btnLogin.doClick();
+			}
+		});
+		
 		
 		JLabel lblNewLabel = new JLabel("");
 		lblNewLabel.setIcon(new ImageIcon("images/제목 없음2.jpg"));
