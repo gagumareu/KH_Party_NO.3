@@ -132,6 +132,8 @@ public class OrderMenu extends JFrame {
 		setBackground(SystemColor.window);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(650, 150, 1200, 800);
+		setLocationRelativeTo(null);
+
 		contentPane = new JPanel();
 		contentPane.setBackground(SystemColor.info);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
