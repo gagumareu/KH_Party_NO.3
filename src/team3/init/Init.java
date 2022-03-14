@@ -130,7 +130,7 @@ public class Init extends JFrame {
 		btnLogin.setBackground(Color.WHITE);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\git\\KH_PartyNO.3\\images\\제목 없음2.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("images/제목 없음2.jpg"));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
