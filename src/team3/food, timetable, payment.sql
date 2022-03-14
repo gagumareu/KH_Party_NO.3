@@ -38,6 +38,9 @@ insert into timetable values('12', '12시간 추가', '8000', 'HALF-DAY');
 insert into timetable values('24', '24시간 추가', '12000', 'ALL-DAY');
 
 
+create sequence orderNO_sqe
+start with 1
+increment by 1;
 
 -- 결제 완료 후 주문건 테이블
 create table payment(
