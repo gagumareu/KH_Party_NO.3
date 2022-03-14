@@ -91,6 +91,7 @@ public class MyPage extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon("images/dmenu.png"));
 		
+		
 		JLabel lblNewLabel_1_1 = new JLabel("");
 		lblNewLabel_1_1.setIcon(new ImageIcon("images/dreview.png"));
 		GroupLayout gl_container1 = new GroupLayout(container1);
@@ -165,6 +166,7 @@ public class MyPage extends JFrame {
 		
 		
 		setBounds(200,200,800,800);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		setVisible(true);
@@ -173,7 +175,7 @@ public class MyPage extends JFrame {
 		lblNewLabel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new OrderMenu();
+				new OrderMenu(id);
 				dispose();
 				super.mouseClicked(e);
 			}
@@ -192,7 +194,7 @@ public class MyPage extends JFrame {
 		jl1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new OrderMenu();
+				new OrderMenu(id);
 				dispose();
 				super.mouseClicked(e);
 			}

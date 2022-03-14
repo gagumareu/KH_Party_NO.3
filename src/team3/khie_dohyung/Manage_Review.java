@@ -235,6 +235,7 @@ Connection con = null;
 	    getContentPane().setLayout(groupLayout);
 	    
 	    setBounds(200,200,800,800);
+	    setLocationRelativeTo(null);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    setVisible(true);

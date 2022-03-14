@@ -143,6 +143,7 @@ public class Manage_Sales extends JFrame {
 		
 		
 		setBounds(200,200,800,800);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		

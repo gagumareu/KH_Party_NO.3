@@ -259,6 +259,7 @@ public class Manage_Inform_search extends JFrame {
 
 	
 		setBounds(200,200,800,800);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	

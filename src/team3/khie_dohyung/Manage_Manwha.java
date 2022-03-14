@@ -211,7 +211,9 @@ public class Manage_Manwha extends JFrame {
 		container2.setLayout(gl_container2);
 		getContentPane().setLayout(groupLayout);
 		
+		
 		setBounds(200,200,800,800);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		

@@ -420,6 +420,7 @@ public class Manage extends JFrame {
 		
 		container3.setLayout(gl_container3);
 		setBounds(200,200,800,800);
+		setLocationRelativeTo(null);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);

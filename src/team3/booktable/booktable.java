@@ -75,7 +75,7 @@ public class booktable extends JFrame {
 		setBounds(100, 100, 906, 471);
 		setLocationRelativeTo(null);
 		contentPane = new JPanel();
-		contentPane.setBackground(UIManager.getColor("info"));
+		contentPane.setBackground(SystemColor.info);
 		contentPane.setForeground(UIManager.getColor("activeCaptionText"));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
