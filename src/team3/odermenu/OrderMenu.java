@@ -34,6 +34,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -1717,6 +1718,15 @@ public class OrderMenu extends JFrame {
 		sysdateTextField.setText("[구매]" + time);                               // 현제 시간
 		sysdateTextField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 	//	DatetextField.setText();
+		
+		String[] cardCompay = {"BC카드", "삼성카드", "국민카드", "롯데카드"};     // 카드 회사 랜덤 추출
+		Random cardRandom = new Random();
+		int cRandom = cardRandom.nextInt(cardCompay.length);
+		changeTextField.setText(cardCompay[cRandom]);
+		changeTextField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+
+		earnCashTextField.setText("결제 승인 카드 회사 :");
+		earnCashTextField.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 	}
 	
 	// 현금 영수증 
