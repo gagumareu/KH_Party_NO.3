@@ -69,13 +69,13 @@ public class Manage_Sales extends JFrame {
 		jb5.setBackground(Color.CYAN);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("images/제목 없음2.jpg"));
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(SystemColor.info);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\ssales.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("images/ssales.png"));
 		panel.add(lblNewLabel_1);
 		
 		JDateChooser jdc = new JDateChooser();
@@ -143,6 +143,7 @@ public class Manage_Sales extends JFrame {
 		
 		
 		setBounds(200,200,800,800);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		

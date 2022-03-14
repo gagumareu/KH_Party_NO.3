@@ -22,7 +22,7 @@ Connection con = null;
 	
 	public Manage_Review() {
 		getContentPane().setBackground(SystemColor.info);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\git\\KH_PartyNo3\\images\\sreview.png"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("images/sreview.png"));
 		
 		setTitle("회원 리뷰 테이블");
 		JPanel container3= new JPanel();
@@ -70,7 +70,7 @@ Connection con = null;
 	    				jtf3 = new JTextField(10);
 	    				
 	    				JLabel lblNewLabel_1 = new JLabel("");
-	    				lblNewLabel_1.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\sreview.png"));
+	    				lblNewLabel_1.setIcon(new ImageIcon("images/sreview.png"));
 	    				GroupLayout gl_container1 = new GroupLayout(container1);
 	    				gl_container1.setHorizontalGroup(
 	    					gl_container1.createParallelGroup(Alignment.LEADING)
@@ -135,7 +135,7 @@ Connection con = null;
 	    panel.setBackground(SystemColor.info);
 	    
 	    JLabel lblNewLabel = new JLabel("");
-	    lblNewLabel.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
+	    lblNewLabel.setIcon(new ImageIcon("images/제목 없음2.jpg"));
 	    GroupLayout groupLayout = new GroupLayout(getContentPane());
 	    groupLayout.setHorizontalGroup(
 	    	groupLayout.createParallelGroup(Alignment.LEADING)
@@ -235,6 +235,7 @@ Connection con = null;
 	    getContentPane().setLayout(groupLayout);
 	    
 	    setBounds(200,200,800,800);
+	    setLocationRelativeTo(null);
 	    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    
 	    setVisible(true);

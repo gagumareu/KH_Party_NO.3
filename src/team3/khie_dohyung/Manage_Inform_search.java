@@ -21,7 +21,7 @@ public class Manage_Inform_search extends JFrame {
 	JTable table;	
 	
 	public Manage_Inform_search() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("images/제목 없음2.jpg"));
 		setTitle("회원 정보 테이블");
 		JPanel container2 = new JPanel();
 		container2.setBackground(SystemColor.info);
@@ -143,7 +143,7 @@ public class Manage_Inform_search extends JFrame {
 		container1.setLayout(gl_container1);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
+		lblNewLabel_1.setIcon(new ImageIcon("images/제목 없음2.jpg"));
 		GroupLayout gl_group = new GroupLayout(group);
 		gl_group.setHorizontalGroup(
 			gl_group.createParallelGroup(Alignment.LEADING)
@@ -190,7 +190,7 @@ public class Manage_Inform_search extends JFrame {
 		jtf7= new JTextField(10);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\suser.png"));
+		lblNewLabel.setIcon(new ImageIcon("images/suser.png"));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.TRAILING)
@@ -259,6 +259,7 @@ public class Manage_Inform_search extends JFrame {
 
 	
 		setBounds(200,200,800,800);
+		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	

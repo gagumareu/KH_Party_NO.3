@@ -8,6 +8,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import team3.khie_dohyung.ManwhaMain;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class Init extends JFrame {
 	Connection con = null;              // DB와 연결하는 객체.
@@ -48,6 +50,8 @@ public class Init extends JFrame {
 		contentPane.setBackground(SystemColor.info);
 		setContentPane(contentPane);
 		setVisible(true);
+		setLocationRelativeTo(null);
+
 		
 		JPanel panel_top = new JPanel();
 		panel_top.setBackground(SystemColor.info);
@@ -103,31 +107,19 @@ public class Init extends JFrame {
 		panel_login.add(panel_fields, BorderLayout.CENTER);
 		panel_fields.setLayout(new BorderLayout(0, 0));
 		
-		JPanel id_panel = new JPanel();
-		id_panel.setBackground(SystemColor.info);
-		panel_fields.add(id_panel, BorderLayout.NORTH);
-		
-		JLabel jl1 = new JLabel("아이디:    ");
-		id_panel.add(jl1);
+		JPanel panel = new JPanel();
+		panel.setBackground(SystemColor.info);
+		panel_fields.add(panel, BorderLayout.CENTER);
 		
 		tf_id = new JTextField();
 		tf_id.setColumns(10);
-		id_panel.add(tf_id);
 		
-		JPanel pwd_panel = new JPanel();
-		pwd_panel.setBackground(SystemColor.info);
-		panel_fields.add(pwd_panel);
-		
-		JLabel jl2 = new JLabel("비밀번호: ");
-		pwd_panel.add(jl2);
+		JLabel jl1 = new JLabel("아이디:    ");
 		
 		pf_pwd = new JPasswordField();
 		pf_pwd.setColumns(10);
-		pwd_panel.add(pf_pwd);
 		
-		JPanel panel_btnLogin = new JPanel();
-		panel_btnLogin.setBackground(SystemColor.info);
-		panel_login.add(panel_btnLogin, BorderLayout.SOUTH);
+		JLabel jl2 = new JLabel("비밀번호: ");
 		
 		JButton btnLogin = new JButton("로그인");
 		btnLogin.addActionListener(new ActionListener() {
@@ -138,22 +130,62 @@ public class Init extends JFrame {
 		});
 		btnLogin.setPreferredSize(new Dimension(82, 40));
 		btnLogin.setBackground(Color.WHITE);
-		panel_btnLogin.add(btnLogin);
 		
-		JPanel panel_indentTop = new JPanel();
-		panel_indentTop.setBackground(SystemColor.info);
-		panel_login.add(panel_indentTop, BorderLayout.NORTH);
-		
-		JLabel jl_indentTop = new JLabel(" ");
-		panel_indentTop.add(jl_indentTop);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("images/제목 없음2.jpg"));
+		GroupLayout gl_panel = new GroupLayout(panel);
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.TRAILING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGap(35)
+					.addComponent(lblNewLabel)
+					.addPreferredGap(ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+							.addComponent(jl2)
+							.addGap(5)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(10)
+									.addComponent(btnLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addComponent(pf_pwd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+						.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+							.addComponent(jl1)
+							.addGap(5)
+							.addComponent(tf_id, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+					.addGap(78))
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(26)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(3)
+									.addComponent(jl1))
+								.addComponent(tf_id, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(3)
+									.addComponent(jl2))
+								.addComponent(pf_pwd, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(btnLogin, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGroup(gl_panel.createSequentialGroup()
+							.addGap(18)
+							.addComponent(lblNewLabel)))
+					.addContainerGap(29, Short.MAX_VALUE))
+		);
+		panel.setLayout(gl_panel);
 		
 		JPanel panel_icon = new JPanel();
 		panel_icon.setBackground(SystemColor.info);
 		contentPane.add(panel_icon, BorderLayout.WEST);
 		
-		JLabel jl_icon = new JLabel("");
-		jl_icon.setIcon(new ImageIcon(Init.class.getResource("/images/제목 없음2.jpg")));
-		panel_icon.add(jl_icon);
+		
 	}
 
 	void connect() {

@@ -12,7 +12,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 public class Manage extends JFrame {
 	
 	public Manage() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("images/제목 없음2.jpg"));
 		
 		setTitle("관리자 테이블");
 		
@@ -74,7 +74,7 @@ public class Manage extends JFrame {
 		});
 		
 		JLabel lblNewLabel_4 = new JLabel("");
-		lblNewLabel_4.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\sfood.png"));
+		lblNewLabel_4.setIcon(new ImageIcon("images/sfood.png"));
 		GroupLayout gl_panel_1_1 = new GroupLayout(panel_1_1);
 		gl_panel_1_1.setHorizontalGroup(
 			gl_panel_1_1.createParallelGroup(Alignment.TRAILING)
@@ -121,7 +121,7 @@ public class Manage extends JFrame {
 		});
 		
 		JLabel lblNewLabel_5 = new JLabel("");
-		lblNewLabel_5.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\scomic.png"));
+		lblNewLabel_5.setIcon(new ImageIcon("images/scomic.png"));
 		GroupLayout gl_panel_1_1_1 = new GroupLayout(panel_1_1_1);
 		gl_panel_1_1_1.setHorizontalGroup(
 			gl_panel_1_1_1.createParallelGroup(Alignment.TRAILING)
@@ -170,7 +170,7 @@ public class Manage extends JFrame {
 		});
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\ssales.png"));
+		lblNewLabel.setIcon(new ImageIcon("images/ssales.png"));
 		GroupLayout gl_panel_1_2 = new GroupLayout(panel_1_2);
 		gl_panel_1_2.setHorizontalGroup(
 			gl_panel_1_2.createParallelGroup(Alignment.TRAILING)
@@ -216,29 +216,30 @@ public class Manage extends JFrame {
 		});
 		
 		JLabel lblNewLabel_6 = new JLabel("");
-		lblNewLabel_6.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\smenu.png"));
+		lblNewLabel_6.setIcon(new ImageIcon("images/smenu.png"));
 		GroupLayout gl_panel_1_3 = new GroupLayout(panel_1_3);
 		gl_panel_1_3.setHorizontalGroup(
-			gl_panel_1_3.createParallelGroup(Alignment.TRAILING)
+			gl_panel_1_3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1_3.createSequentialGroup()
 					.addGap(15)
 					.addGroup(gl_panel_1_3.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblNewLabel_1_3)
-						.addGroup(gl_panel_1_3.createSequentialGroup()
-							.addComponent(lblNewLabel_6)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(jb4)))
-					.addContainerGap(16, Short.MAX_VALUE))
+						.addComponent(lblNewLabel_6))
+					.addContainerGap(102, Short.MAX_VALUE))
+				.addGroup(Alignment.TRAILING, gl_panel_1_3.createSequentialGroup()
+					.addContainerGap(115, Short.MAX_VALUE)
+					.addComponent(jb4)
+					.addContainerGap())
 		);
 		gl_panel_1_3.setVerticalGroup(
 			gl_panel_1_3.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1_3.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel_1_3.createParallelGroup(Alignment.LEADING)
-						.addComponent(jb4)
 						.addComponent(lblNewLabel_6)
 						.addGroup(gl_panel_1_3.createSequentialGroup()
-							.addGap(59)
+							.addComponent(jb4)
+							.addGap(8)
 							.addComponent(lblNewLabel_1_3)))
 					.addGap(17))
 		);
@@ -262,7 +263,7 @@ public class Manage extends JFrame {
 		});
 		
 		JLabel lblNewLabel_3 = new JLabel("");
-		lblNewLabel_3.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\sreview.png"));
+		lblNewLabel_3.setIcon(new ImageIcon("images/sreview.png"));
 		GroupLayout gl_panel_1_4 = new GroupLayout(panel_1_4);
 		gl_panel_1_4.setHorizontalGroup(
 			gl_panel_1_4.createParallelGroup(Alignment.TRAILING)
@@ -297,14 +298,14 @@ public class Manage extends JFrame {
 		panel_1_4.setLayout(gl_panel_1_4);
 		
 		JLabel lblNewLabel_9 = new JLabel("");
-		lblNewLabel_9.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\comic2.png"));
+		lblNewLabel_9.setIcon(new ImageIcon("images/comic2.png"));
 		
 		JLabel lblNewLabel_8 = new JLabel("3조 김도형 박정원");
 		
 		lblNewLabel_8.setFont(new Font("휴먼편지체",Font.BOLD, 25));
 		
 		JLabel lblNewLabel_8_1 = new JLabel("고지혜 오경종");
-		lblNewLabel_8_1.setFont(new Font("Dialog", Font.BOLD, 25));
+		lblNewLabel_8_1.setFont(new Font("휴먼편지체", Font.BOLD, 25));
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -364,7 +365,7 @@ public class Manage extends JFrame {
 		);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\suser.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("images/suser.png"));
 		
 		
 		JButton jb1 = new JButton("회원 정보 관리");
@@ -419,6 +420,7 @@ public class Manage extends JFrame {
 		
 		container3.setLayout(gl_container3);
 		setBounds(200,200,800,800);
+		setLocationRelativeTo(null);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);

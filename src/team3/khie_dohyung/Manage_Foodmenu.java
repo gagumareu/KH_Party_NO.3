@@ -22,7 +22,7 @@ public class Manage_Foodmenu extends JFrame {
 	
 	public Manage_Foodmenu() {
 		getContentPane().setBackground(SystemColor.info);
-		setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
+		setIconImage(Toolkit.getDefaultToolkit().getImage("images/제목 없음2.jpg"));
 		setTitle("음식 메뉴 테이블");
 		JPanel container1 = new JPanel();
 		container1.setBackground(SystemColor.info);
@@ -63,7 +63,7 @@ public class Manage_Foodmenu extends JFrame {
 		jb5.setBackground(Color.CYAN);
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\제목 없음2.jpg"));
+		lblNewLabel.setIcon(new ImageIcon("images/제목 없음2.jpg"));
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -128,7 +128,7 @@ public class Manage_Foodmenu extends JFrame {
 		JLabel lblNewLabel_1 = new JLabel("");
 		
 		JLabel lblNewLabel_2 = new JLabel("");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\git\\KH_PartyNo3\\images\\sfood.png"));
+		lblNewLabel_2.setIcon(new ImageIcon("images/sfood.png"));
 		GroupLayout gl_container1 = new GroupLayout(container1);
 		gl_container1.setHorizontalGroup(
 			gl_container1.createParallelGroup(Alignment.TRAILING)
@@ -200,6 +200,8 @@ public class Manage_Foodmenu extends JFrame {
 		getContentPane().setLayout(groupLayout);
 		
 		setBounds(200,200,800,800);
+		setLocationRelativeTo(null);
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 		connect();
