@@ -34,6 +34,7 @@ public class MemberInfoEdit extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		setLocationRelativeTo(null);
 		setVisible(true);
 		
 		JLabel jl1_counter = new JLabel("회원 이름, 아이디 변경은 카운터에 문의하세요.");

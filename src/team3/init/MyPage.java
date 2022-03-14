@@ -43,6 +43,10 @@ public class MyPage extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		contentPane = new JPanel();
 		setContentPane(contentPane);
+		setBounds(200,200,800,800);
+		setLocationRelativeTo(null);
+		setVisible(true);
+
 		
 		JPanel container = new JPanel();
 		
@@ -165,11 +169,6 @@ public class MyPage extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 		
 		
-		setBounds(200,200,800,800);
-		setLocationRelativeTo(null);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
-		setVisible(true);
 		
 		
 		lblNewLabel_1.addMouseListener(new MouseAdapter() {

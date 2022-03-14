@@ -32,6 +32,8 @@ public class MemberInfoCheck extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		setLocationRelativeTo(null);
+		setVisible(true);
 		
 		//가운데의 panel
 		JPanel panel_center = new JPanel();
@@ -109,7 +111,6 @@ public class MemberInfoCheck extends JFrame {
 			}
 		});
 		panel_south.add(btnClose);
-		setVisible(true);
 	}
 
 	public MemberInfoCheck(String id) {

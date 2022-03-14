@@ -50,6 +50,8 @@ public class Init extends JFrame {
 		contentPane.setBackground(SystemColor.info);
 		setContentPane(contentPane);
 		setVisible(true);
+		setLocationRelativeTo(null);
+
 		
 		JPanel panel_top = new JPanel();
 		panel_top.setBackground(SystemColor.info);
