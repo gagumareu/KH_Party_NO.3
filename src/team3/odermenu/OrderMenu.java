@@ -119,8 +119,10 @@ public class OrderMenu extends JFrame {
 	
 	
 	
+	
+	
 	// 생성자 
-	public OrderMenu() {
+	public OrderMenu(String id) {
 		
 		setTitle("음식 메뉴 주문");
 		setIconImage(Toolkit.getDefaultToolkit().getImage(OrderMenu.class.getResource("/team3/booktable/img/comic.png")));
@@ -1494,7 +1496,7 @@ public class OrderMenu extends JFrame {
 		
 		public void actionPerformed(ActionEvent e) {
 
-//			new MyPage();
+			new MyPage(id);
 			dispose();
 		}
 	});
@@ -1770,7 +1772,7 @@ public class OrderMenu extends JFrame {
 	}
 	
 	
-	
+
 	
 	
 	
