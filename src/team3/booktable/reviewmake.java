@@ -45,6 +45,8 @@ public class reviewmake extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setLocationRelativeTo(null);
+		
 		
 		JLabel jtf = new JLabel("도서 명 :   "+bname);
 		jtf.setBounds(109, 10, 252, 31);
